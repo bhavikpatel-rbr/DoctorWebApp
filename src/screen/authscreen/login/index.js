@@ -68,8 +68,11 @@ const Login = () => {
           <div
             onClick={() => navigate("/signup")}
             className="d-flex justify-content-between mt-2">
-            <a href="forget-password.html" className="d-flex justify-content-end small text-primary">Forget Password?</a>
-            <p className="text-muted text-end small">Don't have an account? <a className="text-primary" href="sign-up.html">Sign up</a></p>
+          
+          </div>
+          <div className="d-flex justify-content-between mt-2">
+          <Link to={"/forgetpassword"} className="d-flex justify-content-end small text-primary">Forget Password?</Link>
+          <p className="text-muted text-end small">Don't have an account? <a className="text-primary" href="sign-up.html">Sign up</a></p>
           </div>
         </div>
       </form>

@@ -1,23 +1,26 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect } from 'react';
 import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
 import { BiAbacus, BiBarChartAlt, BiBellOff } from 'react-icons/bi';
 import { MdAccountCircle } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
-const Login = () => {
+import Sidebar from '../../../Sidebar/Sidebar';
+import HcOffcanvasNav from 'hc-offcanvas-nav';
 
+const Login = () => {
   const navigate = useNavigate()
-    return (
-        <div className="bg-light p-4">
+
+  return (
+    <div className="bg-light p-4">
+      <Sidebar/>
       <div className="d-flex align-items-start justify-content-between mb-4">
         <div>
           <MdAccountCircle size={60} className="text-primary" />
           <h2 className="my-3 fw-bold">Let's Sign in</h2>
           <p className="text-muted mb-0">Welcome Back, You've<br />been missed!</p>
         </div>
-          <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5" href="#">
-            <BiAbacus size={24} className="d-flex" />
-          </a>
+        <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5 hc-nav-trigger hc-nav-1" href="#">
+          <BiAbacus size={24} className="d-flex" />
+        </a>
       </div>
       <form>
         <div className="mb-3">
@@ -62,16 +65,16 @@ const Login = () => {
         </div>
         <div>
           <Link to={"/signup"} className="btn btn-info btn-lg w-100 rounded-4 mb-2">Login</Link>
-          <div 
-          onClick={()=>navigate("/signup")}
-          className="d-flex justify-content-between mt-2">
+          <div
+            onClick={() => navigate("/signup")}
+            className="d-flex justify-content-between mt-2">
             <a href="forget-password.html" className="d-flex justify-content-end small text-primary">Forget Password?</a>
             <p className="text-muted text-end small">Don't have an account? <a className="text-primary" href="sign-up.html">Sign up</a></p>
           </div>
         </div>
       </form>
 
-    
+
       <div className="footer fixed-bottom m-4">
         <div className="d-flex align-items-center justify-content-between gap-3 mb-3">
           <hr className="col" />
@@ -88,7 +91,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 export default Login

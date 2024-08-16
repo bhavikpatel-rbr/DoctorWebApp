@@ -1,18 +1,21 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react'
 import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
 import { BiAbacus, BiBarChartAlt, BiBellOff } from 'react-icons/bi';
 import { MdAccountCircle } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
 const SignUp = () => {
-    return (
-        <div className="bg-light p-4">
+  const Location = useLocation();
+
+  return (
+    <div className="bg-light p-4">
       <div className="d-flex align-items-start justify-content-between mb-4">
         <div>
           <MdAccountCircle size={60} className="text-primary" />
           <h2 className="my-3 fw-bold">Let's Sign in</h2>
           <p className="text-muted mb-0">Welcome Back, You've<br />been missed!</p>
         </div>
-        <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5" href="#">
+        <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5" href="#" 
+        >
           <BiAbacus size={24} className="d-flex" />
         </a>
       </div>
@@ -82,7 +85,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 export default SignUp

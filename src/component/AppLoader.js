@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Spinner } from "react-bootstrap"
+// import { Spinner } from "react-bootstrap"
 import { toast } from "react-toastify"
 import { useDispatch, useSelector } from "react-redux"
 import { hideMessage, lemSelector } from "../reduxtool/lem/lemSlice"
@@ -48,10 +48,10 @@ const Loader = () => {
     if (loading) {
         return (
             <div className="modal d-flex loader-l">
-                <Spinner
+                {/* <Spinner
                     animation="border"
                     className="cls-spinner"
-                />
+                /> */}
             </div>
         )
     }

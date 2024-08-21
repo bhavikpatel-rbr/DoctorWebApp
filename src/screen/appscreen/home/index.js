@@ -1,227 +1,330 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
-import { BiAbacus, BiBarChartAlt, BiBellOff } from 'react-icons/bi';
-import { MdAccountCircle } from 'react-icons/md';
+import { BiAbacus, BiBarChartAlt, BiBellOff, BiPlus } from 'react-icons/bi';
+import { MdAccountCircle, MdArrowDropDown } from 'react-icons/md';
+import './style.css'
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../Sidebar/Sidebar';
 import HcOffcanvasNav from 'hc-offcanvas-nav';
 import doctorImage from '../../../img/home/top-doctor-1.jpg';
 import doctorImage1 from '../../../img/home/available-doctor-1.png';
 const Home = () => {
+  // State to manage active tab
+  const [activeTab, setActiveTab] = useState(0);
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const Modal = ({ isVisible, onClose, content }) => {
+    if (!isVisible) return null;
+  
     return (
-        <div  class="bg-light">
-          <div className="home d-flex flex-column vh-100">
-          <Sidebar/>
-      <div className="bg-white shadow-sm">
-        <div className="d-flex align-items-center justify-content-between mb-auto p-3 osahan-header">
-          <div className="d-flex align-items-center gap-2 me-auto">
-           
-              <img src={doctorImage} alt="" className="img-fluid rounded-circle icon" />
-           
-            <div className="ps-1">
-              <p className="text-orange m-0 small">Welcome</p>
-              <p className="fw-bold mb-0 text-primary fw-bold">Hey, Samantha!</p>
-            </div>
-          </div>
-          <div className="d-flex align-items-center gap-2">
-            <div className="bg-white shadow rounded-circle icon">
-              <span className="mdi mdi-cards-heart-outline mdi-18px text-primary"></span>
-            </div>
-            <div className="bg-white shadow rounded-circle icon">
-              <span className="mdi mdi-bell-outline mdi-18px text-primary"></span>
-            </div>
-            <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5 hc-nav-trigger hc-nav-1" href="#">
-          <BiAbacus size={24} className="d-flex" />
-        </a>
-          </div>
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <button className="modal-close" onClick={onClose}>×</button>
+          {content}
         </div>
-        <div className="px-3 pb-3">
-          <form>
-            <div className="input-group rounded-4 shadow py-1 px-3 bg-light">
-              <span className="input-group-text bg-transparent text-muted border-0 p-0" id="search">
-                <span className="mdi mdi-magnify mdi-24px text-primary"></span>
-              </span>
-              <input
-                type="text"
-                className="form-control bg-transparent text-muted rounded-0 border-0 px-3"
-                placeholder="Find your suitable doctor!"
-                aria-label="Search"
-                aria-describedby="search"
-              />
-              <a href="#" className="input-group-text bg-transparent text-muted border-0 border-start pe-0" id="search">
-                <span className="mdi mdi-filter-outline mdi-18px"></span>
+      </div>
+    );
+  };
+  
+  // Array of tab titles
+  const tabs = [
+    'Chief Complaint',
+    'Associate Complaint',
+    'Case Record',
+    'Upload Case Record',
+    'Add Diagnosis (SFFT)',
+    'Add Life Space Table (LST)'
+  ];
+
+  const [rows, setRows] = useState([
+    {
+      location: "",
+      sensation: "",
+      modalities: "",
+      concomitant: ""
+    }
+  ]);
+
+  const addRow = () => {
+    setRows([
+      ...rows,
+      {
+        location: "",
+        sensation: "",
+        modalities: "",
+        concomitant: ""
+      }
+    ]);
+  };
+
+  const startListening = (inputField, index) => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setRows(rows.map((row, i) =>
+          i === index ? { ...row, [inputField]: transcript } : row
+        ));
+      };
+
+      recognition.start();
+    } else {
+      alert("Speech Recognition API is not supported in this browser.");
+    }
+  };
+ // Handle dropdown icon click to show modal
+ const handleDropdownClick = (content) => {
+  setModalContent(content);
+  setIsModalVisible(true);
+};
+  const removeRow = () => {
+    if (selectedRowIndex !== null) {
+      setRows(rows.filter((_, index) => index !== selectedRowIndex));
+      setSelectedRowIndex(null); // Reset the selected row index
+    }
+  };
+
+  const handleRowSelect = (index) => {
+    setSelectedRowIndex(index);
+  };
+  const handleCheckboxChange = (index) => {
+    setRows(rows.map((row, i) =>
+      i === index ? { ...row, isChecked: !row.isChecked } : row
+    ));
+  };
+  // Array of tab content
+  const tabContent = [
+    <div>
+      <h5>Chief Complaint Content</h5>
+      <table className="table table-bordered table-hover custom-table">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">Sr No</th>
+            <th scope="col">Location</th>
+            <th scope="col">Sensation & Pathology</th>
+            <th scope="col">Modalities AF</th>
+            <th scope="col">Concomitant</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr
+              key={index}
+              className={selectedRowIndex === index ? 'selected-row' : ''}
+              onClick={() => handleRowSelect(index)}
+            >
+              <td>{index + 1}</td>
+              <td>
+                <div className="input-group">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    checked={row.isChecked}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={row.location}
+                    onChange={(e) =>
+                      setRows(rows.map((r, i) => i === index ? { ...r, location: e.target.value } : r))
+                    }
+                    placeholder="Enter Location"
+                  />
+                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Location Options')}>
+                    <MdArrowDropDown size={20} />
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => startListening("location", index)}
+                  >
+                    🎤
+                  </button>
+                </div>
+              </td>
+              <td>
+                <div className="input-group">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    checked={row.isChecked}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={row.sensation}
+                    onChange={(e) =>
+                      setRows(rows.map((r, i) => i === index ? { ...r, sensation: e.target.value } : r))
+                    }
+                    placeholder="Enter Sensation & Pathology"
+                  />
+                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Sensation Options')}>
+                    <MdArrowDropDown size={20} />
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => startListening("sensation", index)}
+                  >
+                    🎤
+                  </button>
+                </div>
+              </td>
+              <td>
+                <div className="input-group">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    checked={row.isChecked}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={row.modalities}
+                    onChange={(e) =>
+                      setRows(rows.map((r, i) => i === index ? { ...r, modalities: e.target.value } : r))
+                    }
+                    placeholder="Enter Modalities AF"
+                  />
+                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Modalities Options')}>
+                    <MdArrowDropDown size={20} />
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => startListening("modalities", index)}
+                  >
+                    🎤
+                  </button>
+                </div>
+              </td>
+              <td>
+                <div className="input-group">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    checked={row.isChecked}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={row.concomitant}
+                    onChange={(e) =>
+                      setRows(rows.map((r, i) => i === index ? { ...r, concomitant: e.target.value } : r))
+                    }
+                    placeholder="Enter Concomitant"
+                  />
+                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Concomitant Options')}>
+                    <MdArrowDropDown size={20} />
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => startListening("concomitant", index)}
+                  >
+                    🎤
+                  </button>
+                </div>
+              </td>
+              <td>
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent row selection on button click
+                    handleRowSelect(index); // Select the row to delete
+                    removeRow(); // Remove the selected row
+                  }}
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button className="btn btn-outline-primary" onClick={addRow}>
+        <BiPlus size={20} /> Add New Row
+      </button>
+    </div>,
+    <div>Associate Complaint Content</div>,
+    <div>Case Record Content</div>,
+    <div>Upload Case Record Content</div>,
+    <div>Add Diagnosis (SFFT) Content</div>,
+    <div>Add Life Space Table (LST) Content</div>
+  ];
+
+
+
+  return (
+    <div className="bg-light">
+      <Sidebar />
+      <div className="home d-flex flex-column vh-100">
+        <div className="bg-white shadow-sm">
+          <div className="d-flex align-items-center justify-content-between mb-auto p-3 osahan-header">
+            <div className="d-flex align-items-center gap-2 me-auto">
+              <img src={doctorImage} alt="" className="img-fluid rounded-circle icon" />
+              <div className="ps-1">
+                <p className="text-orange m-0 small">Welcome</p>
+                <p className="fw-bold mb-0 text-primary fw-bold">Hey, Samantha!</p>
+              </div>
+            </div>
+            <div className="d-flex align-items-center gap-2">
+              <div className="bg-white shadow rounded-circle icon">
+                <span className="mdi mdi-cards-heart-outline mdi-18px text-primary"></span>
+              </div>
+              <div className="bg-white shadow rounded-circle icon">
+                <span className="mdi mdi-bell-outline mdi-18px text-primary"></span>
+              </div>
+              <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5 hc-nav-trigger hc-nav-1" href="#">
+                <BiAbacus size={24} className="d-flex" />
               </a>
             </div>
-          </form>
+          </div>
+        </div>
+        <div className="vh-100 my-auto overflow-auto body-fix-osahan-footer">
+          <div className="p-3 mb-2">
+            <div className="d-flex justify-content-between align-items-center">
+              <h4 className="mb-3 fw-bold px-3 text-black">Case Record</h4>
+              <button className="btn btn-primary">
+                <i className="bi bi-plus-lg me-1"></i> Add Data
+              </button>
+            </div>
+            <div className="row row-cols-6 g-2 mt-1 tabs-container">
+              {tabs.map((tab, index) => (
+                <div key={index} className="col">
+                  <div
+                    className={`text-center rounded-4 p-2 shadow-sm ${activeTab === index ? 'active-tab' : 'bg-white'}`}
+                    onClick={() => setActiveTab(index)}
+                  >
+                    <div className="link-dark">
+                      <h6 className="text-truncate small m-0">{tab}</h6>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Tab Content */}
+          <div className="p-3">
+            {tabContent[activeTab]}
+          </div>
+          <Modal
+        isVisible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        content={modalContent}
+      />
         </div>
       </div>
-
-      <div className="vh-100 my-auto overflow-auto body-fix-osahan-footer">
-        <div className="mb-0 pt-3">
-          <div className="available-doctor ps-2 ms-1">
-            <div className="available-doctor-item">
-              <div className="bg-primary text-white rounded-4 p-3 doctor-book-back">
-                <h1 className="mb-1 doctor-book-back-title">
-                  Book Your Next
-                  <span className="h4 text-warning overflow-hidden rounded-4 m-0 bg-white">
-                    <b className="bg-light-subtle text-primary px-1 rounded">Appointment</b>
-                    <b className="bg-info fw-normal text-white px-1 rounded">Online!</b>
-                  </span>
-                </h1>
-                <p className="mb-2 text-white-50 small">Book Now and Get 30% OFF</p>
-                <div to="request-appointment.html" className="btn btn-sm btn-book btn-secondary">
-                  BOOK NOW <i className="bi bi-arrow-right"></i>
-                </div>
-                <div className="doctor-book-img">
-                  <img src={doctorImage} alt="" className="img-fluid" />
-                </div>
-              </div>
-            </div>
-            <div className="available-doctor-item">
-              <div className="btn-info text-white rounded-4 p-3 doctor-book-back">
-                <h1 className="mb-1 doctor-book-back-title">
-                  <span className="h4 overflow-hidden m-0">
-                    <b className="text-primary">Find Your Dental</b>
-                  </span>
-                  Specialist Doctor
-                </h1>
-                <p className="mb-2 small">
-                  Dr. Samaro{' '}
-                  <span className="bg-white rounded-pill px-1 small text-orange">
-                    <i className="mdi mdi-star"></i> 4.9
-                  </span>
-                </p>
-                <div className="btn btn-sm btn-primary btn-book">
-                  BOOK NOW <i className="bi bi-arrow-right"></i>
-                </div>
-                <div className="doctor-book-img">
-                  <img src={doctorImage} alt="" className="img-fluid" />
-                </div>
-              </div>
-            </div>
-            <div className="available-doctor-item">
-              <div className="btn-secondary text-white rounded-4 p-3 doctor-book-back">
-                <h1 className="mb-1 doctor-book-back-title">
-                  Find the Right <br />
-                  <span className="h4 text-warning overflow-hidden rounded-4 m-0">
-                    <b className="bg-warning text-black px-1 rounded">Doctor for Your</b>
-                    <b className="text-black">Needs!</b>
-                  </span>
-                </h1>
-                <p className="mb-2 text-white small">Book Now and Get 30% OFF</p>
-                <div to="#" className="btn btn-sm btn-dark btn-book">
-                  BOOK NOW <i className="bi bi-arrow-right"></i>
-                </div>
-                <div className="doctor-book-img">
-                  <img src={doctorImage} alt="" className="img-fluid" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="p-3 mb-2">
-          <div className="row row-cols-4 g-2">
-            <div className="col">
-              <div className="bg-white text-center rounded-4 p-2 shadow-sm">
-                <div  className="link-dark">
-                  <img src={doctorImage} alt="" className="img-fluid px-2" />
-                  <p className="text-truncate small pt-2 m-0">Doctor</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="bg-white text-center rounded-4 p-2 shadow-sm">
-                <div to="request-appointment.html" className="link-dark">
-                  <img src={doctorImage} alt="" className="img-fluid px-2" />
-                  <p className="text-truncate small pt-2 m-0">Appointment</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="bg-white text-center rounded-4 p-2 shadow-sm">
-                <div to="search.html" className="link-dark">
-                  <img src={doctorImage} alt="" className="img-fluid px-2" />
-                  <p className="text-truncate small pt-2 m-0">Prescription</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="bg-white text-center rounded-4 p-2 shadow-sm">
-                <div to="search.html" className="link-dark">
-                  <img src={doctorImage} alt="" className="img-fluid px-2" />
-                  <p className="text-truncate small pt-2 m-0">Medicine</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <h6 className="mb-2 pb-1 fw-bold px-3 text-black">Top Doctor</h6>
-          <div className="top-doctors ps-2 ms-1">
-            <div className="top-doctor-item">
-              <div  className="link-dark">
-                <div className="card bg-white border-0 rounded-4 shadow-sm overflow-hidden">
-                  <img src={doctorImage} className="card-img-top top-doctor-img" alt="..." />
-                  <div className="card-body small p-3 osahan-card-body">
-                    <p className="card-title fw-semibold mb-0 text-truncate fs-14">Dr. Taylor Samaro</p>
-                    <p className="card-text text-muted small m-0">Dental Sargon</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="top-doctor-item">
-              <div className="link-dark">
-                <div className="card bg-white border-0 rounded-4 shadow-sm overflow-hidden">
-                  <img src={doctorImage} className="card-img-top top-doctor-img" alt="..." />
-                  <div className="card-body small p-3 osahan-card-body">
-                    <p className="card-title fw-semibold mb-0 text-truncate fs-14">Dr. Michael Thomas</p>
-                    <p className="card-text text-muted small m-0">Cardiologist</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="top-doctor-item">
-              <div to="book-appointment.html" className="link-dark">
-                <div className="card bg-white border-0 rounded-4 shadow-sm overflow-hidden">
-                  <img src={doctorImage} className="card-img-top top-doctor-img" alt="..." />
-                  <div className="card-body small p-3 osahan-card-body">
-                    <p className="card-title fw-semibold mb-0 text-truncate fs-14">Dr. Jennifer Arnold</p>
-                    <p className="card-text text-muted small m-0">Pediatrician</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="bottom-nav d-flex justify-content-around bg-white shadow p-3">
-  <Link to="/home.html" className="text-center">
-    <p className="h5 m-0"><span className="mdi mdi-home-variant-outline"></span></p>
-    Home
-  </Link>
-  <Link to="/search.html" className="text-center">
-    <p className="h5 m-0"><span className="mdi mdi-magnify"></span></p>
-    Search
-  </Link>
-  <Link to="/video.html" className="text-center">
-    <p className="h5 m-0"><span className="mdi mdi-video-outline"></span></p>
-    Video
-  </Link>
-  <Link to="/chat.html" className="text-center">
-    <p className="h5 m-0"><span className="mdi mdi-chat-outline"></span></p>
-    Chat
-  </Link>
-  <Link to="/my-profile.html" className="text-center">
-    <p className="h5 m-0"><span className="mdi mdi-account-circle-outline"></span></p>
-    Profile
-  </Link>
-</div>
     </div>
-   
-        </div>
-        
-    )
+
+  )
 }
 
 export default Home

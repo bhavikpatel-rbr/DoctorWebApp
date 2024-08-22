@@ -11,7 +11,7 @@ const Otp = () => {
   const Location = useLocation();
   
   return (
-    <div class="bg-light">
+    <div className="bg-light">
     <div className="verify p-4">
     <Sidebar/>
       <div className="d-flex align-items-start justify-content-between mb-4">

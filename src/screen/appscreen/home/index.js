@@ -1,330 +1,778 @@
-import React, { useState } from 'react'
-import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
-import { BiAbacus, BiBarChartAlt, BiBellOff, BiPlus } from 'react-icons/bi';
-import { MdAccountCircle, MdArrowDropDown } from 'react-icons/md';
-import './style.css'
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
 import Sidebar from '../../../Sidebar/Sidebar';
-import HcOffcanvasNav from 'hc-offcanvas-nav';
-import doctorImage from '../../../img/home/top-doctor-1.jpg';
-import doctorImage1 from '../../../img/home/available-doctor-1.png';
+import Header from '../../../Sidebar/Header';
+import './style.css';
 const Home = () => {
-  // State to manage active tab
-  const [activeTab, setActiveTab] = useState(0);
-  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
-  const Modal = ({ isVisible, onClose, content }) => {
-    if (!isVisible) return null;
-  
-    return (
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <button className="modal-close" onClick={onClose}>×</button>
-          {content}
-        </div>
-      </div>
-    );
-  };
-  
-  // Array of tab titles
-  const tabs = [
-    'Chief Complaint',
-    'Associate Complaint',
-    'Case Record',
-    'Upload Case Record',
-    'Add Diagnosis (SFFT)',
-    'Add Life Space Table (LST)'
-  ];
-
-  const [rows, setRows] = useState([
-    {
-      location: "",
-      sensation: "",
-      modalities: "",
-      concomitant: ""
-    }
-  ]);
-
-  const addRow = () => {
-    setRows([
-      ...rows,
-      {
-        location: "",
-        sensation: "",
-        modalities: "",
-        concomitant: ""
-      }
-    ]);
-  };
-
-  const startListening = (inputField, index) => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.lang = "en-US";
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setRows(rows.map((row, i) =>
-          i === index ? { ...row, [inputField]: transcript } : row
-        ));
-      };
-
-      recognition.start();
-    } else {
-      alert("Speech Recognition API is not supported in this browser.");
-    }
-  };
- // Handle dropdown icon click to show modal
- const handleDropdownClick = (content) => {
-  setModalContent(content);
-  setIsModalVisible(true);
-};
-  const removeRow = () => {
-    if (selectedRowIndex !== null) {
-      setRows(rows.filter((_, index) => index !== selectedRowIndex));
-      setSelectedRowIndex(null); // Reset the selected row index
-    }
-  };
-
-  const handleRowSelect = (index) => {
-    setSelectedRowIndex(index);
-  };
-  const handleCheckboxChange = (index) => {
-    setRows(rows.map((row, i) =>
-      i === index ? { ...row, isChecked: !row.isChecked } : row
-    ));
-  };
-  // Array of tab content
-  const tabContent = [
-    <div>
-      <h5>Chief Complaint Content</h5>
-      <table className="table table-bordered table-hover custom-table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">Sr No</th>
-            <th scope="col">Location</th>
-            <th scope="col">Sensation & Pathology</th>
-            <th scope="col">Modalities AF</th>
-            <th scope="col">Concomitant</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, index) => (
-            <tr
-              key={index}
-              className={selectedRowIndex === index ? 'selected-row' : ''}
-              onClick={() => handleRowSelect(index)}
-            >
-              <td>{index + 1}</td>
-              <td>
-                <div className="input-group">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    checked={row.isChecked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={row.location}
-                    onChange={(e) =>
-                      setRows(rows.map((r, i) => i === index ? { ...r, location: e.target.value } : r))
-                    }
-                    placeholder="Enter Location"
-                  />
-                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Location Options')}>
-                    <MdArrowDropDown size={20} />
-                  </button>
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={() => startListening("location", index)}
-                  >
-                    🎤
-                  </button>
-                </div>
-              </td>
-              <td>
-                <div className="input-group">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    checked={row.isChecked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={row.sensation}
-                    onChange={(e) =>
-                      setRows(rows.map((r, i) => i === index ? { ...r, sensation: e.target.value } : r))
-                    }
-                    placeholder="Enter Sensation & Pathology"
-                  />
-                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Sensation Options')}>
-                    <MdArrowDropDown size={20} />
-                  </button>
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={() => startListening("sensation", index)}
-                  >
-                    🎤
-                  </button>
-                </div>
-              </td>
-              <td>
-                <div className="input-group">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    checked={row.isChecked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={row.modalities}
-                    onChange={(e) =>
-                      setRows(rows.map((r, i) => i === index ? { ...r, modalities: e.target.value } : r))
-                    }
-                    placeholder="Enter Modalities AF"
-                  />
-                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Modalities Options')}>
-                    <MdArrowDropDown size={20} />
-                  </button>
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={() => startListening("modalities", index)}
-                  >
-                    🎤
-                  </button>
-                </div>
-              </td>
-              <td>
-                <div className="input-group">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    checked={row.isChecked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={row.concomitant}
-                    onChange={(e) =>
-                      setRows(rows.map((r, i) => i === index ? { ...r, concomitant: e.target.value } : r))
-                    }
-                    placeholder="Enter Concomitant"
-                  />
-                  <button className="btn btn-outline-secondary" onClick={() => handleDropdownClick('Concomitant Options')}>
-                    <MdArrowDropDown size={20} />
-                  </button>
-                  <button
-                    className="btn btn-outline-secondary"
-                    onClick={() => startListening("concomitant", index)}
-                  >
-                    🎤
-                  </button>
-                </div>
-              </td>
-              <td>
-                <button
-                  className="btn btn-outline-danger"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent row selection on button click
-                    handleRowSelect(index); // Select the row to delete
-                    removeRow(); // Remove the selected row
-                  }}
-                >
-                  Remove
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <button className="btn btn-outline-primary" onClick={addRow}>
-        <BiPlus size={20} /> Add New Row
-      </button>
-    </div>,
-    <div>Associate Complaint Content</div>,
-    <div>Case Record Content</div>,
-    <div>Upload Case Record Content</div>,
-    <div>Add Diagnosis (SFFT) Content</div>,
-    <div>Add Life Space Table (LST) Content</div>
-  ];
-
-
-
   return (
-    <div className="bg-light">
+    <div className="main-wrapper">
+      <Header />
       <Sidebar />
-      <div className="home d-flex flex-column vh-100">
-        <div className="bg-white shadow-sm">
-          <div className="d-flex align-items-center justify-content-between mb-auto p-3 osahan-header">
-            <div className="d-flex align-items-center gap-2 me-auto">
-              <img src={doctorImage} alt="" className="img-fluid rounded-circle icon" />
-              <div className="ps-1">
-                <p className="text-orange m-0 small">Welcome</p>
-                <p className="fw-bold mb-0 text-primary fw-bold">Hey, Samantha!</p>
-              </div>
-            </div>
-            <div className="d-flex align-items-center gap-2">
-              <div className="bg-white shadow rounded-circle icon">
-                <span className="mdi mdi-cards-heart-outline mdi-18px text-primary"></span>
-              </div>
-              <div className="bg-white shadow rounded-circle icon">
-                <span className="mdi mdi-bell-outline mdi-18px text-primary"></span>
-              </div>
-              <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5 hc-nav-trigger hc-nav-1" href="#">
-                <BiAbacus size={24} className="d-flex" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="vh-100 my-auto overflow-auto body-fix-osahan-footer">
-          <div className="p-3 mb-2">
-            <div className="d-flex justify-content-between align-items-center">
-              <h4 className="mb-3 fw-bold px-3 text-black">Case Record</h4>
-              <button className="btn btn-primary">
-                <i className="bi bi-plus-lg me-1"></i> Add Data
-              </button>
-            </div>
-            <div className="row row-cols-6 g-2 mt-1 tabs-container">
-              {tabs.map((tab, index) => (
-                <div key={index} className="col">
-                  <div
-                    className={`text-center rounded-4 p-2 shadow-sm ${activeTab === index ? 'active-tab' : 'bg-white'}`}
-                    onClick={() => setActiveTab(index)}
-                  >
-                    <div className="link-dark">
-                      <h6 className="text-truncate small m-0">{tab}</h6>
+      {/* <div class="page-wrapper">
+            <div class="content">
+
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Dashboard </a></li>
+                                <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                                <li class="breadcrumb-item active">Admin Dashboard</li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              ))}
+
+                <div class="good-morning-blk">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="morning-user">
+                                <h2>Good Morning, <span>Daniel Bruk</span></h2>
+                                <p>Have a nice day at work</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 position-blk">
+                            <div class="morning-img">
+                                <img src="assets/img/morning-img-01.png" alt>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <div class="dash-boxs comman-flex-center">
+                                <img src="assets/img/icons/calendar.svg" alt>
+                            </div>
+                            <div class="dash-content dash-count">
+                                <h4>Appointments</h4>
+                                <h2><span class="counter-up">250</span></h2>
+                                <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>40%</span> vs
+                                    last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <div class="dash-boxs comman-flex-center">
+                                <img src="assets/img/icons/profile-add.svg" alt>
+                            </div>
+                            <div class="dash-content dash-count">
+                                <h4>New Patients</h4>
+                                <h2><span class="counter-up">140</span></h2>
+                                <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>20%</span> vs
+                                    last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <div class="dash-boxs comman-flex-center">
+                                <img src="assets/img/icons/scissor.svg" alt>
+                            </div>
+                            <div class="dash-content dash-count">
+                                <h4>Operations</h4>
+                                <h2><span class="counter-up">56</span></h2>
+                                <p><span class="negative-view"><i class="feather-arrow-down-right me-1"></i>15%</span>
+                                    vs last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <div class="dash-boxs comman-flex-center">
+                                <img src="assets/img/icons/empty-wallet.svg" alt>
+                            </div>
+                            <div class="dash-content dash-count">
+                                <h4>Earnings</h4>
+                                <h2>$<span class="counter-up"> 20,250</span></h2>
+                                <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>30%</span> vs
+                                    last month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-6 col-xl-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-title patient-visit">
+                                    <h4>Patient Visit by Gender</h4>
+                                    <div>
+                                        <ul class="nav chat-user-total">
+                                            <li><i class="fa fa-circle current-users" aria-hidden="true"></i>Male 75%
+                                            </li>
+                                            <li><i class="fa fa-circle old-users" aria-hidden="true"></i> Female 25%
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="input-block mb-0">
+                                        <select class="form-control select">
+                                            <option>2022</option>
+                                            <option>2021</option>
+                                            <option>2020</option>
+                                            <option>2019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="patient-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-title">
+                                    <h4>Patient by Department</h4>
+                                </div>
+                                <div id="donut-chart-dash" class="chart-user-icon">
+                                    <img src="assets/img/icons/user-icon.svg" alt>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12  col-xl-4">
+                        <div class="card top-departments">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0">Top Departments</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-top">
+                                    <div class="activity-boxs comman-flex-center">
+                                        <img src="assets/img/icons/dep-icon-01.svg" alt>
+                                    </div>
+                                    <div class="departments-list">
+                                        <h4>General Physician</h4>
+                                        <p>35%</p>
+                                    </div>
+                                </div>
+                                <div class="activity-top">
+                                    <div class="activity-boxs comman-flex-center">
+                                        <img src="assets/img/icons/dep-icon-02.svg" alt>
+                                    </div>
+                                    <div class="departments-list">
+                                        <h4>Dentist</h4>
+                                        <p>24%</p>
+                                    </div>
+                                </div>
+                                <div class="activity-top">
+                                    <div class="activity-boxs comman-flex-center">
+                                        <img src="assets/img/icons/dep-icon-03.svg" alt>
+                                    </div>
+                                    <div class="departments-list">
+                                        <h4>ENT</h4>
+                                        <p>10%</p>
+                                    </div>
+                                </div>
+                                <div class="activity-top">
+                                    <div class="activity-boxs comman-flex-center">
+                                        <img src="assets/img/icons/dep-icon-04.svg" alt>
+                                    </div>
+                                    <div class="departments-list">
+                                        <h4>Cardiologist</h4>
+                                        <p>15%</p>
+                                    </div>
+                                </div>
+                                <div class="activity-top mb-0">
+                                    <div class="activity-boxs comman-flex-center">
+                                        <img src="assets/img/icons/dep-icon-05.svg" alt>
+                                    </div>
+                                    <div class="departments-list">
+                                        <h4>Opthomology</h4>
+                                        <p>20%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12  col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title d-inline-block">Upcoming Appointments</h4> <a
+                                    href="appointments.html" class="patient-views float-end">Show all</a>
+                            </div>
+                            <div class="card-body p-0 table-dash">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 border-0 datatable custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </th>
+                                                <th>No</th>
+                                                <th>Patient name</th>
+                                                <th>Doctor</th>
+                                                <th>Time</th>
+                                                <th>Disease</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00001</td>
+                                                <td>Andrea Lalema</td>
+                                                <td class="table-image appoint-doctor">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-02.jpg" alt>
+                                                    <h2>Dr.Jenny Smith</h2>
+                                                </td>
+                                                <td class="appoint-time"><span>12.05.2022 at </span>7.00 PM</td>
+                                                <td><button class="custom-badge status-green ">Fracture</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-appointment.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00002</td>
+                                                <td>Cristina Groves</td>
+                                                <td class="table-image appoint-doctor">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-03.jpg" alt>
+                                                    <h2>Dr.Angelica Ramos</h2>
+                                                </td>
+                                                <td class="appoint-time"><span>13.05.2022 at </span>7.00 PM</td>
+                                                <td><button class="custom-badge status-green">Fever</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-appointment.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00003</td>
+                                                <td>Bernardo </td>
+                                                <td class="table-image appoint-doctor">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-04.jpg" alt>
+                                                    <h2>Dr.Martin Doe</h2>
+                                                </td>
+                                                <td class="appoint-time"><span>14.05.2022 at </span>7.00 PM</td>
+                                                <td><button class="custom-badge status-green">Fracture</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-appointment.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00004</td>
+                                                <td>Galaviz Lalema</td>
+                                                <td class="table-image appoint-doctor">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-05.jpg" alt>
+                                                    <h2>Dr.William Jerk</h2>
+                                                </td>
+                                                <td class="appoint-time"><span>15.05.2022 at </span>7.00 PM</td>
+                                                <td><button class="custom-badge status-green">Fracture</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-appointment.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00005</td>
+                                                <td>Cristina Groves</td>
+                                                <td class="table-image appoint-doctor">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-03.jpg" alt>
+                                                    <h2>Dr.Angelica Ramos</h2>
+                                                </td>
+                                                <td class="appoint-time"><span>16.05.2022 at </span>7.00 PM</td>
+                                                <td><button class="custom-badge status-green">Fever</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-appointment.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <h4 class="card-title d-inline-block">Recent Patients </h4> <a href="patients.html"
+                                    class="float-end patient-views">Show all</a>
+                            </div>
+                            <div class="card-block table-dash">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 border-0 datatable custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </th>
+                                                <th>No</th>
+                                                <th>Patient name</th>
+                                                <th>Age</th>
+                                                <th>Date of Birth</th>
+                                                <th>Diagnosis</th>
+                                                <th>Triage</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00001</td>
+                                                <td class="table-image">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-02.jpg" alt>
+                                                    <h2>Andrea Lalema</h2>
+                                                </td>
+                                                <td>21</td>
+                                                <td>07 January 2002</td>
+                                                <td>Heart attack</td>
+                                                <td><button class="custom-badge status-green ">Non Urgent</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-patient.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00002</td>
+                                                <td class="table-image">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-03.jpg" alt>
+                                                    <h2>Mark Hay Smith</h2>
+                                                </td>
+                                                <td>23</td>
+                                                <td>06 January 2002</td>
+                                                <td>Jaundice</td>
+                                                <td><button class="custom-badge status-pink">Emergency</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-patient.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00003</td>
+                                                <td class="table-image">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-04.jpg" alt>
+                                                    <h2>Cristina Groves</h2>
+                                                </td>
+                                                <td>25</td>
+                                                <td>10 January 2002</td>
+                                                <td>Malaria</td>
+                                                <td><button class="custom-badge status-gray">Out Patient</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-patient.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something">
+                                                    </div>
+                                                </td>
+                                                <td>R00004</td>
+                                                <td class="table-image">
+                                                    <img width="28" height="28" class="rounded-circle"
+                                                        src="assets/img/profiles/avatar-05.jpg" alt>
+                                                    <h2>Galaviz Lalema</h2>
+                                                </td>
+                                                <td>21</td>
+                                                <td>09 January 2002</td>
+                                                <td>Typhoid</td>
+                                                <td><button class="custom-badge status-orange">Non Urgent</button></td>
+                                                <td class="text-end">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="fa fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="edit-patient.html"><i
+                                                                    class="fa-solid fa-pen-to-square m-r-5"></i>
+                                                                Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#delete_appointment"><i
+                                                                    class="fa fa-trash-alt m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          {/* Tab Content */}
-          <div className="p-3">
-            {tabContent[activeTab]}
-          </div>
-          <Modal
-        isVisible={isModalVisible}
-        onClose={() => setIsModalVisible(false)}
-        content={modalContent}
-      />
-        </div>
-      </div>
+            <div class="notification-box">
+                <div class="msg-sidebar notifications msg-noti">
+                    <div class="topnav-dropdown-header">
+                        <span>Messages</span>
+                    </div>
+                    <div class="drop-scroll msg-list-scroll" id="msg_list">
+                        <ul class="list-box">
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">R</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Richard Miles </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item new-message">
+                                        <div class="list-left">
+                                            <span class="avatar">J</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">John Doe</span>
+                                            <span class="message-time">1 Aug</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">T</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Tarah Shropshire </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">M</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Mike Litorus</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">C</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Catherine Manseau </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">D</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Domenic Houston </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">B</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Buster Wigton </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">R</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Rolland Webber </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">C</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author"> Claire Mapes </span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">M</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Melita Faucher</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">J</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Jeffery Lalor</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">L</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Loren Gatlin</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">T</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">Tarah Shropshire</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="topnav-dropdown-footer">
+                        <a href="chat.html">See all messages</a>
+                    </div>
+                </div>
+            </div>
+        </div> */}
     </div>
 
   )
 }
 
-export default Home
+export default Home;

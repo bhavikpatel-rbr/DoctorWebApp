@@ -1241,9 +1241,9 @@ textarea.form-control {
     font-weight: 500
 }
 
-.sidebar-menu ul ul {
+/* .sidebar-menu ul ul {
     display: none
-}
+} */
 
 .sidebar-menu ul ul ul a {
     padding-left: 70px

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import menuicon01 from "../img/icons/menu-icon-01.svg";
@@ -20,45 +20,19 @@ import menuicon16 from "../img/icons/menu-icon-16.svg";
 import logout from "../img/icons/logout.svg";
 
 const Sidebar = () => {
-    const isElementVisible = (element) => {
-        return element.offsetWidth > 0 || element.offsetHeight > 0;
-      };
-    
-    useEffect(() => {
-        const handleMouseover = (e) => {
-          e.stopPropagation();
-    
-          const body = document.body;
-          const toggleBtn = document.getElementById("toggle_btn");
-    
-          if (
-            body.classList.contains("mini-sidebar") &&
-            isElementVisible(toggleBtn)
-          ) {
-            e.preventDefault();
-          }
-        };
-    
-        document.addEventListener("mouseover", handleMouseover);
-    
-        return () => {
-          document.removeEventListener("mouseover", handleMouseover);
-        };
-      }, []); 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
   const expandMenu = () => {
     document.body.classList.remove("expand-menu");
   };
   const expandMenuOpen = () => {
     document.body.classList.add("expand-menu");
-  };
-  const sidebarOverlay = () => {
-    document?.querySelector(".main-wrapper")?.classList?.toggle("slide-nav");
-    document?.querySelector(".sidebar-overlay")?.classList?.toggle("opened");
-    document?.querySelector("html")?.classList?.toggle("menu-opened");
+  }; 
+// Toggle function to open/close the menu
+const toggleMenu = () => {
+    setIsMenuOpen(prevState => !prevState);
   };
 
   return (
-    <scroll>
       <div className="sidebar" id="sidebar"
        onMouseLeave={expandMenu}
        onMouseOver={expandMenuOpen}>
@@ -67,23 +41,23 @@ const Sidebar = () => {
             <ul>
               <li className="menu-title">Main</li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#" onClick={toggleMenu}>
                   <span className="menu-side">
                     <img src={menuicon01} alt="" />
                   </span>
                   <span> Dashboard </span> <span className="menu-arrow"></span>
-                </a>
-                <ul className="d-none">
+                </Link>
+                <ul className={isMenuOpen ? "" : "d-none"}>
                   <li>
-                    <a className="active d-none" href="index.html">
+                    <Link className="active" href="index.html">
                       Admin Dashboard
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="doctor-dashboard.html">Doctor Dashboard</a>
+                    <Link href="doctor-dashboard.html">Doctor Dashboard</Link>
                   </li>
                   <li>
-                    <a href="patient-dashboard.html">Patient Dashboard</a>
+                    <Link href="patient-dashboard.html">Patient Dashboard</Link>
                   </li>
                 </ul>
               </li>
@@ -111,638 +85,637 @@ const Sidebar = () => {
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon03} alt="" />
                   </span>
                   <span>Patients </span>
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="patients.html">Patients List</a>
+                    <Link href="patients.html">Patients List</Link>
                   </li>
                   <li>
-                    <a href="add-patient.html">Add Patients</a>
+                    <Link href="add-patient.html">Add Patients</Link>
                   </li>
                   <li>
-                    <a href="edit-patient.html">Edit Patients</a>
+                    <Link href="edit-patient.html">Edit Patients</Link>
                   </li>
                   <li>
-                    <a href="patient-profile.html">Patients Profile</a>
+                    <Link href="patient-profile.html">Patients Profile</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon08} alt="" />
                   </span>
                   <span> Staff </span>
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="staff-list.html">Staff List</a>
+                    <Link href="staff-list.html">Staff List</Link>
                   </li>
                   <li>
-                    <a href="add-staff.html">Add Staff</a>
+                    <Link href="add-staff.html">Add Staff</Link>
                   </li>
                   <li>
-                    <a href="staff-profile.html">Staff Profile</a>
+                    <Link href="staff-profile.html">Staff Profile</Link>
                   </li>
                   <li>
-                    <a href="staff-leave.html">Leaves</a>
+                    <Link href="staff-leave.html">Leaves</Link>
                   </li>
                   <li>
-                    <a href="staff-holiday.html">Holidays</a>
+                    <Link href="staff-holiday.html">Holidays</Link>
                   </li>
                   <li>
-                    <a href="staff-attendance.html">Attendance</a>
+                    <Link href="staff-attendance.html">Attendance</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon04} alt="" />
                   </span>
                   <span> Appointments </span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="appointments.html">Appointment List</a>
+                    <Link href="appointments.html">Appointment List</Link>
                   </li>
                   <li>
-                    <a href="add-appointment.html">Book Appointment</a>
+                    <Link href="add-appointment.html">Book Appointment</Link>
                   </li>
                   <li>
-                    <a href="edit-appointment.html">Edit Appointment</a>
+                    <Link href="edit-appointment.html">Edit Appointment</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon05} alt="" />
                   </span>
                   <span> Doctor Schedule </span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="schedule.html">Schedule List</a>
+                    <Link href="schedule.html">Schedule List</Link>
                   </li>
                   <li>
-                    <a href="add-schedule.html">Add Schedule</a>
+                    <Link href="add-schedule.html">Add Schedule</Link>
                   </li>
                   <li>
-                    <a href="edit-schedule.html">Edit Schedule</a>
+                    <Link href="edit-schedule.html">Edit Schedule</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon06} alt="" />
                   </span>
                   <span> Departments </span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="departments.html">Department List</a>
+                    <Link href="departments.html">Department List</Link>
                   </li>
                   <li>
-                    <a href="add-department.html">Add Department</a>
+                    <Link href="add-department.html">Add Department</Link>
                   </li>
                   <li>
-                    <a href="edit-department.html">Edit Department</a>
+                    <Link href="edit-department.html">Edit Department</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon07} alt="" />
                   </span>
                   <span> Accounts </span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="invoices.html">Invoices</a>
+                    <Link href="invoices.html">Invoices</Link>
                   </li>
                   <li>
-                    <a href="payments.html">Payments</a>
+                    <Link href="payments.html">Payments</Link>
                   </li>
                   <li>
-                    <a href="expenses.html">Expenses</a>
+                    <Link href="expenses.html">Expenses</Link>
                   </li>
                   <li>
-                    <a href="taxes.html">Taxes</a>
+                    <Link href="taxes.html">Taxes</Link>
                   </li>
                   <li>
-                    <a href="provident-fund.html">Provident Fund</a>
+                    <Link href="provident-fund.html">Provident Fund</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon09} alt="" />
                   </span>
                   <span> Payroll </span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="salary.html"> Employee Salary </a>
+                    <Link href="salary.html"> Employee Salary </Link>
                   </li>
                   <li>
-                    <a href="salary-view.html"> Payslip </a>
+                    <Link href="salary-view.html"> Payslip </Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="chat.html">
+                <Link href="chat.html">
                   <span className="menu-side">
                     <img src={menuicon10} alt="" />
                   </span>{" "}
                   <span>Chat</span>
-                </a>
+                </Link>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon11} alt="" />
                   </span>
                   <span> Calls</span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="voice-call.html">Voice Call</a>
+                    <Link href="voice-call.html">Voice Call</Link>
                   </li>
                   <li>
-                    <a href="video-call.html">Video Call</a>
+                    <Link href="video-call.html">Video Call</Link>
                   </li>
                   <li>
-                    <a href="incoming-call.html">Incoming Call</a>
+                    <Link href="incoming-call.html">Incoming Call</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon12} alt="" />
                   </span>
                   <span> Email</span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="compose.html">Compose Mail</a>
+                    <Link href="compose.html">Compose Mail</Link>
                   </li>
                   <li>
-                    <a href="inbox.html">Inbox</a>
+                    <Link href="inbox.html">Inbox</Link>
                   </li>
                   <li>
-                    <a href="mail-view.html">Mail View</a>
+                    <Link href="mail-view.html">Mail View</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon13} alt="" />
                   </span>
                   <span> Blog</span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="blog.html">Blog</a>
+                    <Link href="blog.html">Blog</Link>
                   </li>
                   <li>
-                    <a href="blog-details.html">Blog View</a>
+                    <Link href="blog-details.html">Blog View</Link>
                   </li>
                   <li>
-                    <a href="add-blog.html">Add Blog</a>
+                    <Link href="add-blog.html">Add Blog</Link>
                   </li>
                   <li>
-                    <a href="edit-blog.html">Edit Blog</a>
+                    <Link href="edit-blog.html">Edit Blog</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="assets.html">
+                <Link href="assets.html">
                   <i className="fa fa-cube"></i> <span>Assets</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="activities.html">
+                <Link href="activities.html">
                   <span className="menu-side">
                     <img src="assets/img/icons/menu-icon-14.svg" alt="" />
                   </span>{" "}
                   <span>Activities</span>
-                </a>
+                </Link>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-flag"></i> <span> Reports </span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="expense-reports.html"> Expense Report </a>
+                    <Link href="expense-reports.html"> Expense Report </Link>
                   </li>
                   <li>
-                    <a href="invoice-reports.html"> Invoice Report </a>
+                    <Link href="invoice-reports.html"> Invoice Report </Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <span className="menu-side">
                     <img src={menuicon15} alt="" />
                   </span>
                   <span> Invoice </span> <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="invoices-list.html"> Invoices List </a>
+                    <Link href="invoices-list.html"> Invoices List </Link>
                   </li>
                   <li>
-                    <a href="invoices-grid.html"> Invoices Grid</a>
+                    <Link href="invoices-grid.html"> Invoices Grid</Link>
                   </li>
                   <li>
-                    <a href="add-invoice.html"> Add Invoices</a>
+                    <Link href="add-invoice.html"> Add Invoices</Link>
                   </li>
                   <li>
-                    <a href="edit-invoices.html"> Edit Invoices</a>
+                    <Link href="edit-invoices.html"> Edit Invoices</Link>
                   </li>
                   <li>
-                    <a href="view-invoice.html"> Invoices Details</a>
+                    <Link href="view-invoice.html"> Invoices Details</Link>
                   </li>
                   <li>
-                    <a href="invoices-settings.html"> Invoices Settings</a>
+                    <Link href="invoices-settings.html"> Invoices Settings</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="settings.html">
+                <Link href="settings.html">
                   <span className="menu-side">
                     <img src={menuicon16} alt="" />
                   </span>{" "}
                   <span>Settings</span>
-                </a>
+                </Link>
               </li>
               <li className="menu-title">UI Interface</li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-laptop"></i> <span> Base UI</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="alerts.html">Alerts</a>
+                    <Link href="alerts.html">Alerts</Link>
                   </li>
                   <li>
-                    <a href="accordions.html">Accordions</a>
+                    <Link href="accordions.html">Accordions</Link>
                   </li>
                   <li>
-                    <a href="avatar.html">Avatar</a>
+                    <Link href="avatar.html">Avatar</Link>
                   </li>
                   <li>
-                    <a href="badges.html">Badges</a>
+                    <Link href="badges.html">Badges</Link>
                   </li>
                   <li>
-                    <a href="buttons.html">Buttons</a>
+                    <Link href="buttons.html">Buttons</Link>
                   </li>
                   <li>
-                    <a href="buttongroup.html">Button Group</a>
+                    <Link href="buttongroup.html">Button Group</Link>
                   </li>
                   <li>
-                    <a href="breadcrumbs.html">Breadcrumb</a>
+                    <Link href="breadcrumbs.html">Breadcrumb</Link>
                   </li>
                   <li>
-                    <a href="cards.html">Cards</a>
+                    <Link href="cards.html">Cards</Link>
                   </li>
                   <li>
-                    <a href="carousel.html">Carousel</a>
+                    <Link href="carousel.html">Carousel</Link>
                   </li>
                   <li>
-                    <a href="dropdowns.html">Dropdowns</a>
+                    <Link href="dropdowns.html">Dropdowns</Link>
                   </li>
                   <li>
-                    <a href="grid.html">Grid</a>
+                    <Link href="grid.html">Grid</Link>
                   </li>
                   <li>
-                    <a href="images.html">Images</a>
+                    <Link href="images.html">Images</Link>
                   </li>
                   <li>
-                    <a href="lightbox.html">Lightbox</a>
+                    <Link href="lightbox.html">Lightbox</Link>
                   </li>
                   <li>
-                    <a href="media.html">Media</a>
+                    <Link href="media.html">Media</Link>
                   </li>
                   <li>
-                    <a href="modal.html">Modals</a>
+                    <Link href="modal.html">Modals</Link>
                   </li>
                   <li>
-                    <a href="offcanvas.html">Offcanvas</a>
+                    <Link href="offcanvas.html">Offcanvas</Link>
                   </li>
                   <li>
-                    <a href="pagination.html">Pagination</a>
+                    <Link href="pagination.html">Pagination</Link>
                   </li>
                   <li>
-                    <a href="popover.html">Popover</a>
+                    <Link href="popover.html">Popover</Link>
                   </li>
                   <li>
-                    <a href="progress.html">Progress Bars</a>
+                    <Link href="progress.html">Progress Bars</Link>
                   </li>
                   <li>
-                    <a href="placeholders.html">Placeholders</a>
+                    <Link href="placeholders.html">Placeholders</Link>
                   </li>
                   <li>
-                    <a href="rangeslider.html">Range Slider</a>
+                    <Link href="rangeslider.html">Range Slider</Link>
                   </li>
                   <li>
-                    <a href="spinners.html">Spinner</a>
+                    <Link href="spinners.html">Spinner</Link>
                   </li>
                   <li>
-                    <a href="sweetalerts.html">Sweet Alerts</a>
+                    <Link href="sweetalerts.html">Sweet Alerts</Link>
                   </li>
                   <li>
-                    <a href="tab.html">Tabs</a>
+                    <Link href="tab.html">Tabs</Link>
                   </li>
                   <li>
-                    <a href="toastr.html">Toasts</a>
+                    <Link href="toastr.html">Toasts</Link>
                   </li>
                   <li>
-                    <a href="tooltip.html">Tooltip</a>
+                    <Link href="tooltip.html">Tooltip</Link>
                   </li>
                   <li>
-                    <a href="typography.html">Typography</a>
+                    <Link href="typography.html">Typography</Link>
                   </li>
                   <li>
-                    <a href="video.html">Video</a>
+                    <Link href="video.html">Video</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-box"></i> <span> Elements</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="ribbon.html">Ribbon</a>
+                    <Link href="ribbon.html">Ribbon</Link>
                   </li>
                   <li>
-                    <a href="clipboard.html">Clipboard</a>
+                    <Link href="clipboard.html">Clipboard</Link>
                   </li>
                   <li>
-                    <a href="drag-drop.html">Drag & Drop</a>
+                    <Link href="drag-drop.html">Drag & Drop</Link>
                   </li>
                   <li>
-                    <a href="rating.html">Rating</a>
+                    <Link href="rating.html">Rating</Link>
                   </li>
                   <li>
-                    <a href="text-editor.html">Text Editor</a>
+                    <Link href="text-editor.html">Text Editor</Link>
                   </li>
                   <li>
-                    <a href="counter.html">Counter</a>
+                    <Link href="counter.html">Counter</Link>
                   </li>
                   <li>
-                    <a href="scrollbar.html">Scrollbar</a>
+                    <Link href="scrollbar.html">Scrollbar</Link>
                   </li>
                   <li>
-                    <a href="notification.html">Notification</a>
+                    <Link href="notification.html">Notification</Link>
                   </li>
                   <li>
-                    <a href="stickynote.html">Sticky Note</a>
+                    <Link href="stickynote.html">Sticky Note</Link>
                   </li>
                   <li>
-                    <a href="timeline.html">Timeline</a>
+                    <Link href="timeline.html">Timeline</Link>
                   </li>
                   <li>
-                    <a href="horizontal-timeline.html">Horizontal Timeline</a>
+                    <Link href="horizontal-timeline.html">Horizontal Timeline</Link>
                   </li>
                   <li>
-                    <a href="form-wizard.html">Form Wizard</a>
+                    <Link href="form-wizard.html">Form Wizard</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-chart-simple"></i> <span>Charts</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="chart-apex.html">Apex Charts</a>
+                    <Link href="chart-apex.html">Apex Charts</Link>
                   </li>
                   <li>
-                    <a href="chart-js.html">Chart Js</a>
+                    <Link href="chart-js.html">Chart Js</Link>
                   </li>
                   <li>
-                    <a href="chart-morris.html">Morris Charts</a>
+                    <Link href="chart-morris.html">Morris Charts</Link>
                   </li>
                   <li>
-                    <a href="chart-flot.html">Flot Charts</a>
+                    <Link href="chart-flot.html">Flot Charts</Link>
                   </li>
                   <li>
-                    <a href="chart-peity.html">Peity Charts</a>
+                    <Link href="chart-peity.html">Peity Charts</Link>
                   </li>
                   <li>
-                    <a href="chart-c3.html">C3 Charts</a>
+                    <Link href="chart-c3.html">C3 Charts</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-award"></i> <span>Icons</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="icon-fontawesome.html">Fontawesome Icons</a>
+                    <Link href="icon-fontawesome.html">Fontawesome Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-feather.html">Feather Icons</a>
+                    <Link href="icon-feather.html">Feather Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-ionic.html">Ionic Icons</a>
+                    <Link href="icon-ionic.html">Ionic Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-material.html">Material Icons</a>
+                    <Link href="icon-material.html">Material Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-pe7.html">Pe7 Icons</a>
+                    <Link href="icon-pe7.html">Pe7 Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-simpleline.html">Simpleline Icons</a>
+                    <Link href="icon-simpleline.html">Simpleline Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-themify.html">Themify Icons</a>
+                    <Link href="icon-themify.html">Themify Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-weather.html">Weather Icons</a>
+                    <Link href="icon-weather.html">Weather Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-typicon.html">Typicon Icons</a>
+                    <Link href="icon-typicon.html">Typicon Icons</Link>
                   </li>
                   <li>
-                    <a href="icon-flag.html">Flag Icons</a>
+                    <Link href="icon-flag.html">Flag Icons</Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-edit"></i> <span> Forms</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="form-basic-inputs.html">Basic Inputs</a>
+                    <Link href="form-basic-inputs.html">Basic Inputs</Link>
                   </li>
                   <li>
-                    <a href="form-input-groups.html">Input Groups</a>
+                    <Link href="form-input-groups.html">Input Groups</Link>
                   </li>
                   <li>
-                    <a href="form-horizontal.html">Horizontal Form</a>
+                    <Link href="form-horizontal.html">Horizontal Form</Link>
                   </li>
                   <li>
-                    <a href="form-vertical.html">Vertical Form</a>
+                    <Link href="form-vertical.html">Vertical Form</Link>
                   </li>
                   <li>
-                    <a href="form-mask.html">Form Mask </a>
+                    <Link href="form-mask.html">Form Mask </Link>
                   </li>
                   <li>
-                    <a href="form-validation.html">Form Validation </a>
+                    <Link href="form-validation.html">Form Validation </Link>
                   </li>
                   <li>
-                    <a href="form-select2.html">Form Select2 </a>
+                    <Link href="form-select2.html">Form Select2 </Link>
                   </li>
                   <li>
-                    <a href="form-fileupload.html">File Upload </a>
+                    <Link href="form-fileupload.html">File Upload </Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-table"></i> <span> Tables</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="tables-basic.html">Basic Tables</a>
+                    <Link href="tables-basic.html">Basic Tables</Link>
                   </li>
                   <li>
-                    <a href="tables-datatables.html">Data Table</a>
+                    <Link href="tables-datatables.html">Data Table</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="calendar.html">
+                <Link href="calendar.html">
                   <i className="fa fa-calendar"></i> <span>Calendar</span>
-                </a>
+                </Link>
               </li>
               <li className="menu-title">Extras</li>
               <li className="submenu">
-                <a href="#">
+                <Link href="#">
                   <i className="fa fa-columns"></i> <span>Pages</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li>
-                    <a href="login.html"> Login </a>
+                    <Link href="login.html"> Login </Link>
                   </li>
                   <li>
-                    <a href="register.html"> Register </a>
+                    <Link href="register.html"> Register </Link>
                   </li>
                   <li>
-                    <a href="forgot-password.html"> Forgot Password </a>
+                    <Link href="forgot-password.html"> Forgot Password </Link>
                   </li>
                   <li>
-                    <a href="change-password2.html"> Change Password </a>
+                    <Link href="change-password2.html"> Change Password </Link>
                   </li>
                   <li>
-                    <a href="lock-screen.html"> Lock Screen </a>
+                    <Link href="lock-screen.html"> Lock Screen </Link>
                   </li>
                   <li>
-                    <a href="profile.html"> Profile </a>
+                    <Link href="profile.html"> Profile </Link>
                   </li>
                   <li>
-                    <a href="gallery.html"> Gallery </a>
+                    <Link href="gallery.html"> Gallery </Link>
                   </li>
                   <li>
-                    <a href="error-404.html">404 Error </a>
+                    <Link href="error-404.html">404 Error </Link>
                   </li>
                   <li>
-                    <a href="error-500.html">500 Error </a>
+                    <Link href="error-500.html">500 Error </Link>
                   </li>
                   <li>
-                    <a href="blank-page.html"> Blank Page </a>
+                    <Link href="blank-page.html"> Blank Page </Link>
                   </li>
                 </ul>
               </li>
               <li className="submenu">
-                <a href="javascript:void(0);">
+                <Link href="javascript:void(0);">
                   <i className="fa fa-share-alt"></i> <span>Multi Level</span>{" "}
                   <span className="menu-arrow"></span>
-                </a>
+                </Link>
                 <ul className="d-none">
                   <li className="submenu">
-                    <a href="javascript:void(0);">
+                    <Link href="javascript:void(0);">
                       <span>Level 1</span> <span className="menu-arrow"></span>
-                    </a>
+                    </Link>
                     <ul className="d-none">
                       <li>
-                        <a href="javascript:void(0);">
+                        <Link href="javascript:void(0);">
                           <span>Level 2</span>
-                        </a>
+                        </Link>
                       </li>
                       <li className="submenu">
-                        <a href="javascript:void(0);">
+                        <Link href="javascript:void(0);">
                           {" "}
                           <span> Level 2</span>{" "}
                           <span className="menu-arrow"></span>
-                        </a>
+                        </Link>
                         <ul className="d-none">
                           <li>
-                            <a href="javascript:void(0);">Level 3</a>
+                            <Link href="javascript:void(0);">Level 3</Link>
                           </li>
                           <li>
-                            <a href="javascript:void(0);">Level 3</a>
+                            <Link href="javascript:void(0);">Level 3</Link>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <a href="javascript:void(0);">
+                        <Link href="javascript:void(0);">
                           <span>Level 2</span>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="javascript:void(0);">
+                    <Link href="javascript:void(0);">
                       <span>Level 1</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
             </ul>
             <div className="logout-btn">
-              <a href="login.html">
+              <Link href="login.html">
                 <span className="menu-side">
                   <img src={logout} alt="" />
                 </span>
                 <span>Logout</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </scroll>
   );
 };
 

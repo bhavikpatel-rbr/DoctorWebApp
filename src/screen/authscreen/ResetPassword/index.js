@@ -1,74 +1,66 @@
 import React, { useState } from 'react'
-import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
-import { BiAbacus, BiBarChartAlt, BiBellOff } from 'react-icons/bi';
-import { MdAccountCircle } from 'react-icons/md';
+
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from '../../../Sidebar/Sidebar';
-import HcOffcanvasNav from 'hc-offcanvas-nav';
+
+import login from './img/login-02.png';
+import doctorImage from './img/login-logo.png';
+import loginicon01 from './img/icons/login-icon-01.svg';
+import loginicon02 from './img/icons/login-icon-02.svg';
+import loginicon03 from './img/icons/login-icon-03.svg';
+import './../../../assest/commoncss.css'
 import { useLocation } from 'react-router-dom';
-import { Button, Form, InputGroup } from 'react-bootstrap';
-
-
 
 const ResetPassword = () => {
     return (
-      <div className="bg-light min-vh-100 d-flex flex-column">
-          <Sidebar/>
-        <div className="sign-in p-4 flex-grow-1">
-          <div className="d-flex align-items-start justify-content-between mb-4">
-            <div>
-              <span className="bi bi-lock-open-variant text-primary display-1"></span>
-              <h2 className="my-3 fw-bold">Reset Password</h2>
-              <p className="text-muted mb-0">Enter a new Password</p>
+      <div className="main-wrapper login-body">
+      <div className="container-fluid px-0">
+        <div className="row">
+          <div className="col-lg-6 login-wrap">
+            <div className="login-sec">
+              <div className="log-img">
+                <img className="img-fluid" src={login} alt="Doctor" />
+              </div>
             </div>
-            <a className="toggle bg-white shadow rounded-circle icon d-flex align-items-center justify-content-center fs-5 hc-nav-trigger hc-nav-1" href="#">
-          <BiAbacus size={24} className="d-flex" />
-        </a>
           </div>
-          <Form>
-            <Form.Group className="mb-3" controlId="formNewPassword">
-              <Form.Label>New Password</Form.Label>
-              <InputGroup className="border bg-white rounded-3 py-1">
-                <InputGroup.Text id="password">
-                  <span className="bi bi-lock-open-variant text-muted"></span>
-                </InputGroup.Text>
-                <Form.Control
-                  type="password"
-                  placeholder="Type your password"
-                  aria-label="Type your password"
-                  aria-describedby="password"
-                  defaultValue="123456789"
-                  className="bg-transparent rounded-0 border-0 px-0"
-                />
-              </InputGroup>
-            </Form.Group>
-            <Form.Group className="mb-4" controlId="formConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
-              <InputGroup className="border bg-white rounded-3 py-1">
-                <InputGroup.Text id="password1">
-                  <span className="bi bi-lock text-muted"></span>
-                </InputGroup.Text>
-                <Form.Control
-                  type="password"
-                  placeholder="Type your confirm password"
-                  aria-label="Type your confirm password"
-                  aria-describedby="password1"
-                  defaultValue="123456789"
-                  className="bg-transparent rounded-0 border-0 px-0"
-                />
-              </InputGroup>
-            </Form.Group>
-          </Form>
+
+          <div className="col-lg-6 login-wrap-bg">
+            <div className="login-wrapper">
+              <div className="loginbox">
+                <div className="login-right">
+                  <div className="login-right-wrap">
+                    <div className="account-logo">
+                      <Link to="/"><img src={doctorImage} alt="Logo" /></Link>
+                    </div>
+                    <h2>Reset Password</h2>
+
+                    <form action="https://preclinic.dreamstechnologies.com/html/template/login.html">
+                      <div className="input-block">
+                        <label htmlFor="email">Email <span className="login-danger">*</span></label>
+                        <input id="email" className="form-control" type="text" />
+                      </div>
+                      <div className="input-block login-btn">
+                        <button className="btn btn-primary btn-block" type="submit">Reset Password</button>
+                      </div>
+                    </form>
+
+                    <div className="next-sign">
+                      <p className="account-subtitle">Need an account? <Link to="/login">Login</Link></p>
+
+                      <div className="social-login">
+                      <a href="javascript:;"><img src={loginicon01} alt="Icon 1" /></a>
+                        <a href="javascript:;"><img src={loginicon02}  alt="Icon 2" /></a>
+                        <a href="javascript:;"><img src={loginicon03}  alt="Icon 3" /></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-  
-        <div className="footer fixed-bottom m-4">
-          <Button href="congrats.html" className="btn btn-info btn-lg w-100 rounded-4">Login</Button>
-        </div>
-  
-      
-  
-     
       </div>
+    </div>
     );
   };
   

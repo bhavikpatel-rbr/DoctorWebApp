@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import doctorImage2 from '../../../img/landing/2.png';
-import doctorImage1 from '../../../img/landing/1.png';
-import doctorImage3 from '../../../img/landing/3.png';
+import doctorImage2 from '../../../assest/img/landing/2.png';
+import doctorImage1 from '../../../assest/img/landing/1.png';
+import doctorImage3 from '../../../assest/img/landing/3.png';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../img/logo.png";
+
+import logo from '../img/logo.svg';
 import baricon from "../img/icons/bar-icon.svg";
 import searchnormal from "../img/icons/search-normal.svg";
 import noteicon02 from "../img/icons/note-icon-02.svg";
 import noteicon01 from "../img/icons/note-icon-01.svg";
-import user from "../img/user.jpg";
+import user from "../img/user1.jpg";
 import user06 from "../img/user-06.jpg";
 import settingicon01 from "../img/icons/setting-icon-01.svg";
 
@@ -64,13 +65,13 @@ const Header = () => {
           onMouseOver={expandMenuOpen}>
         <Link className="logo logo-normal">
           <img src={logo} width="35" height="35" alt="" />{" "}
-          <span>Pre Clinic</span>
+          <span>DoctorApp</span>
         </Link>
       </div>
       <Link id="toggle_btn" href="javascript:void(0);" onClick={handlesidebar}>
         <img src={baricon} alt="" />
       </Link>
-      <Link id="mobile_btn" className="mobile_btn float-start" href="#sidebar">
+      <Link id="mobile_btn" className="mobile_btn float-start" onClick={handlesidebar}>
         <img src={baricon} alt="" />
       </Link>
       <div className="top-nav-search mob-view">
@@ -109,7 +110,7 @@ const Header = () => {
                       </span>
                       <div className="media-body">
                         <p className="noti-details">
-                          <span className="noti-title">John Doe</span> added new
+                          <span className="noti-title">Tushar Joshi</span> added new
                           task{" "}
                           <span className="noti-title">
                             Patient appointment booking
@@ -227,11 +228,11 @@ const Header = () => {
             data-bs-toggle="dropdown"
           >
             <div className="user-names">
-              <h5>Liam Michael </h5>
+              <h5>Tushar Joshi</h5>
               <span>Admin</span>
             </div>
             <span className="user-img">
-              <img src={user06} alt="Admin" />
+              <img src={user} alt="Admin" />
             </span>
           </Link>
           <div className="dropdown-menu">

@@ -17,7 +17,7 @@ const LandingScreen = () => {
             </div>
 
             <div className="footer fixed-bottom p-3 footer-custom">
-                <Link to={"/onbordingscreen"} className="btn btn-secondary btn-lg w-100">
+                <Link to={"/onbordingscreen"} className="btn btn-secondary1 btn-lg w-100">
                     Click Here
                 </Link>
             </div>

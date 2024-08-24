@@ -69,8 +69,8 @@ const SignUp = () => {
                       <div className="forgotpass">
                         <div className="remember-me">
                           <label className="custom_check mr-2 mb-0 d-inline-flex remember-me">
-                            I agree to the <a href="javascript:;">&nbsp;terms of service&nbsp;</a> and
-                            <a href="javascript:;">&nbsp;privacy policy&nbsp;</a>
+                            I agree to the &nbsp;terms of service&nbsp;and
+                            &nbsp;privacy policy&nbsp;
                             <input type="checkbox" name="radio" />
                             <span className="checkmark"></span>
                           </label>

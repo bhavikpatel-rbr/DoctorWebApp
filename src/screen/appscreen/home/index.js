@@ -5,8 +5,8 @@ import './style.css';
 const Home = () => {
   return (
     <div className="main-wrapper">
-      <Header />
-      <Sidebar />
+      {/* <Header />
+      <Sidebar /> */}
       {/* <div class="page-wrapper">
             <div class="content">
 

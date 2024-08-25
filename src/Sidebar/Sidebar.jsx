@@ -49,19 +49,7 @@ const Sidebar = () => {
                 </span>
                 <span> Dashboard </span> <span className="menu-arrow"></span>
               </Link>
-              {/* <ul className={isMenuOpen ? "" : "d-block"}>
-                <li>
-                  <Link className="active" href="index.html">
-                    Admin Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/doctordashboard">Doctor Dashboard</Link>
-                </li>
-                <li>
-                  <Link to='/patientdashboard'>Patient Dashboard</Link>
-                </li>
-              </ul> */}
+             
               <ul className={isMenuOpen ? "" : "d-block"}>
                 <li>
                   <Link

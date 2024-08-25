@@ -71,7 +71,7 @@ const Header = () => {
       <Link id="toggle_btn" href="javascript:void(0);" onClick={handlesidebar}>
         <img src={baricon} alt="" />
       </Link>
-      <Link id="mobile_btn" className="mobile_btn float-start" onClick={handlesidebar}>
+      <Link id="mobile_btn" className="mobile_btn float-start" href="javascript:void(0);"  onClick={sidebarOverlay}>
         <img src={baricon} alt="" />
       </Link>
       <div className="top-nav-search mob-view">

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from '../screen/appscreen/home';
 import Dashboard from '../screen/appscreen/Dashboard';
 import SignUp from '../screen/authscreen/Signup';
 import Header from '../Sidebar/Header';
@@ -38,7 +37,7 @@ const AppNavigation = () => {
                 <Header/>
                 <Sidebar />
                 <div className="page-wrapper" >
-                    <div class="content">
+                    <div className="content">
                     {children} {/* This ensures the content for the route is displayed */}
                     </div>
                 </div>
@@ -48,19 +47,28 @@ const AppNavigation = () => {
     return (
         <Routes>
             <Route>
-            <Route
-                path="/"
-                element={
-                    <Layout>
-                        <Home />
-                    </Layout>
-                }
-            />
+            
              <Route
-                    path="/dashboard"
+                    path="/"
                     element={
                         <Layout>
                             <Dashboard />
+                        </Layout>
+                    }
+                />
+                <Route
+                path="/doctordashboard"
+                    element={
+                        <Layout>
+                            <DoctorDashboard />
+                        </Layout>
+                    }
+                />
+                 <Route
+                path="/patientdashboard"
+                    element={
+                        <Layout>
+                            <PatientDashboard />
                         </Layout>
                     }
                 />

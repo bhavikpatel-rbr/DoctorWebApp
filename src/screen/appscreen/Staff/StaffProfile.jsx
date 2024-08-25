@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronRight } from 'react-feather';
 const StaffProfile = () => {
   return (
     <div className="content">

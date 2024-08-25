@@ -84,102 +84,102 @@ const SAMPLE_CSS = `
     }`;
 const DoctorDashboard = () => {
     return (
-        <div class="content">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard </a></li>
+        <div className="content">
+    <div className="page-header">
+        <div className="row">
+            <div className="col-sm-12">
+                <ul className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="index.html">Dashboard </a></li>
                     <li className="breadcrumb-item">
       <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/>
     </li>
-                    <li class="breadcrumb-item active">Doctor Dashboard</li>
+                    <li className="breadcrumb-item active">Doctor Dashboard</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="good-morning-blk">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="morning-user">
+    <div className="good-morning-blk">
+        <div className="row">
+            <div className="col-md-6">
+                <div className="morning-user">
                     <h2>Good Morning, <span>Tushar Joshi</span></h2>
                     <p>Have a nice day at work</p>
                 </div>
             </div>
-            <div class="col-md-6 position-blk">
-                <div class="morning-img">
+            <div className="col-md-6 position-blk">
+                <div className="morning-img">
                 <img src={morningimg01} alt/>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-            <div class="dash-widget">
-                <div class="dash-boxs comman-flex-center">
+    <div className="row">
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div className="dash-widget">
+                <div className="dash-boxs comman-flex-center">
                     <img src={calendar} alt/>
                 </div>
-                <div class="dash-content dash-count">
+                <div className="dash-content dash-count">
                     <h4>Appointments</h4>
-                    <h2><span class="counter-up">250</span></h2>
-                    <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>40%</span> vs last month</p>
+                    <h2><span className="counter-up">250</span></h2>
+                    <p><span className="passive-view"><i className="feather-arrow-up-right me-1"></i>40%</span> vs last month</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-            <div class="dash-widget">
-                <div class="dash-boxs comman-flex-center">
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div className="dash-widget">
+                <div className="dash-boxs comman-flex-center">
                     <img src={profile} alt/>
                 </div>
-                <div class="dash-content dash-count">
+                <div className="dash-content dash-count">
                     <h4>New Patients</h4>
-                    <h2><span class="counter-up">140</span></h2>
-                    <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>20%</span> vs last month</p>
+                    <h2><span className="counter-up">140</span></h2>
+                    <p><span className="passive-view"><i className="feather-arrow-up-right me-1"></i>20%</span> vs last month</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-            <div class="dash-widget">
-                <div class="dash-boxs comman-flex-center">
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div className="dash-widget">
+                <div className="dash-boxs comman-flex-center">
                 <img src={profile} alt/>
                 </div>
-                <div class="dash-content dash-count">
+                <div className="dash-content dash-count">
                     <h4>Old Patients</h4>
-                    <h2><span class="counter-up">56</span></h2>
-                    <p><span class="negative-view"><i class="feather-arrow-down-right me-1"></i>15%</span> vs last month</p>
+                    <h2><span className="counter-up">56</span></h2>
+                    <p><span className="negative-view"><i className="feather-arrow-down-right me-1"></i>15%</span> vs last month</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-            <div class="dash-widget">
-                <div class="dash-boxs comman-flex-center">
+        <div className="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+            <div className="dash-widget">
+                <div className="dash-boxs comman-flex-center">
                 <img src={profile} alt/>
                 </div>
-                <div class="dash-content dash-count">
+                <div className="dash-content dash-count">
                     <h4>Total Case Record</h4>
-                    <h2><span class="counter-up"> 20</span></h2>
-                    <p><span class="passive-view"><i class="feather-arrow-up-right me-1"></i>30%</span> vs last month</p>
+                    <h2><span className="counter-up"> 20</span></h2>
+                    <p><span className="passive-view"><i className="feather-arrow-up-right me-1"></i>30%</span> vs last month</p>
                 </div>
             </div>
         </div>
     </div>
    
-    <div class="row">
-        <div class="col-12 col-md-12 col-lg-6 col-xl-9">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-title patient-visit">
+    <div className="row">
+        <div className="col-12 col-md-12 col-lg-6 col-xl-9">
+            <div className="card">
+                <div className="card-body">
+                    <div className="chart-title patient-visit">
                         <h4>Patient Visit by Gender</h4>
                         <div>
-                            <ul class="nav chat-user-total">
-                                <li><i class="fa fa-circle current-users" aria-hidden="true"></i>Male 75%</li>
-                                <li><i class="fa fa-circle old-users" aria-hidden="true"></i> Female 25%</li>
+                            <ul className="nav chat-user-total">
+                                <li><i className="fa fa-circle current-users" aria-hidden="true"></i>Male 75%</li>
+                                <li><i className="fa fa-circle old-users" aria-hidden="true"></i> Female 25%</li>
                             </ul>
                         </div>
-                        <div class="input-block mb-0">
-                            <select class="form-control select">
+                        <div className="input-block mb-0">
+                            <select className="form-control select">
                                 <option>2022</option>
                                 <option>2021</option>
                                 <option>2020</option>
@@ -227,13 +227,13 @@ const DoctorDashboard = () => {
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-title">
+        <div className="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
+            <div className="card">
+                <div className="card-body">
+                    <div className="chart-title">
                         <h4>Patient by Department</h4>
                     </div>
-                    <div id="donut-chart-dash" class="chart-user-icon">
+                    <div id="donut-chart-dash" className="chart-user-icon">
                     <div className='control-pane'>
             <div className='control-section'>
                 <AccumulationChartComponent 
@@ -264,15 +264,15 @@ const DoctorDashboard = () => {
     </div>
     
 
-    <div class="row">
-        <div class="col-12 col-md-12 col-xl-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">Recent Patients</h4>
+    <div className="row">
+        <div className="col-12 col-md-12 col-xl-12">
+            <div className="card">
+                <div className="card-header">
+                    <h4 className="card-title mb-0">Recent Patients</h4>
                 </div>
-                <div class="card-body p-0 table-dash">
-                    <div class="table-responsive">
-                        <table class="table mb-0 border-0 datatable custom-table">
+                <div className="card-body p-0 table-dash">
+                    <div className="table-responsive">
+                        <table className="table mb-0 border-0 datatable custom-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -292,10 +292,10 @@ const DoctorDashboard = () => {
                                     <td>02.07.1977</td>
                                     <td>Flu</td>
                                     <td>
-                                        <span class="badge rounded-pill bg-danger">Critical</span>
+                                        <span className="badge rounded-pill bg-danger">Critical</span>
                                     </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="feather-eye me-1"></i> View</a>
+                                    <td className="text-end">
+                                        <a href="#" className="btn btn-outline-primary btn-sm"><i className="feather-eye me-1"></i> View</a>
                                     </td>
                                 </tr>
                                
@@ -306,20 +306,20 @@ const DoctorDashboard = () => {
             </div>
         </div>
     </div>
-    <div class="row">
-    <div class="col-12 col-md-12 col-lg-12 col-xl-7">
-      <div class="card">
-      <div class="card-body">
-          <div class="chart-title patient-visit">
+    <div className="row">
+    <div className="col-12 col-md-12 col-lg-12 col-xl-7">
+      <div className="card">
+      <div className="card-body">
+          <div className="chart-title patient-visit">
             <h4>Activity Chart</h4>
             <div>
-              <ul class="nav chat-user-total">
-                <li><i class="fa fa-circle low-users" aria-hidden="true"></i>Low</li>
-                <li><i class="fa fa-circle current-users" aria-hidden="true"></i> High</li>
+              <ul className="nav chat-user-total">
+                <li><i className="fa fa-circle low-users" aria-hidden="true"></i>Low</li>
+                <li><i className="fa fa-circle current-users" aria-hidden="true"></i> High</li>
               </ul>
             </div>
-            <div class="input-block mb-0">
-              <select class="form-control select">
+            <div className="input-block mb-0">
+              <select className="form-control select">
                 <option>This Week</option>
                 <option>Last Week</option>
                 <option>This Month</option>
@@ -365,9 +365,9 @@ const DoctorDashboard = () => {
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
-      <div class="card">
-        <div class="card-body">
+    <div className="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
+      <div className="card">
+        <div className="card-body">
           <div id="radial-patients">
           <AccumulationChartComponent 
                     id='department-pie-chart1' 
@@ -392,21 +392,21 @@ const DoctorDashboard = () => {
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-12 col-lg-6 col-xl-2 d-flex">
-      <div class="struct-point">
-        <div class="card patient-structure">
-          <div class="card-body">
+    <div className="col-12 col-md-12 col-lg-6 col-xl-2 d-flex">
+      <div className="struct-point">
+        <div className="card patient-structure">
+          <div className="card-body">
             <h5>New Patients</h5>
-            <h3>56<span class="status-green">
-                <img src={sort} alt="Increase Icon" class="me-1"/>
+            <h3>56<span className="status-green">
+                <img src={sort} alt="Increase Icon" className="me-1"/>
                 60%</span></h3>
           </div>
         </div>
-        <div class="card patient-structure">
-          <div class="card-body">
+        <div className="card patient-structure">
+          <div className="card-body">
             <h5>Old Patients</h5>
-            <h3>35<span class="status-pink">
-            <img src={sort1} alt="Increase Icon" class="me-1"/>
+            <h3>35<span className="status-pink">
+            <img src={sort1} alt="Increase Icon" className="me-1"/>
                 -20%</span></h3>
           </div>
         </div>
@@ -414,73 +414,73 @@ const DoctorDashboard = () => {
     </div>
   </div>
 
-  <div class="row">
+  <div className="row">
    
-    <div class="row">
-      <div class="col-12 col-md-12 col-xl-5 flex">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title d-inline-block">Recent Appointments</h4>
-            <a href="appointments.html" class="patient-views float-end">Show all</a>
+    <div className="row">
+      <div className="col-12 col-md-12 col-xl-5 flex">
+        <div className="card">
+          <div className="card-header">
+            <h4 className="card-title d-inline-block">Recent Appointments</h4>
+            <a href="appointments.html" className="patient-views float-end">Show all</a>
           </div>
-          <div class="card-body p-0 table-dash">
-            <div class="table-responsive">
-              <table class="table mb-0 border-0 custom-table">
+          <div className="card-body p-0 table-dash">
+            <div className="table-responsive">
+              <table className="table mb-0 border-0 custom-table">
                 <tbody>
                   <tr>
-                    <td class="table-image appoint-doctor">
-                      <img width="28" height="28" class="rounded-circle" src={user} alt="Doctor Image"/>
+                    <td className="table-image appoint-doctor">
+                      <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
                       <h2>Tushar Joshi</h2>
                     </td>
-                    <td class="appoint-time text-center">
+                    <td className="appoint-time text-center">
                       <h6>Today 5:40 PM</h6>
                       <span>Typoid Fever</span>
                     </td>
                     <td>
-                    <button class="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
-                    <button class="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
                     </td>
                   </tr>
                   <tr>
-                    <td class="table-image appoint-doctor">
-                    <img width="28" height="28" class="rounded-circle" src={user} alt="Doctor Image"/>
+                    <td className="table-image appoint-doctor">
+                    <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
                     <h2>Tushar Joshi</h2>
                     </td>
-                    <td class="appoint-time text-center">
+                    <td className="appoint-time text-center">
                       <h6>Today 5:40 PM</h6>
                       <span>Typoid Fever</span>
                     </td>
                     <td>
-                    <button class="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
-                    <button class="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
                     </td>
                   </tr>
                   <tr>
-                    <td class="table-image appoint-doctor">
-                    <img width="28" height="28" class="rounded-circle" src={user} alt="Doctor Image"/>
+                    <td className="table-image appoint-doctor">
+                    <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
                     <h2>Tushar Joshi</h2>
                     </td>
-                    <td class="appoint-time text-center">
+                    <td className="appoint-time text-center">
                       <h6>Today 5:40 PM</h6>
                       <span>Typoid Fever</span>
                     </td>
                     <td>
-                    <button class="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
-                    <button class="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
                     </td>
                   </tr>
                   <tr>
-                    <td class="table-image appoint-doctor">
-                    <img width="28" height="28" class="rounded-circle" src={user} alt="Doctor Image"/>
+                    <td className="table-image appoint-doctor">
+                    <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
                     <h2>Tushar Joshi</h2>
                     </td>
-                    <td class="appoint-time text-center">
+                    <td className="appoint-time text-center">
                       <h6>Today 5:40 PM</h6>
                       <span>Typoid Fever</span>
                     </td>
                     <td>
-                      <button class="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
-                      <button class="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                      <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                      <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
                     </td>
                   </tr>
                 </tbody>
@@ -491,7 +491,7 @@ const DoctorDashboard = () => {
         
       </div>
       <div className="col-12 col-md-12 col-xl-2 flex">
-      <div class="card">
+      <div className="card">
                 <div className="circle-bar circle-bar2">
                     <div className="circle-graph2 mt-5 d-flex justify-content-center align-items-center" data-percent="66">
                         

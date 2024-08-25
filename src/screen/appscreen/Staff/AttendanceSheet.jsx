@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronRight } from 'react-feather';
 const AttendanceSheet = () => {
   return (
     <div className="content">

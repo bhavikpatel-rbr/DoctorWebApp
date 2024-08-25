@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, Form } from 'react-bootstrap'; 
+import { ChevronRight } from 'react-feather';
 const data = [
     { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
     { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },

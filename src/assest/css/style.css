@@ -14,3 +14,58 @@ body.mini-sidebar.expand-menu .sidebar .sidebar-menu > ul > li.submenu-open ul l
     justify-content: left;
     padding-left: 18px;
 }
+
+
+
+
+
+  .sidebar-inner.slimscroll::-webkit-scrollbar {
+    width: 5px; 
+    border-radius: 10px;
+}
+
+.sidebar-inner.slimscroll::-webkit-scrollbar-track {
+    background-color: #e0e0e0; /* Track color */
+}
+
+.sidebar-inner.slimscroll::-webkit-scrollbar-thumb {
+    background-color: #6969dd; /* Thumb color */
+    border-radius: 10px; /* Optional: to make the thumb rounded */
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Optional: to add shadow effect */
+}
+
+/* General scrollbar styling (for Firefox and other browsers that support it) */
+.sidebar-inner.slimscroll {
+    scrollbar-width: thin; /* Firefox: sets scrollbar width */
+    scrollbar-color: #6969dd #e0e0e0; /* Firefox: sets thumb and track colors */
+}
+
+
+body::-webkit-scrollbar {
+  width: 5px; 
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #e0e0e0; /* Track color */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #6969dd; /* Thumb color */
+  border-radius: 10px; /* Optional: to make the thumb rounded */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Optional: to add shadow effect */
+}
+
+/* General scrollbar styling (for Firefox and other browsers that support it) */
+body {
+  scrollbar-width: thin; /* Firefox: sets scrollbar width */
+  scrollbar-color: #6969dd #e0e0e0; /* Firefox: sets thumb and track colors */
+}
+
+#donut-chart-dash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* or row depending on layout */
+}
+

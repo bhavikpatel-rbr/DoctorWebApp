@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Dropdown } from 'react-bootstrap';
+import { ChevronRight } from 'react-feather';
 
 const Holidays = () => {
   return (

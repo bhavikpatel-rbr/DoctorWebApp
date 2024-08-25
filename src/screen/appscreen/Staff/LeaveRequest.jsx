@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Dropdown, Form, Table } from 'react-bootstrap'; // Import Bootstrap components if needed
+import { ChevronRight } from 'react-feather';
 
 const LeaveRequest = () => {
   const [searchTerm, setSearchTerm] = useState('');

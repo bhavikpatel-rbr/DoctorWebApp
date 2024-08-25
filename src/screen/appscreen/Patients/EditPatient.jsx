@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronRight } from 'react-feather';
 
 const EditPatient = () => {
   const [formData, setFormData] = useState({

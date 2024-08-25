@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronRight } from 'react-feather';
 import { Link } from 'react-router-dom';
 
 const ScheduleList = () => {

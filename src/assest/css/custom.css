@@ -1073,7 +1073,9 @@ textarea.form-control {
 
 .sidebar-inner {
     height: 100%;
-    transition: all .2s ease-in-out 0s
+    transition: all .2s ease-in-out 0s;
+    overflow: scroll;
+    padding-bottom: 30px;
 }
 
 .sidebar-menu ul {

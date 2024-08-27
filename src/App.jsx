@@ -17,7 +17,7 @@ function App() {
       {token ? <AppNavigation /> : 
       
        //<AuthNavigation />
-      <AppNavigation />
+        <AppNavigation />
       }
     </>
   );

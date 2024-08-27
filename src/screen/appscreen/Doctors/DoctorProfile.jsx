@@ -1,6 +1,16 @@
 import React from 'react';
 import { ChevronRight } from 'react-feather';
-
+import profile from '../../../assest/img/profile-bg.jpg'
+import user from "../../../assest/img/user1.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import camera from "../../../assest/img/icons/camera-icon.svg";
+import medal from "../../../assest/img/icons/medal-01.svg";
+import menuicon2 from "../../../assest/img/icons/menu-icon-02.svg";
+import menuicon3 from "../../../assest/img/icons/menu-icon-16.svg";
+import menuicon4 from "../../../assest/img/icons/menu-icon-08.svg";
+import medal1 from "../../../assest/img/icons/medal-02.svg";
+import medal2 from "../../../assest/img/icons/medal-03.svg";
 const DoctorProfile = () => {
   return (
     <div className="content">
@@ -27,28 +37,32 @@ const DoctorProfile = () => {
               <div className="row">
                 <div className="col-md-12">
                   <div className="about-info">
-                    <h4>Doctor Profile <span><a href="javascript:;"><i className="feather-more-vertical"></i></a></span></h4>
+                    <h4>Doctor Profile  <span>
+          <a href="#">
+            <FontAwesomeIcon icon={faEllipsisV} />
+          </a>
+        </span></h4>
                   </div>
                   <div className="doctor-profile-head">
                     <div className="profile-bg-img">
-                      {/* <img src="assets/img/profile-bg.jpg" alt="Profile" /> */}
+                      <img src={profile} alt="Profile" />
                     </div>
                     <div className="row">
                       <div className="col-lg-4 col-md-4">
                         <div className="profile-user-box">
                           <div className="profile-user-img">
-                            {/* <img src="assets/img/profile-user.jpg" alt="Profile" /> */}
+                            <img src={user} alt="Profile" />
                             <div className="input-block doctor-up-files profile-edit-icon mb-0">
                               <div className="uplod d-flex">
                                 <label className="file-upload profile-upbtn mb-0">
-                                  {/* <img src="assets/img/icons/camera-icon.svg" alt="Profile" /> */}
+                                  <img src={camera} alt="Profile" />
                                   <input type="file" />
                                 </label>
-                              </div>
+                              </div>  
                             </div>
                           </div>
                           <div className="names-profiles">
-                            <h4>Dr. Bruce Willis</h4>
+                            <h4>Dr.Tushar Joshi</h4>
                             <h5>Senior Doctor</h5>
                           </div>
                         </div>
@@ -90,7 +104,7 @@ const DoctorProfile = () => {
                 <div className="card-body">
                   <div className="heading-detail">
                     <h4 className="mb-3">About me</h4>
-                    <p>Hello I am Dr. Bruce Willis a Gynaecologist in Sanjivni Hospital Surat. I love to work with all my hospital staff and senior doctors.</p>
+                    <p>Hello I am Dr.Tushar Joshi a Gynaecologist in Sanjivni Hospital Surat. I love to work with all my hospital staff and senior doctors.</p>
                   </div>
                   <div className="about-me-list">
                     <ul className="list-space">
@@ -168,7 +182,7 @@ const DoctorProfile = () => {
                   </div>
                   <div className="personal-activity">
                     <div className="personal-icons status-grey">
-                      {/* <img src="assets/img/icons/medal-01.svg" alt="Speciality" /> */}
+                      <img src={medal} alt="Speciality" />
                     </div>
                     <div className="views-personal">
                       <h4>Professionals</h4>
@@ -177,7 +191,7 @@ const DoctorProfile = () => {
                   </div>
                   <div className="personal-activity">
                     <div className="personal-icons status-green">
-                      {/* <img src="assets/img/icons/medal-02.svg" alt="Speciality" /> */}
+                    <img src={medal1} alt="Speciality" />
                     </div>
                     <div className="views-personal">
                       <h4>Certified</h4>
@@ -186,7 +200,7 @@ const DoctorProfile = () => {
                   </div>
                   <div className="personal-activity mb-0">
                     <div className="personal-icons status-orange">
-                      {/* <img src="assets/img/icons/medal-03.svg" alt="Speciality" /> */}
+                    <img src={medal2} alt="Speciality" />
                     </div>
                     <div className="views-personal">
                       <h4>Medication Laser</h4>
@@ -207,7 +221,7 @@ const DoctorProfile = () => {
                       <li>
                         <a href="doctor-profile.html" className="active">
                           <span className="set-about-icon me-2">
-                            {/* <img src="assets/img/icons/menu-icon-02.svg" alt="About me" /> */}
+                            <img src={menuicon2} alt="About me" />
                           </span>
                           About me
                         </a>
@@ -215,7 +229,7 @@ const DoctorProfile = () => {
                       <li>
                         <a href="doctor-setting.html">
                           <span className="set-about-icon me-2">
-                            {/* <img src="assets/img/icons/menu-icon-16.svg" alt="Settings" /> */}
+                            <img src={menuicon3}  alt="Settings" />
                           </span>
                           Settings
                         </a>
@@ -223,7 +237,7 @@ const DoctorProfile = () => {
                       <li>
                         <a href="doctor-notification.html">
                           <span className="set-about-icon me-2">
-                            {/* <img src="assets/img/icons/menu-icon-08.svg" alt="Notifications" /> */}
+                            <img src={menuicon4} alt="Notifications" />
                           </span>
                           Notifications
                         </a>

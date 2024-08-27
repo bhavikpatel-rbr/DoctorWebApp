@@ -1113,6 +1113,7 @@ textarea.form-control {
 .sidebar-inner {
     height: 100%;
     transition: all .2s ease-in-out 0s
+    
 }
 .sidebar-inner slimscroll{
     overflow: hidden; width: 100%; height: 147px;

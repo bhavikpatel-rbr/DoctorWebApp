@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from '../screen/appscreen/Dashboard';
-import SignUp from '../screen/authscreen/Signup';
 import Header from '../Sidebar/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import DoctorDashboard from '../screen/appscreen/Dashboard/Doctordashboard';
@@ -29,53 +28,88 @@ import EditSchedule from '../screen/appscreen/DoctorShedule/EditSchedule';
 import DepartmentList from '../screen/appscreen/Department/DepartmentList';
 import AddDepartment from '../screen/appscreen/Department/AddDepartment';
 import EditDepartment from '../screen/appscreen/Department/EditDepartment';
+import ChiefCompaint from '../screen/appscreen/CaseRecord/ChiefComplaint';
+import BlogGrid from '../screen/appscreen/Blog/Blog';
+import BlogDetails from '../screen/appscreen/Blog/BlogDetails';
+import AddBlogPage from '../screen/appscreen/Blog/AddBlog';
+import EditBlogPage from '../screen/appscreen/Blog/EditBlogPage';
+import ChatBox from '../screen/appscreen/Chat/ChatBox';
+
+
 const AppNavigation = () => {
 
     const Layout = ({ children }) => {
         return (
             <div className="main-wrapper">
-                <Header/>
+                <Header />
                 <Sidebar />
-                <div className="page-wrapper" >
+                <div className="page-wrapper">
                     <div className="content">
-                    {children} {/* This ensures the content for the route is displayed */}
+                        {children} {/* This ensures the content for the route is displayed */}
                     </div>
                 </div>
             </div>
         );
     };
+
     return (
         <Routes>
-            <Route>
-            
-             <Route
-                    path="/"
-                    element={
-                        <Layout>
-                            <Dashboard />
-                        </Layout>
-                    }
-                />
-                <Route
-                path="/doctordashboard"
-                    element={
-                        <Layout>
-                            <DoctorDashboard />
-                        </Layout>
-                    }
-                />
-                 <Route
-                path="/patientdashboard"
-                    element={
-                        <Layout>
-                            <PatientDashboard />
-                        </Layout>
-                    }
-                />
-                <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-        </Routes>
-    )
-}
+            <Route path="/" element={<Layout><Dashboard /></Layout>} />
+            <Route path="/doctordashboard" element={<Layout><DoctorDashboard /></Layout>} />
+            <Route path="/patientdashboard" element={<Layout><PatientDashboard /></Layout>} />
 
-export default AppNavigation
+            {/* Doctors Routes */}
+            <Route path="/doctors" element={<Layout><DoctorList /></Layout>} />
+            <Route path="/adddoctor" element={<Layout><AddDoctor /></Layout>} />
+            <Route path="/editdoctor" element={<Layout><EditDoctor /></Layout>} />
+            <Route path="/doctorprofile" element={<Layout><DoctorProfile /></Layout>} />
+
+            {/* Patients Routes */}
+            <Route path="/patients" element={<Layout><PatientList /></Layout>} />
+            <Route path="/addpatient" element={<Layout><AddPatient /></Layout>} />
+            <Route path="/editpatient" element={<Layout><EditPatient /></Layout>} />
+            <Route path="/patientprofile" element={<Layout><PatientProfile /></Layout>} />
+
+            {/* Staff Routes */}
+            <Route path="/stafflist" element={<Layout><StaffList /></Layout>} />
+            <Route path="/addstaff" element={<Layout><AddStaff /></Layout>} />
+            <Route path="/staffprofile" element={<Layout><StaffProfile /></Layout>} />
+            <Route path="/leaverequest" element={<Layout><LeaveRequest /></Layout>} />
+            <Route path="/holidays" element={<Layout><Holidays /></Layout>} />
+            <Route path="/attendancesheet" element={<Layout><AttendanceSheet /></Layout>} />
+
+            {/* Appointment Routes */}
+            <Route path="/appointmentlist" element={<Layout><AppointmentList /></Layout>} />
+            <Route path="/bookappointment" element={<Layout><BookAppointmentForm /></Layout>} />
+            <Route path="/editappointment" element={<Layout><EditAppointmentForm /></Layout>} />
+
+            {/* Doctor Schedule Routes */}
+            <Route path="/schedulelist" element={<Layout><ScheduleList /></Layout>} />
+            <Route path="/addschedule" element={<Layout><AddSchedule /></Layout>} />
+            <Route path="/editschedule" element={<Layout><EditSchedule /></Layout>} />
+
+            {/* Department Routes */}
+            <Route path="/departments" element={<Layout><DepartmentList /></Layout>} />
+            <Route path="/adddepartment" element={<Layout><AddDepartment /></Layout>} />
+            <Route path="/editdepartment" element={<Layout><EditDepartment /></Layout>} />
+
+             {/* Chief Complaint Routes */}
+             <Route path="/chiefcompaint" element={<Layout><ChiefCompaint /></Layout>} />
+           
+             {/* Blog Routes */}
+             <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />
+             <Route path="/blogdetails" element={<Layout><BlogDetails /></Layout>} />
+             <Route path="/addblogpage" element={<Layout><AddBlogPage /></Layout>} />
+             <Route path="/editblogpage" element={<Layout><EditBlogPage /></Layout>} />
+
+             {/* Chat Routes */}
+             <Route path="/chat" element={<Layout><ChatBox /></Layout>} />
+           
+             
+            {/* Redirect to Dashboard if route not found */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+    );
+};
+
+export default AppNavigation;

@@ -8,10 +8,12 @@ import menuicon04 from "../img/icons/menu-icon-04.svg";
 import menuicon05 from "../img/icons/menu-icon-05.svg";
 import menuicon06 from "../img/icons/menu-icon-06.svg";
 import menuicon08 from "../img/icons/menu-icon-08.svg";
+import menuicon13 from "../img/icons/menu-icon-13.svg";
+import menuicon10 from "../img/icons/menu-icon-10.svg";
 
 const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState('index.html');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('/');
+  const [openSubMenu, setOpenSubMenu] = useState(null);
 
   const expandMenu = () => {
     document.body.classList.remove("expand-menu");
@@ -19,14 +21,13 @@ const Sidebar = () => {
   const expandMenuOpen = () => {
     document.body.classList.add("expand-menu");
   };
-  // Toggle function to open/close the menu
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
-
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
+  };
+
+  const toggleSubMenu = (menu) => {
+    setOpenSubMenu(openSubMenu === menu ? null : menu);
   };
 
   return (
@@ -40,22 +41,19 @@ const Sidebar = () => {
         <div id="sidebar-menu" className="sidebar-menu">
           <ul>
             <li className="menu-title">Main</li>
-            <li className="submenu">
-              {/* <Link  to="/dashboard" href="#"onClick={() => toggleMenu('dashboard')}> */}
-
-              <Link href="#" onClick={toggleMenu}>
+            <li className={`submenu ${openSubMenu === 'dashboard' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('dashboard')}>
                 <span className="menu-side">
-                  <img src={menuicon01} alt="" />
+                  <img src={menuicon01} alt="Dashboard" />
                 </span>
                 <span> Dashboard </span> <span className="menu-arrow"></span>
               </Link>
-             
-              <ul className={isMenuOpen ? "" : "d-block"}>
+              <ul className={`${openSubMenu === 'dashboard' ? 'd-block' : 'd-none'}`}>
                 <li>
                   <Link
-                    className={activeLink === "index.html" ? "active" : ""}
-                    href="index.html"
-                    onClick={() => handleLinkClick("index.html")}
+                    to="/"
+                    className={activeLink === "/" ? "active" : ""}
+                    onClick={() => handleLinkClick("/")}
                   >
                     Admin Dashboard
                   </Link>
@@ -63,9 +61,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/doctordashboard"
-                    className={
-                      activeLink === "/doctordashboard" ? "active" : ""
-                    }
+                    className={activeLink === "/doctordashboard" ? "active" : ""}
                     onClick={() => handleLinkClick("/doctordashboard")}
                   >
                     Doctor Dashboard
@@ -74,9 +70,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/patientdashboard"
-                    className={
-                      activeLink === "/patientdashboard" ? "active" : ""
-                    }
+                    className={activeLink === "/patientdashboard" ? "active" : ""}
                     onClick={() => handleLinkClick("/patientdashboard")}
                   >
                     Patient Dashboard
@@ -84,167 +78,277 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link>
+            <li className={`submenu ${openSubMenu === 'doctors' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('doctors')}>
                 <span className="menu-side">
-                  <img src={menuicon02} alt="" />
+                  <img src={menuicon02} alt="Doctors" />
                 </span>
                 <span> Doctors </span>
                 <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link className="">Doctor List</Link>
-                </li>
-                <li>
-                  <Link>Add Doctor</Link>
-                </li>
-                <li>
-                  <Link href="edit-doctor.html">Edit Doctor</Link>
-                </li>
-                <li>
-                  <Link href="doctor-profile.html">Doctor Profile</Link>
-                </li>
+              <ul className={`${openSubMenu === 'doctors' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/doctors"
+                    className={activeLink === "/doctors" ? "active" : ""}
+                    onClick={() => handleLinkClick("/doctors")}
+                  >Doctor List</Link></li>
+                <li><Link
+                    to="/adddoctor"
+                    className={activeLink === "/adddoctor" ? "active" : ""}
+                    onClick={() => handleLinkClick("/adddoctor")}
+                  >Add Doctor</Link></li>
+                <li><Link
+                    to="/editdoctor"
+                    className={activeLink === "/editdoctor" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editdoctor")}
+                  >Edit Doctor</Link></li>
+                <li><Link
+                    to="/doctorprofile"
+                    className={activeLink === "/doctorprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/doctorprofile")}
+                  >Doctor Profile</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'patients' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('patients')}>
                 <span className="menu-side">
-                  <img src={menuicon03} alt="" />
+                  <img src={menuicon03} alt="Patients" />
                 </span>
-                <span>Patients </span>
+                <span> Patients </span>
                 <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="patients.html">Patients List</Link>
-                </li>
-                <li>
-                  <Link href="add-patient.html">Add Patients</Link>
-                </li>
-                <li>
-                  <Link href="edit-patient.html">Edit Patients</Link>
-                </li>
-                <li>
-                  <Link href="patient-profile.html">Patients Profile</Link>
-                </li>
+              <ul className={`${openSubMenu === 'patients' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/patients"
+                    className={activeLink === "/patients" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patients")}
+                  >Patients List</Link></li>
+                <li><Link
+                    to="/addpatient"
+                    className={activeLink === "/addpatient" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addpatient")}
+                  >Add Patients</Link></li>
+                <li><Link
+                    to="/editpatient"
+                    className={activeLink === "/editpatient" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editpatient")}
+                  >Edit Patients</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  >Patients Profile</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'staff' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('staff')}>
                 <span className="menu-side">
-                  <img src={menuicon08} alt="" />
+                  <img src={menuicon08} alt="Staff" />
                 </span>
                 <span> Staff </span>
                 <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="staff-list.html">Staff List</Link>
-                </li>
-                <li>
-                  <Link href="add-staff.html">Add Staff</Link>
-                </li>
-                <li>
-                  <Link href="staff-profile.html">Staff Profile</Link>
-                </li>
-                <li>
-                  <Link href="staff-leave.html">Leaves</Link>
-                </li>
-                <li>
-                  <Link href="staff-holiday.html">Holidays</Link>
-                </li>
-                <li>
-                  <Link href="staff-attendance.html">Attendance</Link>
-                </li>
+              <ul className={`${openSubMenu === 'staff' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/stafflist"
+                    className={activeLink === "/stafflist" ? "active" : ""}
+                    onClick={() => handleLinkClick("/stafflist")}
+                  >Staff List</Link></li>
+                <li><Link
+                    to="/addstaff"
+                    className={activeLink === "/addstaff" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addstaff")}
+                  >Add Staff</Link></li>
+                <li><Link
+                    to="/staffprofile"
+                    className={activeLink === "/staffprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/staffprofile")}
+                  >Staff Profile</Link></li>
+                <li><Link
+                    to="/leaverequest"
+                    className={activeLink === "/leaverequest" ? "active" : ""}
+                    onClick={() => handleLinkClick("/leaverequest")}
+                  >Leaves</Link></li>
+                <li><Link
+                    to="/holidays"
+                    className={activeLink === "/holidays" ? "active" : ""}
+                    onClick={() => handleLinkClick("/holidays")}
+                  >Holidays</Link></li>
+                <li><Link
+                    to="/attendancesheet"
+                    className={activeLink === "/attendancesheet" ? "active" : ""}
+                    onClick={() => handleLinkClick("/attendancesheet")}
+                  >Attendance</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'appointments' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('appointments')}>
                 <span className="menu-side">
-                  <img src={menuicon04} alt="" />
+                  <img src={menuicon04} alt="Appointments" />
                 </span>
                 <span> Appointments </span> <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="appointments.html">Appointment List</Link>
-                </li>
-                <li>
-                  <Link href="add-appointment.html">Book Appointment</Link>
-                </li>
-                <li>
-                  <Link href="edit-appointment.html">Edit Appointment</Link>
-                </li>
+              <ul className={`${openSubMenu === 'appointments' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/appointmentlist"
+                    className={activeLink === "/appointmentlist" ? "active" : ""}
+                    onClick={() => handleLinkClick("/appointmentlist")}
+                  >Appointment List</Link></li>
+                <li><Link
+                    to="/bookappointment"
+                    className={activeLink === "/bookappointment" ? "active" : ""}
+                    onClick={() => handleLinkClick("/bookappointment")}
+                  >Book Appointment</Link></li>
+                <li><Link
+                    to="/editappointment"
+                    className={activeLink === "/editappointment" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editappointment")}
+                  >Edit Appointment</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'doctorSchedule' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('doctorSchedule')}>
                 <span className="menu-side">
-                  <img src={menuicon05} alt="" />
+                  <img src={menuicon05} alt="Doctor Schedule" />
                 </span>
-                <span> Doctor Schedule </span>{" "}
-                <span className="menu-arrow"></span>
+                <span> Doctor Schedule </span> <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="schedule.html">Schedule List</Link>
-                </li>
-                <li>
-                  <Link href="add-schedule.html">Add Schedule</Link>
-                </li>
-                <li>
-                  <Link href="edit-schedule.html">Edit Schedule</Link>
-                </li>
+              <ul className={`${openSubMenu === 'doctorSchedule' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/schedulelist"
+                    className={activeLink === "/schedulelist" ? "active" : ""}
+                    onClick={() => handleLinkClick("/schedulelist")}
+                  >Schedule List</Link></li>
+                <li><Link
+                    to="/addschedule"
+                    className={activeLink === "/addschedule" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addschedule")}
+                  >Add Schedule</Link></li>
+                <li><Link
+                    to="/editschedule"
+                    className={activeLink === "/editschedule" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editschedule")}
+                  >Edit Schedule</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'cashRecord' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('cashRecord')}>
                 <span className="menu-side">
-                  <img src={menuicon06} alt="" />
+                  <img src={menuicon06} alt="Cash Record" />
                 </span>
                 <span> Cash Record </span> <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="departments.html">Department List</Link>
-                </li>
-                <li>
-                  <Link href="add-department.html">Add Department</Link>
-                </li>
-                <li>
-                  <Link href="edit-department.html">Edit Department</Link>
-                </li>
+              <ul className={`${openSubMenu === 'cashRecord' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/chiefcompaint"
+                    className={activeLink === "/chiefcompaint" ? "active" : ""}
+                    onClick={() => handleLinkClick("/chiefcompaint")}
+                  >Chief Complaint</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  >Associate Complaint</Link></li>
+                <li><Link
+                    to="/chiefcompaint"
+                    className={activeLink === "/chiefcompaint" ? "active" : ""}
+                    onClick={() => handleLinkClick("/chiefcompaint")}
+                  >Case Record</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  >Upload Case Record</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  >Add Diagnosis (SFFT)</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  > Add Life Space Table (LST)</Link></li>
+                <li><Link
+                    to="/patientprofile"
+                    className={activeLink === "/patientprofile" ? "active" : ""}
+                    onClick={() => handleLinkClick("/patientprofile")}
+                  > Add Data</Link></li>
               </ul>
             </li>
-            <li className="submenu">
-              <Link href="#">
+            <li className={`submenu ${openSubMenu === 'departments' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('departments')}>
                 <span className="menu-side">
-                  <img src={menuicon06} alt="" />
+                  <img src={menuicon06} alt="Departments" />
                 </span>
                 <span> Departments </span> <span className="menu-arrow"></span>
               </Link>
-              <ul className="d-none">
-                <li>
-                  <Link href="departments.html">Department List</Link>
-                </li>
-                <li>
-                  <Link href="add-department.html">Add Department</Link>
-                </li>
-                <li>
-                  <Link href="edit-department.html">Edit Department</Link>
-                </li>
+              <ul className={`${openSubMenu === 'departments' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/departments"
+                    className={activeLink === "/departments" ? "active" : ""}
+                    onClick={() => handleLinkClick("/departments")}
+                  >Department List</Link></li>
+                <li><Link
+                    to="/adddepartment"
+                    className={activeLink === "/adddepartment" ? "active" : ""}
+                    onClick={() => handleLinkClick("/adddepartment")}
+                  >Add Department</Link></li>
+                <li><Link
+                    to="/editdepartment"
+                    className={activeLink === "/editdepartment" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editdepartment")}
+                  >Edit Department</Link></li>
               </ul>
             </li>
+            <li className={`submenu ${openSubMenu === 'blog' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('blog')}>
+                <span className="menu-side">
+                  <img src={menuicon13} alt="blog" />
+                </span>
+                <span> Blog </span> <span className="menu-arrow"></span>
+              </Link>
+              <ul className={`${openSubMenu === 'blog' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/blog"
+                    className={activeLink === "/blog" ? "active" : ""}
+                    onClick={() => handleLinkClick("/blog")}
+                  >Blog</Link></li>
+                <li><Link
+                    to="/blogdetails"
+                    className={activeLink === "/blogdetails" ? "active" : ""}
+                    onClick={() => handleLinkClick("/blogdetails")}
+                  >Blog View</Link></li>
+                <li><Link
+                    to="/addblogpage"
+                    className={activeLink === "/addblogpage" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addblogpage")}
+                  >Add Blog</Link></li>
+                    <li><Link
+                    to="/editblogpage"
+                    className={activeLink === "/editblogpage" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editblogpage")}
+                  >Edit Blog</Link></li>
+              </ul>
+            </li>
+            
           </ul>
+          
           <div className="logout-btn">
-            <Link href="login.html">
+          <Link to="/chat">
               <span className="menu-side">
-                <img src={logout} alt="" />
+                <img src={menuicon10} alt="menuicon10" />
+              </span>
+              <span>Chat</span>
+            </Link>
+            <Link to="/login">
+              <span className="menu-side">
+                <img src={logout} alt="Logout" />
               </span>
               <span>Logout</span>
             </Link>
           </div>
+          
         </div>
       </div>
     </div>

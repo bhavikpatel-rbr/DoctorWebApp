@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 import ReactPaginate from 'react-paginate';
+import searchnormal from '../../../assest/img/icons/search-normal.svg'
+import pdf1 from '../../../img/icons/pdf-icon-01.svg'
+import pdf2 from '../../../img/icons/pdf-icon-02.svg'
+import pdf3 from '../../../img/icons/pdf-icon-03.svg'
+import pdf4 from '../../../img/icons/pdf-icon-04.svg'
+import plus from '../../../img/icons/plus.svg'
+import refresh from '../../../img/icons/re-fresh.svg'
 import { Link } from 'react-router-dom'; // Use react-router-dom for navigation
 const data =[
   {
@@ -73,57 +80,48 @@ const AppointmentList = () => {
                               className="form-control"
                               placeholder="Search here"
                             />
-                            <button type="submit" className="btn">
+                            <a className="btn">
                               <img
-                                src="assets/img/icons/search-normal.svg"
-                                alt=""
+                                src={searchnormal}
+                                alt="Search"
                               />
-                            </button>
+                            </a>
                           </form>
                         </div>
                         <div className="add-group">
-                          <Link
-                            to="/add-appointment"
-                            className="btn btn-primary add-pluss ms-2"
-                          >
-                            <img
-                              src="assets/img/icons/plus.svg"
-                              alt=""
-                            />
-                          </Link>
-                          <button className="btn btn-primary doctor-refresh ms-2">
-                            <img
-                              src="assets/img/icons/re-fresh.svg"
-                              alt=""
-                            />
-                          </button>
+                          <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
+                          <img src={plus} alt="" />
+                          </a>
+                          <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
+                          <img src={refresh} alt="" />
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="col-auto text-end float-end ms-auto download-grp">
-                    <a href="#" className="me-2">
+                    <a href="javascript:;" className="me-2">
                       <img
-                        src="assets/img/icons/pdf-icon-01.svg"
-                        alt=""
+                        src={pdf1}
+                        alt="PDF Icon 1"
                       />
                     </a>
-                    <a href="#" className="me-2">
+                    <a href="javascript:;" className="me-2">
                       <img
-                        src="assets/img/icons/pdf-icon-02.svg"
-                        alt=""
+                        src={pdf2}
+                        alt="PDF Icon 2"
                       />
                     </a>
-                    <a href="#" className="me-2">
+                    <a href="javascript:;" className="me-2">
                       <img
-                        src="assets/img/icons/pdf-icon-03.svg"
-                        alt=""
+                         src={pdf3}
+                        alt="PDF Icon 3"
                       />
                     </a>
-                    <a href="#">
-                      <img
-                        src="assets/img/icons/pdf-icon-04.svg"
-                        alt=""
+                    <a href="javascript:;">
+                    <img
+                         src={pdf4}
+                        alt="PDF Icon 3"
                       />
                     </a>
                   </div>

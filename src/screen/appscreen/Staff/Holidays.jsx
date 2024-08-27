@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Dropdown } from 'react-bootstrap';
 import { ChevronRight } from 'react-feather';
-
+import searchnormal from '../../../img/icons/search-normal.svg'
 const Holidays = () => {
   return (
     <div className="content">
@@ -30,7 +30,7 @@ const Holidays = () => {
                         <div className="top-nav-search table-search-blk">
                           <form>
                             <input type="text" className="form-control" placeholder="Search here" />
-                            <a className="btn"><img src="assets/img/icons/search-normal.svg" alt="" /></a>
+                            <a className="btn"><img src={searchnormal}  alt="" /></a>
                           </form>
                         </div>
                         <div className="add-group">

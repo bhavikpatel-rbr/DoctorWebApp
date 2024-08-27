@@ -4,11 +4,11 @@ import { ChevronRight } from 'react-feather';
 const EditAppointmentForm = () => {
   const [formData, setFormData] = useState({
     firstName: 'Stephen',
-    lastName: 'Bruklin',
+    lastName: 'Patellin',
     gender: 'Male',
     mobile: '+1 23 456890',
     email: 'stephen@gmail.com',
-    address: '101, Elanxa Apartments, 340 N Madison Avenue',
+    address: '201 , stavan parisar , gota ',
     appointmentDate: '26-11-22',
     fromTime: '07:00 PM',
     toTime: '08:00 PM',

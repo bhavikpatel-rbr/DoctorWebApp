@@ -15,7 +15,7 @@ import './../../../assest/commoncss.css'
 import { useLocation } from 'react-router-dom';
 
 const Login = () => {
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   return (
     <div className="main-wrapper login-body">
@@ -35,9 +35,9 @@ const Login = () => {
             <div className="loginbox">
               <div className="login-right">
                 <div className="login-right-wrap">
-                  <div className="account-logo">
+                  {/* <div className="account-logo">
                     <Link to="/"><img src={doctorImage} alt="Logo" /></Link>
-                  </div>
+                  </div> */}
                   <h2>Login</h2>
 
                   <form action="https://preclinic.dreamstechnologies.com/html/template/index.html">

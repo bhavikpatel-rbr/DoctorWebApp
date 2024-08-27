@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, Form } from 'react-bootstrap'; 
+import pdf1 from '../../../img/icons/pdf-icon-01.svg'
+import pdf2 from '../../../img/icons/pdf-icon-02.svg'
+import pdf3 from '../../../img/icons/pdf-icon-03.svg'
+import pdf4 from '../../../img/icons/pdf-icon-04.svg'
+import plus from '../../../img/icons/plus.svg'
+import refresh from '../../../img/icons/re-fresh.svg'
+import searchnormal from '../../../img/icons/search-normal.svg'
 import { ChevronRight } from 'react-feather';
 const data = [
     { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
@@ -62,25 +69,19 @@ const PatientList = () => {
                               placeholder="Search here"
                             />
                             <a className="btn">
-                              {/* <img
-                                src="assets/img/icons/search-normal.svg"
+                              <img
+                                src={searchnormal}
                                 alt="Search"
-                              /> */}
+                              />
                             </a>
                           </form>
                         </div>
                         <div className="add-group">
                           <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
-                            {/* <img
-                              src="assets/img/icons/plus.svg"
-                              alt="Add"
-                            /> */}
+                          <img src={plus} alt="" />
                           </a>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                            {/* <img
-                              src="assets/img/icons/re-fresh.svg"
-                              alt="Refresh"
-                            /> */}
+                          <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
@@ -88,28 +89,28 @@ const PatientList = () => {
                   </div>
                   <div className="col-auto text-end float-end ms-auto download-grp">
                     <a href="javascript:;" className="me-2">
-                      {/* <img
-                        src="assets/img/icons/pdf-icon-01.svg"
+                      <img
+                        src={pdf1}
                         alt="PDF Icon 1"
-                      /> */}
+                      />
                     </a>
                     <a href="javascript:;" className="me-2">
-                      {/* <img
-                        src="assets/img/icons/pdf-icon-02.svg"
+                      <img
+                        src={pdf2}
                         alt="PDF Icon 2"
-                      /> */}
+                      />
                     </a>
                     <a href="javascript:;" className="me-2">
-                      {/* <img
-                        src="assets/img/icons/pdf-icon-03.svg"
+                      <img
+                         src={pdf3}
                         alt="PDF Icon 3"
-                      /> */}
+                      />
                     </a>
                     <a href="javascript:;">
-                      {/* <img
-                        src="assets/img/icons/pdf-icon-04.svg"
-                        alt="PDF Icon 4"
-                      /> */}
+                    <img
+                         src={pdf4}
+                        alt="PDF Icon 3"
+                      />
                     </a>
                   </div>
                 </div>

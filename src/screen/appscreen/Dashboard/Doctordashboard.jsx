@@ -19,22 +19,10 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { FaCheckSquare } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
+import ReactApexChart from 'react-apexcharts';
+import usericon from "../../../img/icons/user-icon.svg";
 
 
-export let malePatientData = [
-    { x: 'January', y: 200, toolTipMappingName: 'Male - January' },
-    { x: 'February', y: 180, toolTipMappingName: 'Male - February' },
-    { x: 'March', y: 210, toolTipMappingName: 'Male - March' },
-    { x: 'April', y: 230, toolTipMappingName: 'Male - April' },
-    { x: 'May', y: 190, toolTipMappingName: 'Male - May' },
-    { x: 'June', y: 220, toolTipMappingName: 'Male - June' },
-    { x: 'July', y: 250, toolTipMappingName: 'Male - July' },
-    { x: 'August', y: 270, toolTipMappingName: 'Male - August' },
-    { x: 'September', y: 240, toolTipMappingName: 'Male - September' },
-    { x: 'October', y: 260, toolTipMappingName: 'Male - October' },
-    { x: 'November', y: 230, toolTipMappingName: 'Male - November' },
-    { x: 'December', y: 280, toolTipMappingName: 'Male - December' }
-];
 const data = [
   { x: 'New Patients', y: 40, color: '#FF6347' }, // Red
   { x: 'Old Patients', y: 60, color: '#4682B4' }  // Blue
@@ -83,6 +71,137 @@ const SAMPLE_CSS = `
         padding: 0px !important;
     }`;
 const DoctorDashboard = () => {
+    const [malePatientData, setmalePatientData] = React.useState({
+        series: [
+          {
+            name: "Male",
+            color: "#2E37A4",
+            data: [20, 30, 41, 67, 22, 43, 40, 10, 30, 20, 40],
+          },
+          {
+            name: "Female",
+            color: "#00D3C7",
+            data: [13, 23, 20, 8, 13, 27, 30, 25, 10, 15, 20],
+          },
+        ],
+        options: {
+          chart: {
+            type: "bar",
+            height: 230,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "30%",
+              endingShape: "rounded",
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ["transparent"],
+          },
+          xaxis: {
+            categories: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+          },
+          fill: {
+            opacity: 1,
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return "₹" + val + " thousands";
+              },
+            },
+          },
+        },
+      });
+      const [departmentData, setdepartmentData] = React.useState({
+        series: [44, 55, 41, 17],
+        options: {
+          chart: {
+            // height: 290,
+            type: "donut",
+            toolbar: {
+              show: false,
+            },
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "50%",
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          labels: ["Neurology", "Dental Care", "Gynecology", "Orthopedic"],
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
+          ],
+          legend: {
+            position: "bottom",
+          },
+        },
+      });
+      const [selectedTimeframe, setSelectedTimeframe] = React.useState('This Week');
+
+  const options = {
+    chart: {
+      id: 'activity-chart',
+      toolbar: {
+        show: false,
+      },
+    },
+    xaxis: {
+      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    colors: ['#00E396', '#FF4560'],
+    legend: {
+      show: true,
+      markers: {
+        width: 10,
+        height: 10,
+      },
+    },
+  };
+
+  const series = [
+    {
+      name: 'Low',
+      data: [10, 41, 35, 51, 49, 62, 69],
+    },
+    {
+      name: 'High',
+      data: [23, 42, 45, 32, 34, 52, 53],
+    },
+  ];
     return (
         <div className="content">
     <div className="page-header">
@@ -190,37 +309,15 @@ const DoctorDashboard = () => {
                     <div id="patient-chart">
                     <div className='control-pane'>
             <div className='control-section'>
-                <ChartComponent 
-                    id='patient-chart' 
-                    style={{ textAlign: "center" }} 
-                    legendSettings={{ enableHighlight: true }} 
-                    primaryXAxis={{ valueType: 'Category', interval: 1, majorGridLines: { width: 0 }, majorTickLines: { width: 0 } }} 
-                    primaryYAxis={{ title: 'Number of Visits', majorTickLines: { width: 0 }, lineStyle: { width: 0 } }} 
-                    chartArea={{ border: { width: 0 } }} 
-                    tooltip={{ enable: true, header: "<b>${point.tooltip}</b>", shared: true }} 
-                    title='Patient Visit by Gender'>
-                    <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel, Highlight]} />
-                    <SeriesCollectionDirective>
-                        <SeriesDirective 
-                            dataSource={malePatientData} 
-                            tooltipMappingName='toolTipMappingName' 
-                            xName='x' 
-                            yName='y' 
-                            name='Male' 
-                            type='Column' 
-                            columnSpacing={0.1} 
-                        />
-                        <SeriesDirective 
-                            dataSource={femalePatientData} 
-                            tooltipMappingName='toolTipMappingName' 
-                            xName='x' 
-                            yName='y' 
-                            name='Female' 
-                            type='Column' 
-                            columnSpacing={0.1} 
-                        />
-                    </SeriesCollectionDirective>
-                </ChartComponent>
+            <div id="chart">
+                  <ReactApexChart
+                    options={malePatientData.options}
+                    series={malePatientData.series}
+                    type="bar"
+                    height={350}
+                  />
+                </div>
+                <div id="html-dist"></div>
             </div>
         </div>
                     </div>
@@ -233,7 +330,7 @@ const DoctorDashboard = () => {
                     <div className="chart-title">
                         <h4>Patient by Department</h4>
                     </div>
-                    <div id="donut-chart-dash" className="chart-user-icon">
+                    {/* <div id="donut-chart-dash" className="chart-user-icon">
                     <div className='control-pane'>
             <div className='control-section'>
                 <AccumulationChartComponent 
@@ -257,7 +354,21 @@ const DoctorDashboard = () => {
                 </AccumulationChartComponent>
             </div>
         </div>
-                    </div>
+                    </div> */}
+                    <div
+                id="donut-chart-dash"
+                className="chart-user-icon"
+                style={{ width: "100%", maxWidth: "600px", margin: "0 auto" }}
+              >
+                <img src={usericon} alt="User Icon" />
+                <ReactApexChart
+                  options={departmentData.options}
+                  series={departmentData.series}
+                  type="donut"
+                  height={400} // Directly set the height here as well
+                />
+                {/* <div id="html-dist"></div> */}
+              </div>
                 </div>
             </div>
         </div>

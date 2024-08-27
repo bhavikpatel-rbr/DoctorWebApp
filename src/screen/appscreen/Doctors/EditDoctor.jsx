@@ -3,9 +3,9 @@ import { ChevronRight } from 'react-feather';
 
 const EditDoctor = () => {
   const [formData, setFormData] = useState({
-    firstName: 'Daniel',
-    lastName: 'Bruk',
-    userName: 'Daniel Bruk',
+    firstName: 'Bhavik',
+    lastName: 'Patel',
+    userName: 'Bhavik Patel',
     mobile: '+1 23 456890',
     email: 'example@email.com',
     password: 'password',
@@ -15,7 +15,7 @@ const EditDoctor = () => {
     education: 'M.B.B.S, M.S.',
     designation: 'Physician',
     department: '',
-    address: '101, Elanxa Apartments, 340 N Madison Avenue',
+    address: '201 , stavan parisar , gota ',
     city: '',
     country: '',
     state: '',

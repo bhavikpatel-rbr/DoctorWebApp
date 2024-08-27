@@ -478,8 +478,8 @@ table.table td h2 span {
 .btn-primary.active,
 .btn-primary:active,
 .open>.dropdown-toggle.btn-primary {
-    background-color: #00d3c7;
-    border: 1px solid #00d3c7;
+    background-color: linear-gradient(92.39deg, #4E57CD 1.86%, #2E37A4 100%);
+    border: 1px solid  linear-gradient(92.39deg, #4E57CD 1.86%, #2E37A4 100%);
     color: #fff
 }
 

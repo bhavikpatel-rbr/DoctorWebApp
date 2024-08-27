@@ -1,6 +1,12 @@
 import React from 'react';
 import { ChevronRight } from 'react-feather';
-
+import searchnormal from '../../../img/icons/search-normal.svg'
+import pdf1 from '../../../img/icons/pdf-icon-01.svg'
+import pdf2 from '../../../img/icons/pdf-icon-02.svg'
+import pdf3 from '../../../img/icons/pdf-icon-03.svg'
+import pdf4 from '../../../img/icons/pdf-icon-04.svg'
+import plus from '../../../img/icons/plus.svg'
+import refresh from '../../../img/icons/re-fresh.svg'
 const StaffList = () => {
   return (
     <div className="content">
@@ -39,18 +45,18 @@ const StaffList = () => {
                             />
                             <a className="btn">
                               <img
-                                src="assets/img/icons/search-normal.svg"
-                                alt=""
+                                src={searchnormal}
+                                alt="Search"
                               />
                             </a>
                           </form>
                         </div>
                         <div className="add-group">
-                          <a href="add-staff.html" className="btn btn-primary add-pluss ms-2">
-                            <img src="assets/img/icons/plus.svg" alt="" />
+                          <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
+                          <img src={plus} alt="" />
                           </a>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                            <img src="assets/img/icons/re-fresh.svg" alt="" />
+                          <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
@@ -58,16 +64,28 @@ const StaffList = () => {
                   </div>
                   <div className="col-auto text-end float-end ms-auto download-grp">
                     <a href="javascript:;" className="me-2">
-                      <img src="assets/img/icons/pdf-icon-01.svg" alt="" />
+                      <img
+                        src={pdf1}
+                        alt="PDF Icon 1"
+                      />
                     </a>
                     <a href="javascript:;" className="me-2">
-                      <img src="assets/img/icons/pdf-icon-02.svg" alt="" />
+                      <img
+                        src={pdf2}
+                        alt="PDF Icon 2"
+                      />
                     </a>
                     <a href="javascript:;" className="me-2">
-                      <img src="assets/img/icons/pdf-icon-03.svg" alt="" />
+                      <img
+                         src={pdf3}
+                        alt="PDF Icon 3"
+                      />
                     </a>
                     <a href="javascript:;">
-                      <img src="assets/img/icons/pdf-icon-04.svg" alt="" />
+                    <img
+                         src={pdf4}
+                        alt="PDF Icon 3"
+                      />
                     </a>
                   </div>
                 </div>

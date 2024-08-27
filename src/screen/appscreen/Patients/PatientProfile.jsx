@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronRight } from 'react-feather';
-
+import profile from '../../../assest/img/profile-bg.jpg'
+import user from "../../../assest/img/user1.jpg";
 const PatientProfile = () => {
   return (
     <div className="content">
@@ -27,13 +28,13 @@ const PatientProfile = () => {
                   </div>
                   <div className="doctor-profile-head">
                     <div className="profile-bg-img">
-                      {/* <img src="assets/img/profile-bg.jpg" alt="Profile" /> */}
+                    <img src={profile} alt="Profile" />
                     </div>
                     <div className="row">
                       <div className="col-lg-6 col-xl-4 col-md-4">
                         <div className="profile-user-box">
                           <div className="profile-user-img">
-                            {/* <img src="assets/img/profile-user-01.jpg" alt="Profile" /> */}
+                          <img src={user} alt="Profile" />
                             <div className="input-block doctor-up-files profile-edit-icon mb-0">
                               <div className="upload d-flex">
                                 <label className="file-upload profile-upbtn mb-0">

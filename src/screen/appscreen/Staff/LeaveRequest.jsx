@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dropdown, Form, Table } from 'react-bootstrap'; // Import Bootstrap components if needed
 import { ChevronRight } from 'react-feather';
-
+import searchnormal from '../../../img/icons/search-normal.svg'
 const LeaveRequest = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [employeeName, setEmployeeName] = useState('');
@@ -49,7 +49,7 @@ const LeaveRequest = () => {
                               onChange={(e) => setSearchTerm(e.target.value)}
                             />
                             <button className="btn" type="submit">
-                              <img src="assets/img/icons/search-normal.svg" alt="" />
+                              <img  src={searchnormal}  alt="" />
                             </button>
                           </Form>
                         </div>

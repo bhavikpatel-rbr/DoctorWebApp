@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'react-feather';
+import searchnormal from '../../../img/icons/search-normal.svg'
 const AttendanceSheet = () => {
   return (
     <div className="content">
@@ -38,7 +39,7 @@ const AttendanceSheet = () => {
                             />
                             <a className="btn">
                               <img
-                                src="assets/img/icons/search-normal.svg"
+                                 src={searchnormal} 
                                 alt=""
                               />
                             </a>

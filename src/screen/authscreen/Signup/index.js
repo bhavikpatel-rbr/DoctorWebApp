@@ -42,9 +42,9 @@ const SignUp = () => {
               <div className="loginbox">
                 <div className="login-right">
                   <div className="login-right-wrap">
-                    <div className="account-logo">
+                    {/* <div className="account-logo">
                       <Link to="/"><img src={doctorImage} alt="Logo" /></Link>
-                    </div>
+                    </div> */}
                     <h2>Getting Started</h2>
 
                     <form action="https://preclinic.dreamstechnologies.com/html/template/login.html">

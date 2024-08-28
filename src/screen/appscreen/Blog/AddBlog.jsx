@@ -172,19 +172,19 @@ const AddBlogPage = () => {
                     </div>
                   </div>
 
-                  <div className="col-12 col-md-6 col-xl-12">
+                  <div className="col-12 col-md-12 col-xl-12">
                     <div className="input-block local-top-form">
                       <label className="local-top">Avatar <span className="login-danger">*</span></label>
-                      <div className="settings-btn upload-files-avatar">
-                        <input 
-                          type="file" 
-                          accept="image/*" 
-                          name="image" 
-                          id="file" 
-                          onChange={handleFileChange} 
-                          className="hide-input" 
+                      <div className="settings-btn upload-files-avator">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          name="avatar"
+                          id="file"
+                          // onChange={handleChange}
+                          className="hide-input"
                         />
-                        <button type="submit"  className=" upload btn btn-primary submit-form">Choose File</button>
+                        <label htmlFor="file" className="upload">Choose File</label>
                       </div>
                     </div>
                   </div>

@@ -34,6 +34,7 @@ import BlogDetails from '../screen/appscreen/Blog/BlogDetails';
 import AddBlogPage from '../screen/appscreen/Blog/AddBlog';
 import EditBlogPage from '../screen/appscreen/Blog/EditBlogPage';
 import ChatBox from '../screen/appscreen/Chat/ChatBox';
+import ChiefCompaintInit from '../screen/appscreen/CaseRecord/ChiefCompaintInit';
 
 
 const AppNavigation = () => {
@@ -95,6 +96,7 @@ const AppNavigation = () => {
 
              {/* Chief Complaint Routes */}
              <Route path="/chiefcompaint" element={<Layout><ChiefCompaint /></Layout>} />
+             <Route path="/chiefcompaint/:id" element={<Layout><ChiefCompaintInit /></Layout>} />
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />

@@ -69,3 +69,46 @@ body {
   flex-direction: column; /* or row depending on layout */
 }
 
+ul.Optionitemlist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.Optionitemlist li.selectedOptionsList {
+  background-color: #f8f9fa;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.list-group-item {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.list-group-item:hover {
+  transform: scale(1.02);
+}
+
+.list-group-item input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.list-group-item span {
+  font-size: 14px;
+  font-weight: bold;
+}

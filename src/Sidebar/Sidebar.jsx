@@ -245,14 +245,14 @@ const Sidebar = () => {
                     onClick={() => handleLinkClick("/chiefcompaint")}
                   >Chief Complaint</Link></li>
                 <li><Link
+                    to="/associatecomplaint"
+                    className={activeLink === "/associatecomplaint" ? "active" : ""}
+                    onClick={() => handleLinkClick("/associatecomplaint")}
+                  >Associate Complaint</Link></li>
+                <li><Link
                     to="/patientprofile"
                     className={activeLink === "/patientprofile" ? "active" : ""}
                     onClick={() => handleLinkClick("/patientprofile")}
-                  >Associate Complaint</Link></li>
-                <li><Link
-                    to="/chiefcompaint"
-                    className={activeLink === "/chiefcompaint" ? "active" : ""}
-                    onClick={() => handleLinkClick("/chiefcompaint")}
                   >Case Record</Link></li>
                 <li><Link
                     to="/patientprofile"

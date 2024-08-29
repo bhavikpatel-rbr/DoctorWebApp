@@ -12,7 +12,7 @@ import { BsMicFill, BsMicMute } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
-const ChiefCompaintInit = ({ patient }) => {
+const AssociateComplaintInit = ({ patient }) => {
   const [rows, setRows] = useState([
     {
       location: "",
@@ -171,9 +171,9 @@ const ChiefCompaintInit = ({ patient }) => {
           <div className="col-sm-12">
             <ul className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="chief_complaint.html">Chief Complaint</a>
+                <a href="chief_complaint.html">Associate Complaint</a>
               </li>
-              <li className="breadcrumb-item active">Chief Complaint</li>
+              <li className="breadcrumb-item active">Associate Complaint</li>
             </ul>
           </div>
         </div>
@@ -621,4 +621,4 @@ const ChiefCompaintInit = ({ patient }) => {
   );
 };
 
-export default ChiefCompaintInit;
+export default AssociateComplaintInit;

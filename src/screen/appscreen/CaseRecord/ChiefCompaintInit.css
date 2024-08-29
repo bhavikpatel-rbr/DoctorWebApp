@@ -1,0 +1,79 @@
+.content {
+    padding: 20px;
+  }
+  
+  .page-header .breadcrumb {
+    background: none;
+    margin-bottom: 20px;
+  }
+  
+  .patient-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .patient-details h5 {
+    margin-bottom: 20px;
+  }
+  
+  .patient-details .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .patient-details .form-check-input {
+    cursor: pointer;
+  }
+  
+  .patient-details .form-control {
+    margin-right: 10px;
+  }
+  
+  .patient-details .btn {
+    margin-right: 10px;
+  }
+  
+  .patient-details .row-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+  }
+  
+  .selected-options {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .options-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .option-item {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .option-item.selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .option-item:hover {
+    background-color: #dee2e6;
+  }
+  

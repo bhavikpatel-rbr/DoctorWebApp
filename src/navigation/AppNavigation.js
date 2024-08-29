@@ -29,13 +29,14 @@ import DepartmentList from '../screen/appscreen/Department/DepartmentList';
 import AddDepartment from '../screen/appscreen/Department/AddDepartment';
 import EditDepartment from '../screen/appscreen/Department/EditDepartment';
 import ChiefCompaint from '../screen/appscreen/CaseRecord/ChiefComplaint';
+import AssociateComplaint from '../screen/appscreen/CaseRecord/AssociateComplaint';
 import BlogGrid from '../screen/appscreen/Blog/Blog';
 import BlogDetails from '../screen/appscreen/Blog/BlogDetails';
 import AddBlogPage from '../screen/appscreen/Blog/AddBlog';
 import EditBlogPage from '../screen/appscreen/Blog/EditBlogPage';
 import ChatBox from '../screen/appscreen/Chat/ChatBox';
 import ChiefCompaintInit from '../screen/appscreen/CaseRecord/ChiefCompaintInit';
-
+import AssociateComplaintInit from '../screen/appscreen/CaseRecord/AssociateComplaintInit';
 
 const AppNavigation = () => {
 
@@ -96,7 +97,9 @@ const AppNavigation = () => {
 
              {/* Chief Complaint Routes */}
              <Route path="/chiefcompaint" element={<Layout><ChiefCompaint /></Layout>} />
+             <Route path="/associatecomplaint" element={<Layout><AssociateComplaint /></Layout>} />
              <Route path="/chiefcompaint/:id" element={<Layout><ChiefCompaintInit /></Layout>} />
+             <Route path="/associatecomplaint/:id" element={<Layout><AssociateComplaintInit /></Layout>} />
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />

@@ -37,6 +37,10 @@ import EditBlogPage from '../screen/appscreen/Blog/EditBlogPage';
 import ChatBox from '../screen/appscreen/Chat/ChatBox';
 import ChiefCompaintInit from '../screen/appscreen/CaseRecord/ChiefCompaintInit';
 import AssociateComplaintInit from '../screen/appscreen/CaseRecord/AssociateComplaintInit';
+import AddMedicalStorePage from '../screen/appscreen/Store/AddMedicalStorePage';
+import StoreGrid from '../screen/appscreen/Store/StoreGrid';
+import StoreDetails from '../screen/appscreen/Store/StoreDetails';
+import EditStoreDetails from '../screen/appscreen/Store/EditStoreDetails';
 
 const AppNavigation = () => {
 
@@ -106,6 +110,12 @@ const AppNavigation = () => {
              <Route path="/blogdetails" element={<Layout><BlogDetails /></Layout>} />
              <Route path="/addblogpage" element={<Layout><AddBlogPage /></Layout>} />
              <Route path="/editblogpage" element={<Layout><EditBlogPage /></Layout>} />
+
+              {/* Store Routes */}
+              <Route path="/addmedicalstorepage" element={<Layout><AddMedicalStorePage /></Layout>} />
+             <Route path="/store" element={<Layout><StoreGrid /></Layout>} />
+             <Route path="/storedetails" element={<Layout><StoreDetails /></Layout>} />
+             <Route path="/editstoredetails" element={<Layout><EditStoreDetails /></Layout>} />
 
              {/* Chat Routes */}
              <Route path="/chat" element={<Layout><ChatBox /></Layout>} />

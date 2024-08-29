@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 
-const EditBlogPage = () => {
+const EditStoreDetails = () => {
   // State to handle form inputs
-  const [blogTitle, setBlogTitle] = useState('Vaccines Are Close - But Right Now We Need to Hunker Down');
-  const [authorName, setAuthorName] = useState('Stephen Bruk');
-  const [blogCategory, setBlogCategory] = useState('');
-  const [blogSubCategory, setBlogSubCategory] = useState('');
+  const [storeName, setStoreName] = useState('HealthMart');
+  const [ownerName, setOwnerName] = useState('Jane Doe');
+  const [storeCategory, setStoreCategory] = useState('');
+  const [storeSubCategory, setStoreSubCategory] = useState('');
   const [tags, setTags] = useState('');
-  const [blogStatus, setBlogStatus] = useState('Active');
-  const [message, setMessage] = useState('');
+  const [storeStatus, setStoreStatus] = useState('Open');
+  const [description, setDescription] = useState('');
   const [avatar, setAvatar] = useState(null);
 
   // Handle file upload
@@ -21,13 +21,13 @@ const EditBlogPage = () => {
     event.preventDefault();
     // Handle form submission logic here
     console.log({
-      blogTitle,
-      authorName,
-      blogCategory,
-      blogSubCategory,
+      storeName,
+      ownerName,
+      storeCategory,
+      storeSubCategory,
       tags,
-      blogStatus,
-      message,
+      storeStatus,
+      description,
       avatar,
     });
   };
@@ -38,9 +38,9 @@ const EditBlogPage = () => {
         <div className="row">
           <div className="col-sm-12">
             <ul className="breadcrumb">
-              <li className="breadcrumb-item"><a href="blog.html">Blog </a></li>
+              <li className="breadcrumb-item"><a href="stores.html">Stores</a></li>
               <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/></li>
-              <li className="breadcrumb-item active">Edit Blogs</li>
+              <li className="breadcrumb-item active">Edit Store Details</li>
             </ul>
           </div>
         </div>
@@ -54,61 +54,61 @@ const EditBlogPage = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="form-heading">
-                      <h4>Blog Details</h4>
+                      <h4>Store Details</h4>
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Title <span className="login-danger">*</span></label>
+                      <label>Store Name <span className="login-danger">*</span></label>
                       <input
                         className="form-control"
                         type="text"
-                        value={blogTitle}
-                        onChange={(e) => setBlogTitle(e.target.value)}
+                        value={storeName}
+                        onChange={(e) => setStoreName(e.target.value)}
                       />
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Author Name <span className="login-danger">*</span></label>
+                      <label>Owner Name <span className="login-danger">*</span></label>
                       <input
                         className="form-control"
                         type="text"
-                        value={authorName}
-                        onChange={(e) => setAuthorName(e.target.value)}
+                        value={ownerName}
+                        onChange={(e) => setOwnerName(e.target.value)}
                       />
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Category <span className="login-danger">*</span></label>
+                      <label>Store Category <span className="login-danger">*</span></label>
                       <select
                         className="form-control select"
-                        value={blogCategory}
-                        onChange={(e) => setBlogCategory(e.target.value)}
+                        value={storeCategory}
+                        onChange={(e) => setStoreCategory(e.target.value)}
                       >
-                        <option>Choose Blog Category</option>
+                        <option>Choose Store Category</option>
                         <option>Health Care</option>
-                        <option>Child</option>
-                        <option>Safety</option>
+                        <option>Fitness</option>
+                        <option>Nutrition</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Sub Category <span className="login-danger">*</span></label>
+                      <label>Store Sub Category <span className="login-danger">*</span></label>
                       <select
                         className="form-control select"
-                        value={blogSubCategory}
-                        onChange={(e) => setBlogSubCategory(e.target.value)}
+                        value={storeSubCategory}
+                        onChange={(e) => setStoreSubCategory(e.target.value)}
                       >
-                        <option>Choose Sub Blog Category</option>
-                        <option>Health Care</option>
-                        <option>Corona Virus</option>
+                        <option>Choose Sub Store Category</option>
+                        <option>Pharmacy</option>
+                        <option>Supplements</option>
                       </select>
                     </div>
                   </div>
@@ -127,31 +127,31 @@ const EditBlogPage = () => {
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block select-gender">
-                      <label className="gen-label">Blog Status <span className="login-danger">*</span></label>
+                      <label className="gen-label">Store Status <span className="login-danger">*</span></label>
                       <div className="form-check-inline">
                         <label className="form-check-label">
                           <input
                             type="radio"
-                            name="blogStatus"
+                            name="storeStatus"
                             className="form-check-input"
-                            value="Active"
-                            checked={blogStatus === 'Active'}
-                            onChange={() => setBlogStatus('Active')}
+                            value="Open"
+                            checked={storeStatus === 'Open'}
+                            onChange={() => setStoreStatus('Open')}
                           />
-                          Active
+                          Open
                         </label>
                       </div>
                       <div className="form-check-inline">
                         <label className="form-check-label">
                           <input
                             type="radio"
-                            name="blogStatus"
+                            name="storeStatus"
                             className="form-check-input"
-                            value="InActive"
-                            checked={blogStatus === 'InActive'}
-                            onChange={() => setBlogStatus('InActive')}
+                            value="Closed"
+                            checked={storeStatus === 'Closed'}
+                            onChange={() => setStoreStatus('Closed')}
                           />
-                          InActive
+                          Closed
                         </label>
                       </div>
                     </div>
@@ -163,21 +163,21 @@ const EditBlogPage = () => {
                         rows="4"
                         cols="5"
                         className="form-control summernote"
-                        placeholder="Enter your message here"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Enter store description here"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                       ></textarea>
                     </div>
                   </div>
 
-                  <div className="col-12 col-md-6 col-xl-12">
+                  <div className="col-12 col-md-12 col-xl-12">
                     <div className="input-block local-top-form">
-                      <label className="local-top">Avatar <span className="login-danger">*</span></label>
-                      <div className="settings-btn upload-files-avatar">
+                      <label className="local-top">Store Logo <span className="login-danger">*</span></label>
+                      <div className="settings-btn upload-files-avator">
                         <input
                           type="file"
                           accept="image/*"
-                          name="image"
+                          name="logo"
                           id="file"
                           onChange={handleFileChange}
                           className="hide-input"
@@ -185,23 +185,11 @@ const EditBlogPage = () => {
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
                     </div>
-                    {avatar && (
-                      <div className="upload-images upload-size">
-                        <img src={avatar} alt="Avatar" />
-                        <button
-                          type="button"
-                          className="btn-icon logo-hide-btn"
-                          onClick={() => setAvatar(null)}
-                        >
-                          <i className="feather-x-circle"></i>
-                        </button>
-                      </div>
-                    )}
                   </div>
 
                   <div className="col-12">
                     <div className="doctor-submit text-end">
-                      <button type="submit" className="btn btn-primary submit-form me-2">Publish Blog</button>
+                      <button type="submit" className="btn btn-primary submit-form me-2">Update Store</button>
                       <button type="button" className="btn btn-primary cancel-form" onClick={() => console.log('Cancel')}>Cancel</button>
                     </div>
                   </div>
@@ -216,4 +204,4 @@ const EditBlogPage = () => {
   );
 };
 
-export default EditBlogPage;
+export default EditStoreDetails;

@@ -10,6 +10,7 @@ import menuicon06 from "../img/icons/menu-icon-06.svg";
 import menuicon08 from "../img/icons/menu-icon-08.svg";
 import menuicon13 from "../img/icons/menu-icon-13.svg";
 import menuicon10 from "../img/icons/menu-icon-10.svg";
+import menuicon09 from "../img/icons/menu-icon-09.svg";
 
 const Sidebar = () => {
   const [activeLink, setActiveLink] = useState('/');
@@ -329,6 +330,36 @@ const Sidebar = () => {
                     className={activeLink === "/editblogpage" ? "active" : ""}
                     onClick={() => handleLinkClick("/editblogpage")}
                   >Edit Blog</Link></li>
+              </ul>
+            </li>
+            <li className={`submenu ${openSubMenu === 'store' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('store')}>
+                <span className="menu-side">
+                  <img src={menuicon09} alt="store" />
+                </span>
+                <span>Medical Store </span> <span className="menu-arrow"></span>
+              </Link>
+              <ul className={`${openSubMenu === 'store' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/store"
+                    className={activeLink === "/store" ? "active" : ""}
+                    onClick={() => handleLinkClick("/store")}
+                  >Store</Link></li>
+                <li><Link
+                    to="/storedetails"
+                    className={activeLink === "/storedetails" ? "active" : ""}
+                    onClick={() => handleLinkClick("/storedetails")}
+                  >Store View</Link></li>
+                <li><Link
+                    to="/addmedicalstorepage"
+                    className={activeLink === "/addmedicalstorepage" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addmedicalstorepage")}
+                  >Add Store</Link></li>
+                    <li><Link
+                    to="/editstoredetails"
+                    className={activeLink === "/editstoredetails" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editstoredetails")}
+                  >Edit Store</Link></li>
               </ul>
             </li>
             

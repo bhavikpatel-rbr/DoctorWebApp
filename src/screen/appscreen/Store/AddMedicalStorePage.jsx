@@ -1,35 +1,34 @@
-
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 
-const AddBlogPage = () => {
+const AddMedicalStorePage = () => {
   // State to handle form inputs
-  const [blogTitle, setBlogTitle] = useState('');
-  const [authorName, setAuthorName] = useState('');
-  const [blogCategory, setBlogCategory] = useState('');
-  const [blogSubCategory, setBlogSubCategory] = useState('');
+  const [storeName, setStoreName] = useState('');
+  const [ownerName, setOwnerName] = useState('');
+  const [storeCategory, setStoreCategory] = useState('');
+  const [storeSubCategory, setStoreSubCategory] = useState('');
   const [tags, setTags] = useState('');
-  const [blogStatus, setBlogStatus] = useState('Active');
-  const [message, setMessage] = useState('');
-  const [avatar, setAvatar] = useState(null);
+  const [storeStatus, setStoreStatus] = useState('Active');
+  const [description, setDescription] = useState('');
+  const [logo, setLogo] = useState(null);
 
   // Handle file upload
   const handleFileChange = (event) => {
-    setAvatar(event.target.files[0]);
+    setLogo(event.target.files[0]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
     console.log({
-      blogTitle,
-      authorName,
-      blogCategory,
-      blogSubCategory,
+      storeName,
+      ownerName,
+      storeCategory,
+      storeSubCategory,
       tags,
-      blogStatus,
-      message,
-      avatar,
+      storeStatus,
+      description,
+      logo,
     });
   };
 
@@ -39,9 +38,9 @@ const AddBlogPage = () => {
         <div className="row">
           <div className="col-sm-12">
             <ul className="breadcrumb">
-              <li className="breadcrumb-item"><a href="blog.html">Blog </a></li>
-              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/></li>
-              <li className="breadcrumb-item active">Add Blogs</li>
+              <li className="breadcrumb-item"><a href="stores.html">Stores</a></li>
+              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} /></li>
+              <li className="breadcrumb-item active">Add Medical Store</li>
             </ul>
           </div>
         </div>
@@ -55,63 +54,64 @@ const AddBlogPage = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="form-heading">
-                      <h4>Blog Details</h4>
+                      <h4>Medical Store Details</h4>
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Title <span className="login-danger">*</span></label>
-                      <input 
-                        className="form-control" 
-                        type="text" 
-                        placeholder="Enter Blog Title"
-                        value={blogTitle}
-                        onChange={(e) => setBlogTitle(e.target.value)}
+                      <label>Store Name <span className="login-danger">*</span></label>
+                      <input
+                        className="form-control"
+                        type="text"
+                        placeholder="Enter Store Name"
+                        value={storeName}
+                        onChange={(e) => setStoreName(e.target.value)}
                       />
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Author Name <span className="login-danger">*</span></label>
-                      <input 
-                        className="form-control" 
-                        type="text" 
-                        placeholder="Enter Author Name"
-                        value={authorName}
-                        onChange={(e) => setAuthorName(e.target.value)}
+                      <label>Owner Name <span className="login-danger">*</span></label>
+                      <input
+                        className="form-control"
+                        type="text"
+                        placeholder="Enter Owner Name"
+                        value={ownerName}
+                        onChange={(e) => setOwnerName(e.target.value)}
                       />
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Category <span className="login-danger">*</span></label>
-                      <select 
+                      <label>Store Category <span className="login-danger">*</span></label>
+                      <select
                         className="form-control select"
-                        value={blogCategory}
-                        onChange={(e) => setBlogCategory(e.target.value)}
+                        value={storeCategory}
+                        onChange={(e) => setStoreCategory(e.target.value)}
                       >
-                        <option>Choose Blog Category</option>
-                        <option>Health Care</option>
-                        <option>Child</option>
-                        <option>Safety</option>
+                        <option>Choose Store Category</option>
+                        <option>Pharmacy</option>
+                        <option>Health Supplements</option>
+                        <option>Medical Equipment</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
-                      <label>Blog Sub Category <span className="login-danger">*</span></label>
-                      <select 
+                      <label>Store Sub Category <span className="login-danger">*</span></label>
+                      <select
                         className="form-control select"
-                        value={blogSubCategory}
-                        onChange={(e) => setBlogSubCategory(e.target.value)}
+                        value={storeSubCategory}
+                        onChange={(e) => setStoreSubCategory(e.target.value)}
                       >
-                        <option>Choose Sub Blog Category</option>
-                        <option>Health Care</option>
-                        <option>Corona Virus</option>
+                        <option>Choose Sub Category</option>
+                        <option>Prescription</option>
+                        <option>Over-the-Counter</option>
+                        <option>Vitamins</option>
                       </select>
                     </div>
                   </div>
@@ -119,9 +119,9 @@ const AddBlogPage = () => {
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-forms">
                       <label>Tags <small>(separated with a comma)</small> <span className="login-danger">*</span></label>
-                      <input 
-                        type="text" 
-                        className="form-control" 
+                      <input
+                        type="text"
+                        className="form-control"
                         placeholder="Enter Tags"
                         value={tags}
                         onChange={(e) => setTags(e.target.value)}
@@ -131,28 +131,28 @@ const AddBlogPage = () => {
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block select-gender">
-                      <label className="gen-label">Blog Status <span className="login-danger">*</span></label>
+                      <label className="gen-label">Store Status <span className="login-danger">*</span></label>
                       <div className="form-check-inline">
                         <label className="form-check-label">
-                          <input 
-                            type="radio" 
-                            name="blogStatus" 
-                            className="form-check-input" 
+                          <input
+                            type="radio"
+                            name="storeStatus"
+                            className="form-check-input"
                             value="Active"
-                            checked={blogStatus === 'Active'}
-                            onChange={() => setBlogStatus('Active')}
+                            checked={storeStatus === 'Active'}
+                            onChange={() => setStoreStatus('Active')}
                           />Active
                         </label>
                       </div>
                       <div className="form-check-inline">
                         <label className="form-check-label">
-                          <input 
-                            type="radio" 
-                            name="blogStatus" 
-                            className="form-check-input" 
+                          <input
+                            type="radio"
+                            name="storeStatus"
+                            className="form-check-input"
                             value="InActive"
-                            checked={blogStatus === 'InActive'}
-                            onChange={() => setBlogStatus('InActive')}
+                            checked={storeStatus === 'InActive'}
+                            onChange={() => setStoreStatus('InActive')}
                           />InActive
                         </label>
                       </div>
@@ -161,27 +161,27 @@ const AddBlogPage = () => {
 
                   <div className="col-12 col-md-6 col-xl-12">
                     <div className="input-block summer-mail">
-                      <textarea 
-                        rows="4" 
-                        cols="5" 
-                        className="form-control summernote" 
-                        placeholder="Enter your message here"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                      <textarea
+                        rows="4"
+                        cols="5"
+                        className="form-control summernote"
+                        placeholder="Enter store description here"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                       ></textarea>
                     </div>
                   </div>
 
                   <div className="col-12 col-md-12 col-xl-12">
                     <div className="input-block local-top-form">
-                      <label className="local-top">Avatar <span className="login-danger">*</span></label>
+                      <label className="local-top">Store Logo <span className="login-danger">*</span></label>
                       <div className="settings-btn upload-files-avator">
                         <input
                           type="file"
                           accept="image/*"
-                          name="avatar"
+                          name="logo"
                           id="file"
-                          // onChange={handleChange}
+                          onChange={handleFileChange}
                           className="hide-input"
                         />
                         <label htmlFor="file" className="upload">Choose File</label>
@@ -191,7 +191,7 @@ const AddBlogPage = () => {
 
                   <div className="col-12">
                     <div className="doctor-submit text-end">
-                      <button type="submit" className="btn btn-primary submit-form me-2">Publish Blog</button>
+                      <button type="submit" className="btn btn-primary submit-form me-2">Add Store</button>
                       <button type="button" className="btn btn-primary cancel-form" onClick={() => console.log('Cancel')}>Cancel</button>
                     </div>
                   </div>
@@ -206,4 +206,4 @@ const AddBlogPage = () => {
   );
 };
 
-export default AddBlogPage;
+export default AddMedicalStorePage;

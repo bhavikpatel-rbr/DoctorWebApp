@@ -7370,7 +7370,8 @@ a.status-grey {
 }
 
 .modal-backdrop.show {
-    opacity: .9
+    /* opacity: .9 */
+    opacity: 1
 }
 
 .invoices-view {

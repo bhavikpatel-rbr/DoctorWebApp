@@ -112,3 +112,77 @@ ul.Optionitemlist li.selectedOptionsList {
   font-size: 14px;
   font-weight: bold;
 }
+
+
+.custom-list {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-list .list-group-item {
+  background-color: #009efb;
+  border: 1px solid #009efb;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  /* padding: 10px; */
+  border-left: 4px solid transparent;
+}
+
+.custom-list .list-group-item:hover {
+  background-color: #343a4f;
+  transform: translateY(-2px);
+  border-left: 4px solid #5bc0de;
+}
+
+.custom-list .list-group-item:active {
+  background-color: #1e2230;
+  transform: translateY(0);
+}
+
+.custom-list .list-group-item input[type="checkbox"] {
+  accent-color: #5bc0de; /* Custom checkbox color */
+  transform: scale(1.2);
+}
+
+.custom-list .list-group-item:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.custom-list .list-group-item:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+.Modal_main__Title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.selected_Item_List {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* Creates 5 equal columns */
+  gap: 10px; /* Adds space between the grid items */
+  list-style-type: none; /* Removes default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.Item__List_selected {
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Optional: Adds a border to each item */
+}
+
+.Item__List_selected p {
+  margin: 0;
+  padding: 0;
+}

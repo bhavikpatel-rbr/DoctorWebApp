@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
-import { mdiAccountCircleOutline, mdiEmailOutline, mdiLockOutline } from '@mdi/js';
-import { BiAbacus, BiBarChartAlt, BiBellOff } from 'react-icons/bi';
-import { MdAccountCircle } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from '../../../Sidebar/Sidebar';
-import HcOffcanvasNav from 'hc-offcanvas-nav';
-import calendaricon from './img/icons/calendar-icon.svg';
 import login from './img/login-02.png';
-import doctorImage from './img/login-logo.png';
 import loginicon01 from './img/icons/login-icon-01.svg';
 import loginicon02 from './img/icons/login-icon-02.svg';
 import loginicon03 from './img/icons/login-icon-03.svg';

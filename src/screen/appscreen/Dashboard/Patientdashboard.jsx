@@ -2,16 +2,6 @@ import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 import morningimg01 from '../../../img/morning-img-01.png'
 import user from '../../../img/user1.jpg'
-import calendar from '../../../img/icons/calendar.svg'
-import profile from '../../../img/icons/profile-add.svg'
-import depicon01 from '../../../img/icons/dep-icon-01.svg'
-import depicon02 from '../../../img/icons/dep-icon-02.svg'
-import depicon03 from '../../../img/icons/dep-icon-03.svg'
-import depicon04 from '../../../img/icons/dep-icon-04.svg'
-import depicon05 from '../../../img/icons/dep-icon-05.svg'
-import timer from '../../../img/icons/timer.svg'
-import sort from '../../../img/icons/sort-icon-01.svg'
-import sort1 from '../../../img/icons/sort-icon-02.svg'
 import health from '../../../img/icons/health-img.svg'
 import { ChartComponent, SeriesCollectionDirective, 
     AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,  AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip ,

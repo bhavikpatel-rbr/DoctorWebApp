@@ -1,23 +1,9 @@
-import React, { useState } from 'react';
-import blog1 from '../../../assest/img/blog/blog-01.jpg'
-import blog2 from '../../../assest/img/blog/blog-02.jpg'
+import React, {  } from 'react';
 import avatar1 from '../../../assest/img/profiles/avatar-02.jpg'
-import avatar2 from '../../../assest/img/profiles/avatar-01.jpg'
-import avatar3 from '../../../assest/img/profiles/avatar-03.jpg'
-import avatar4 from '../../../assest/img/profiles/avatar-04.jpg'
-import avatar5 from '../../../assest/img/profiles/avatar-05.jpg'
-import blog3 from '../../../assest/img/blog/blog-03.jpg'
-import blog4 from '../../../assest/img/blog/blog-04.jpg'
-import social1 from '../../../assest/img/icons/social-01.svg'
-import social2 from '../../../assest/img/icons/social-02.svg'
-import social3 from '../../../assest/img/icons/social-03.svg'
 import chatfootericon1 from '../../../assest/img/icons/chat-foot-icon-01.svg'
-import searchnormal from '../../../assest/img/icons/search-normal.svg'
 import chatfootericon2 from '../../../assest/img/icons/chat-foot-icon-02.svg'
 import chatfootericon3 from '../../../assest/img/icons/chat-foot-icon-03.svg'
-import social4 from '../../../assest/img/icons/social-04.svg'
-import blogdetail from '../../../assest/img/blog/blog-detail.jpg'
-import { ChevronRight, ChevronsRight } from 'react-feather';
+import { ChevronRight,  } from 'react-feather';
 const Breadcrumb = () => (
   <ul className="breadcrumb">
     <li className="breadcrumb-item">
@@ -175,45 +161,45 @@ const ChatBox = () => {
     },
     // Add more messages as needed
   ];
-  const ChatSearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+  // const ChatSearchBar = () => {
+  //   const [searchTerm, setSearchTerm] = useState('');
   
-    const handleSearchChange = (e) => {
-      setSearchTerm(e.target.value);
-    };
+  //   const handleSearchChange = (e) => {
+  //     setSearchTerm(e.target.value);
+  //   };
   
-    const handleSearchSubmit = (e) => {
-      e.preventDefault();
-      // Implement search functionality here
-      console.log('Search term:', searchTerm);
-    };
+  //   const handleSearchSubmit = (e) => {
+  //     e.preventDefault();
+  //     // Implement search functionality here
+  //     console.log('Search term:', searchTerm);
+  //   };
   
-    return (
-      <div className="top-liv-search top-chat-search">
-        <form onSubmit={handleSearchSubmit}>
-          <div className="chat-search">
-            <div className="input-block me-2 mb-0">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search here"
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-              <button type="submit" className="btn">
-                <img src={searchnormal} alt="Search" />
-              </button>
-            </div>
-            <div className="add-search">
-              <a href="javascript:;">
-                <i className="feather-plus"></i>
-              </a>
-            </div>
-          </div>
-        </form>
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="top-liv-search top-chat-search">
+  //       <form onSubmit={handleSearchSubmit}>
+  //         <div className="chat-search">
+  //           <div className="input-block me-2 mb-0">
+  //             <input
+  //               type="text"
+  //               className="form-control"
+  //               placeholder="Search here"
+  //               value={searchTerm}
+  //               onChange={handleSearchChange}
+  //             />
+  //             <button type="submit" className="btn">
+  //               <img src={searchnormal} alt="Search" />
+  //             </button>
+  //           </div>
+  //           <div className="add-search">
+  //             <a href="javascript:;">
+  //               <i className="feather-plus"></i>
+  //             </a>
+  //           </div>
+  //         </div>
+  //       </form>
+  //     </div>
+  //   );
+  // };
   return (
     <div className="content">
       <div className="page-header">

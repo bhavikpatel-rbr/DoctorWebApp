@@ -1,18 +1,11 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, {  } from 'react'
+import { Link,  } from 'react-router-dom';
 import doctorImage from '../../../img/logo.svg';
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './../../../assest/commoncss.css'
 const WelcomeScreen = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
+    
     return (
         <div className="welcome d-flex align-items-center justify-content-center vh-100">
             <div className="text-center pb-5 mb-5">

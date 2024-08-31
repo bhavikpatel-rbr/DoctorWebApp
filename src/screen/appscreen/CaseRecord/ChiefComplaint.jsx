@@ -178,12 +178,12 @@ const ChiefCompaint = () => {
           <div className="col-sm-12">
             <ul className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="chief_complaint.html">Chief Complaint</a>
+                <a href="chief_complaint.html">Case Record</a>
               </li>
               <li className="breadcrumb-item">
                 <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
               </li>
-              <li className="breadcrumb-item active">Chief Complaint </li>
+              <li className="breadcrumb-item active">Patient List</li>
             </ul>
           </div>
         </div>

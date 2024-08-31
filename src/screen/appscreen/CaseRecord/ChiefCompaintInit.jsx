@@ -9,9 +9,16 @@ import {
   FaUserCheck,
 } from "react-icons/fa";
 import { BsMicFill, BsMicMute } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import Avatar from "../../../img/doctor-03.jpg";
+
+import Accordion from "react-bootstrap/Accordion";
+
+import Col from "react-bootstrap/Col";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
 
 const ChiefCompaintInit = ({ patient }) => {
   const [rows, setRows] = useState([
@@ -172,7 +179,7 @@ const ChiefCompaintInit = ({ patient }) => {
 
   return (
     <div className="content">
-      <div class="row">
+      {/* <div class="row">
         <div class="col-sm-7 col-6">
           <ul class="breadcrumb">
             <li class="breadcrumb-item">
@@ -197,7 +204,7 @@ const ChiefCompaintInit = ({ patient }) => {
             </span>
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* <div className="patient-details mb-4 p-4 bg-white rounded border shadow-lg d-flex justify-content-between align-items-start">
         <div className="details-info">
@@ -239,57 +246,64 @@ const ChiefCompaintInit = ({ patient }) => {
         <div class="row">
           <div class="col-md-12">
             <div class="profile-view">
-              <div class="profile-img-wrap">
+              {/* <div class="">
                 <div class="profile-img">
                   <a href="#">
-                    <img class="avatar" src={Avatar} alt="" />
+                    <img class="patient_img"  src={Avatar} alt="" width={50} />
                   </a>
                 </div>
-              </div>
+              </div> */}
+
               <div class="profile-basic">
                 <div class="row">
                   <div class="col-md-7">
-                    <ul class="personal-info">
-                      <li>
-                        <span class="title">Name:</span>
-                        <span class="text">
-                          <a href>Tushar Joshi</a>
-                        </span>
-                      </li>
-                      <li>
-                        <span class="title">Phone:</span>
-                        <span class="text">
-                          <a href>770-889-6484</a>
-                        </span>
-                      </li>
-                      <li>
-                        <span class="title">Email:</span>
-                        <span class="text">
-                          <a href>
-                            <span
-                              class="__cf_email__"
-                              data-cfemail="f596879c86819c9b9492879a839086b5908d9498859990db969a98"
-                            >
-                              [email&#160;protected]
-                            </span>
+                    <div class="row">
+                      <div className="col-md-2">
+                        <div className="patient_img-wrap">
+                          <a>
+                            <img class="patient_img" src={Avatar} alt="" />
                           </a>
-                        </span>
-                      </li>
-                      <li>
-                        <span class="title">Birthday:</span>
-                        <span class="text">3rd March</span>
-                      </li>
-                      <li>
-                        <span class="title">Address:</span>
-                        <span class="text">
-                          714 Burwell Heights Road, Bridge City, TX, 77611
-                        </span>
-                      </li>
-                      <li>
-                        <span class="title">Gender:</span>
-                        <span class="text">Male</span>
-                      </li>
-                    </ul>
+                        </div>
+                      </div>
+                      <div className="col-md-10">
+                        <ul class="personal-info">
+                          <li>
+                            <span class="title">Name:</span>
+                            <span class="text">
+                              <a href>Tushar Joshi</a>
+                            </span>
+                          </li>
+                          <li>
+                            <span class="title">Phone:</span>
+                            <span class="text">
+                              <a href>770-889-6484</a>
+                            </span>
+                          </li>
+
+                          <li>
+                            <span class="title">Gender:</span>
+                            <span class="text">Male</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 col-6 text-end m-b-30">
+                    <a
+                      className={`btn btn-${
+                        isRecording ? "danger" : "primary"
+                      } btn-rounded`}
+                      onClick={toggleRecording}
+                    >
+                      {isRecording ? (
+                        <BsMicMute size={20} />
+                      ) : (
+                        <BsMicFill size={20} />
+                      )}
+                      <span className="ms-2">
+                        {isRecording ? "Stop Recording" : "Start Recording"}
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -298,7 +312,7 @@ const ChiefCompaintInit = ({ patient }) => {
         </div>
       </div>
 
-      <div className="mt-2">
+      <div className="mt-2 d-none">
         {rows.map((row, index) => (
           <form key={index} className="form-group mb-3">
             <div className="row">
@@ -645,10 +659,422 @@ const ChiefCompaintInit = ({ patient }) => {
         ))}
       </div>
 
-      <div className="text-center mt-4">
-        <button className="btn btn-primary" onClick={addRow}>
-          <BiPlus size={24} /> Add Row
-        </button>
+      <div className="mt-2">
+        <div className="patient__Menu card p-2">
+          <Tab.Container id="left-tabs-example" defaultActiveKey="CaseRecord">
+            <Row>
+              <Col sm={3}>
+                <Nav variant="pills" className="flex-column patient-nav">
+                  <Nav.Item>
+                    <Nav.Link eventKey="CaseRecord" className="patient__tab">
+                      <div className="Patient_menu_title">
+                        <h3>Case Record</h3>
+                      </div>
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="DisplayIcon" className="patient__tab">
+                      <div className="Patient_menu_title">
+                        <h3>Display Icon</h3>
+                      </div>
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Followup" className="patient__tab">
+                      <div className="Patient_menu_title">
+                        <h3>Rx, Follow up & Interpretation</h3>
+                      </div>
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Definations" className="patient__tab">
+                      <div className="Patient_menu_title">
+                        <h3>Definitions</h3>
+                      </div>
+                    </Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Col>
+              <Col sm={9}>
+                <Tab.Content>
+                  <Tab.Pane eventKey="CaseRecord">
+                    <div class="doctor-list-blk">
+                      <div class="row">
+                        <div className="col-xl-12">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                              <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-01.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Chief Complaint</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-02.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Assoiate Compaint</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-03.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Case Record</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Upload Case Record</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-12 mt-2">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add DiaGnosis (SFFT)</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Life Space Table </h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Data</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="DisplayIcon">
+                    <div class="doctor-list-blk">
+                      <div class="row">
+                        <div className="col-xl-12">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-01.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Mental State</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-02.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Conceptual Image (C.l)</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-03.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Essential Evolutionary Totality (EET)</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Evaluation</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-12 mt-2">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Repertorization</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="Followup">
+                    <div class="doctor-list-blk">
+                      <div class="row">
+                        <div className="col-xl-12">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-01.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Planning & Programming Of Rx</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-02.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>General Management</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-03.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Therapeutic Problem Definition</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Progress Record</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xl-12 mt-2">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Progress Notes</h5>
+                                </div>
+                              </Link>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Case Summary</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="Definations">
+                    <div class="doctor-list-blk">
+                      <div class="row">
+                        <div className="col-xl-12">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-01.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Glossary</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/appointments"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-02.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>How It Works</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Tab.Pane>
+                </Tab.Content>
+              </Col>
+            </Row>
+          </Tab.Container>
+        </div>
       </div>
 
       {isModalVisible && (

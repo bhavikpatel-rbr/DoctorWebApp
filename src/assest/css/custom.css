@@ -5910,7 +5910,8 @@ a.fc-event:not([href]) {
 }
 
 .profile-view .profile-basic {
-    margin-left: 170px
+    /* margin-left: 170px */
+    margin-left:0px
 }
 
 .staff-msg {

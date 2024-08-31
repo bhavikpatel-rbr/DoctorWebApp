@@ -186,3 +186,94 @@ ul.Optionitemlist li.selectedOptionsList {
   margin: 0;
   padding: 0;
 }
+
+.patient_img-wrap a img.patient_img {
+  width: 100%;
+}
+
+.Patient_menu_title h3 {
+  color: #044ccc;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+h2.accordion-header button.accordion-button {
+  padding: 10px;
+}
+
+.patient__Menu .doctor-box-icon {
+  width: 50px;
+  height: 50px;
+}
+.patient-nav .patient__tab.nav-link {
+  background: rgba(46, 55, 164, 0.05);
+  color: #2e37a4;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+  
+}
+
+.patient__Menu .doctor-list-blk {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 8px 2px #0000002e;
+}
+
+/* Trending Style for Navigation */
+.patient-nav .nav-link {
+  font-weight: bold;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  color: #fff;
+  /* background: linear-gradient(45deg, #ff6b6b, #f06595); */
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* box-shadow: 0 4px 15px rgba(240, 101, 149, 0.3); */
+  text-align: center;
+}
+
+.patient-nav .nav-link:hover {
+  transform: translateY(-5px);
+  /* Lift Effect on Hover */
+  box-shadow: 0 8px 20px rgba(240, 101, 149, 0.5);
+  /* Enhanced Shadow on Hover */
+}
+
+.patient-nav .nav-link.active {
+  background: #0049cb38 !important;
+  color: #ffffff !important;
+}
+
+/* Glassmorphism Background */
+.Patient_menu_title {
+  background: rgba(255, 255, 255, 0.2);
+  /* Semi-Transparent Background */
+  backdrop-filter: blur(10px);
+  /* Blur Effect */
+  border-radius: 15px;
+  /* Rounded Corners */
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s;
+}
+
+.Patient_menu_title h3 {
+  margin: 0;
+}
+
+
+
+/* Dark Mode Toggle */
+/* body.dark-mode .patient-nav .nav-link {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+} */
+
+/* body.dark-mode .Patient_menu_title {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+} */

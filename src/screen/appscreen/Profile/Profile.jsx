@@ -33,7 +33,7 @@ const ProfilePage = () => {
                 <div className="row">
                   <div className="col-md-5">
                     <div className="profile-info-left">
-                      <h3 className="user-name mt-0 mb-0">Cristina Groves</h3>
+                      <h3 className="user-name mt-0 mb-0">Tushar Joshi</h3>
                       <small className="text-muted">Gynecologist</small>
                       <div className="staff-id">Employee ID : DR-0001</div>
                       <div className="staff-msg">
@@ -73,11 +73,10 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="profile-tabs">
+      <div className="profile-tabs mt-3">
         <ul className="nav nav-tabs nav-tabs-bottom">
           <li className="nav-item"><a className="nav-link active" href="#about-cont" data-bs-toggle="tab">About</a></li>
-          <li className="nav-item"><a className="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Profile</a></li>
-          <li className="nav-item"><a className="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Messages</a></li>
+         
         </ul>
         <div className="tab-content">
           <div className="tab-pane show active" id="about-cont">

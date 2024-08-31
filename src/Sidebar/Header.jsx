@@ -223,7 +223,8 @@ const Header = () => {
         </li>
         <li className="nav-item dropdown has-arrow user-profile-list">
           <Link
-            href="#"
+            to="/profilepage"
+           
             className="dropdown-toggle nav-link user-link"
             data-bs-toggle="dropdown"
           >

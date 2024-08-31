@@ -41,6 +41,7 @@ import AddMedicalStorePage from '../screen/appscreen/Store/AddMedicalStorePage';
 import StoreGrid from '../screen/appscreen/Store/StoreGrid';
 import StoreDetails from '../screen/appscreen/Store/StoreDetails';
 import EditStoreDetails from '../screen/appscreen/Store/EditStoreDetails';
+import ProfilePage from '../screen/appscreen/Profile/Profile';
 
 const AppNavigation = () => {
 
@@ -119,7 +120,10 @@ const AppNavigation = () => {
 
              {/* Chat Routes */}
              <Route path="/chat" element={<Layout><ChatBox /></Layout>} />
-           
+
+              {/* ProfilePage Routes */}
+              <Route path="/profilepage" element={<Layout><ProfilePage /></Layout>} />
+             
              
             {/* Redirect to Dashboard if route not found */}
             <Route path="*" element={<Navigate to="/" replace />} />

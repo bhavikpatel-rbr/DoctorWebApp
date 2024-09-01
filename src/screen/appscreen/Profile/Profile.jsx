@@ -29,7 +29,9 @@ const ProfilePage = () => {
                   </a>
                 </div>
               </div>
-              <div className="profile-basic">
+              <div 
+              style={{marginLeft:170}}
+              className="profile-basic">
                 <div className="row">
                   <div className="col-md-5">
                     <div className="profile-info-left">

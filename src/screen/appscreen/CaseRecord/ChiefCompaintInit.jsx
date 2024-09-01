@@ -704,7 +704,7 @@ const ChiefCompaintInit = ({ patient }) => {
                           <div className="row">
                             <div class="col-xl-3 col-md-6">
                               <Link
-                                to="/appointments"
+                                to="/chiefcomplaintstart"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
@@ -720,7 +720,7 @@ const ChiefCompaintInit = ({ patient }) => {
                             </div>
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/associatecomplaintStart"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
@@ -736,7 +736,7 @@ const ChiefCompaintInit = ({ patient }) => {
                             </div>
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/caserecordadd"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
@@ -752,7 +752,7 @@ const ChiefCompaintInit = ({ patient }) => {
                             </div>
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/uploadcaserecord"
                                 class="doctor-widget patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
@@ -804,7 +804,7 @@ const ChiefCompaintInit = ({ patient }) => {
                             </div>
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/adddata"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">

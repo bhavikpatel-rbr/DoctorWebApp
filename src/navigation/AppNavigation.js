@@ -42,6 +42,12 @@ import StoreGrid from '../screen/appscreen/Store/StoreGrid';
 import StoreDetails from '../screen/appscreen/Store/StoreDetails';
 import EditStoreDetails from '../screen/appscreen/Store/EditStoreDetails';
 import ProfilePage from '../screen/appscreen/Profile/Profile';
+import Chiefcomplaintstart from '../screen/appscreen/CaseRecord/Chiefcomplaintstart';
+import AssociatecomplaintStart from '../screen/appscreen/CaseRecord/Associatecomplaintstart';
+import CaseRecordinit from '../screen/appscreen/CaseRecord/CaseRecordinit';
+import AddData from '../screen/appscreen/CaseRecord/AddData';
+import CaseRecordAdd from '../screen/appscreen/CaseRecord/CaseRecordAdd';
+import UploadCaseRecord from '../screen/appscreen/CaseRecord/Uploadcaserecord';
 
 const AppNavigation = () => {
 
@@ -103,6 +109,12 @@ const AppNavigation = () => {
              {/* Chief Complaint Routes */}
              <Route path="/chiefcompaint" element={<Layout><ChiefCompaint /></Layout>} />
              <Route path="/associatecomplaint" element={<Layout><AssociateComplaint /></Layout>} />
+             <Route path="/adddata" element={<Layout><AddData /></Layout>} />
+             <Route path="/caserecordadd" element={<Layout><CaseRecordAdd /></Layout>} />
+             <Route path="/caserecordinit" element={<Layout><CaseRecordinit /></Layout>} />
+             <Route path="/uploadcaserecord" element={<Layout><UploadCaseRecord /></Layout>} />
+             <Route path="/chiefcomplaintstart" element={<Layout><Chiefcomplaintstart /></Layout>} />
+             <Route path="/associatecomplaintStart" element={<Layout><AssociatecomplaintStart /></Layout>} />
              <Route path="/chiefcompaint/:id" element={<Layout><ChiefCompaintInit /></Layout>} />
              <Route path="/associatecomplaint/:id" element={<Layout><AssociateComplaintInit /></Layout>} />
            

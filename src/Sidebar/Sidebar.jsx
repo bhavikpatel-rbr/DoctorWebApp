@@ -233,13 +233,13 @@ const Sidebar = () => {
               </ul>
             </li>
             <li className={`submenu ${openSubMenu === 'cashRecord' ? 'active' : ''}`}>
-              <Link to="#" onClick={() => toggleSubMenu('cashRecord')}>
+              <Link to="/chiefcompaint">
                 <span className="menu-side">
                   <img src={menuicon06} alt="Cash Record" />
                 </span>
                 <span> Cash Record </span> <span className="menu-arrow"></span>
               </Link>
-              <ul className={`${openSubMenu === 'cashRecord' ? 'd-block' : 'd-none'}`}>
+              {/* <ul className={`${openSubMenu === 'cashRecord' ? 'd-block' : 'd-none'}`}>
                 <li><Link
                     to="/chiefcompaint"
                     className={activeLink === "/chiefcompaint" ? "active" : ""}
@@ -275,7 +275,7 @@ const Sidebar = () => {
                     className={activeLink === "/patientprofile" ? "active" : ""}
                     onClick={() => handleLinkClick("/patientprofile")}
                   > Add Data</Link></li>
-              </ul>
+              </ul> */}
             </li>
             <li className={`submenu ${openSubMenu === 'departments' ? 'active' : ''}`}>
               <Link to="#" onClick={() => toggleSubMenu('departments')}>

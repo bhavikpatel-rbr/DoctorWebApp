@@ -479,3 +479,18 @@ h2.accordion-header button.accordion-button {
     opacity: 1;
   }
 }
+
+.splashscreen-main {
+  background-color: #0049cb !important;
+}
+.btn.splash-btn {
+  background: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0049cb;
+}
+.btn.splash-btn:hover {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}

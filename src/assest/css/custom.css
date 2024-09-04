@@ -193,7 +193,7 @@ table.table td h2 a {
 }
 
 table.table td h2 a:hover {
-    color: #009efb
+    color: #0049cb
 }
 
 table.table td h2 span {
@@ -362,8 +362,8 @@ table.table td h2 span {
 }
 
 .badge-info-border {
-    border: 1px solid #009efb;
-    color: #009efb;
+    border: 1px solid #0049cb;
+    color: #0049cb;
     background-color: #fff;
     display: inline-block;
     min-width: 80px
@@ -410,7 +410,7 @@ table.table td h2 span {
 
 .bg-primary,
 .badge-primary {
-    background-color: #009efb !important
+    background-color: #0049cb !important
 }
 
 .bg-success,
@@ -420,7 +420,7 @@ table.table td h2 span {
 
 .bg-info,
 .badge-info {
-    background-color: #009efb !important
+    background-color: #0049cb !important
 }
 
 .bg-warning,
@@ -439,7 +439,7 @@ table.table td h2 span {
 
 .text-primary,
 .dropdown-menu>li>a.text-primary {
-    color: #00d3c7 !important
+    color: #0049cb !important
 }
 
 .text-success,
@@ -454,7 +454,7 @@ table.table td h2 span {
 
 .text-info,
 .dropdown-menu>li>a.text-info {
-    color: #009efb
+    color: #0049cb
 }
 
 .text-warning,
@@ -469,8 +469,11 @@ table.table td h2 span {
 
 .btn-primary {
     border-color: transparent;
-    background-color: #2e37a4;
-    border-radius: 8px
+    background-color: #0049cb;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
 }
 
 .btn-primary:hover,
@@ -492,34 +495,45 @@ table.table td h2 span {
 .open>.dropdown-toggle.btn-primary.focus,
 .open>.dropdown-toggle.btn-primary:focus,
 .open>.dropdown-toggle.btn-primary:hover {
-    background-color: #009efb;
-    border: 1px solid #009efb
+    background-color: #0049cb;
+    border: 1px solid #0049cb
 }
 
 .btn-primary.active:not(:disabled):not(.disabled),
 .btn-primary:active:not(:disabled):not(.disabled),
 .show>.btn-primary.dropdown-toggle {
-    background-color: #009efb;
-    border-color: #009efb;
+    background-color: #0049cb;
+    border-color: #0049cb;
     color: #fff
 }
 
 .btn-outline-primary {
-    border-color: #009efb;
-    color: #009efb
+    border-color: #0049cb;
+    color: #0049cb;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
 }
 
 .btn-outline-primary:hover {
-    background-color: #009efb;
-    border-color: #009efb;
+    background-color: #0049cb;
+    border-color: #0049cb;
     color: #fff
+}
+
+.btn-primary:hover {
+    border-color: #0049cb;
+    color: #0049cb;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
 }
 
 .btn-outline-primary.active:not(:disabled):not(.disabled),
 .btn-outline-primary:active:not(:disabled):not(.disabled),
 .show>.btn-outline-primary.dropdown-toggle {
-    background-color: #009efb;
-    border-color: #009efb;
+    background-color: #0049cb;
+    border-color: #0049cb;
     color: #fff
 }
 
@@ -551,8 +565,8 @@ table.table td h2 span {
 }
 
 .btn-info {
-    background-color: #009efb;
-    border: 1px solid #009efb
+    background-color: #0049cb;
+    border: 1px solid #0049cb
 }
 
 .btn-info:hover,
@@ -924,7 +938,7 @@ textarea.form-control {
 }
 
 .user-menu .bg-primary {
-    background-color: #009efb !important
+    background-color: #0049cb !important
 }
 
 .status {
@@ -1123,7 +1137,7 @@ textarea.form-control {
 }
 
 .sidebar-menu li.menu-title a {
-    color: #009efb;
+    color: #0049cb;
     display: inline-block;
     float: right;
     padding: 0
@@ -1201,7 +1215,7 @@ textarea.form-control {
 
 .profile-rightbar {
     display: none !important;
-    color: #009efb;
+    color: #0049cb;
     font-size: 26px;
     margin-left: 15px
 }
@@ -1522,7 +1536,7 @@ textarea.form-control {
 }
 
 .login-wrapper .loginbox .login-right .forgotpass a {
-    color: #00d3c7;
+    color: #0049cb;
     font-size: 14px;
     font-weight: 500;
     margin-left: auto
@@ -1623,15 +1637,16 @@ textarea.form-control {
 }
 
 .login-right .btn-primary {
-    background: linear-gradient(92.39deg, #4E57CD 1.86%, #2E37A4 100%);
-    border-radius: 12px;
-    font-size: 16px;
-    padding: 10px 15px
+    background: #0049cb;
+    border-radius: 8px;
+    font-size: 17px;
+    padding: 10px 15px;
 }
 
 .login-right .btn-primary:hover {
-    background: linear-gradient(92.39deg, #2E37A4 1.86%, #00318b 100%);
-    border: 1px solid #00318b
+    background: #fff;
+    border: 1px solid #00318b;
+    color: #0049cb;
 }
 
 .next-sign {
@@ -1821,7 +1836,7 @@ textarea.form-control {
 }
 
 .chart-title span {
-    color: #009efb
+    color: #0049cb
 }
 
 .card-title>a.btn {
@@ -1881,7 +1896,7 @@ ul.chat-user-total li i.old-users {
 }
 
 .btn-primary-two {
-    border: 1px solid #009efb;
+    border: 1px solid #0049cb;
     border-radius: 25px;
     width: 100px;
     background: 0 0;
@@ -1991,7 +2006,7 @@ ul.chat-user-total li i.old-users {
     top: 0;
     left: 0;
     height: 100%;
-    background-color: #009efb;
+    background-color: #0049cb;
     z-index: 10
 }
 
@@ -6158,12 +6173,12 @@ a.fc-event:not([href]) {
 }
 
 .roles-menu>ul>li.active>a {
-    border-color: #009efb;
-    color: #009efb
+    border-color: #0049cb;
+    color: #0049cb
 }
 
 .roles-menu>ul>li>a:hover {
-    border-color: #009efb;
+    border-color: #0049cb;
     background-color: #eee
 }
 
@@ -6880,7 +6895,7 @@ table .badge {
 }
 
 .table .invoice-link {
-    color: #009efb
+    color: #0049cb
 }
 
 .invoices-links.active {
@@ -8134,7 +8149,7 @@ a.status-grey {
 }
 
 .mail-list>li.active>a {
-    color: #009efb;
+    color: #0049cb;
     font-weight: 700
 }
 
@@ -8368,7 +8383,7 @@ table.table-inbox tbody tr.checked {
 }
 
 .read-more:hover {
-    color: #009efb;
+    color: #0049cb;
     margin-left: 10px;
     -moz-transition: all .2s linear 0s;
     -ms-transition: all .2s linear 0s;
@@ -8484,7 +8499,7 @@ table.table-inbox tbody tr.checked {
     background-color: transparent;
     border-color: #eaeaea;
     border-left: none;
-    color: #009efb;
+    color: #0049cb;
     height: 40px;
     border-radius: 0
 }
@@ -8593,7 +8608,7 @@ table.table-inbox tbody tr.checked {
 }
 
 .categories li a:hover {
-    color: #009efb;
+    color: #0049cb;
     margin-left: 10px;
     -moz-transition: all .2s linear 0s;
     -ms-transition: all .2s linear 0s;
@@ -8603,7 +8618,7 @@ table.table-inbox tbody tr.checked {
 }
 
 .categories>li>a>i {
-    color: #009efb;
+    color: #0049cb;
     font-size: 18px;
     margin-right: 10px
 }
@@ -8851,7 +8866,7 @@ blockquote p {
 .social-share>li>a {
     background: rgba(51, 52, 72, .05);
     border-radius: 8px;
-    color: #009efb;
+    color: #0049cb;
     font-size: 22px;
     height: 40px;
     width: 40px;
@@ -8878,7 +8893,7 @@ blockquote p {
 .share-blogs a {
     background: rgba(51, 52, 72, .05);
     border-radius: 8px;
-    color: #009efb;
+    color: #0049cb;
     font-size: 22px;
     height: 40px;
     width: 40px;
@@ -8949,7 +8964,7 @@ blockquote p {
 }
 
 .blog-author-name {
-    color: #009efb;
+    color: #0049cb;
     font-size: 18px
 }
 
@@ -8967,8 +8982,8 @@ blockquote p {
 }
 
 .comment-submit .btn {
-    background-color: #009efb;
-    border-color: #009efb;
+    background-color: #0049cb;
+    border-color: #0049cb;
     border-radius: 0;
     font-size: 18px;
     padding: 8px 26px;
@@ -9484,11 +9499,11 @@ blockquote p {
 .invoice-load-btn .btn {
     font-weight: 700;
     font-size: 14px;
-    color: #009efb;
+    color: #0049cb;
     min-width: 170px;
     padding: 10px 15px;
     background: #fff;
-    border: 2px solid #009efb;
+    border: 2px solid #0049cb;
     border-radius: 6px;
     display: inline-flex;
     justify-content: center;
@@ -9501,7 +9516,7 @@ blockquote p {
 }
 
 .invoice-load-btn .btn:hover {
-    background: #009efb;
+    background: #0049cb;
     color: #fff
 }
 
@@ -9512,7 +9527,7 @@ blockquote p {
     margin-right: 8px;
     vertical-align: 0;
     border: 3px solid #9a55ff21;
-    border-right-color: #009efb;
+    border-right-color: #0049cb;
     border-radius: 50%;
     -webkit-animation: .75s linear infinite spinner-border;
     animation: .75s linear infinite spinner-border
@@ -9538,7 +9553,7 @@ blockquote p {
 }
 
 .invoices-grid-card .bg-secondary-dark {
-    background: #009efb
+    background: #0049cb
 }
 
 .invoices-grid-card .bg-primary-dark {
@@ -9606,8 +9621,8 @@ blockquote p {
 }
 
 .check:checked+.checktoggle {
-    background-color: #009efb;
-    border: 1px solid #009efb
+    background-color: #0049cb;
+    border: 1px solid #0049cb
 }
 
 .payment-details {
@@ -9731,7 +9746,7 @@ blockquote p {
 
 .invoice-inner-footer .form-control {
     position: absolute;
-    color: #009efb;
+    color: #0049cb;
     background: 0 0;
     border: 0;
     display: inline-block;
@@ -9771,7 +9786,7 @@ blockquote p {
 
 .invoice-item .customer-text a {
     font-size: 14px;
-    color: #009efb;
+    color: #0049cb;
     margin-left: 12px
 }
 
@@ -9891,7 +9906,7 @@ blockquote p {
 
 .invoice-total-box .add-links {
     font-weight: 500;
-    color: #009efb;
+    color: #0049cb;
     margin-bottom: 20px;
     display: block
 }
@@ -9980,8 +9995,8 @@ blockquote p {
 }
 
 .check:checked+.checktoggles {
-    background-color: #009efb;
-    border: 1px solid #009efb
+    background-color: #0049cb;
+    border: 1px solid #0049cb
 }
 
 .check:checked+.checktoggles:after {
@@ -10108,7 +10123,7 @@ td.add-remove {
 
 .invoice-inner-footer .form-control {
     position: relative;
-    color: #009efb;
+    color: #0049cb;
     background: 0 0;
     border: 0;
     display: inline-block;
@@ -10512,7 +10527,7 @@ td.add-remove {
 
 .invoice-payment-box .payment-details {
     background: 0 0;
-    border: 2px dashed #009efb
+    border: 2px dashed #0049cb
 }
 
 .invoice-payment-box .payment-details p {
@@ -13185,7 +13200,7 @@ body[data-layout-mode=dark] .alertify .ajs-header {
     .nav-tabs.nav-tabs-bottom>li>a.active:focus {
         border-bottom-width: 2px;
         border-color: transparent;
-        border-bottom-color: #009efb;
+        border-bottom-color: #0049cb;
         background-color: transparent;
         transition: none 0s ease 0s;
         -moz-transition: none 0s ease 0s;
@@ -13692,7 +13707,7 @@ body[data-layout-mode=dark] .alertify .ajs-header {
     .nav-tabs.nav-justified>li>a.active,
     .nav-tabs.nav-justified>li>a.active:hover,
     .nav-tabs.nav-justified>li>a.active:focus {
-        border-color: transparent transparent transparent #009efb;
+        border-color: transparent transparent transparent #0049cb;
         border-left-width: 2px
     }
 
@@ -13729,7 +13744,7 @@ body[data-layout-mode=dark] .alertify .ajs-header {
     .nav-tabs>li>a.active:hover,
     .nav-tabs>li>a.active:focus {
         background-color: #f5f5f5;
-        border-color: transparent transparent transparent #009efb;
+        border-color: transparent transparent transparent #0049cb;
         border-left-width: 2px
     }
 
@@ -13759,7 +13774,7 @@ body[data-layout-mode=dark] .alertify .ajs-header {
     .nav-tabs-justified>li>a.active:hover,
     .nav-tabs-justified>li>a.active:focus {
         border-width: 0 0 0 2px;
-        border-left-color: #009efb
+        border-left-color: #0049cb
     }
 
     h1 {
@@ -14156,9 +14171,15 @@ body[data-layout-mode=dark] .alertify .ajs-header {
     .card {
         width: 100%
     }
+    .landing-slider-item .card {
+        margin-top: 0px !important;
+    }
 
     .patient-structure h3 {
         font-size: 32px
+    }
+    .welcome_btn {
+        display: block !important;
     }
 }
 

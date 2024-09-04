@@ -14,7 +14,7 @@ const WelcomeScreen = () => {
                     <h1 className="text-primary mb-1">Dactorapp</h1>
                     <p className="text-muted">Welcome to Dactorapp</p>
                 </div>
-                <div className='fixed-bottom'>
+                {/* <div className='fixed-bottom'>
             <div className="footer  p-3 footer-custom">
                 <Link to={"/signup"} className="btn btn-primary btn-lg w-100">
                 Sign Up
@@ -22,10 +22,20 @@ const WelcomeScreen = () => {
             </div>
             <div className="footer  p-3 footer-custom">
                 <Link to={"/login"} className="btn btn-outline-primary btn-lg w-100">
-                Sign In
+                
                 </Link>
             </div>
-            </div>
+            </div> */}
+            <div className='fixed-bottom'>
+    <div className="footer p-3 footer-custom d-flex justify-content-between">
+        <Link to={"/signup"} className="btn btn-primary btn-lg w-100 m-2">
+            Sign Up
+        </Link>
+        <Link to={"/login"} className="btn btn-outline-primary btn-lg w-100 m-2">
+            Log In
+        </Link>
+    </div>
+</div>
             </div>
             
             {/* <div className="footer footer-custom fixed-bottom d-grid gap-3 m-4">

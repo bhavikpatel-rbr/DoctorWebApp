@@ -11,7 +11,8 @@ const LandingScreen = () => {
                         <div className="rounded-pill bg-white p-3 d-inline-block mb-4">
                             <img src={doctorImage} alt="Logo" className="img-fluid logo" />
                         </div>
-                        <h1 className="mb-0">Dactorapp</h1>
+                        <h1 className="mb-0">Totality - The Ultimate Health Solution</h1>
+
                     </Link>
                 </div>
             </div>

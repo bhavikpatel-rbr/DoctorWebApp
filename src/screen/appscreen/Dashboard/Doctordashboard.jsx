@@ -10,8 +10,7 @@ import sort1 from '../../../img/icons/sort-icon-02.svg'
 import { ChartComponent, SeriesCollectionDirective, 
     AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,  AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip ,
     SeriesDirective, Inject, ChartTheme, Legend,LineSeries, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, Highlight } from '@syncfusion/ej2-react-charts';
-import { EmitType } from '@syncfusion/ej2-base';
-import { Browser } from '@syncfusion/ej2-base';
+
 import { FaCheckSquare } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import ReactApexChart from 'react-apexcharts';

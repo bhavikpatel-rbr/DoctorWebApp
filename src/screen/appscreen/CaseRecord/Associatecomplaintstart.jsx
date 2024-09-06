@@ -211,7 +211,7 @@ const AssociatecomplaintStart = ({ patient }) => {
           <form key={index} className="form-group card p-3 mb-3">
             <div className="row">
               {/* Location Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -279,7 +279,7 @@ const AssociatecomplaintStart = ({ patient }) => {
               </div>
 
               {/* Sensation Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -350,7 +350,7 @@ const AssociatecomplaintStart = ({ patient }) => {
               </div>
 
               {/* Modalities Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -419,7 +419,7 @@ const AssociatecomplaintStart = ({ patient }) => {
                 </div>
               </div>
               {/* Concomitant Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input

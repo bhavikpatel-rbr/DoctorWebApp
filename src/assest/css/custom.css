@@ -528,6 +528,13 @@ table.table td h2 span {
     font-weight: bold;
     background-color: #fff;
 }
+.btn-primary span:hover {
+    border-color: #0049cb;
+    color: #0049cb;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+}
 
 .btn-outline-primary.active:not(:disabled):not(.disabled),
 .btn-outline-primary:active:not(:disabled):not(.disabled),

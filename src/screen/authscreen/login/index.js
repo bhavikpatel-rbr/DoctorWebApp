@@ -32,7 +32,7 @@ const Login = () => {
                   </div> */}
                   <h2>Login</h2>
 
-                  <form action="https://preclinic.dreamstechnologies.com/html/template/index.html">
+                  <form action="/admindashboard">
                     <div className="input-block">
                       <label htmlFor="email">Email <span className="login-danger">*</span></label>
                       <input id="email" className="form-control" type="text" />

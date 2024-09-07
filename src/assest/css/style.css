@@ -37,7 +37,7 @@ body.mini-sidebar.expand-menu .sidebar .sidebar-menu > ul > li.submenu-open ul l
 /* General scrollbar styling (for Firefox and other browsers that support it) */
 .sidebar-inner.slimscroll {
     scrollbar-width: thin; /* Firefox: sets scrollbar width */
-    scrollbar-color: #6969dd #e0e0e0; /* Firefox: sets thumb and track colors */
+    scrollbar-color: #707070 #e0e0e0; /* Firefox: sets thumb and track colors */
 }
 
 
@@ -238,7 +238,7 @@ h2.accordion-header button.accordion-button {
 .patient-nav .nav-link:hover {
   transform: translateY(-5px);
   /* Lift Effect on Hover */
-  box-shadow: 0 8px 20px rgba(240, 101, 149, 0.5);
+  box-shadow:0 8px 20px rgb(91 91 91 / 38%);
   /* Enhanced Shadow on Hover */
 }
 
@@ -373,38 +373,6 @@ h2.accordion-header button.accordion-button {
 
 
 
-.custom-table {
-  font-size: 1rem;
-  color: #333;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.custom-table td {
-  padding: 1rem;
-}
-
-
-.custom-table .profile-image a:hover {
-  text-decoration: underline;
-}
-
-.custom-table .text-muted {
-  font-style: italic;
-}
-
-.custom-table .cursor-pointer {
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.custom-table .cursor-pointer:hover {
-  background-color: #f0f0f0;
-}
-
-
 
 .dropdown-menu-custom {
   position: absolute;
@@ -444,7 +412,7 @@ h2.accordion-header button.accordion-button {
   color: #fff;
   background-color: #007bff;
 }
-
+/* 
 .btn {
   font-size: 0.9rem;
   font-weight: 600;
@@ -469,7 +437,7 @@ h2.accordion-header button.accordion-button {
 .btn-danger:hover {
   background-color: #c82333;
   border-color: #bd2130;
-}
+} */
 
 @keyframes fadeIn {
   from {
@@ -494,3 +462,5 @@ h2.accordion-header button.accordion-button {
   border: 1px solid #fff;
   color: #fff;
 }
+
+

@@ -195,13 +195,13 @@ const Chiefcomplaintstart = ({ patient }) => {
           <a
             className={`btn btn-${
               isRecording ? "danger" : "primary"
-            } btn-rounded`}
+            } `}
             onClick={addRow}
           >
-            <BsPlus size={20} />
-            <span className="ms-2">
+            <BsPlus size={30}  style={{marginHorizontal: 10,}}/>
+            {/* <span className="ms-2"> */}
               Add Row
-            </span>
+            {/* </span> */}
           </a>
         </div>
       </div>
@@ -211,7 +211,7 @@ const Chiefcomplaintstart = ({ patient }) => {
           <form key={index} className="form-group card p-3 mb-3">
             <div className="row">
               {/* Location Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -279,7 +279,7 @@ const Chiefcomplaintstart = ({ patient }) => {
               </div>
 
               {/* Sensation Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -350,7 +350,7 @@ const Chiefcomplaintstart = ({ patient }) => {
               </div>
 
               {/* Modalities Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -419,7 +419,7 @@ const Chiefcomplaintstart = ({ patient }) => {
                 </div>
               </div>
               {/* Concomitant Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input

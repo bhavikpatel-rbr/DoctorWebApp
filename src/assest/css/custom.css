@@ -528,7 +528,7 @@ table.table td h2 span {
     font-weight: bold;
     background-color: #fff;
 }
-.btn-primary span:hover {
+.btn-primary:hover span {
     border-color: #0049cb;
     color: #0049cb;
     font-size: 18px;

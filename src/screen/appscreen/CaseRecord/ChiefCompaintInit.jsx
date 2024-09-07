@@ -300,9 +300,8 @@ const ChiefCompaintInit = ({ patient }) => {
                       ) : (
                         <BsMicFill size={20} />
                       )}
-                      <span className="ms-2">
                         {isRecording ? "Stop Recording" : "Start Recording"}
-                      </span>
+                      {/* </span> */}
                     </a>
                   </div>
                 </div>

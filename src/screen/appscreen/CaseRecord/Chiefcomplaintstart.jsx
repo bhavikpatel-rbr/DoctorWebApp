@@ -211,7 +211,7 @@ const Chiefcomplaintstart = ({ patient }) => {
           <form key={index} className="form-group card p-3 mb-3">
             <div className="row">
               {/* Location Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -256,21 +256,21 @@ const Chiefcomplaintstart = ({ patient }) => {
   <div className="custom-dropdown-menu position-absolute end-0 mt-2">
     <button
       className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "High")}
+      onClick={() => handleDropdownSelect(index, "locationValue", "1")}
     >
-      High
+      1
     </button>
     <button
       className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
+      onClick={() => handleDropdownSelect(index, "locationValue", "2")}
     >
-      Medium
+      2
     </button>
     <button
       className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
+      onClick={() => handleDropdownSelect(index, "locationValue", "3")}
     >
-      Low
+      3
     </button>
   </div>
 )}
@@ -279,7 +279,7 @@ const Chiefcomplaintstart = ({ patient }) => {
               </div>
 
               {/* Sensation Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -327,21 +327,21 @@ const Chiefcomplaintstart = ({ patient }) => {
                       <div className="custom-dropdown-menu position-absolute end-0 mt-2">
                       <button
                         className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "High")}
+                        onClick={() => handleDropdownSelect(index, "locationValue", "1")}
                       >
-                        High
+                        1
                       </button>
                       <button
                         className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
+                        onClick={() => handleDropdownSelect(index, "locationValue", "2")}
                       >
-                        Medium
+                        2
                       </button>
                       <button
                         className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
+                        onClick={() => handleDropdownSelect(index, "locationValue", "3")}
                       >
-                        Low
+                        3
                       </button>
                     </div>
                     )}
@@ -350,7 +350,7 @@ const Chiefcomplaintstart = ({ patient }) => {
               </div>
 
               {/* Modalities Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -397,21 +397,21 @@ const Chiefcomplaintstart = ({ patient }) => {
                        <div className="custom-dropdown-menu position-absolute end-0 mt-2">
                        <button
                          className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "High")}
+                         onClick={() => handleDropdownSelect(index, "locationValue", "1")}
                        >
-                         High
+                         1
                        </button>
                        <button
                          className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
+                         onClick={() => handleDropdownSelect(index, "locationValue", "2")}
                        >
-                         Medium
+                         2
                        </button>
                        <button
                          className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
+                         onClick={() => handleDropdownSelect(index, "locationValue", "3")}
                        >
-                         Low
+                         3
                        </button>
                      </div>
                     )}
@@ -419,7 +419,7 @@ const Chiefcomplaintstart = ({ patient }) => {
                 </div>
               </div>
               {/* Concomitant Section */}
-              <div className="col-md-6">
+              <div className="col-md-3">
                 <div className="d-flex align-items-center mb-2">
                   <div className="form-check me-2">
                     <input
@@ -466,21 +466,21 @@ const Chiefcomplaintstart = ({ patient }) => {
                      <div className="custom-dropdown-menu position-absolute end-0 mt-2">
                      <button
                        className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "High")}
+                       onClick={() => handleDropdownSelect(index, "locationValue", "1")}
                      >
-                       High
+                       1
                      </button>
                      <button
                        className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
+                       onClick={() => handleDropdownSelect(index, "locationValue", "2")}
                      >
-                       Medium
+                       2
                      </button>
                      <button
                        className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
+                       onClick={() => handleDropdownSelect(index, "locationValue", "3")}
                      >
-                       Low
+                       3
                      </button>
                    </div>
                     )}

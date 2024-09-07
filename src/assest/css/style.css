@@ -238,7 +238,7 @@ h2.accordion-header button.accordion-button {
 .patient-nav .nav-link:hover {
   transform: translateY(-5px);
   /* Lift Effect on Hover */
-  box-shadow: 0 8px 20px rgba(240, 101, 149, 0.5);
+  /* box-shadow: 0 8px 20px rgba(240, 101, 149, 0.5); */
   /* Enhanced Shadow on Hover */
 }
 

@@ -16,8 +16,8 @@ function App() {
       <ScrollToTop />
       {token ? <AppNavigation /> : 
       
-      // <AuthNavigation />
-       <AppNavigation />
+       //<AuthNavigation />
+        <AppNavigation />
       }
     </>
   );

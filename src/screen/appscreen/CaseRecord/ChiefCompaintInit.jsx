@@ -8,7 +8,7 @@ import {
   FaVenusMars,
   FaUserCheck,
 } from "react-icons/fa";
-import { BsMicFill, BsMicMute } from "react-icons/bs";
+import { BsMicFill, BsMicMute , BsPlus } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import Avatar from "../../../img/doctor-03.jpg";
@@ -289,6 +289,9 @@ const ChiefCompaintInit = ({ patient }) => {
                     </div>
                   </div>
                   <div class="col-sm-5 col-6 text-end m-b-30">
+                    <div className="mt=5">
+
+                    
                     <a
                       className={`btn btn-${
                         isRecording ? "danger" : "primary"
@@ -303,6 +306,24 @@ const ChiefCompaintInit = ({ patient }) => {
                         {isRecording ? "Stop Recording" : "Start Recording"}
                       {/* </span> */}
                     </a>
+                    </div>
+                    <div className="mt-2">
+                    <Link
+                    to="/addPatientDetails"
+                      className={`btn btn-${
+                       "primary"
+                      } btn-rounded`}
+                      
+                    >
+                     
+                        <BsPlus size={25} />
+                     
+                       
+                     
+                        {"Add Patient Details"}
+                      {/* </span> */}
+                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -817,6 +838,43 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/dateAndDailyroutine"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Date And Daily routine</h5>
+                                </div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                         <div className="col-xl-12 mt-2">
+                          <div className="row">
+                            <div class="col-xl-3 col-md-6">
+                            <Link
+                                to="/lifeSpaceInvestigation"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Life - Space Investigation</h5>
+                                </div>
+                              </Link>
+                            </div>
+                           
                           </div>
                         </div>
                       </div>

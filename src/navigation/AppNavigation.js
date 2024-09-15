@@ -48,6 +48,9 @@ import CaseRecordinit from '../screen/appscreen/CaseRecord/CaseRecordinit';
 import AddData from '../screen/appscreen/CaseRecord/AddData';
 import CaseRecordAdd from '../screen/appscreen/CaseRecord/CaseRecordAdd';
 import UploadCaseRecord from '../screen/appscreen/CaseRecord/Uploadcaserecord';
+import AddPatientDetails from '../screen/appscreen/CaseRecord/AddPatientDetails';
+import DateAndDailyroutine from '../screen/appscreen/CaseRecord/DateAndDailyroutine';
+import LifeSpaceInvestigation from '../screen/appscreen/CaseRecord/LifeSpaceInvestigation';
 
 const AppNavigation = () => {
 
@@ -117,6 +120,10 @@ const AppNavigation = () => {
              <Route path="/associatecomplaintStart" element={<Layout><AssociatecomplaintStart /></Layout>} />
              <Route path="/chiefcompaint/:id" element={<Layout><ChiefCompaintInit /></Layout>} />
              <Route path="/associatecomplaint/:id" element={<Layout><AssociateComplaintInit /></Layout>} />
+             <Route path="/addPatientDetails" element={<Layout><AddPatientDetails /></Layout>} />
+             <Route path="/dateAndDailyroutine" element={<Layout><DateAndDailyroutine /></Layout>} />
+             <Route path="/lifeSpaceInvestigation" element={<Layout><LifeSpaceInvestigation /></Layout>} />
+            
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />

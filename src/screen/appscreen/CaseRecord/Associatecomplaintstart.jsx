@@ -195,304 +195,289 @@ const AssociatecomplaintStart = ({ patient }) => {
           <a
             className={`btn btn-${
               isRecording ? "danger" : "primary"
-            } btn-rounded`}
+            } `}
             onClick={addRow}
           >
-            <BsPlus size={20} />
-            <span className="ms-2">
+            <BsPlus size={30}  style={{marginHorizontal: 10,}}/>
+            {/* <span className="ms-2"> */}
               Add Row
-            </span>
+            {/* </span> */}
           </a>
         </div>
       </div>
 
-      <div className=" mt-2  mb-5">
+      <table className="table mt-2 mb-5">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Sensation & Pathology</th>
+            <th>Modalities AF</th>
+            <th>Concomitant</th>
+          </tr>
+        </thead>
+        <tbody>
         {rows.map((row, index) => (
-          <form key={index} className="form-group card p-3 mb-3">
-            <div className="row">
-              {/* Location Section */}
-              <div className="col-md-3">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.locationChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "locationChecked")
-                      }
-                      id={`location-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.location}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index ? { ...r, location: e.target.value } : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.location);
-                        setselectedtype("location");
-                      }}
-                      placeholder="Enter Location"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "location")}
-                      aria-label="Dropdown"
-                    >
-                      {row.locationValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "location" && (
-  <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-    <button
-      className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "High")}
-    >
-      High
-    </button>
-    <button
-      className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
-    >
-      Medium
-    </button>
-    <button
-      className="custom-dropdown-item"
-      onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
-    >
-      Low
-    </button>
-  </div>
-)}
-                  </div>
-                </div>
-              </div>
-
-              {/* Sensation Section */}
-              <div className="col-md-3">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.sensationChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "sensationChecked")
-                      }
-                      id={`sensation-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.sensation}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, sensation: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.sensation);
-                        setselectedtype("Sensation & Pathology");
-                      }}
-                      placeholder="Enter Sensation & Pathology"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "sensation")}
-                      aria-label="Dropdown"
-                    >
-                      {row.sensationValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "sensation" && (
-                      <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-                      <button
-                        className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "High")}
-                      >
-                        High
-                      </button>
-                      <button
-                        className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
-                      >
-                        Medium
-                      </button>
-                      <button
-                        className="custom-dropdown-item"
-                        onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
-                      >
-                        Low
-                      </button>
-                    </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Modalities Section */}
-              <div className="col-md-3">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.modalitiesChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "modalitiesChecked")
-                      }
-                      id={`modalities-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.modalities}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, modalities: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.modalities);
-                        setselectedtype("Modalities AF");
-                      }}
-                      placeholder="Enter Modalities AF"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "modalities")}
-                      aria-label="Dropdown"
-                    >
-                      {row.modalitiesValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "modalities" && (
-                       <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-                       <button
-                         className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "High")}
-                       >
-                         High
-                       </button>
-                       <button
-                         className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
-                       >
-                         Medium
-                       </button>
-                       <button
-                         className="custom-dropdown-item"
-                         onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
-                       >
-                         Low
-                       </button>
-                     </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {/* Concomitant Section */}
-              <div className="col-md-3">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.concomitantChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "concomitantChecked")
-                      }
-                      id={`concomitant-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.concomitant}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, concomitant: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.concomitant);
-                        setselectedtype("Concomitant");
-                      }}
-                      placeholder="Enter Concomitant"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "concomitant")}
-                      aria-label="Dropdown"
-                    >
-                      {row.concomitantValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "concomitant" && (
-                     <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-                     <button
-                       className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "High")}
-                     >
-                       High
-                     </button>
-                     <button
-                       className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "Medium")}
-                     >
-                       Medium
-                     </button>
-                     <button
-                       className="custom-dropdown-item"
-                       onClick={() => handleDropdownSelect(index, "locationValue", "Low")}
-                     >
-                       Low
-                     </button>
-                   </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Display Selected Options */}
-          </form>
-        ))}
+  <tr
+    key={index}
+    //className={row.location || row.sensation || row.modalities || row.concomitant ? "bg-highlight" : "bg-default"}
+  >
+    <td>
+    <div className={`d-flex p-1 align-items-center ${row.location ? "bg-highlight" : "bg-default"}`}>
+  <div className="flex-grow-1 position-relative">
+    <input
+      type="text"
+      className="form-control"
+      value={row.location}
+      onChange={(e) =>
+        setRows(
+          rows.map((r, i) =>
+            i === index ? { ...r, location: e.target.value } : r
+          )
+        )
+      }
+      onKeyDown={(e) => {
+        handleKeyPress(e, index);
+        setCurrentPage(0);
+        setselectedoptionvalue(row.location);
+        setselectedtype("location");
+      }}
       
+      placeholder="Enter Location"
+    />
+    <button
+      type="button"
+      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
+      onClick={() => toggleDropdown(index, "location")}
+      aria-label="Dropdown"
+    >
+      {row.locationValue || <MdArrowDropDown size={24} />}
+    </button>
+    {dropdownOpen[index] === "location" && (
+      <div className="custom-dropdown-menu position-absolute end-0 mt-2">
+        <button
+          className="custom-dropdown-item"
+          onClick={() =>
+            handleDropdownSelect(index, "locationValue", "1")
+          }
+        >
+          1
+        </button>
+        <button
+          className="custom-dropdown-item"
+          onClick={() =>
+            handleDropdownSelect(index, "locationValue", "2")
+          }
+        >
+          2
+        </button>
+        <button
+          className="custom-dropdown-item"
+          onClick={() =>
+            handleDropdownSelect(index, "locationValue", "3")
+          }
+        >
+          3
+        </button>
       </div>
+    )}
+  </div>
+</div>
+    </td>
+    <td>
+    <div className={`d-flex p-1 align-items-center ${row.sensation ? "bg-highlight" : "bg-default"}`}>
+        <div className="flex-grow-1 position-relative">
+          <input
+            type="text"
+            className={`form-control ${row.sensation ? "input-highlight" : "input-default"}`}
+            value={row.sensation}
+            onChange={(e) =>
+              setRows(
+                rows.map((r, i) =>
+                  i === index
+                    ? { ...r, sensation: e.target.value }
+                    : r
+                )
+              )
+            }
+            onKeyDown={(e) => {
+              handleKeyPress(e, index);
+              setCurrentPage(0);
+              setselectedoptionvalue(row.sensation);
+              setselectedtype("sensation");
+            }}
+            placeholder="Enter Sensation"
+          />
+          <button
+            type="button"
+            className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
+            onClick={() => toggleDropdown(index, "sensation")}
+            aria-label="Dropdown"
+          >
+            {row.sensationValue || <MdArrowDropDown size={24} />}
+          </button>
+          {dropdownOpen[index] === "sensation" && (
+            <div className="custom-dropdown-menu position-absolute end-0 mt-2">
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "sensationValue", "1")
+                }
+              >
+                1
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "sensationValue", "2")
+                }
+              >
+                2
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "sensationValue", "3")
+                }
+              >
+                3
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </td>
+    <td>
+    <div className={`d-flex p-1 align-items-center ${row.modalities ? "bg-highlight" : "bg-default"}`}>
+        <div className="flex-grow-1 position-relative">
+          <input
+            type="text"
+            className={`form-control ${row.modalities ? "input-highlight" : "input-default"}`}
+            value={row.modalities}
+            onChange={(e) =>
+              setRows(
+                rows.map((r, i) =>
+                  i === index
+                    ? { ...r, modalities: e.target.value }
+                    : r
+                )
+              )
+            }
+            onKeyDown={(e) => {
+              handleKeyPress(e, index);
+              setCurrentPage(0);
+              setselectedoptionvalue(row.modalities);
+              setselectedtype("modalities");
+            }}
+            placeholder="Enter Modalities"
+          />
+          <button
+            type="button"
+            className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
+            onClick={() => toggleDropdown(index, "modalities")}
+            aria-label="Dropdown"
+          >
+            {row.modalitiesValue || <MdArrowDropDown size={24} />}
+          </button>
+          {dropdownOpen[index] === "modalities" && (
+            <div className="custom-dropdown-menu position-absolute end-0 mt-2">
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "modalitiesValue", "1")
+                }
+              >
+                1
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "modalitiesValue", "2")
+                }
+              >
+                2
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "modalitiesValue", "3")
+                }
+              >
+                3
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </td>
+    <td>
+    <div className={`d-flex p-1 align-items-center ${row.concomitant ? "bg-highlight" : "bg-default"}`}>
+        <div className="flex-grow-1 position-relative">
+          <input
+            type="text"
+            className={`form-control ${row.concomitant ? "input-highlight" : "input-default"}`}
+            value={row.concomitant}
+            onChange={(e) =>
+              setRows(
+                rows.map((r, i) =>
+                  i === index
+                    ? { ...r, concomitant: e.target.value }
+                    : r
+                )
+              )
+            }
+            onKeyDown={(e) => {
+              handleKeyPress(e, index);
+              setCurrentPage(0);
+              setselectedoptionvalue(row.concomitant);
+              setselectedtype("concomitant");
+            }}
+            placeholder="Enter Concomitant"
+          />
+          <button
+            type="button"
+            className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
+            onClick={() => toggleDropdown(index, "concomitant")}
+            aria-label="Dropdown"
+          >
+            {row.concomitantValue || <MdArrowDropDown size={24} />}
+          </button>
+          {dropdownOpen[index] === "concomitant" && (
+            <div className="custom-dropdown-menu position-absolute end-0 mt-2">
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "concomitantValue", "1")
+                }
+              >
+                1
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "concomitantValue", "2")
+                }
+              >
+                2
+              </button>
+              <button
+                className="custom-dropdown-item"
+                onClick={() =>
+                  handleDropdownSelect(index, "concomitantValue", "3")
+                }
+              >
+                3
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </td>
+  </tr>
+))}
+
+
+        </tbody>
+      </table>
 
      
 

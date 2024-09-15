@@ -241,6 +241,13 @@ h2.accordion-header button.accordion-button {
   box-shadow:0 8px 20px rgb(91 91 91 / 38%);
   /* Enhanced Shadow on Hover */
 }
+.bg-highlight {
+  background-color: #d1e7dd; /* Light green color */
+}
+
+.bg-default {
+  background-color: #ffffff; /* White color */
+}
 
 .patient-nav .nav-link.active {
   background: #0049cb38 !important;

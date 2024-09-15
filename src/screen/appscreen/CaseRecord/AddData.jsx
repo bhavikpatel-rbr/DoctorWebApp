@@ -192,18 +192,18 @@ const AddData = ({ patient }) => {
               </ul>
             </div>
             <div class="col-sm-5 col-6 text-end m-b-30">
-              <a
-                className={`btn btn-${
-                  isRecording ? "danger" : "primary"
-                } btn-rounded`}
-                onClick={addRow}
-              >
-                <BsPlus size={20} />
-                <span className="ms-2">
-                  Add Row
-                </span>
-              </a>
-            </div>
+          <a
+            className={`btn btn-${
+              isRecording ? "danger" : "primary"
+            } `}
+            onClick={addRow}
+          >
+            <BsPlus size={30}  style={{marginHorizontal: 10,}}/>
+            {/* <span className="ms-2"> */}
+              Add Row
+            {/* </span> */}
+          </a>
+        </div>
           </div>
     
           <div className=" mt-2  mb-5">

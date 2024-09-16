@@ -470,4 +470,59 @@ h2.accordion-header button.accordion-button {
   color: #fff;
 }
 
+.Patient_Person_Add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.Patient_Person_Add_main {
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Patient_Textinput-main {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Comment_list {
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.Patient_comment_list_Main {
+  margin-top: 10px;
+  width: 70%;
+  margin: auto;
+  margin-right: 0;
+  margin-top: 10px;
+}
+p.priority_btn {
+  width: 40px;
+  height: 40px;
+  background: #0049cb;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+} 
+.Comment_list {
+  align-items: center;
+}
+
+.Comment_name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0049cb;
+}
 

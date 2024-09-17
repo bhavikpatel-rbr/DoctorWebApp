@@ -475,7 +475,7 @@ h2.accordion-header button.accordion-button {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 .Patient_Person_Add_main {
@@ -484,6 +484,7 @@ h2.accordion-header button.accordion-button {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .Patient_Textinput-main {
@@ -496,7 +497,10 @@ h2.accordion-header button.accordion-button {
 .Comment_list {
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
+
 .Patient_comment_list_Main {
   margin-top: 10px;
   width: 70%;
@@ -505,16 +509,17 @@ h2.accordion-header button.accordion-button {
   margin-top: 10px;
 }
 p.priority_btn {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: #0049cb;
   align-items: center;
   justify-content: center;
   display: flex;
-  font-size: 17px;
+  font-size: 15 px;
   font-weight: bold;
   color: #fff;
   border-radius: 10px;
+  margin-bottom:0px
 } 
 .Comment_list {
   align-items: center;
@@ -524,5 +529,92 @@ p.priority_btn {
   font-weight: bold;
   font-size: 16px;
   color: #0049cb;
+  margin-bottom: 0;
 }
 
+
+
+.tabs-container {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.custom-tabs .nav-tabs {
+  position: relative;
+}
+
+.custom-tabs .nav-link {
+  position: relative;
+  color: #6c757d;
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.custom-tabs .nav-link.active {
+  color: #007bff;
+}
+
+.custom-tabs .nav-link:hover {
+  color: #0056b3;
+}
+
+.elastic-underline {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background-color: #007bff;
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50px;
+  z-index: 1;
+}
+
+
+
+.custom-tabs {
+  background: #0d6efd;
+  color: #fff;
+  align-items: center;
+}
+
+.custom-tabs li.nav-item {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/* .custom-tabs li.nav-item button {
+  border-radius: 50px;
+  width: 150px !important;
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+} */
+
+.custom-tabs li.nav-item button {
+  border-radius: 50px;
+  /* width: 150px !important; */
+  margin: 10px;
+  color: #fff;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-width: 150px;
+  line-height: 1.2;
+  height: 45px;
+}
+.custom-tabs li.nav-item button::after {
+  content: ""; /* Clearfix to prevent overflow issues */
+  display: block;
+  clear: both;
+}
+
+.Patient_Problem_Nem h3 {
+  font-size: 15px;
+  font-weight: bold;
+}

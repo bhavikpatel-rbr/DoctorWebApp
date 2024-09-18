@@ -792,7 +792,7 @@ const ChiefCompaintInit = ({ patient }) => {
                           <div className="row">
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/addSfft"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
@@ -808,7 +808,7 @@ const ChiefCompaintInit = ({ patient }) => {
                             </div>
                             <div class="col-xl-3 col-md-6">
                             <Link
-                                to="/appointments"
+                                to="/lstTable"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">

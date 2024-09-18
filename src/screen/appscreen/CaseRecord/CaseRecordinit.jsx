@@ -1,10 +1,11 @@
 import React, { useRef, useState,useEffect } from "react";
 // import Tab from "react-bootstrap/Tab";
 // import Tabs from "react-bootstrap/Tabs";
-
+import { ChevronRight } from 'react-feather';
 import { Tabs, Tab } from 'react-bootstrap'; 
 
 import { MdArrowDropDown } from "react-icons/md";
+import PatientSection from "./CommonRender/PatientSection";
 
 const data = [
   {
@@ -76,7 +77,14 @@ const CaseRecordinit = () => {
   const [showOptions, setShowOptions] = useState(true);
   const [focusedIndex, setFocusedIndex] = useState(null);
   const totalPages = Math.ceil(data.length / rowsPerPage);
-
+  const [physicalDescription, setPhysicalDescription] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [weightGain, setWeightGain] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [weightLoss, setWeightLoss] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [period, setPeriod] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [height, setHeight] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [facialConfiguration, setFacialConfiguration] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [facialExpression, setFacialExpression] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
+  const [chin, setChin] = useState({ inputValue: '', locationValue: '', rows: [], showComments: true });
   const [inputValue, setInputValue] = useState("");
   const [dropdownValue, setDropdownValue] = useState(""); // To store the selected dropdown value
   const [showComments, setShowComments] = useState(false); // Initial state to show comments
@@ -119,14 +127,17 @@ const CaseRecordinit = () => {
     }
   };
   // Handle the selection of dropdown value
-  const handleDropdownSelect = (index, key, value) => {
-    setLocationValue(value); // Set selected value
-    setDropdownOpen(null); // Close dropdown after selection
+  const handleDropdownSelect = (section, setSection, key, value) => {
+    if (key === "locationValue") {
+      setSection({ ...section, locationValue: value });
+    }
+    setDropdownOpen(null);
   };
 
+
   // Toggle the dropdown visibility
-  const toggleDropdown = (index, key) => {
-    setDropdownOpen(dropdownOpen === index ? null : index); // Toggle dropdown open/close
+  const toggleDropdown = (key) => {
+    setDropdownOpen(dropdownOpen === key ? null : key);
   };
   const handleDropdownToggle = (doctorId) => {
     setDropdownOpen((prev) => ({
@@ -145,197 +156,147 @@ const CaseRecordinit = () => {
     }));
   };
 
-  const toggleCommentsVisibility = () => {
-    setShowComments(!showComments); // Toggle the visibility
+  const toggleCommentsVisibility = (section, setSection) => {
+    setSection({ ...section, showComments: !section.showComments });
   };
 
   // Add new item to the list
-  const handleAddItem = () => {
-    if (inputValue && locationValue) {
-      const newItem = { location: inputValue, locationValue };
-      setRows([...rows, newItem]); // Add new item to the list
-      setInputValue(""); // Reset input field
-      setLocationValue(null); // Reset dropdown value
-    }
-    setShowComments(true)
+  const handleAddItem = (section, setSection) => {
+    const newItem = {
+      location: section.inputValue,
+      locationValue: section.locationValue,
+    };
+    setSection({ ...section, rows: [...section.rows, newItem], inputValue: '', locationValue: '' });
   };
 
+  const handleRemoveItem = (section, setSection, index) => {
+    const newRows = section.rows.filter((_, i) => i !== index);
+    setSection({ ...section, rows: newRows });
+  };
+  
   
 
   return (
+    
     <div className="content">
+ <div className="page-header">
+        <div className="row">
+          <div className="col-sm-12">
+            <ul className="breadcrumb">
+              <li className="breadcrumb-item">
+                <a href="chief_complaint.html">Case Record</a>
+              </li>
+              <li className="breadcrumb-item">
+                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
+              </li>
+              <li className="breadcrumb-item active">Case Record</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="card p-2">
       <div className="tabs-container">
       <Tabs
         // ref={tabRef}
         defaultActiveKey="Appearance"
         id="elastic-tab-example"
-        className="custom-tabs mb-3"
+        className="custom-tabs mb-0"
         onSelect={handleTabSelect}
         fill
       >
-          <Tab eventKey="Appearance" title="APPEARANCE">
-            <>
-            
-            <div className="Patient_Person_Add_main">
-              <div className="Patient_Person_Add">
-                <div className="Patient_Problem_Nem"  onClick={toggleCommentsVisibility}>
-                  <h3 className="mb-0">PHYSICAL DESCRIPTION</h3>
-                </div>
-                <div className="Patient_Textinput-main">
-                  <div className="Patient_Textinput w-50">
-                    <div className="p-1">
-                      <div className="flex-grow-1 position-relative">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={inputValue}
-                          onChange={(e) => setInputValue(e.target.value)}
-                          placeholder="Enter Comment"
-                        />
-                        <button
-                          type="button"
-                          className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                          onClick={() => toggleDropdown(0, "location")}
-                          aria-label="Dropdown"
-                        >
-                          {locationValue || <MdArrowDropDown size={24} />}
-                        </button>
-                        {dropdownOpen === 0 && (
-                          <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "1")
-                              }
-                            >
-                              1
-                            </button>
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "2")
-                              }
-                            >
-                              2
-                            </button>
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "3")
-                              }
-                            >
-                              3
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    className="btn btn-primary btn-rounded Add-btn-new"
-                    onClick={handleAddItem}
-                  >
-                    + Add
-                  </button>
-                </div>
-              </div>
-
-              {/* Show the list of added comments */}
-
-              {showComments && ( // Conditionally render the comments section
-                <div className="Patient_comment_list_Main">
-                  {rows.map((row, index) => (
-                    <div key={index} className="Comment_list d-flex">
-                      <p className="Comment_name">{row.location}</p>
-                      <p className="priority_btn">{row.locationValue}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-
-            <div className="Patient_Person_Add_main">
-              <div className="Patient_Person_Add">
-                <div className="Patient_Problem_Nem"  onClick={toggleCommentsVisibility}>
-                  <h3 className="mb-0">PHYSICAL DESCRIPTION</h3>
-                </div>
-                <div className="Patient_Textinput-main">
-                  <div className="Patient_Textinput w-50">
-                    <div className="p-1">
-                      <div className="flex-grow-1 position-relative">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={inputValue}
-                          onChange={(e) => setInputValue(e.target.value)}
-                          placeholder="Enter Comment"
-                        />
-                        <button
-                          type="button"
-                          className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                          onClick={() => toggleDropdown(0, "location")}
-                          aria-label="Dropdown"
-                        >
-                          {locationValue || <MdArrowDropDown size={24} />}
-                        </button>
-                        {dropdownOpen === 0 && (
-                          <div className="custom-dropdown-menu position-absolute end-0 mt-2">
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "1")
-                              }
-                            >
-                              1
-                            </button>
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "2")
-                              }
-                            >
-                              2
-                            </button>
-                            <button
-                              className="custom-dropdown-item"
-                              onClick={() =>
-                                handleDropdownSelect(0, "locationValue", "3")
-                              }
-                            >
-                              3
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    className="btn btn-primary btn-rounded Add-btn-new"
-                    onClick={handleAddItem}
-                  >
-                    + Add
-                  </button>
-                </div>
-              </div>
-
-              {/* Show the list of added comments */}
-
-              {showComments && ( // Conditionally render the comments section
-                <div className="Patient_comment_list_Main">
-                  {rows.map((row, index) => (
-                    <div key={index} className="Comment_list d-flex">
-                      <p className="Comment_name">{row.location}</p>
-                      <p className="priority_btn">{row.locationValue}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            </>
-          </Tab>
-          <Tab eventKey="profile" title="BIGESPION">
+         <Tab eventKey="Appearance" title="APPEARANCE">
+      <>
+        <PatientSection
+          title="PHYSICAL DESCRIPTION"
+          section={physicalDescription}
+          setSection={setPhysicalDescription}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          handleRemoveItem={handleRemoveItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="WEIGHT/GAIN"
+          section={weightGain}
+          setSection={setWeightGain}
+          dropdownOpen={dropdownOpen}
+          
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+           handleRemoveItem={handleRemoveItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="WEIGHT/LOSS"
+          section={weightLoss}
+          setSection={setWeightLoss}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          handleRemoveItem={handleRemoveItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="PERIOD"
+          section={period}
+          setSection={setPeriod}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          handleRemoveItem={handleRemoveItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="HEIGHT"
+          section={height}
+          setSection={setHeight}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+          handleRemoveItem={handleRemoveItem}
+          handleAddItem={handleAddItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="FACIAL CONFIGURATION"
+          section={facialConfiguration}
+          setSection={setFacialConfiguration}
+          handleRemoveItem={handleRemoveItem}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="FACIAL EXPRESSION"
+          section={facialExpression}
+          setSection={setFacialExpression}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleRemoveItem={handleRemoveItem}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+        <PatientSection
+          title="CHIN"
+          section={chin}
+          setSection={setChin}
+          dropdownOpen={dropdownOpen}
+          toggleDropdown={toggleDropdown}
+          handleRemoveItem={handleRemoveItem}
+          handleDropdownSelect={handleDropdownSelect}
+          handleAddItem={handleAddItem}
+          toggleCommentsVisibility={toggleCommentsVisibility}
+        />
+      </>
+    </Tab>
+          <Tab eventKey="profile" title="DIGESTION">
             Tab content for BIGESPION
           </Tab>
           <Tab eventKey="longer-tab" title="ELIMINATIONS">

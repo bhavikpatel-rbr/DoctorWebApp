@@ -474,7 +474,10 @@ h2.accordion-header button.accordion-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  background-color:#f4f2f2;
+  border-radius: 10px;
+ padding-left: 10px;
+ padding-right:10px;
   /* padding-bottom: 10px; */
 }
 
@@ -482,7 +485,7 @@ h2.accordion-header button.accordion-button {
   justify-content: space-between;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   margin-bottom: 5px;
 }
@@ -618,3 +621,154 @@ p.priority_btn {
   font-size: 15px;
   font-weight: bold;
 }
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 16px;
+  background-color: #f4f4f4;
+}
+
+
+
+.back-button, .help-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+
+
+.input-section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  padding: 8px;
+  font-size: 16px;
+  width: calc(100% - 120px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  padding: 0 8px;
+}
+
+.save-button {
+  background-color: navy;
+  color: white;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+.triangle-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.triangle {
+  width: 100px;
+  height: 100px;
+  background-color: navy;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  align-self: center;
+}
+
+.triangle-item {
+  background-color: beige;
+  padding: 16px;
+  margin: 4px;
+  text-align: center;
+  flex: 1;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.remove-button, .analysis-button, .add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+}
+
+.analysis-button {
+  background-color: navy;
+  color: white;
+}
+
+.add-button {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-list {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 8px;
+  margin-bottom: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.remove-item-button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+.Lsttable {
+  margin-top: 10px;
+  border: 1px solid #000;
+}
+
+
+
+  
+
+
+
+
+

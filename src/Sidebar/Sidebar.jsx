@@ -237,7 +237,7 @@ const Sidebar = () => {
                 <span className="menu-side">
                   <img src={menuicon06} alt="Cash Record" />
                 </span>
-                <span> Cash Record </span> <span className="menu-arrow"></span>
+                <span> Case Record </span> <span className="menu-arrow"></span>
               </Link>
               {/* <ul className={`${openSubMenu === 'cashRecord' ? 'd-block' : 'd-none'}`}>
                 <li><Link

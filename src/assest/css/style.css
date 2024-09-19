@@ -764,11 +764,14 @@ p.priority_btn {
   border: 1px solid #000;
 }
 
+.table-header, .table-row {
+  display: flex;
+}
 
-
-  
-
-
-
-
-
+.table-cell {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #000;
+  text-align: center;
+  background-color: #F5F5DC;
+}

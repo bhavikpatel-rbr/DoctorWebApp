@@ -722,7 +722,7 @@ const ChiefCompaintInit = ({ patient }) => {
                       <div class="row">
                         <div className="col-xl-12">
                           <div className="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                               <Link
                                 to="/chiefcomplaintstart"
                                 class="doctor-widget border-right-bg patient__submenu"
@@ -738,7 +738,7 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/associatecomplaintStart"
                                 class="doctor-widget border-right-bg patient__submenu"
@@ -754,10 +754,10 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/caserecordadd"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                class="doctor-widget  patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
                                   <img
@@ -770,10 +770,15 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                           
+                          </div>
+                        </div>
+                        <div className="col-xl-12 mt-2">
+                          <div className="row">
+                          <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/uploadcaserecord"
-                                class="doctor-widget patient__submenu"
+                                class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
                                   <img
@@ -786,11 +791,7 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                          </div>
-                        </div>
-                        <div className="col-xl-12 mt-2">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/addSfft"
                                 class="doctor-widget border-right-bg patient__submenu"
@@ -806,10 +807,10 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/lstTable"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                class="doctor-widget patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
                                   <img
@@ -822,7 +823,12 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                           
+                          </div>
+                        </div>
+                         <div className="col-xl-12 mt-2">
+                          <div className="row">
+                          <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/adddata"
                                 class="doctor-widget border-right-bg patient__submenu"
@@ -838,10 +844,10 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/dateAndDailyroutine"
-                                class="doctor-widget patient__submenu"
+                                class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
                                   <img
@@ -854,14 +860,10 @@ const ChiefCompaintInit = ({ patient }) => {
                                 </div>
                               </Link>
                             </div>
-                          </div>
-                        </div>
-                         <div className="col-xl-12 mt-2">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                             <Link
                                 to="/lifeSpaceInvestigation"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                class="doctor-widget patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">
                                   <img

@@ -7,6 +7,13 @@ const AddSfft = () => {
   const [dropdownValue, setDropdownValue] = useState('');
   const [items, setItems] = useState([]);
 
+
+
+  const [structure, setStructure] = useState("Structure");
+  const [form, setForm] = useState("Form");
+  const [functionText, setFunctionText] = useState("Function");
+  const [time, setTime] = useState("Time");
+
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const handleDropdownSelect = (value) => {
     setDropdownValue(value);
@@ -48,16 +55,49 @@ const AddSfft = () => {
           <button className="save-button">SAVE</button>
         </div>
        
-       <div className='flex: 1,'>
+       {/* <div className='flex: 1,'>
 
        
         
           <div className="triangle"></div>
-          {/* <div className="triangle-item">Structure</div>
-          <div className="triangle-item">Time</div>
-          <div className="triangle-item">Function</div>
-          <div className="triangle-item">Form</div> */}
+      
+        </div> */}
+     <div className="diagram">
+        <div className="structure">
+          <h4>structure</h4>
+          <input 
+            type="text" 
+            value={structure} 
+            onChange={(e) => setStructure(e.target.value)} 
+          />
         </div>
+        <div className="form">
+        <h4>form</h4>
+          <input 
+            type="text" 
+            value={form} 
+            onChange={(e) => setForm(e.target.value)} 
+          />
+        </div>
+        <div className="triangle"></div>
+        <div className="function">
+        <h4>function</h4>
+          <input 
+            type="text" 
+            value={functionText} 
+            onChange={(e) => setFunctionText(e.target.value)} 
+          />
+        </div>
+        <div className="time">
+          <h4>time</h4>
+          <input 
+            type="text" 
+            value={time} 
+            onChange={(e) => setTime(e.target.value)} 
+          />
+        </div>
+      </div>
+
        
         <div className="action-buttons">
           <button className="remove-button">REMOVE</button>

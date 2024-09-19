@@ -6,13 +6,24 @@ const AddSfft = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownValue, setDropdownValue] = useState('');
   const [items, setItems] = useState([]);
+ 
+  const [lines, setLines] = useState([]);
+
+  const addLine = () => {
+    setLines([...lines, { width: 2, height: 50 }]);
+  };
+
+  const updateLine = (index, width, height) => {
+    const newLines = [...lines];
+    newLines[index] = { width, height };
+    setLines(newLines);
+  };
 
 
-
-  const [structure, setStructure] = useState("Structure");
-  const [form, setForm] = useState("Form");
-  const [functionText, setFunctionText] = useState("Function");
-  const [time, setTime] = useState("Time");
+  const [structure, setStructure] = useState("");
+  const [form, setForm] = useState("");
+  const [functionText, setFunctionText] = useState("");
+  const [time, setTime] = useState("");
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const handleDropdownSelect = (value) => {
@@ -29,6 +40,48 @@ const AddSfft = () => {
   const handleRemoveItem = (index) => {
     setItems(items.filter((_, i) => i !== index));
   };
+
+ 
+
+  // const startDrag = (index) => {
+  //   const onMouseMove = (e) => {
+  //     const newLines = [...lines];
+  //     newLines[index].left = e.clientX;
+  //     newLines[index].top = e.clientY;
+
+  //     // Snapping logic
+  //     for (const key in sections) {
+  //       const section = sections[key];
+  //       const cornerPositions = [
+  //         { x: section.left, y: section.top }, // Top-left
+  //         { x: section.left + section.width, y: section.top }, // Top-right
+  //         { x: section.left, y: section.top + section.height }, // Bottom-left
+  //         { x: section.left + section.width, y: section.top + section.height }, // Bottom-right
+  //       ];
+
+  //       cornerPositions.forEach((corner) => {
+  //         const snapThreshold = 10; // Distance within which to snap
+  //         if (
+  //           Math.abs(corner.x - e.clientX) < snapThreshold &&
+  //           Math.abs(corner.y - e.clientY) < snapThreshold
+  //         ) {
+  //           newLines[index].left = corner.x;
+  //           newLines[index].top = corner.y;
+  //         }
+  //       });
+  //     }
+
+  //     setLines(newLines);
+  //   };
+
+  //   const onMouseUp = () => {
+  //     window.removeEventListener('mousemove', onMouseMove);
+  //     window.removeEventListener('mouseup', onMouseUp);
+  //   };
+
+  //   window.addEventListener('mousemove', onMouseMove);
+  //   window.addEventListener('mouseup', onMouseUp);
+  // };
 
   return (
    
@@ -71,7 +124,7 @@ const AddSfft = () => {
             onChange={(e) => setStructure(e.target.value)} 
           />
         </div>
-        <div className="form">
+        <div className="form ">
         <h4>form</h4>
           <input 
             type="text" 
@@ -96,6 +149,22 @@ const AddSfft = () => {
             onChange={(e) => setTime(e.target.value)} 
           />
         </div>
+        {/* {lines.map((line, index) => (
+          <div
+            key={line.id}
+            className="line"
+            style={{
+              width: `${line.width}px`,
+              height: `${line.height}px`,
+              backgroundColor: 'black',
+              position: 'absolute',
+              left: `${line.left}px`,
+              top: `${line.top}px`,
+              cursor: 'grab',
+            }}
+            onMouseDown={() => startDrag(index)}
+          />
+        ))} */}
       </div>
 
        
@@ -104,8 +173,11 @@ const AddSfft = () => {
           <button className="analysis-button">ANALYSIS</button>
           <button className="add-button" onClick={handleAddItem}>+</button>
         </div>
+        
 
-        <div className="items-list">
+{/* <button onClick={addLine}>Add Line</button> */}
+
+                <div className="items-list">
           {items.map((item, index) => (
             <div key={index} className="item">
               <span>{item.inputValue} - {item.dropdownValue}</span>

@@ -72,7 +72,7 @@ const AddPatientDetails = () => {
         </div>
       </div>
 
-      <div className="row">
+      <div className="content">
   <div className="col-sm-12">
     <div className="card">
       <div className="card-body">

@@ -1,204 +1,248 @@
 import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { Box } from '@mui/material';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: '16px', // Increased padding for better spacing
-    borderBottom: `2px solid ${theme.palette.divider}`, // Added bottom border
-    fontSize: '16px', // Increased font size for header
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-    borderRight: `1px solid ${theme.palette.divider}`,
-    '&:last-child': {
-      borderRight: 'none',
-    },
-    minHeight: '60px',
-    backgroundColor: '#ffffff',
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  '&:hover': {
-    backgroundColor: theme.palette.action.selected,
-    transition: 'background-color 0.3s ease',
-  },
-  backgroundColor: '#ffffff',
-}));
-
-const CommentBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.grey[200],
-  borderRadius: '4px',
-  padding: '8px',
-  marginBottom: '8px',
-  fontStyle: 'italic',
-  color: '#555',
-  width: '100%',
-}));
-
-const CommentInput = styled(TextField)({
-  width: '100%',
-  marginBottom: '8px',
-});
+import { Link } from 'react-router-dom';
+import { Box, Button, IconButton, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { ChevronRight, ArrowDownLeft } from 'react-feather';
 
 const LstTable = () => {
-  const [rows, setRows] = useState([
-    {
-      id: 1,
-      event: 'Frozen yoghurt',
-      eventComments: [],
-      onset: 'Immediate',
-      onsetComments: [],
-      duration: 'Short',
-      durationComments: [],
-      lifeSpace: 'Home',
-      lifeSpaceComments: [],
-      characteristics: 'Sweet',
-      characteristicsComments: [],
-      cause: 'Unknown',
-      causeComments: [],
-      attributes: 'None',
-      attributesComments: [],
-      interpretation: 'Delicious',
-      interpretationComments: [],
-    },
-  ]);
+  const [formData, setFormData] = useState({
+    eventName: '',
+    onset: '',
+    duration: '',
+    family: { keyword: '', description: '' },
+    society: { keyword: '', description: '' },
+    work: { keyword: '', description: '' },
+    interpretation: { keyword: '', description: '' },
+  });
 
-  const handleAddRow = () => {
-    const newRow = {
-      id: rows.length + 1,
-      event: '',
-      eventComments: [],
-      onset: '',
-      onsetComments: [],
-      duration: '',
-      durationComments: [],
-      lifeSpace: '',
-      lifeSpaceComments: [],
-      characteristics: '',
-      characteristicsComments: [],
-      cause: '',
-      causeComments: [],
-      attributes: '',
-      attributesComments: [],
-      interpretation: '',
-      interpretationComments: [],
-    };
-    setRows([...rows, newRow]);
+  const [showDescription, setShowDescription] = useState({
+    family: false,
+    society: false,
+    work: false,
+    interpretation: false,
+  });
+
+  const [events, setEvents] = useState([{
+    id: 1,
+    eventName: 'Default Event',
+    onset: '2024-09-25',
+    duration: '1 hour',
+    family: { keyword: 'default', description: '' },
+    society: { keyword: 'default', description: '' },
+    work: { keyword: 'default', description: '' },
+    interpretation: { keyword: 'default', description: '' },
+  }]);
+
+  const lightColors = ['#fff', '#d4ffe6', '#b8cdff', '#edd4ff', '#f8ffd1'];
+
+  const FormContainer = styled(Box)(({ theme, bgcolor }) => ({
+    padding: theme.spacing(4),
+    backgroundColor: bgcolor || theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[3],
+  }));
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const [key, field] = name.split('.');
+    setFormData((prevData) => ({
+      ...prevData,
+      [key]: { ...prevData[key], [field]: value },
+    }));
   };
 
-  const handleInputChange = (id, field, value) => {
-    setRows(rows.map((row) => (row.id === id ? { ...row, [field]: value } : row)));
+  const toggleDescription = (key) => {
+    setShowDescription((prevShow) => ({
+      ...prevShow,
+      [key]: !prevShow[key],
+    }));
   };
 
-  const handleAddComment = (id, field) => {
-    const commentField = `${field}Comments`;
-    const newComment = rows.find((row) => row.id === id)[field];
-    if (newComment) {
-      setRows(
-        rows.map((row) => {
-          if (row.id === id) {
-            return {
-              ...row,
-              [commentField]: [...row[commentField], newComment],
-              [field]: '',
-            };
-          }
-          return row;
-        })
-      );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  const handleAddEvent = () => {
+    if (events.length < 5) {
+      const newEvent = {
+        id: events.length + 1,
+        eventName: formData.eventName,
+        onset: formData.onset,
+        duration: formData.duration,
+        family: formData.family,
+        society: formData.society,
+        work: formData.work,
+        interpretation: formData.interpretation,
+      };
+      setEvents((prevEvents) => [...prevEvents, newEvent]);
+      // Reset form data after adding event
+      setFormData({
+        eventName: '',
+        onset: '',
+        duration: '',
+        family: { keyword: '', description: '' },
+        society: { keyword: '', description: '' },
+        work: { keyword: '', description: '' },
+        interpretation: { keyword: '', description: '' },
+      });
+    } else {
+      alert("You can only add a maximum of 5 events.");
     }
   };
 
-  const handleEditComment = (id, field, index, value) => {
-    const commentField = `${field}Comments`;
-    setRows(
-      rows.map((row) => {
-        if (row.id === id) {
-          const updatedComments = [...row[commentField]];
-          updatedComments[index] = value;
-          return {
-            ...row,
-            [commentField]: updatedComments,
-          };
-        }
-        return row;
-      })
-    );
-  };
-
   return (
-    <div className='content'>
-      <TableContainer component={Paper} style={{ overflowX: 'auto', marginTop: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-        <Table sx={{ minWidth: 700 }} aria-label='customized table'>
-          <TableHead>
-            <TableRow>
-              {['SR No', 'Event / Key word', 'Onset', 'Duration', 'Life-Space', 'Characteristics Expression', 'Cause Aggravation Amelioration', 'Attributes', 'Interpretation'].map((header) => (
-                <StyledTableCell align='center' key={header}>{header}</StyledTableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell>{row.id}</StyledTableCell>
-                {['event', 'onset', 'duration', 'lifeSpace', 'characteristics', 'cause', 'attributes', 'interpretation'].map((field) => (
-                  <StyledTableCell key={field} align='center' style={{ padding: '12px' }}>
-                    <div style={{ display: 'flex', width: '200px', flexDirection: 'column', alignItems: 'flex-end' }}>
-                      {row[`${field}Comments`].map((comment, index) => (
-                        <CommentBox key={index}>
-                          <textarea
-                            value={comment}
-                            rows="4"
-                            onChange={(e) => handleEditComment(row.id, field, index, e.target.value)}
-                            placeholder='Edit comment'
-                            style={{ width: '100%', border: 'none', borderRadius: '4px', padding: '4px' }}
-                          />
-                        </CommentBox>
-                      ))}
-                      {row[`${field}Comments`].length === 0 && (
-                        <>
-                          <TextField
-                            value={row[field]}
-                            onChange={(e) => handleInputChange(row.id, field, e.target.value)}
-                            variant='outlined'
-                            size='small'
-                            placeholder={`Add a ${field}`}
-                            style={{ marginBottom: '8px', width: '200px' }}
-                          />
-                          <Button variant='outlined' color='primary' onClick={() => handleAddComment(row.id, field)}>
-                            Add Comment
-                          </Button>
-                        </>
+    <div className="content">
+      <div className="page-header">
+        <div className="row">
+          <div className="col-sm-12">
+            <ul className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/appointments">LstTable</Link>
+              </li>
+              <li className="breadcrumb-item">
+                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
+              </li>
+              <li className="breadcrumb-item active">LstTable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-sm-12">
+          {/* Display Event Names */}
+          <Typography variant="h5" gutterBottom>
+            Events List
+          </Typography>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
+            {events.map((event, index) => (
+              <div 
+                key={event.id} 
+                style={{ 
+                  padding: '8px', 
+                  border: '1px solid #ccc', 
+                  borderRadius: '4px', 
+                  backgroundColor: lightColors[index % lightColors.length] // Assign color
+                }}
+              >
+                {event.eventName}
+              </div>
+            ))}
+          </div>
+
+          {/* Assign a background color based on the number of events */}
+          <FormContainer bgcolor={events.length ? lightColors[(events.length - 1) % lightColors.length] : undefined}>
+            <form onSubmit={handleSubmit}>
+              <Typography variant="h4" gutterBottom>Event Details</Typography>
+              
+              <div className="row">
+                <div className="row">
+                  <div className="col-4">
+                    <div className="input-block local-forms">
+                      <label>Event Name:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="eventName"
+                        value={formData.eventName}
+                        onChange={(e) => setFormData({ ...formData, eventName: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-4">
+                    <div className="input-block local-forms">
+                      <label>Onset:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="onset"
+                        value={formData.onset}
+                        onChange={(e) => setFormData({ ...formData, onset: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-4">
+                    <div className="input-block local-forms">
+                      <label>Duration:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="duration"
+                        value={formData.duration}
+                        onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                {['family', 'society', 'work', 'interpretation'].map((key) => (
+                  <div key={key} className="col-3"> {/* Adjust the column size based on your layout needs */}
+                    <div className="input-block local-forms">
+                      <label>{`${key.charAt(0).toUpperCase() + key.slice(1)} Keyword:`}</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name={`${key}.keyword`}
+                        value={formData[key].keyword}
+                        onChange={handleChange}
+                        style={{ position: 'relative' }}
+                      />
+                      <IconButton
+                        onClick={() => toggleDescription(key)}
+                        style={{ position: 'absolute', right: '10px', top: '3px' }}
+                      >
+                        <ArrowDownLeft />
+                      </IconButton>
+                      {showDescription[key] && (
+                        <input
+                          type="text"
+                          className="form-control"
+                          name={`${key}.description`}
+                          value={formData[key].description}
+                          onChange={handleChange}
+                          style={{ marginTop: '8px' }}
+                        />
                       )}
                     </div>
-                  </StyledTableCell>
+                  </div>
                 ))}
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Button variant='contained' color='primary' onClick={handleAddRow} style={{ marginTop: '16px' }}>
-        Add Row
-      </Button>
+              </div>
+
+              <FormControl className='col-md-6' component="fieldset">
+                <FormLabel component="legend">Characteristics Expression</FormLabel>
+                <RadioGroup row aria-label="characteristics" name="characteristics">
+                  <FormControlLabel value="Emotional State" control={<Radio />} label="Emotional State" />
+                  <FormControlLabel value="Intellectual State" control={<Radio />} label="Intellectual State" />
+                  <FormControlLabel value="Action" control={<Radio />} label="Action" />
+                </RadioGroup>
+              </FormControl>
+
+              <FormControl className='col-md-6' component="fieldset">
+                <FormLabel component="legend">Cause Aggravation Amelioration</FormLabel>
+                <RadioGroup row aria-label="cause" name="cause">
+                  <FormControlLabel value="Emotions" control={<Radio />} label="Emotions" />
+                  <FormControlLabel value="Intellectual Activity" control={<Radio />} label="Intellectual Activity" />
+                  <FormControlLabel value="Life Situation" control={<Radio />} label="Life Situation" />
+                </RadioGroup>
+              </FormControl>
+
+              <div className="submit-section">
+                <Button type="submit" variant="contained" color="primary">
+                  Save
+                </Button>
+                <Button type="button" variant="contained" color="primary" onClick={handleAddEvent} style={{ marginLeft: '20px' }}>
+                  Add Event
+                </Button>
+              </div>
+            </form>
+          </FormContainer>
+        </div>
+      </div>
     </div>
   );
 };

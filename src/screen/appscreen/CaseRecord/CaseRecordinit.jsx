@@ -216,6 +216,7 @@ const CaseRecordinit = () => {
           handleAddItem={handleAddItem}
           handleRemoveItem={handleRemoveItem}
           toggleCommentsVisibility={toggleCommentsVisibility}
+          subheadingsEnabled={true}
         />
         <PatientSection
           title="WEIGHT/GAIN"

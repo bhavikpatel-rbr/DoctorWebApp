@@ -459,17 +459,16 @@ h2.accordion-header button.accordion-button {
   background-color: #0049cb !important;
 }
 .btn.splash-btn {
-  background: #fff;
+  background: #0049cb;
   font-size: 18px;
   font-weight: bold;
-  color: #0049cb;
+  color: #fff;
 }
 .btn.splash-btn:hover {
   background-color: transparent;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #0049cb;
+  color: #0049cb;
 }
-
 .Patient_Person_Add {
   display: flex;
   justify-content: space-between;

@@ -88,14 +88,14 @@ const Header = () => {
       </div>
       <ul className="nav user-menu float-end">
         <li className="nav-item dropdown d-none d-md-block">
-          <Link
+          {/* <Link
             href="#"
             className="dropdown-toggle nav-link"
             data-bs-toggle="dropdown"
           >
             <img src={noteicon02} alt="" />
             <span className="pulse"></span>
-          </Link>
+          </Link> */}
           <div className="dropdown-menu notifications">
             <div className="topnav-dropdown-header">
               <span>Notifications</span>

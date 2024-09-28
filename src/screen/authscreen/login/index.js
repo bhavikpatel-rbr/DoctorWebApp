@@ -60,11 +60,11 @@ const Login = () => {
                   <div className="next-sign">
                     <p className="account-subtitle">Need an account? <Link to="/register">Sign Up</Link></p>
 
-                    <div className="social-login">
+                    {/* <div className="social-login">
                     <a href="javascript:;"><img src={loginicon01} alt="Icon 1" /></a>
                         <a href="javascript:;"><img src={loginicon02}  alt="Icon 2" /></a>
                         <a href="javascript:;"><img src={loginicon03}  alt="Icon 3" /></a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

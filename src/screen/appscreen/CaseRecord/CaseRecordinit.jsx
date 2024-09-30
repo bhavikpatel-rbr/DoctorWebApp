@@ -218,7 +218,7 @@ const CaseRecordinit = () => {
           toggleCommentsVisibility={toggleCommentsVisibility}
           subheadingsEnabled={true}
         />
-        <PatientSection
+        {/* <PatientSection
           title="WEIGHT/GAIN"
           section={weightGain}
           setSection={setWeightGain}
@@ -294,7 +294,7 @@ const CaseRecordinit = () => {
           handleDropdownSelect={handleDropdownSelect}
           handleAddItem={handleAddItem}
           toggleCommentsVisibility={toggleCommentsVisibility}
-        />
+        /> */}
       </>
     </Tab>
           <Tab eventKey="profile" title="DIGESTION">

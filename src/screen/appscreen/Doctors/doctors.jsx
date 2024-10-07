@@ -8,17 +8,17 @@ import pdf4 from '../../../img/icons/pdf-icon-04.svg'
 import plus from '../../../img/icons/plus.svg'
 import refresh from '../../../img/icons/re-fresh.svg'
 const data = [
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
     // Add more data items here
   ];
   
@@ -128,6 +128,7 @@ const DoctorList = () => {
               </th>
               <th>Name</th>
               <th>Department</th>
+              <th>Experience</th>
               <th>Specialization</th>
               <th>Degree</th>
               <th>Mobile</th>
@@ -148,7 +149,9 @@ const DoctorList = () => {
                   <a href="profile.html">{doctor.name}</a>
                 </td>
                 <td>{doctor.department}</td>
+                <td>{doctor.experience}</td>
                 <td>{doctor.specialization}</td>
+                
                 <td>{doctor.degree}</td>
                 <td><a href="javascript:;">{doctor.mobile}</a></td>
                 <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>

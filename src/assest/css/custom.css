@@ -474,7 +474,7 @@ table.table td h2 span {
     background-color: #0049cb;
     border-radius: 8px;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     color: #FFF;
 }
 
@@ -548,7 +548,11 @@ table.table td h2 span {
 
 .btn-success {
     background-color: #55ce63;
-    border: 1px solid #55ce63
+    border: 1px solid #55ce63;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
 }
 
 .btn-success:hover,

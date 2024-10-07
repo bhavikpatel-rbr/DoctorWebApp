@@ -499,7 +499,7 @@ const AddData = ({ patient }) => {
           {isModalVisible && (
             <div
               className="modal-backdrop modal fade show align-items-center justify-content-center"
-              style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+              style={{ display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }}
               tabIndex="-1"
               role="dialog"
             >
@@ -521,12 +521,13 @@ const AddData = ({ patient }) => {
                       type="button"
                       class="btn-close"
                       onClick={() => setIsModalVisible(false)}
+                     style={{backgroundColor:"white"}}
                     ></button>
                   </div>
                   <div className="modal-body">
                     {selectedOptions.length > 0 && (
                       <div>
-                        <p>Selected Options:</p>
+                        <p style={{ padding:"5px" , color:"black" , fontWeight:"bold" , textAlign:"center" , borderRadius:"10px"}}>Selected Options</p>
                         <ul className="Optionitemlist">
                           {selectedOptions.map((option, index) => (
                             <li className="selectedOptionsList" key={index}>
@@ -569,12 +570,13 @@ const AddData = ({ patient }) => {
                     {(currentPage + 1) * itemsPerPage >= allOptions.length ? (
                       <button
                         type="button"
-                        className="btn btn-primary"
+                        
                         onClick={() => {
                           // Handle save action
                           // For example, save data or perform any action needed
                           setIsModalVisible(false);
                         }}
+                        style={{backgroundColor:"#009efb" , padding:"10px" , borderRadius:"10px" , color:"white" , fontWeight:"normal" , borderColor:"#009efb"}}
                       >
                         Save
                       </button>

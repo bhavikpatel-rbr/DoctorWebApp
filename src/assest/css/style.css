@@ -121,8 +121,8 @@ ul.Optionitemlist li.selectedOptionsList {
 }
 
 .custom-list .list-group-item {
-  background-color: #009efb;
-  border: 1px solid #009efb;
+  background-color: #3a5f74;
+  border: 1px solid #3a5f74;
   color: #fff;
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
@@ -133,9 +133,9 @@ ul.Optionitemlist li.selectedOptionsList {
 }
 
 .custom-list .list-group-item:hover {
-  background-color: #343a4f;
+  background-color: #3a5f74;
   transform: translateY(-2px);
-  border-left: 4px solid #5bc0de;
+  border-left: 4px solid #3a5f74;
 }
 
 .custom-list .list-group-item:active {
@@ -144,7 +144,7 @@ ul.Optionitemlist li.selectedOptionsList {
 }
 
 .custom-list .list-group-item input[type="checkbox"] {
-  accent-color: #5bc0de; /* Custom checkbox color */
+  accent-color: #3a5f74; /* Custom checkbox color */
   transform: scale(1.2);
 }
 
@@ -419,6 +419,22 @@ h2.accordion-header button.accordion-button {
   color: #fff;
   background-color: #007bff;
 }
+.modal-title {
+  color: white;
+  margin-bottom: 0;
+  background:  #007bff;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.modal-header {
+  background: #007bff;
+}
+.modal-dialog {
+  max-width: 700px !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* 
 .btn {
   font-size: 0.9rem;

@@ -464,7 +464,7 @@ const Chiefcomplaintstart = ({ patient }) => {
         </tbody>
       </table>
 
-      {/* {isModalVisible && (
+      {isModalVisible && (
         <div className="modal" style={{ display: "block" }}>
           <div className="modal-dialog">
             <div className="modal-content">
@@ -510,9 +510,9 @@ const Chiefcomplaintstart = ({ patient }) => {
             </div>
           </div>
         </div>
-      )} */}
+      )}
 
-      {/* <div className="text-center mt-3">
+      <div className="text-center mt-3">
         <button
           className="btn btn-secondary"
           onClick={handlePrevious}
@@ -527,7 +527,7 @@ const Chiefcomplaintstart = ({ patient }) => {
         >
           Next
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

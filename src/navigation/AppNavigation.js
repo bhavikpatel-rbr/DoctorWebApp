@@ -53,6 +53,10 @@ import DateAndDailyroutine from '../screen/appscreen/CaseRecord/DateAndDailyrout
 import LifeSpaceInvestigation from '../screen/appscreen/CaseRecord/LifeSpaceInvestigation';
 import AddSfft from '../screen/appscreen/CaseRecord/AddSfft';
 import LstTable from '../screen/appscreen/CaseRecord/LstTable';
+import MentalState from '../screen/appscreen/CaseRecord/MentalState';
+import EmotionalState from '../screen/appscreen/CaseRecord/EmotionalState';
+import EmotionalState2 from '../screen/appscreen/CaseRecord/EmotionalState2';
+import EmotionalState3 from '../screen/appscreen/CaseRecord/EmotionalState3';
 
 const AppNavigation = () => {
 
@@ -126,7 +130,11 @@ const AppNavigation = () => {
              <Route path="/lifeSpaceInvestigation" element={<Layout><LifeSpaceInvestigation /></Layout>} />
              <Route path="/addSfft" element={<Layout><AddSfft /></Layout>} />
              <Route path="/lstTable" element={<Layout><LstTable /></Layout>} />
-            
+             <Route path="/mentalstate" element={<Layout><MentalState /></Layout>} />
+             <Route path="/emotionalstate" element={<Layout><EmotionalState /></Layout>} />
+             <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
+             <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
+             <Route path="/emotionalstate3" element={<Layout><EmotionalState3 /></Layout>} />
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />

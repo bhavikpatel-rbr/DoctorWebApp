@@ -313,7 +313,7 @@ const LstTable = () => {
                         </FormLabel>
                         <div style={styles.linkContainer}>
                           <div style={styles.linkItem}>
-                            <Link to="/emotionalstate3" style={styles.link}>
+                            <Link to="/emotionalstate" style={styles.link}>
                               Emotional State
                             </Link>
                           </div>

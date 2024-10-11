@@ -57,6 +57,10 @@ import MentalState from '../screen/appscreen/CaseRecord/MentalState';
 import EmotionalState from '../screen/appscreen/CaseRecord/EmotionalState';
 import EmotionalState2 from '../screen/appscreen/CaseRecord/EmotionalState2';
 import EmotionalState3 from '../screen/appscreen/CaseRecord/EmotionalState3';
+import IntellectualState from '../screen/appscreen/CaseRecord/IntellectualState';
+import IntellectualState1 from '../screen/appscreen/CaseRecord/IntellectualState1';
+import IntellectualState2 from '../screen/appscreen/CaseRecord/IntellectualState2';
+import Emotions from '../screen/appscreen/CaseRecord/Emotions';
 
 const AppNavigation = () => {
 
@@ -135,6 +139,10 @@ const AppNavigation = () => {
              <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
              <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
              <Route path="/emotionalstate3" element={<Layout><EmotionalState3 /></Layout>} />
+             <Route path="/intellectualstate" element={<Layout><IntellectualState /></Layout>} />
+             <Route path="/intellectualstate1" element={<Layout><IntellectualState1 /></Layout>} />
+             <Route path="/intellectualstate2" element={<Layout><IntellectualState2 /></Layout>} />
+             <Route path="/emotions" element={<Layout><Emotions /></Layout>} />
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import doctorImage from "../../../img/logo.svg";
+import doctorImage from '../../../../src/assest/Logo.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./../../../assest/commoncss.css";
@@ -13,9 +13,10 @@ const WelcomeScreen = () => {
             src={doctorImage}
             alt="Logo"
             className="img-fluid blue-logo mb-3"
+            style={{borderRadius:"10px"}}
           />
-          <h1 className="text-primary mb-1">Dactorapp</h1>
-          <p className="text-muted">Welcome to Dactorapp</p>
+          <h1 className="mb-1"  style={{color:"#02090f"}}>Totality - The Ultimate Health Solution</h1>
+          <p className="text-muted">Welcome to Totality - The Ultimate Health Solution</p>
         </div>
         <div className="fixed-bottom ">
           <div className="footer p-3 footer-custom d-flex justify-content-between welcome_btn">

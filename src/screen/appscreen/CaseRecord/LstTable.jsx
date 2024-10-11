@@ -318,7 +318,7 @@ const LstTable = () => {
                             </Link>
                           </div>
                           <div style={styles.linkItem}>
-                            <Link to="/intellectualstate" style={styles.link}>
+                            <Link to="/intellectualstate2" style={styles.link}>
                               Intellectual State
                             </Link>
                           </div>
@@ -346,7 +346,7 @@ const LstTable = () => {
                         </FormLabel>
                         <div style={styles.linkContainer}>
                           <div style={styles.linkItem}>
-                            <Link to="/emotionalstate" style={styles.link}>
+                            <Link to="/emotions" style={styles.link}>
                             Emotions
                             </Link>
                           </div>

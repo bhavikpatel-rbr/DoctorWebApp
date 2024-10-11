@@ -474,7 +474,7 @@ table.table td h2 span {
     background-color: #0049cb;
     border-radius: 8px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: #FFF;
 }
 
@@ -513,28 +513,30 @@ table.table td h2 span {
     border-color: #0049cb;
     color: #0049cb;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
     background-color: #fff;
 }
 
 .btn-outline-primary:hover {
     background-color: #0049cb;
     border-color: #0049cb;
-    color: #fff
+    color: #fff;
+    font-weight:500;
 }
 
+
 .btn-primary:hover {
-    border-color: #0049cb;
-    color: #0049cb;
+    background: #0049cb;
     font-size: 18px;
-    font-weight: bold;
-    background-color: #fff;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid #0049cb;
 }
 .btn-primary:hover span {
     border-color: #0049cb;
     color: #0049cb;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
     background-color: #fff;
 }
 
@@ -846,8 +848,9 @@ textarea.form-control {
 .logo {
     align-items: center;
     display: flex;
-    height: 70px;
-    justify-content: start
+    height: 100px;
+    justify-content: start;
+    border-radius: 11px;
 }
 
 .logo span {
@@ -1658,7 +1661,7 @@ textarea.form-control {
 
 .login-right .btn-primary:hover {
     background: #fff;
-    border: 1px solid #00318b;
+    border: 1px solid #0049cb;
     color: #0049cb;
 }
 

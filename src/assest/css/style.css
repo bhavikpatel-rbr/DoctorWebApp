@@ -472,13 +472,14 @@ h2.accordion-header button.accordion-button {
 }
 
 .splashscreen-main {
-  background-color: #0049cb !important;
+  background-color:linear-gradient(0deg, rgba(51, 53, 72, 0.05), rgba(51, 53, 72, 0.05)), #FFFFFF;
 }
 .btn.splash-btn {
   background: #0049cb;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
   color: #fff;
+  border: 1px solid #0049cb;
 }
 .btn.splash-btn:hover {
   background-color: transparent;

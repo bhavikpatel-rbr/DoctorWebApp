@@ -59,7 +59,7 @@ const OnBordingScreen = () => {
                 </div>
             </Slider>
             <div className="footer fixed-bottom p-3 footer-custom">
-                <Link to={"/welcomescreen"}className="btn btn-primary btn-lg w-100">
+                <Link to={"/welcomescreen"}className="btn splash-btn btn-lg w-100">
                     NEXT
                 </Link>
             </div>

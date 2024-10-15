@@ -318,7 +318,7 @@ const EditAppointmentForm = () => {
                   <div className="col-12">
                     <div className="doctor-submit text-end">
                       <button type="submit" className="btn btn-primary submit-form me-2">
-                        Submit
+                        Update
                       </button>
                       <button type="button" className="btn btn-primary cancel-form">
                         Cancel

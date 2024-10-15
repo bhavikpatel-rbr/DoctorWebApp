@@ -1,39 +1,38 @@
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
-import searchnormal from '../../../img/icons/search-normal.svg'
-import pdf1 from '../../../img/icons/pdf-icon-01.svg'
-import pdf2 from '../../../img/icons/pdf-icon-02.svg'
-import pdf3 from '../../../img/icons/pdf-icon-03.svg'
-import pdf4 from '../../../img/icons/pdf-icon-04.svg'
-import plus from '../../../img/icons/plus.svg'
-import refresh from '../../../img/icons/re-fresh.svg'
+import searchnormal from '../../../img/icons/search-normal.svg';
+import plus from '../../../img/icons/plus.svg';
+import refresh from '../../../img/icons/re-fresh.svg';
+import { FaPen, FaTrash } from 'react-icons/fa';
+
 const data = [
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    // Add more data items here
-  ];
-  
-  const rowsPerPage = 5;
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
+  // Add more data items here
+];
+
+
+const rowsPerPage = 5;
 const DoctorList = () => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
 
-    const indexOfLastRow = currentPage * rowsPerPage;
-    const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-    const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
-  
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
-    const totalPages = Math.ceil(data.length / rowsPerPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+
   return (
     <div className="content">
       <div className="page-header">
@@ -44,7 +43,7 @@ const DoctorList = () => {
                 <a href="doctors.html">Doctors</a>
               </li>
               <li className="breadcrumb-item">
-                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/>
+                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
               </li>
               <li className="breadcrumb-item active">Doctors List</li>
             </ul>
@@ -79,16 +78,16 @@ const DoctorList = () => {
                         </div>
                         <div className="add-group">
                           <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
-                          <img src={plus} alt="" />
+                            <img src={plus} alt="" />
                           </a>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                          <img src={refresh} alt="" />
+                            <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="col-auto text-end float-end ms-auto download-grp">
+                  {/* <div className="col-auto text-end float-end ms-auto download-grp">
                     <a href="javascript:;" className="me-2">
                       <img
                         src={pdf1}
@@ -113,82 +112,82 @@ const DoctorList = () => {
                         alt="PDF Icon 3"
                       />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
               <div className="table-responsive">
-        <table className="table border-0 custom-table comman-table datatable mb-0">
-          <thead>
-            <tr>
-              <th>
-                <div className="form-check check-tables">
-                  <input className="form-check-input" type="checkbox" value="something" />
-                </div>
-              </th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Experience</th>
-              <th>Specialization</th>
-              <th>Degree</th>
-              <th>Mobile</th>
-              <th>Email</th>
-              <th>Joining Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentRows.map(doctor => (
-              <tr key={doctor.id}>
-                <td>
-                  <div className="form-check check-tables">
-                    <input className="form-check-input" type="checkbox" value="something" />
-                  </div>
-                </td>
-                <td className="profile-image">
-                  <a href="profile.html">{doctor.name}</a>
-                </td>
-                <td>{doctor.department}</td>
-                <td>{doctor.experience}</td>
-                <td>{doctor.specialization}</td>
-                
-                <td>{doctor.degree}</td>
-                <td><a href="javascript:;">{doctor.mobile}</a></td>
-                <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
-                <td>{doctor.joiningDate}</td>
-                <td className="text-end">
-                  <div className="dropdown dropdown-action">
-                    <a href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i className="fa fa-ellipsis-v"></i>
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-end">
-                      <a className="dropdown-item" href="edit-doctor.html">
-                        <i className="fa-solid fa-pen-to-square m-r-5"></i>
-                        Edit
+                <table className="table border-0 custom-table comman-table datatable mb-0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Experience</th>
+                      <th>Specialization</th>
+                      <th>Degree</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+                      <th>Joining Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentRows.map(doctor => (
+                      <tr key={doctor.id}>
+                        <td className="profile-image">
+                          <a href="profile.html">{doctor.name}</a>
+                        </td>
+                        <td>{doctor.department}</td>
+                        <td>{doctor.experience}</td>
+                        <td>{doctor.specialization}</td>
+                        <td>{doctor.degree}</td>
+                        <td><a href="javascript:;">{doctor.mobile}</a></td>
+                        <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
+                        <td>{doctor.joiningDate}</td>
+                        <td className="text-end">
+                          <button 
+                            className="btn btn-sm btn-danger me-2" 
+                            style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
+                            onClick={() => console.log('Edit', doctor.id)}
+                          >
+                            <FaPen />
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-danger " 
+                            style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                            onClick={() => console.log('Delete', doctor.id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <nav>
+                <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => paginate(index + 1)}
+                        style={{
+                          border: '1px solid #2e37a4',
+                          color: currentPage === index + 1 ? '#fff' : '#2e37a4',
+                          backgroundColor: currentPage === index + 1 ? '#2e37a4' : '#fff',
+                          borderRadius: '4px',
+                          padding: '6px 12px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {index + 1}
                       </a>
-                      <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_patient">
-                        <i className="fa fa-trash-alt m-r-5"></i>
-                        Delete
-                      </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <nav>
-        <ul className="pagination justify-content-center">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-              <a className="page-link" href="#" onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

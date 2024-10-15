@@ -471,8 +471,8 @@ table.table td h2 span {
 
 .btn-primary {
     border-color: transparent;
-    background-color: #0049cb;
-    border-radius: 8px;
+    background-color: #2e37a4;
+    border-radius:5px !important;
     font-size: 18px;
     font-weight: 500;
     color: #FFF;
@@ -524,13 +524,32 @@ table.table td h2 span {
     font-weight:500;
 }
 
+a.btn.btn-outline-primary.btn-sm {
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    background: #2e37a4;
+}
+
+a.btn.btn-outline-primary.btn-sm:hover {
+    
+    background: #030950;
+}
 
 .btn-primary:hover {
     background: #0049cb;
-    font-size: 18px;
+    font-size: 11px;
     font-weight: 500;
     color: #fff;
     border: 1px solid #0049cb;
+}
+.modal-header {
+    background-color: #2e37a4;
+    color: white;
+}
+
+.modal-title.h4 {
+    background-color: #2e37a4;
 }
 .btn-primary:hover span {
     border-color: #0049cb;
@@ -7404,14 +7423,27 @@ a.status-grey {
 
 .modal-backdrop.show {
     /* opacity: .9 */
-    opacity: 1
+    opacity: 0.9;
+    background-color:#dddddd;
 }
 
 .invoices-view {
     width: 70%;
     float: right
 }
-
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+   
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+}
 .local-forms.input-block {
     position: relative;
     margin-bottom: 30px
@@ -7504,7 +7536,7 @@ a.status-grey {
 }
 
 .doctor-submit .btn-primary {
-    min-width: 131px;
+    min-width: 110px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 12px;
@@ -7512,14 +7544,14 @@ a.status-grey {
 }
 
 .doctor-submit .cancel-form {
-    background: rgba(51, 52, 72, .05);
-    color: #333448
+    background:  rgb(220, 53, 69);
+    color: #FFFFFF
 }
 
 .doctor-submit .cancel-form:hover {
-    background: #2e37a4;
+    background: #0049cb;
     color: #fff;
-    border: 1px solid #2e37a4
+    border: 1px solid #0049cb
 }
 
 .calendar-icon:after {
@@ -13842,13 +13874,16 @@ body[data-layout-mode=dark] .alertify .ajs-header {
         width: 120px;
         height: 120px
     }
-
+    
+    
     .table-responsive {
         display: block;
         width: 100%;
         overflow-x: auto;
-        -ms-overflow-style: -ms-autohiding-scrollbar
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border-radius:15px !important
     }
+    
 
     .header .has-arrow .dropdown-toggle>span:nth-child(2) {
         display: none

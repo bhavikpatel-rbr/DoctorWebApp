@@ -287,9 +287,7 @@ const BookAppointmentForm = () => {
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-top-form">
-                      <label className="local-top">
-                        Avatar <span className="login-danger">*</span>
-                      </label>
+                      <label className="local-top">Avatar <span className="login-danger">*</span></label>
                       <div className="settings-btn upload-files-avator">
                         <input
                           type="file"
@@ -299,10 +297,16 @@ const BookAppointmentForm = () => {
                           onChange={handleChange}
                           className="hide-input"
                         />
-                        <label htmlFor="file" className="upload">
-                          Choose File
-                        </label>
+                        <label htmlFor="file" className="upload">Choose File</label>
                       </div>
+                      {formData.avatar &&
+                      <div className="upload-images upload-size">
+                        {formData.avatar && <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" />}
+                        <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
+                          <i className="feather-x-circle"></i>
+                        </a>
+                      </div>
+}
                     </div>
                   </div>
 

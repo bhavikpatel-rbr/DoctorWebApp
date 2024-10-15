@@ -1,6 +1,6 @@
 import React from 'react';
-import store1 from '../../../assest/img/store/store2.jfif'
-import store2 from '../../../assest/img/store/store2.jfif'
+import store1 from '../../../assest/img/store/store2.jfif';
+import store2 from '../../../assest/img/store/store2.jfif';
 import avatar1 from '../../../assest/img/profiles/avatar-02.jpg';
 import avatar2 from '../../../assest/img/profiles/avatar-01.jpg';
 import avatar3 from '../../../assest/img/profiles/avatar-03.jpg';
@@ -12,7 +12,7 @@ import { ChevronRight } from 'react-feather';
 const Breadcrumb = () => (
   <ul className="breadcrumb">
     <li className="breadcrumb-item"><a href="stores.html">Stores</a></li>
-    <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/></li>
+    <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} /></li>
     <li className="breadcrumb-item active">Store Details</li>
   </ul>
 );
@@ -39,10 +39,10 @@ const StoreView = () => (
         <p>Welcome to HealthMart, where we offer a wide range of health products to support your well-being...</p>
         <p>Our expert team is here to assist you with personalized advice and top-quality products...</p>
       </div>
-      <StoreShare />
-      <StoreTags />
+      {/* <StoreShare /> */}
+      {/* <StoreTags /> */}
     </article>
-    <OwnerWidget />
+    {/* <OwnerWidget /> */}
     <Reviews />
   </div>
 );
@@ -54,12 +54,6 @@ const StoreShare = () => (
       <a href="javascript:;"><img src={store2} alt="" /></a>
       <span className="ms-2">4.5k</span>
     </div>
-    {/* <ul className="social-share nav">
-      <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
-      <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
-      <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
-      <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
-    </ul> */}
   </div>
 );
 
@@ -83,7 +77,7 @@ const OwnerWidget = () => (
       </div>
       <h2>Jane Doe</h2>
       <span>Owner</span>
-      <p> Dedicated to providing you with the best health products and personalized service...</p>
+      <p>Dedicated to providing you with the best health products and personalized service...</p>
       <ul className="nav social-blk">
         <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
         <li><a href="javascript:;"><img src={store2} alt="" /></a></li>
@@ -171,17 +165,20 @@ const ReviewForm = () => (
         </div>
         <div className="col-12">
           <div className="remember-me">
-            <label className="custom_check mr-2 mb-0 d-inline-flex remember-me"> Save my name, email, and website in this browser for the next time I comment.
+            <label className="custom_check mr-2 mb-0 d-inline-flex remember-me">
+              Save my name, email, and website in this browser for the next time I comment.
               <input type="checkbox" name="radio" checked />
               <span className="checkmark"></span>
             </label>
           </div>
         </div>
         <div className="col-12">
-          <div className="submit-review text-end">
-            <button type="submit" className="btn btn-primary submit-form me-2">Submit</button>
-          </div>
-        </div>
+                  
+                  <div className="doctor-submit text-end">
+                    <button type="submit" className="btn btn-primary submit-form me-2">Submit</button>
+                    
+                  </div>
+                </div>
       </div>
     </form>
   </div>
@@ -192,7 +189,7 @@ const Sidebar = () => (
   <aside className="col-md-4">
     <RelatedStores />
     <TagsWidget />
-    <MostPopularStores />
+    {/* <MostPopularStores /> */}
     <Categories />
   </aside>
 );
@@ -220,49 +217,10 @@ const RelatedStores = () => (
       <RelatedStore 
         category="Fitness" 
         date="15 Sep 2022" 
-        title="Fitness Store: Gear Up for Fitness"
+        title="Fitness Store: Gear for Everyone"
         imgSrc={store1}
       />
-    </ul>
-  </div>
-);
-
-// Single Related Store Component
-const RelatedStore = ({ category, date, title, imgSrc }) => (
-  <li>
-    <div className="blog-thumb">
-      <a href="blog-details.html">
-        <img className="img-fluid" src={imgSrc} alt="Related Store" />
-      </a>
-    </div>
-    <div className="blog-info">
-      <h4><a href="blog-details.html">{title}</a></h4>
-      <p><span>{category}</span> | <span>{date}</span></p>
-    </div>
-  </li>
-);
-
-// Tags Widget Component
-const TagsWidget = () => (
-  <div className="widget tags-widget">
-    <h5>Tags</h5>
-    <ul className="tags">
-      <li><a href="#.">#Health</a></li>
-      <li><a href="#.">#Wellness</a></li>
-      <li><a href="#.">#Fitness</a></li>
-      <li><a href="#.">#Nutrition</a></li>
-      <li><a href="#.">#Supplements</a></li>
-      <li><a href="#.">#Pharmacy</a></li>
-    </ul>
-  </div>
-);
-
-// Most Popular Stores Component
-const MostPopularStores = () => (
-  <div className="widget blog-widget">
-    <h5>Most Popular</h5>
-    <ul className="latest-stores">
-      <RelatedStore 
+       <RelatedStore 
         category="Health" 
         date="05 Sep 2022" 
         title="PharmaPlus: Top Pharmacy Services"
@@ -277,9 +235,70 @@ const MostPopularStores = () => (
       <RelatedStore 
         category="Fitness" 
         date="15 Sep 2022" 
-        title="Fitness Store: Gear Up for Fitness"
+        title="Fitness Store: Gear for Everyone"
         imgSrc={store1}
       />
+    </ul>
+  </div>
+);
+
+// Related Store Component
+const RelatedStore = ({ category, date, title, imgSrc }) => (
+  <li className='mt-3'>
+    <div className="post-thumb">
+      <a href="blog-details.html">
+        <img className="img-fluid" src={imgSrc} alt="Related Post" />
+      </a>
+    </div>
+    <div className="post-info">
+      <h4><a href="blog-details.html">{title}</a></h4>
+      <p><span>{category}</span> | <span>{date}</span></p>
+    </div>
+  </li>
+);
+
+// Most Popular Stores Component
+const MostPopularStores = () => (
+  <div className="widget blog-widget">
+    <h5>Most Popular Stores</h5>
+    <ul className="latest-stores">
+      <PopularStore 
+        title="Organic Shop" 
+        category="Organic" 
+        imgSrc={store2}
+      />
+      <PopularStore 
+        title="Health Zone" 
+        category="Health" 
+        imgSrc={store1}
+      />
+    </ul>
+  </div>
+);
+
+// Popular Store Component
+const PopularStore = ({ title, category, imgSrc }) => (
+  <li>
+  <div className="post-thumb">
+    <a href="blog-details.html">
+      <img className="img-fluid" src={imgSrc} alt="Related Post" />
+    </a>
+  </div>
+  <div className="post-info">
+    <h4><a href="blog-details.html">{title}</a></h4>
+    <p><span>{category}</span></p>
+  </div>
+</li>
+);
+
+// Tags Widget Component
+const TagsWidget = () => (
+  <div className="widget tags-widget">
+    <h5>Tags</h5>
+    <ul className="tags-list">
+      <li><a href="#.">Health</a></li>
+      <li><a href="#.">Wellness</a></li>
+      <li><a href="#.">Organic</a></li>
     </ul>
   </div>
 );
@@ -288,27 +307,28 @@ const MostPopularStores = () => (
 const Categories = () => (
   <div className="widget categories-widget">
     <h5>Categories</h5>
-    <ul className="categories">
-      <li><a href="#.">Health<span>(30)</span></a></li>
-      <li><a href="#.">Wellness<span>(28)</span></a></li>
-      <li><a href="#.">Fitness<span>(25)</span></a></li>
-      <li><a href="#.">Nutrition<span>(20)</span></a></li>
-      <li><a href="#.">Pharmacy<span>(16)</span></a></li>
+    <ul className="categories-list">
+      <li><a href="#.">Supplements</a></li>
+      <li><a href="#.">Fitness Gear</a></li>
+      <li><a href="#.">Supplements</a></li>
+      <li><a href="#.">Supplements</a></li>
     </ul>
   </div>
 );
 
-// Main Store Page Component
-const StoreDetails = () => (
-  <div className="container">
-    <div className="row">
-      <div className="col-md-8">
-        <Breadcrumb />
-        <StoreView />
+// Main StoreDetails Component
+const StoreDetails = () => {
+  return (
+    <div className="store-details">
+      <Breadcrumb />
+      <div className="row">
+        <div className="col-md-8">
+          <StoreView />
+        </div>
+        <Sidebar />
       </div>
-      <Sidebar />
     </div>
-  </div>
-);
+  );
+};
 
 export default StoreDetails;

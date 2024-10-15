@@ -8,9 +8,11 @@ import pdf3 from '../../../img/icons/pdf-icon-03.svg'
 import pdf4 from '../../../img/icons/pdf-icon-04.svg'
 import plus from '../../../img/icons/plus.svg'
 import refresh from '../../../img/icons/re-fresh.svg'
+import { FaPen, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Use react-router-dom for navigation
 const data =[
   {
+    id: 1,
     name: 'Andrea Lalema',
     doctor: 'Dr.Bernardo James',
     treatment: 'Infertility',
@@ -21,6 +23,86 @@ const data =[
     image: 'avatar-01.jpg'
   },
   {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+
+  {
+    id: 1,
+    name: 'Bhvaik Rupapara',
+    doctor: 'Dr.Tushar Joshi',
+    treatment: 'Infertility',
+    mobile: '+1 23 456890',
+    email: 'smith@example.com',
+    date: '01.10.2022',
+    time: '07:30',
+    image: 'avatar-02.jpg'
+  },
+  {
+    id: 1,
     name: 'Bhvaik Rupapara',
     doctor: 'Dr.Tushar Joshi',
     treatment: 'Infertility',
@@ -32,19 +114,18 @@ const data =[
   },
   // Add more rows as needed
 ]
+
+const rowsPerPage = 5;
 const AppointmentList = () => {
-  const itemsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Pagination logic
-  const handlePageClick = (event) => {
-    setCurrentPage(event.selected);
-  };
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
 
-  // Calculate the index range for the current page
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = data.slice(startIndex, endIndex);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
   return (
     <div className="content">
       <div className="page-header">
@@ -99,7 +180,7 @@ const AppointmentList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-auto text-end float-end ms-auto download-grp">
+                  {/* <div className="col-auto text-end float-end ms-auto download-grp">
                     <a href="javascript:;" className="me-2">
                       <img
                         src={pdf1}
@@ -124,7 +205,7 @@ const AppointmentList = () => {
                         alt="PDF Icon 3"
                       />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -132,15 +213,7 @@ const AppointmentList = () => {
                 <table className="table border-0 custom-table comman-table datatable mb-0">
                   <thead>
                     <tr>
-                      <th>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </th>
+                      
                       <th>Name</th>
                       <th>Consulting Doctor</th>
                       <th>Treatment</th>
@@ -152,26 +225,12 @@ const AppointmentList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((appointment, index) => (
-                      <tr key={index}>
-                        <td>
-                          <div className="form-check check-tables">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              value="something"
-                            />
-                          </div>
-                        </td>
+                  {currentRows.map(appointment => (
+                      <tr key={appointment.id}>
+                        
                         <td className="profile-image">
                           <Link to="/profile">
-                            <img
-                              width="28"
-                              height="28"
-                              src={`assets/img/profiles/${appointment.image}`}
-                              className="rounded-circle m-r-5"
                             
-                            />
                             {appointment.name}
                           </Link>
                         </td>
@@ -185,60 +244,51 @@ const AppointmentList = () => {
                         </td>
                         <td>{appointment.date}</td>
                         <td>{appointment.time}</td>
+                       
                         <td className="text-end">
-                          <div className="dropdown dropdown-action">
-                            <a
-                              href="#"
-                              className="action-icon dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              <i className="fa fa-ellipsis-v"></i>
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-end">
-                              <Link
-                                className="dropdown-item"
-                                to="/edit-appointment"
-                              >
-                                <i className="fa-solid fa-pen-to-square m-r-5"></i> Edit
-                              </Link>
-                              <a
-                                className="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#delete_patient"
-                              >
-                                <i className="fa fa-trash-alt m-r-5"></i> Delete
-                              </a>
-                            </div>
-                          </div>
+                          <button 
+                            className="btn btn-sm btn-danger me-2" 
+                            style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
+                            
+                          >
+                            <FaPen />
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-danger " 
+                            style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                            
+                          >
+                            <FaTrash />
+                          </button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <div className="pagination-container">
-            <ReactPaginate
-              previousLabel={"Previous"}
-              nextLabel={"Next"}
-              breakLabel={"..."}
-              pageCount={Math.ceil(data.length / itemsPerPage)}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              pageClassName={"page-item"}
-              pageLinkClassName={"page-link"}
-              previousClassName={"page-item"}
-              previousLinkClassName={"page-link"}
-              nextClassName={"page-item"}
-              nextLinkClassName={"page-link"}
-              breakClassName={"page-item"}
-              breakLinkClassName={"page-link"}
-              activeClassName={"active"}
-            />
-          </div>
+              <nav>
+                <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => paginate(index + 1)}
+                        style={{
+                          border: '1px solid #2e37a4',
+                          color: currentPage === index + 1 ? '#fff' : '#2e37a4',
+                          backgroundColor: currentPage === index + 1 ? '#2e37a4' : '#fff',
+                          borderRadius: '4px',
+                          padding: '6px 12px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

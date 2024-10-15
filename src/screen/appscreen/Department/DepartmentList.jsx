@@ -9,13 +9,14 @@ import pdf2 from '../../../img/icons/pdf-icon-02.svg'
 import pdf3 from '../../../img/icons/pdf-icon-03.svg'
 import pdf4 from '../../../img/icons/pdf-icon-04.svg'
 import plus from '../../../img/icons/plus.svg'
+import { FaPen, FaTrash } from 'react-icons/fa';
 import refresh from '../../../img/icons/re-fresh.svg'
 import searchnormal from '../../../img/icons/search-normal.svg'
 import depicon05 from '../../../img/icons/dep-icon-05.svg'
 import ReactPaginate from 'react-paginate';
 const DepartmentList = () => {
   // Sample data
-  const departments = [
+  const data = [
     {
       id: 1,
       name: 'Cardiology',
@@ -26,7 +27,7 @@ const DepartmentList = () => {
       headImage: 'assets/img/profiles/avatar-01.jpg',
     },
     {
-      id: 2,
+      id: 1,
       name: 'Urology',
       head: 'Dr.Bhvaik Rupapara',
       description: 'Investigates and treats proble...',
@@ -35,7 +36,7 @@ const DepartmentList = () => {
       headImage: 'assets/img/profiles/avatar-02.jpg',
     },
     {
-      id: 3,
+      id: 1,
       name: 'Radiology',
       head: 'Dr.Tushar Joshi',
       description: 'Investigates and treats proble...',
@@ -44,7 +45,7 @@ const DepartmentList = () => {
       headImage: 'assets/img/profiles/avatar-03.jpg',
     },
     {
-      id: 4,
+      id: 1,
       name: 'Radiology',
       head: 'Dr.Tushar Joshi',
       description: 'Investigates and treats proble...',
@@ -54,7 +55,7 @@ const DepartmentList = () => {
     },
 
     {
-      id: 5,
+      id: 1,
       name: 'Radiology',
       head: 'Dr.Tushar Joshi',
       description: 'Investigates and treats proble...',
@@ -63,7 +64,7 @@ const DepartmentList = () => {
       headImage: 'assets/img/profiles/avatar-03.jpg',
     },
     {
-      id: 6,
+      id: 1,
       name: 'Radiology',
       head: 'Dr.Tushar Joshi',
       description: 'Investigates and treats proble...',
@@ -72,7 +73,7 @@ const DepartmentList = () => {
       headImage: 'assets/img/profiles/avatar-03.jpg',
     },
     {
-      id: 7,
+      id: 1,
       name: 'Radiology',
       head: 'Dr.Tushar Joshi',
       description: 'Investigates and treats proble...',
@@ -82,18 +83,17 @@ const DepartmentList = () => {
     },
     // Add more departments as needed
   ];
-  const itemsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(0);
+  const rowsPerPage = 5;
 
-  // Pagination logic
-  const handlePageClick = (event) => {
-    setCurrentPage(event.selected);
-  };
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the index range for the current page
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = departments.slice(startIndex, endIndex);
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
   return (
     <div className="content">
       <div className="page-header">
@@ -141,20 +141,7 @@ const DepartmentList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-auto text-end float-end ms-auto download-grp">
-                    <a href="javascript:;" className="me-2">
-                      <img src={pdf1} alt="" />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img src={pdf2} alt="" />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img src={pdf3} alt="" />
-                    </a>
-                    <a href="javascript:;">
-                      <img src={pdf4} alt="" />
-                    </a>
-                  </div>
+                  
                 </div>
               </div>
 
@@ -162,11 +149,7 @@ const DepartmentList = () => {
                 <table className="table border-0 custom-table comman-table datatable mb-0">
                   <thead>
                     <tr>
-                      <th>
-                        <div className="form-check check-tables">
-                          <input className="form-check-input" type="checkbox" value="something" />
-                        </div>
-                      </th>
+                     
                       <th>Department</th>
                       <th>Department Head</th>
                       <th>Description</th>
@@ -176,23 +159,13 @@ const DepartmentList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {departments.map(department => (
+                  {currentRows.map(department => (
                       <tr key={department.id}>
-                        <td>
-                          <div className="form-check check-tables">
-                            <input className="form-check-input" type="checkbox" value="something" />
-                          </div>
-                        </td>
+                      
                         <td>{department.name}</td>
                         <td className="profile-image">
                           <Link to="/profile">
-                            <img
-                              width="28"
-                              height="28"
-                              src={user}
-                              className="rounded-circle m-r-5"
-                              
-                            />
+                            
                             {department.head}
                           </Link>
                         </td>
@@ -204,46 +177,50 @@ const DepartmentList = () => {
                           </button>
                         </td>
                         <td className="text-end">
-                          <div className="dropdown dropdown-action">
-                            <a href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i className="fa fa-ellipsis-v"></i>
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-end">
-                              <Link className="dropdown-item" to="/edit-department">
-                                <i className="fa-solid fa-pen-to-square m-r-5"></i> Edit
-                              </Link>
-                              <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_patient">
-                                <i className="fa fa-trash-alt m-r-5"></i> Delete
-                              </a>
-                            </div>
-                          </div>
+                          <button 
+                            className="btn btn-sm btn-danger me-2" 
+                            style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
+                            
+                          >
+                            <FaPen />
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-danger " 
+                            style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                            
+                          >
+                            <FaTrash />
+                          </button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <div className="pagination-container">
-              <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        pageCount={Math.ceil(departments.length / itemsPerPage)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item previous"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item next"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item break"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
-          </div>
+              
+              <nav>
+                <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => paginate(index + 1)}
+                        style={{
+                          border: '1px solid #2e37a4',
+                          color: currentPage === index + 1 ? '#fff' : '#2e37a4',
+                          backgroundColor: currentPage === index + 1 ? '#2e37a4' : '#fff',
+                          borderRadius: '4px',
+                          padding: '6px 12px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

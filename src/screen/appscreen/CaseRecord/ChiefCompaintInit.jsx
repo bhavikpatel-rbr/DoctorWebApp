@@ -693,6 +693,13 @@ const ChiefCompaintInit = ({ patient }) => {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
+                    <Nav.Link eventKey="CaseRecordAnalysis" className="patient__tab">
+                      <div className="Patient_menu_title">
+                        <h3>Case Analysis</h3>
+                      </div>
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
                     <Nav.Link eventKey="DisplayIcon" className="patient__tab">
                       <div className="Patient_menu_title">
                         <h3>Display Icon</h3>
@@ -725,6 +732,171 @@ const ChiefCompaintInit = ({ patient }) => {
                             <div class="col-xl-4 col-md-6">
                               <Link
                                 to="/chiefcomplaintstart"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-01.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Chief Complaint</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/associatecomplaintStart"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-02.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Assoiate Compaint</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/caserecordadd"
+                                class="doctor-widget  patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-03.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Case Record</h5>
+                                </div>
+                              </Link>
+                            </div>
+                           
+                          </div>
+                        </div>
+                        <div className="col-xl-12 mt-2">
+                          <div className="row">
+                          <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/uploadcaserecord"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Upload Case Record</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/addSfft"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add DiaGnosis (SFFT)</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/lstTable"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Life Space Table </h5>
+                                </div>
+                              </Link>
+                            </div>
+                           
+                          </div>
+                        </div>
+                         <div className="col-xl-12 mt-2">
+                          <div className="row">
+                          <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/adddata"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Data</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/dateAndDailyroutine"
+                                class="doctor-widget border-right-bg patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Date And Daily routine</h5>
+                                </div>
+                              </Link>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                            <Link
+                                to="/lifeSpaceInvestigation"
+                                class="doctor-widget patient__submenu"
+                              >
+                                <div class="doctor-box-icon flex-shrink-0">
+                                  <img
+                                    src="assets/img/icons/doctor-dash-04.svg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="doctor-content dash-count flex-grow-1">
+                                  <h5>Life - Space Investigation</h5>
+                                </div>
+                              </Link>
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="CaseRecordAnalysis">
+                    <div class="doctor-list-blk">
+                      <div class="row">
+                        <div className="col-xl-12">
+                          <div className="row">
+                            <div class="col-xl-4 col-md-6">
+                              <Link
+                                to="/chiefcomplaintstartanylisys"
                                 class="doctor-widget border-right-bg patient__submenu"
                               >
                                 <div class="doctor-box-icon flex-shrink-0">

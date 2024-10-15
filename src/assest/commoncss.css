@@ -807,6 +807,7 @@ textarea.form-control {
     position: relative;
     text-align: center;
     width: 220px;
+    padding:0 10;
     z-index: 1
 }
 
@@ -815,6 +816,7 @@ textarea.form-control {
     display: flex;
     height: 70px;
     justify-content: start
+    
 }
 
 .logo span {
@@ -7519,7 +7521,7 @@ a.status-grey {
 }
 
 .doctor-submit .cancel-form:hover {
-    background: #2e37a4;
+    background: #0049cb;
     color: #fff;
     border: 1px solid #2e37a4
 }

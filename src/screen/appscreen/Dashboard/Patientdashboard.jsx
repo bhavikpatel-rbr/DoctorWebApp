@@ -69,6 +69,13 @@ const appointments1 = [
     doctorName: "Dr. Tushar Joshi",
     diagnosis: "Dermotology",
     date: "12.05.2022"
+  },
+  {
+    id: 4,
+    imgSrc: "assets/img/profiles/avatar-05.jpg",
+    doctorName: "Dr. Tushar Joshi",
+    diagnosis: "Dermotology",
+    date: "12.05.2022"
   }
 ];
 
@@ -210,7 +217,7 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
               </div>
               <div className="body-mass-blk">
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12 mt-5">
                     <div className="weight-blk">
                       <div className="center slider">
                       <Slider {...settings}>
@@ -224,7 +231,7 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12 mt-5">
                     <div className="weight-blk">
                     <div className="center slider">
             <Slider {...settings}>
@@ -251,13 +258,7 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
             </div>
           </div>
         </div>
-      </div>
-
-     
-      <div className="row">
-        <div className="col-12 col-md-12 col-xl-7">
-          <div className="row">
-            <div className="col-12 col-md-6 col-xl-5">
+        <div className="col-12 col-md-6 col-xl-5">
               <div className="card top-departments">
                 <div className="card-header pb-0">
                   <h4 className="card-title mb-0">Notes</h4>
@@ -341,6 +342,13 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
                 </div>
               </div>
             </div>
+      </div>
+
+     
+      <div className="row">
+        <div className="col-12 col-md-12 col-xl-7">
+          <div className="row">
+           
             <div className="col-12 col-md-12 col-xl-12">
       <div className="card">
         <div className="card-header">
@@ -352,11 +360,7 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
             <table className="table mb-0 border-0 datatable custom-table patient-table">
               <thead>
                 <tr>
-                  <th>
-                    <div className="form-check check-tables">
-                      <input className="form-check-input" type="checkbox" value="something" />
-                    </div>
-                  </th>
+                  
                   <th>Doctor name</th>
                   <th>Diagnosis</th>
                   <th>Date</th>
@@ -367,11 +371,7 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
               <tbody>
                 {appointments1.map(appointment => (
                   <tr key={appointment.id}>
-                    <td>
-                      <div className="form-check check-tables">
-                        <input className="form-check-input" type="checkbox" value="something" />
-                      </div>
-                    </td>
+                    
                     <td className="table-image">
                       <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor" />
                       <h2>{appointment.doctorName}</h2>

@@ -497,7 +497,7 @@ const DoctorDashboard = () => {
         </div>
       </div>
     </div>
-    <div className="col-12 col-md-12 col-lg-6 col-xl-2 d-flex">
+    <div className="col-12 col-md-12 col-lg-6 col-xl-2 ">
       <div className="struct-point">
         <div className="card patient-structure">
           <div className="card-body">
@@ -515,14 +515,37 @@ const DoctorDashboard = () => {
                 -20%</span></h3>
           </div>
         </div>
-      </div>
+        <div className="card patient-structure">
+          <div className="card-body">
+            <h5>Total Patients</h5>
+            <h3>70<span className="status-pink">
+            <img src={sort1} alt="Increase Icon" className="me-1"/>
+                -20%</span></h3>
+          </div>
+        </div>
+      </div>  
+      <div className="col-12 col-md-12 col-xl-12 flex">
+      <div className="card">
+                <div className="circle-bar circle-bar2">
+                    <div className="circle-graph2 mt-2 d-flex justify-content-center align-items-center" data-percent="66">
+                        
+                            <img src={timer} alt="Timer Icon" />
+                       
+                    </div>
+                </div>
+                <div className="main-limit text-center mt-2" style={{padding:"18px"}}>
+                    <p>Next Appointment in</p>
+                    <h4>02h:12m</h4>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 
   <div className="row">
    
-    <div className="row">
-      <div className="col-12 col-md-12 col-xl-5 flex">
+   
+      <div className="col-12 col-md-12 col-xl-6 flex">
         <div className="card">
           <div className="card-header">
             <h4 className="card-title d-inline-block">Recent Appointments</h4>
@@ -588,6 +611,62 @@ const DoctorDashboard = () => {
                       <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
                     </td>
                   </tr>
+                  <tr>
+                    <td className="table-image appoint-doctor">
+                      <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
+                      <h2>Tushar Joshi</h2>
+                    </td>
+                    <td className="appoint-time text-center">
+                      <h6>Today 5:40 PM</h6>
+                      <span>Typoid Fever</span>
+                    </td>
+                    <td>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="table-image appoint-doctor">
+                      <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
+                      <h2>Tushar Joshi</h2>
+                    </td>
+                    <td className="appoint-time text-center">
+                      <h6>Today 5:40 PM</h6>
+                      <span>Typoid Fever</span>
+                    </td>
+                    <td>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="table-image appoint-doctor">
+                      <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
+                      <h2>Tushar Joshi</h2>
+                    </td>
+                    <td className="appoint-time text-center">
+                      <h6>Today 5:40 PM</h6>
+                      <span>Typoid Fever</span>
+                    </td>
+                    <td>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="table-image appoint-doctor">
+                      <img width="28" height="28" className="rounded-circle" src={user} alt="Doctor Image"/>
+                      <h2>Tushar Joshi</h2>
+                    </td>
+                    <td className="appoint-time text-center">
+                      <h6>Today 5:40 PM</h6>
+                      <span>Typoid Fever</span>
+                    </td>
+                    <td>
+                    <button className="check-point status-green me-1"><FaCheckSquare  size={24}/></button>
+                    <button className="check-point status-pink"><MdOutlineCancel size={24} /></button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -595,22 +674,8 @@ const DoctorDashboard = () => {
         </div>
         
       </div>
-      <div className="col-12 col-md-12 col-xl-2 flex">
-      <div className="card">
-                <div className="circle-bar circle-bar2">
-                    <div className="circle-graph2 mt-5 d-flex justify-content-center align-items-center" data-percent="66">
-                        
-                            <img src={timer} alt="Timer Icon" />
-                       
-                    </div>
-                </div>
-                <div className="main-limit text-center mt-5">
-                    <p>Next Appointment in</p>
-                    <h4>02h:12m</h4>
-                </div>
-            </div>
-        </div>
-        <div className="col-12 col-lg-12 col-xl-5 d-flex">
+    
+        <div className="col-12 col-lg-12 col-xl-6 d-flex" >
             <div className="card flex-fill comman-shadow">
                 <div className="card-header">
                     <h4 className="card-title d-inline-block">Recent Appointments</h4>
@@ -731,7 +796,7 @@ const DoctorDashboard = () => {
                 </div>
             </div>
         </div>
-    </div>
+    
   </div>
 
 

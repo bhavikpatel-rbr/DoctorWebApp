@@ -142,6 +142,47 @@ const ChatBox = () => {
         count: 3,
         isActive: true,
       },
+      {
+        avatar: 'assets/img/profiles/avatar-01.jpg',
+        name: 'Bhavik Rupapara',
+        time: '10:22 AM',
+        message: 'Lorem ipsum dolor sit amet...',
+        count: 3,
+        isActive: true,
+      },
+      {
+        avatar: 'assets/img/profiles/avatar-01.jpg',
+        name: 'Bhavik Rupapara',
+        time: '10:22 AM',
+        message: 'Lorem ipsum dolor sit amet...',
+        count: 3,
+        isActive: true,
+      },
+      {
+        avatar: 'assets/img/profiles/avatar-01.jpg',
+        name: 'Bhavik Rupapara',
+        time: '10:22 AM',
+        message: 'Lorem ipsum dolor sit amet...',
+        count: 3,
+        isActive: true,
+      },
+      {
+        avatar: 'assets/img/profiles/avatar-01.jpg',
+        name: 'Bhavik Rupapara',
+        time: '10:22 AM',
+        message: 'Lorem ipsum dolor sit amet...',
+        count: 3,
+        isActive: true,
+      },
+
+      {
+        avatar: 'assets/img/profiles/avatar-01.jpg',
+        name: 'Bhavik Rupapara',
+        time: '10:22 AM',
+        message: 'Lorem ipsum dolor sit amet...',
+        count: 3,
+        isActive: true,
+      },
     // Add more users as needed
   ];
 
@@ -159,6 +200,29 @@ const ChatBox = () => {
       text: 'How likely are you to recommend our company to your friends and family?',
       time: '06:00 PM, 30 Sep 2022',
     },
+    {
+      type: 'received',
+      text: 'How likely are you to recommend our company to your friends and family?',
+      time: '06:00 PM, 30 Sep 2022',
+    },
+    {
+      type: 'sent',
+      text: 'How likely are you to recommend our company to your friends and family?',
+      time: '06:00 PM, 30 Sep 2022',
+    },
+    {
+      type: 'received',
+      avatar: {avatar1},
+      name: 'Williams Bruk',
+      text: 'How likely are you to recommend our company to your friends and family?',
+      time: '06:00 PM, 30 Sep 2022',
+    },
+    {
+      type: 'sent',
+      text: 'How likely are you to recommend our company to your friends and family?',
+      time: '06:00 PM, 30 Sep 2022',
+    },
+
     // Add more messages as needed
   ];
   // const ChatSearchBar = () => {

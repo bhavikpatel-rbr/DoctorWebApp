@@ -8,6 +8,7 @@ import searchnormal from "../img/icons/search-normal.svg";
 import noteicon02 from "../img/icons/note-icon-02.svg";
 import noteicon01 from "../img/icons/note-icon-01.svg";
 import user from "../img/user1.jpg";
+import doctorImage from '../assest/Logo.jpg';
 import user06 from "../img/user-06.jpg";
 import settingicon01 from "../img/icons/setting-icon-01.svg";
 
@@ -64,8 +65,8 @@ const Header = () => {
           onMouseLeave={expandMenu}
           onMouseOver={expandMenuOpen}>
         <Link className="logo logo-normal">
-          <img src={logo} width="35" height="35" alt="" />{" "}
-          <span>DoctorApp</span>
+          <img src={doctorImage} width="50" height="50" alt="" style={{marginBottom:"30px" , borderRadius:"10px"}}/>{" "}
+          <span style={{marginBottom:"30px"}}>Totality</span>
         </Link>
       </div>
       <Link id="toggle_btn" href="javascript:void(0);" onClick={handlesidebar}>

@@ -61,6 +61,14 @@ import IntellectualState from '../screen/appscreen/CaseRecord/IntellectualState'
 import IntellectualState1 from '../screen/appscreen/CaseRecord/IntellectualState1';
 import IntellectualState2 from '../screen/appscreen/CaseRecord/IntellectualState2';
 import Emotions from '../screen/appscreen/CaseRecord/Emotions';
+import ChiefcomplaintstartAnylisys from '../screen/appscreen/CaseRecordAnalysis/ChiefcomplaintstartAnylisys';
+import IntellecturalActivety from '../screen/appscreen/CaseRecord/IntellecturalActivety';
+import Action from '../screen/appscreen/CaseRecord/Action';
+import EditStaff from '../screen/appscreen/Staff/EditStaff';
+import AddLeave from '../screen/appscreen/Staff/AddLeave';
+import EditLeave from '../screen/appscreen/Staff/EditLeave';
+import VoiceCall from '../screen/appscreen/Call/VoiceCall';
+import VideoCall from '../screen/appscreen/Call/VideoCall';
 
 const AppNavigation = () => {
 
@@ -99,8 +107,11 @@ const AppNavigation = () => {
             {/* Staff Routes */}
             <Route path="/stafflist" element={<Layout><StaffList /></Layout>} />
             <Route path="/addstaff" element={<Layout><AddStaff /></Layout>} />
+            <Route path="/editstaff" element={<Layout><EditStaff /></Layout>} />
             <Route path="/staffprofile" element={<Layout><StaffProfile /></Layout>} />
             <Route path="/leaverequest" element={<Layout><LeaveRequest /></Layout>} />
+            <Route path="/addleave" element={<Layout><AddLeave /></Layout>} />
+            <Route path="/editleave" element={<Layout><EditLeave /></Layout>} />
             <Route path="/holidays" element={<Layout><Holidays /></Layout>} />
             <Route path="/attendancesheet" element={<Layout><AttendanceSheet /></Layout>} />
 
@@ -143,6 +154,33 @@ const AppNavigation = () => {
              <Route path="/intellectualstate1" element={<Layout><IntellectualState1 /></Layout>} />
              <Route path="/intellectualstate2" element={<Layout><IntellectualState2 /></Layout>} />
              <Route path="/emotions" element={<Layout><Emotions /></Layout>} />
+
+             {/* Chief Complaint Routes */}
+             <Route path="/chiefcompaint" element={<Layout><ChiefCompaint /></Layout>} />
+             <Route path="/associatecomplaint" element={<Layout><AssociateComplaint /></Layout>} />
+             <Route path="/adddata" element={<Layout><AddData /></Layout>} />
+             <Route path="/caserecordadd" element={<Layout><CaseRecordinit /></Layout>} />
+             <Route path="/uploadcaserecord" element={<Layout><UploadCaseRecord /></Layout>} />
+             <Route path="/chiefcomplaintstartanylisys" element={<Layout><ChiefcomplaintstartAnylisys /></Layout>} />
+             <Route path="/associatecomplaintStart" element={<Layout><AssociatecomplaintStart /></Layout>} />
+             <Route path="/chiefcompaint/:id" element={<Layout><ChiefCompaintInit /></Layout>} />
+             <Route path="/associatecomplaint/:id" element={<Layout><AssociateComplaintInit /></Layout>} />
+             <Route path="/addPatientDetails" element={<Layout><AddPatientDetails /></Layout>} />
+             <Route path="/dateAndDailyroutine" element={<Layout><DateAndDailyroutine /></Layout>} />
+             <Route path="/lifeSpaceInvestigation" element={<Layout><LifeSpaceInvestigation /></Layout>} />
+             <Route path="/addSfft" element={<Layout><AddSfft /></Layout>} />
+             <Route path="/lstTable" element={<Layout><LstTable /></Layout>} />
+             <Route path="/mentalstate" element={<Layout><MentalState /></Layout>} />
+             <Route path="/emotionalstate" element={<Layout><EmotionalState /></Layout>} />
+             <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
+             <Route path="/emotionalstate2" element={<Layout><EmotionalState2 /></Layout>} />
+             <Route path="/emotionalstate3" element={<Layout><EmotionalState3 /></Layout>} />
+             <Route path="/intellectualstate" element={<Layout><IntellectualState /></Layout>} />
+             <Route path="/intellectualstate1" element={<Layout><IntellectualState1 /></Layout>} />
+             <Route path="/intellectualstate2" element={<Layout><IntellectualState2 /></Layout>} />
+             <Route path="/emotions" element={<Layout><Emotions /></Layout>} />
+             <Route path="/intellecturalactivety" element={<Layout><IntellecturalActivety /></Layout>} />
+             <Route path="/action" element={<Layout><Action /></Layout>} />
            
              {/* Blog Routes */}
              <Route path="/blog" element={<Layout><BlogGrid /></Layout>} />
@@ -158,6 +196,10 @@ const AppNavigation = () => {
 
              {/* Chat Routes */}
              <Route path="/chat" element={<Layout><ChatBox /></Layout>} />
+
+             {/* Call Routes */}
+             <Route path="/voicecall" element={<Layout><VoiceCall /></Layout>} />
+             <Route path="/videocall" element={<Layout><VideoCall /></Layout>} />
 
               {/* ProfilePage Routes */}
               <Route path="/profilepage" element={<Layout><ProfilePage /></Layout>} />

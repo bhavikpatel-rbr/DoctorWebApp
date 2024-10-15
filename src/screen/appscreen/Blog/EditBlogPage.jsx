@@ -170,14 +170,14 @@ const EditBlogPage = () => {
                     </div>
                   </div>
 
-                  <div className="col-12 col-md-6 col-xl-12">
+                  <div className="col-12 col-md-12 col-xl-12">
                     <div className="input-block local-top-form">
                       <label className="local-top">Avatar <span className="login-danger">*</span></label>
-                      <div className="settings-btn upload-files-avatar">
+                      <div className="settings-btn upload-files-avator">
                         <input
                           type="file"
                           accept="image/*"
-                          name="image"
+                          name="avatar"
                           id="file"
                           onChange={handleFileChange}
                           className="hide-input"
@@ -185,18 +185,6 @@ const EditBlogPage = () => {
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
                     </div>
-                    {avatar && (
-                      <div className="upload-images upload-size">
-                        <img src={avatar} alt="Avatar" />
-                        <button
-                          type="button"
-                          className="btn-icon logo-hide-btn"
-                          onClick={() => setAvatar(null)}
-                        >
-                          <i className="feather-x-circle"></i>
-                        </button>
-                      </div>
-                    )}
                   </div>
 
                   <div className="col-12">

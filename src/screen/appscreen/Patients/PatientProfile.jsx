@@ -24,7 +24,7 @@ const PatientProfile = () => {
               <div className="row">
                 <div className="col-md-12">
                   <div className="about-info">
-                    <h4>Patient Profile <span><a href="javascript:;"><i className="feather-more-vertical"></i></a></span></h4>
+                    <h4>Patient Profile</h4>
                   </div>
                   <div className="doctor-profile-head">
                     <div className="profile-bg-img">
@@ -50,28 +50,8 @@ const PatientProfile = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-lg-4 col-md-4 d-flex align-items-center">
-                        <div className="follow-group">
-                          <div className="doctor-follows">
-                            <h5>Followers</h5>
-                            <h4>850</h4>
-                          </div>
-                          <div className="doctor-follows">
-                            <h5>Following</h5>
-                            <h4>18K</h4>
-                          </div>
-                          <div className="doctor-follows">
-                            <h5>Posts</h5>
-                            <h4>250</h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-xl-4 d-flex align-items-center">
-                        <div className="follow-btn-group py-3">
-                          <button type="button" className="btn btn-info follow-btns">Follow</button>
-                          <button type="button" className="btn btn-info message-btns">Message</button>
-                        </div>
-                      </div>
+                     
+                     
                     </div>
                   </div>
                 </div>
@@ -96,18 +76,26 @@ const PatientProfile = () => {
                         <span>Male</span>
                       </li>
                       <li>
-                        <h4>Operation Done</h4>
-                        <span>30+</span>
+                        <h4>Age</h4>
+                        <span>30</span>
                       </li>
                       <li>
-                        <h4>Designation</h4>
-                        <span>Engineer</span>
+                        <h4>Height</h4>
+                        <span>5'9"</span>
+                      </li>
+                      <li>
+                        <h4>Weight</h4>
+                        <span>75 kg</span>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
+           
+          </div>
+          <div className="col-lg-4">
+           
             <div className="doctor-personals-grp">
               <div className="card">
                 <div className="card-body">
@@ -156,67 +144,41 @@ const PatientProfile = () => {
               </div>
             </div>
           </div>
-
-          <div className="col-lg-8">
-            <div className="doctor-personals-grp">
+          <div className="col-lg-4">
+          <div className="doctor-personals-grp">
               <div className="card">
                 <div className="card-body">
-                  <div className="tab-content-set">
-                    <ul className="nav">
+                  <div className="heading-detail">
+                    <h4 className="mb-3">Contact Information</h4>
+                   
+                  </div>
+                  <div className="about-me-list mt-4">
+                    <ul className="list-space">
                       <li>
-                        <a href="patient-profile.html" className="active">
-                          <span className="set-about-icon me-2">
-                            {/* <img src="assets/img/icons/menu-icon-02.svg" alt="About me" /> */}
-                          </span>
-                          About me
-                        </a>
+                        <h4>Phone</h4>
+                        <span>(123) 456-7890</span>
                       </li>
                       <li>
-                        <a href="patient-setting.html">
-                          <span className="set-about-icon me-2">
-                            {/* <img src="assets/img/icons/menu-icon-16.svg" alt="Settings" /> */}
-                          </span>
-                          Settings
-                        </a>
+                        <h4>Email</h4>
+                        <span>bhvaik@example.com</span>
+                      </li>
+                      <li>
+                        <h4>Address</h4>
+                        <span>123 Main St, Surat, India</span>
+                      </li>
+                      <li>
+                        <h4>Biography </h4>
+                        <span>Lorem Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet...</span>
                       </li>
                     </ul>
-                  </div>
-                  <div className="personal-list-out">
-                    <div className="row">
-                      <div className="col-xl-3 col-md-6">
-                        <div className="detail-personal">
-                          <h2>Full Name</h2>
-                          <h3>Bhvaik Rupapara</h3>
-                        </div>
-                      </div>
-                      <div className="col-xl-3 col-md-6">
-                        <div className="detail-personal">
-                          <h2>Mobile</h2>
-                          <h3>264-625-2583</h3>
-                        </div>
-                      </div>
-                      <div className="col-xl-3 col-md-6">
-                        <div className="detail-personal">
-                          <h2>Email</h2>
-                          <h3><a href="mailto:[email&#160;protected]">[email protected]</a></h3>
-                        </div>
-                      </div>
-                      <div className="col-xl-3 col-md-6">
-                        <div className="detail-personal">
-                          <h2>Location</h2>
-                          <h3>USA</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hello-park">
-                    <p>Completed my graduation in Gynaecologist Medicine from the well-known and renowned institution of India – SARDAR PATEL MEDICAL COLLEGE, BARODA in 2000-01, which was affiliated to M.S. University. I ranked in University exams from the same university from 2000 – 2005 and have many papers and journals to my credit. I have worked in various hospitals like Apollo, and Fortis and conducted many successful operations. You can find my published papers online. I have been associated with some renowned medical institutions and have helped many patients recover from serious illnesses.</p>
-                    <p>I work with a team of doctors who are specialists in their respective fields. With their support and my determination, I have helped many patients recover and lead healthy lives.</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+       
+         </div>
+
+         
         </div>
       </div>
     </div>

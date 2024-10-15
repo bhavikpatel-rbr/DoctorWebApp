@@ -340,6 +340,14 @@ const AddPatient = () => {
                         />
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
+                      {formData.avatar &&
+                      <div className="upload-images upload-size">
+                        {formData.avatar && <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" />}
+                        <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
+                          <i className="feather-x-circle"></i>
+                        </a>
+                      </div>
+}
                     </div>
                   </div>
                   <div className="col-12 col-md-6 col-xl-6">

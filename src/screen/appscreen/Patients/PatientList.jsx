@@ -9,6 +9,7 @@ import plus from '../../../img/icons/plus.svg'
 import refresh from '../../../img/icons/re-fresh.svg'
 import searchnormal from '../../../img/icons/search-normal.svg'
 import { ChevronRight } from 'react-feather';
+import { FaPen, FaTrash } from 'react-icons/fa';
 const data = [
     { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
     { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
@@ -87,32 +88,7 @@ const PatientList = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-auto text-end float-end ms-auto download-grp">
-                    <a href="javascript:;" className="me-2">
-                      <img
-                        src={pdf1}
-                        alt="PDF Icon 1"
-                      />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img
-                        src={pdf2}
-                        alt="PDF Icon 2"
-                      />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img
-                         src={pdf3}
-                        alt="PDF Icon 3"
-                      />
-                    </a>
-                    <a href="javascript:;">
-                    <img
-                         src={pdf4}
-                        alt="PDF Icon 3"
-                      />
-                    </a>
-                  </div>
+                  
                 </div>
               </div>
 
@@ -120,11 +96,7 @@ const PatientList = () => {
         <table className="table border-0 custom-table comman-table datatable mb-0">
           <thead>
             <tr>
-              <th>
-                <div className="form-check check-tables">
-                  <input className="form-check-input" type="checkbox" value="something" />
-                </div>
-              </th>
+              
               <th>Name</th>
               <th>Department</th>
               <th>Specialization</th>
@@ -138,11 +110,7 @@ const PatientList = () => {
           <tbody>
             {currentRows.map(doctor => (
               <tr key={doctor.id}>
-                <td>
-                  <div className="form-check check-tables">
-                    <input className="form-check-input" type="checkbox" value="something" />
-                  </div>
-                </td>
+               
                 <td className="profile-image">
                   <a href="profile.html">{doctor.name}</a>
                 </td>
@@ -153,38 +121,49 @@ const PatientList = () => {
                 <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
                 <td>{doctor.joiningDate}</td>
                 <td className="text-end">
-                  <div className="dropdown dropdown-action">
-                    <a href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i className="fa fa-ellipsis-v"></i>
-                    </a>
-                    <div className="dropdown-menu dropdown-menu-end">
-                      <a className="dropdown-item" href="edit-doctor.html">
-                        <i className="fa-solid fa-pen-to-square m-r-5"></i>
-                        Edit
-                      </a>
-                      <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_patient">
-                        <i className="fa fa-trash-alt m-r-5"></i>
-                        Delete
-                      </a>
-                    </div>
-                  </div>
-                </td>
+                          <button 
+                            className="btn btn-sm btn-danger me-2" 
+                            style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
+                            onClick={() => console.log('Edit', doctor.id)}
+                          >
+                            <FaPen />
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-danger " 
+                            style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                            onClick={() => console.log('Delete', doctor.id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <nav>
-        <ul className="pagination justify-content-center">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-              <a className="page-link" href="#" onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+                <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => paginate(index + 1)}
+                        style={{
+                          border: '1px solid #2e37a4',
+                          color: currentPage === index + 1 ? '#fff' : '#2e37a4',
+                          backgroundColor: currentPage === index + 1 ? '#2e37a4' : '#fff',
+                          borderRadius: '4px',
+                          padding: '6px 12px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

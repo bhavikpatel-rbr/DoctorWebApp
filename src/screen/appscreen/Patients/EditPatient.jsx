@@ -22,14 +22,15 @@ const EditPatient = () => {
     postalCode: '91403',
     biography: 'Lorem ipsum dolor sit amet...',
     status: 'Active',
+    avatar: null,
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+    const { name, value, type, files } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'file' ? files[0] : value
+    });
   };
 
   const handleSubmit = (e) => {
@@ -321,19 +322,21 @@ const EditPatient = () => {
                         <input
                           type="file"
                           accept="image/*"
-                          name="image"
+                          name="avatar"
                           id="file"
+                          onChange={handleChange}
                           className="hide-input"
-                          // onChange={handleFileChange} // Implement file change handler if needed
                         />
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
+                      {formData.avatar &&
                       <div className="upload-images upload-size">
-                        <img src="assets/img/favicon.png" alt="Image" />
+                        {formData.avatar && <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" />}
                         <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
                           <i className="feather-x-circle"></i>
                         </a>
                       </div>
+}
                     </div>
                   </div>
                   <div className="col-12 col-md-6 col-xl-6">

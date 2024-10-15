@@ -403,12 +403,12 @@ const Dashboard = () => {
       </div>
 
       <div className="row">
-        <div className="col-12 col-md-12 col-xl-4">
+        <div className="col-12 col-md-12 col-xl-3">
           <div className="card top-departments">
             <div className="card-header">
               <h4 className="card-title mb-0">Top Departments</h4>
             </div>
-            <div className="card-body">
+            <div className="card-body mt-3">
               <div className="activity-top">
                 <div className="activity-boxs comman-flex-center">
                   <img src={depicon01} />
@@ -457,8 +457,8 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-12 col-md-12 col-xl-8">
-          <div className="card">
+        <div className="col-12 col-md-12 col-xl-9">
+          <div className="card top-departments">
             <div className="card-header">
               <h4 className="card-title d-inline-block">
                 Upcoming Appointments
@@ -467,20 +467,12 @@ const Dashboard = () => {
                 Show all
               </a>
             </div>
-            <div className="card-body p-0 table-dash">
+            <div className="card-body p-0 table-dash mt-0">
               <div className="table-responsive">
                 <table className="table mb-0 border-0 datatable custom-table">
                   <thead>
                     <tr>
-                      <th>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </th>
+                     
                       <th>No</th>
                       <th>Patient name</th>
                       <th>Doctor</th>
@@ -491,15 +483,7 @@ const Dashboard = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
+                     
                       <td>R00001</td>
                       <td>Bhavik Rupapara</td>
                       <td className="table-image appoint-doctor">
@@ -518,20 +502,36 @@ const Dashboard = () => {
                       <td>Ear Pain</td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
+                     
+                     <td>R00001</td>
+                     <td>Bhavik Rupapara</td>
+                     <td className="table-image appoint-doctor">
+                       <img
+                         width="28"
+                         height="28"
+                         className="rounded-circle"
+                         src={user}
+                         alt
+                       />
+                       <h2>Dr.Tushar Joshi</h2>
+                     </td>
+                     <td className="appoint-time">
+                       <span>12.05.2022 at </span>7.00 PM
+                     </td>
+                     <td>Ear Pain</td>
+                     <td className="text-end">
+                       <a href="#" className="btn btn-outline-primary btn-sm">
+                          View
+                       </a>
+                     </td>
+                   </tr>
+                    <tr>
+                     
                       <td>R00001</td>
                       <td>Bhavik Rupapara</td>
                       <td className="table-image appoint-doctor">
@@ -550,20 +550,12 @@ const Dashboard = () => {
                       <td>Ear Pain</td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
+                     
                       <td>R00001</td>
                       <td>Bhavik Rupapara</td>
                       <td className="table-image appoint-doctor">
@@ -582,20 +574,12 @@ const Dashboard = () => {
                       <td>Ear Pain</td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
+                      
                       <td>R00001</td>
                       <td>Bhavik Rupapara</td>
                       <td className="table-image appoint-doctor">
@@ -614,20 +598,12 @@ const Dashboard = () => {
                       <td>Ear Pain</td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
+                     
                       <td>R00001</td>
                       <td>Bhavik Rupapara</td>
                       <td className="table-image appoint-doctor">
@@ -646,42 +622,11 @@ const Dashboard = () => {
                       <td>Ear Pain</td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value="something"
-                          />
-                        </div>
-                      </td>
-                      <td>R00001</td>
-                      <td>Bhavik Rupapara</td>
-                      <td className="table-image appoint-doctor">
-                        <img
-                          width="28"
-                          height="28"
-                          className="rounded-circle"
-                          src={user}
-                          alt
-                        />
-                        <h2>Dr.Tushar Joshi</h2>
-                      </td>
-                      <td className="appoint-time">
-                        <span>12.05.2022 at </span>7.00 PM
-                      </td>
-                      <td>Ear Pain</td>
-                      <td className="text-end">
-                        <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
-                        </a>
-                      </td>
-                    </tr>
+                 
                   </tbody>
                 </table>
               </div>
@@ -724,7 +669,7 @@ const Dashboard = () => {
                       </td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
@@ -741,7 +686,7 @@ const Dashboard = () => {
                       </td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
@@ -758,7 +703,7 @@ const Dashboard = () => {
                       </td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>
@@ -775,7 +720,7 @@ const Dashboard = () => {
                       </td>
                       <td className="text-end">
                         <a href="#" className="btn btn-outline-primary btn-sm">
-                          <i className="feather-eye me-1"></i> View
+                           View
                         </a>
                       </td>
                     </tr>

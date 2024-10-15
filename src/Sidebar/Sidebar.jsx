@@ -11,7 +11,7 @@ import menuicon08 from "../img/icons/menu-icon-08.svg";
 import menuicon13 from "../img/icons/menu-icon-13.svg";
 import menuicon10 from "../img/icons/menu-icon-10.svg";
 import menuicon09 from "../img/icons/menu-icon-09.svg";
-
+import menuicon11 from "../img/icons/menu-icon-11.svg";
 const Sidebar = () => {
   const [activeLink, setActiveLink] = useState('/');
   const [openSubMenu, setOpenSubMenu] = useState(null);
@@ -160,12 +160,27 @@ const Sidebar = () => {
                     className={activeLink === "/addstaff" ? "active" : ""}
                     onClick={() => handleLinkClick("/addstaff")}
                   >Add Staff</Link></li>
+                  <li><Link
+                    to="/editstaff"
+                    className={activeLink === "/editstaff" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editstaff")}
+                  >Edit Staff</Link></li>
                 <li><Link
                     to="/staffprofile"
                     className={activeLink === "/staffprofile" ? "active" : ""}
                     onClick={() => handleLinkClick("/staffprofile")}
                   >Staff Profile</Link></li>
                 <li><Link
+                    to="/addleave"
+                    className={activeLink === "/addleave" ? "active" : ""}
+                    onClick={() => handleLinkClick("/addleave")}
+                  >Add Leaves</Link></li>
+                   <li><Link
+                    to="/editleave"
+                    className={activeLink === "/editleave" ? "active" : ""}
+                    onClick={() => handleLinkClick("/editleave")}
+                  >Edit Leaves</Link></li>
+                  <li><Link
                     to="/leaverequest"
                     className={activeLink === "/leaverequest" ? "active" : ""}
                     onClick={() => handleLinkClick("/leaverequest")}
@@ -360,6 +375,27 @@ const Sidebar = () => {
                     className={activeLink === "/editstoredetails" ? "active" : ""}
                     onClick={() => handleLinkClick("/editstoredetails")}
                   >Edit Store</Link></li>
+              </ul>
+            </li>
+            <li className={`submenu ${openSubMenu === 'call' ? 'active' : ''}`}>
+              <Link to="#" onClick={() => toggleSubMenu('call')}>
+                <span className="menu-side">
+                  <img src={menuicon11} alt="call" />
+                </span>
+                <span>Calls </span> <span className="menu-arrow"></span>
+              </Link>
+              <ul className={`${openSubMenu === 'call' ? 'd-block' : 'd-none'}`}>
+                <li><Link
+                    to="/voicecall"
+                    className={activeLink === "/voicecall" ? "active" : ""}
+                    onClick={() => handleLinkClick("/voicecall")}
+                  >Voice Call</Link></li>
+                <li><Link
+                    to="/videocall"
+                    className={activeLink === "/videocall" ? "active" : ""}
+                    onClick={() => handleLinkClick("/videocall")}
+                  >Video Call</Link></li>
+               
               </ul>
             </li>
             

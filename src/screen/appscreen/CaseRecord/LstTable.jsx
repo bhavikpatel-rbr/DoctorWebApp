@@ -351,8 +351,8 @@ const LstTable = () => {
                             </Link>
                           </div>
                           <div style={styles.linkItem}>
-                            <Link to="/intellectualstate" style={styles.link}>
-                              Intellectual State
+                            <Link to="/intellecturalactivety" style={styles.link}>
+                              Intellectual Activity
                             </Link>
                           </div>
                           <div style={styles.linkItem}>

@@ -38,9 +38,9 @@ const DoctorProfile = () => {
                 <div className="col-md-12">
                   <div className="about-info">
                     <h4>Doctor Profile  <span>
-          <a href="#">
+          {/* <a href="#">
             <FontAwesomeIcon icon={faEllipsisV} />
-          </a>
+          </a> */}
         </span></h4>
                   </div>
                   <div className="doctor-profile-head">
@@ -67,28 +67,8 @@ const DoctorProfile = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-lg-4 col-md-4 d-flex align-items-center">
-                        <div className="follow-group">
-                          <div className="doctor-follows">
-                            <h5>Followers</h5>
-                            <h4>850</h4>
-                          </div>
-                          <div className="doctor-follows">
-                            <h5>Following</h5>
-                            <h4>18K</h4>
-                          </div>
-                          <div className="doctor-follows">
-                            <h5>Posts</h5>
-                            <h4>250</h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 d-flex align-items-center">
-                        <div className="follow-btn-group">
-                          <button type="button" className="btn btn-info follow-btns">Follow</button>
-                          <button type="button" className="btn btn-info message-btns">Message</button>
-                        </div>
-                      </div>
+                   
+                     
                     </div>
                   </div>
                 </div>
@@ -125,6 +105,12 @@ const DoctorProfile = () => {
                 </div>
               </div>
             </div>
+
+           
+          </div>
+
+          <div className="col-lg-4">
+          
 
             <div className="doctor-personals-grp">
               <div className="card">
@@ -174,45 +160,51 @@ const DoctorProfile = () => {
               </div>
             </div>
 
-            <div className="doctor-personals-grp">
-              <div className="card">
-                <div className="card-body">
-                  <div className="heading-detail">
-                    <h4>Speciality</h4>
+          
+          </div>
+          <div className="col-lg-4">
+          
+
+         
+
+          <div className="doctor-personals-grp">
+            <div className="card">
+              <div className="card-body">
+                <div className="heading-detail">
+                  <h4>Speciality</h4>
+                </div>
+                <div className="personal-activity">
+                  <div className="personal-icons status-grey">
+                    <img src={medal} alt="Speciality" />
                   </div>
-                  <div className="personal-activity">
-                    <div className="personal-icons status-grey">
-                      <img src={medal} alt="Speciality" />
-                    </div>
-                    <div className="views-personal">
-                      <h4>Professionals</h4>
-                      <h5>Certified Skin Treatment</h5>
-                    </div>
+                  <div className="views-personal">
+                    <h4>Professionals</h4>
+                    <h5>Certified Skin Treatment</h5>
                   </div>
-                  <div className="personal-activity">
-                    <div className="personal-icons status-green">
-                    <img src={medal1} alt="Speciality" />
-                    </div>
-                    <div className="views-personal">
-                      <h4>Certified</h4>
-                      <h5>Cold Laser Operation</h5>
-                    </div>
+                </div>
+                <div className="personal-activity">
+                  <div className="personal-icons status-green">
+                  <img src={medal1} alt="Speciality" />
                   </div>
-                  <div className="personal-activity mb-0">
-                    <div className="personal-icons status-orange">
-                    <img src={medal2} alt="Speciality" />
-                    </div>
-                    <div className="views-personal">
-                      <h4>Medication Laser</h4>
-                      <h5>Hair Loss Product</h5>
-                    </div>
+                  <div className="views-personal">
+                    <h4>Certified</h4>
+                    <h5>Cold Laser Operation</h5>
+                  </div>
+                </div>
+                <div className="personal-activity mb-0">
+                  <div className="personal-icons status-orange">
+                  <img src={medal2} alt="Speciality" />
+                  </div>
+                  <div className="views-personal">
+                    <h4>Medication Laser</h4>
+                    <h5>Hair Loss Product</h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="col-lg-8">
+        </div>
+          {/* <div className="col-lg-8">
             <div className="doctor-personals-grp">
               <div className="card">
                 <div className="card-body">
@@ -242,9 +234,9 @@ const DoctorProfile = () => {
                           Notifications
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
 
-                    <div className="tab-content mt-5">
+                    {/* <div className="tab-content mt-5">
                       <div className="tab-pane active">
                         <div className="post-activity">
                           <div className="post-activity-head">
@@ -255,7 +247,7 @@ const DoctorProfile = () => {
                           <div className="post-item">
                             <div className="post-item-img">
                               <a href="javascript:;">
-                                {/* <img src="assets/img/posts/post-01.jpg" alt="Post" /> */}
+                               
                               </a>
                             </div>
                             <div className="post-item-content">
@@ -269,7 +261,7 @@ const DoctorProfile = () => {
                           <div className="post-item">
                             <div className="post-item-img">
                               <a href="javascript:;">
-                                {/* <img src="assets/img/posts/post-02.jpg" alt="Post" /> */}
+                               
                               </a>
                             </div>
                             <div className="post-item-content">
@@ -283,7 +275,7 @@ const DoctorProfile = () => {
                           <div className="post-item">
                             <div className="post-item-img">
                               <a href="javascript:;">
-                                {/* <img src="assets/img/posts/post-03.jpg" alt="Post" /> */}
+                                
                               </a>
                             </div>
                             <div className="post-item-content">
@@ -296,12 +288,12 @@ const DoctorProfile = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </div> */}
+                  {/* </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

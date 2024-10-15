@@ -330,12 +330,14 @@ const EditDoctor = () => {
                         />
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
+                      {formData.avatar &&
                       <div className="upload-images upload-size">
                         {formData.avatar && <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" />}
                         <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
                           <i className="feather-x-circle"></i>
                         </a>
                       </div>
+}
                     </div>
                   </div>
                   <div className="col-12 col-md-6 col-xl-6">
@@ -369,7 +371,7 @@ const EditDoctor = () => {
                   </div>
                   <div className="col-12">
                     <div className="doctor-submit text-end">
-                      <button type="submit" className="btn btn-primary submit-form me-2">Submit</button>
+                      <button type="submit" className="btn btn-primary submit-form me-2">Update</button>
                       <button type="button" className="btn btn-primary cancel-form">Cancel</button>
                     </div>
                   </div>

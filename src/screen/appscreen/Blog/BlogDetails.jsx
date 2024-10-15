@@ -48,7 +48,7 @@ const BlogView = () => (
       <BlogShare />
       <BlogTags />
     </article>
-    <AuthorWidget />
+    {/* <AuthorWidget /> */}
     <Comments />
   </div>
 );
@@ -81,24 +81,24 @@ const BlogTags = () => (
 );
 
 // Author Widget Component
-const AuthorWidget = () => (
-  <div className="widget author-widget ">
-    <div className="authr-blog-group text-center">
-      <div className="authr-blg-img mb-2">
-        <img className="avatar" src={avatar3} alt="Author" />
-      </div>
-      <h2>Markhay Smith</h2>
-      <span>Dentist</span>
-      <p> Integer enim neque volutpat ac tincidunt vitae...</p>
-      <ul className="nav social-blk">
-        <li><a href="javascript:;"><img src={social1} alt="" /></a></li>
-        <li><a href="javascript:;"><img src={social2} alt="" /></a></li>
-        <li><a href="javascript:;"><img src={social3} alt="" /></a></li>
-        <li><a href="javascript:;"><img src={social4} alt="" /></a></li>
-      </ul>
-    </div>
-  </div>
-);
+// const AuthorWidget = () => (
+//   <div className="widget author-widget ">
+//     <div className="authr-blog-group text-center">
+//       <div className="authr-blg-img mb-2">
+//         <img className="avatar" src={avatar3} alt="Author" />
+//       </div>
+//       <h2>Markhay Smith</h2>
+//       <span>Dentist</span>
+//       <p> Integer enim neque volutpat ac tincidunt vitae...</p>
+//       <ul className="nav social-blk">
+//         <li><a href="javascript:;"><img src={social1} alt="" /></a></li>
+//         <li><a href="javascript:;"><img src={social2} alt="" /></a></li>
+//         <li><a href="javascript:;"><img src={social3} alt="" /></a></li>
+//         <li><a href="javascript:;"><img src={social4} alt="" /></a></li>
+//       </ul>
+//     </div>
+//   </div>
+// );
 
 // Comments Component
 const Comments = () => (
@@ -205,7 +205,7 @@ const Sidebar = () => (
 
 // Related Posts Component
 const RelatedPosts = () => (
-  <div className="widget post-widget">
+  <div className="widget post-widget mt-5">
     <div className="relat-head">
       <h5>Related Posts</h5>
       <a href="javascript:;">Show All</a>
@@ -288,6 +288,25 @@ const MostReads = () => (
         title="Hydration or Moisturization – What to do this Winter?"
         imgSrc={blog3}
       />
+      <RelatedPost 
+        category="Health" 
+        date="15 Sep 2022" 
+        title="Hydration or Moisturization – What to do this Winter?"
+        imgSrc={blog3}
+      />
+      <RelatedPost 
+        category="Health" 
+        date="15 Sep 2022" 
+        title="Hydration or Moisturization – What to do this Winter?"
+        imgSrc={blog3}
+      />
+      <RelatedPost 
+        category="Health" 
+        date="15 Sep 2022" 
+        title="Hydration or Moisturization – What to do this Winter?"
+        imgSrc={blog3}
+      />
+      
     </ul>
   </div>
 );

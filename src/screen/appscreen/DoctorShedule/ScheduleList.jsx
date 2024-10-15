@@ -1,16 +1,92 @@
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 import { Link } from 'react-router-dom';
-import searchnormal from '../../../img/icons/search-normal.svg'
-import pdf1 from '../../../img/icons/pdf-icon-01.svg'
-import pdf2 from '../../../img/icons/pdf-icon-02.svg'
-import pdf3 from '../../../img/icons/pdf-icon-03.svg'
-import pdf4 from '../../../img/icons/pdf-icon-04.svg'
-import plus from '../../../img/icons/plus.svg'
-import refresh from '../../../img/icons/re-fresh.svg'
+import searchnormal from '../../../img/icons/search-normal.svg';
+import plus from '../../../img/icons/plus.svg';
+import refresh from '../../../img/icons/re-fresh.svg';
+import { FaPen, FaTrash } from 'react-icons/fa';
 const ScheduleList = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Sample data for doctors
+  const [data] = useState([
+    {
+      id: 1,
+      name: 'Dr. Andrea Lalema',
+      department: 'Cardiology',
+      availableDays: 'Mon - Sun',
+      availableTime: '09:00 AM - 06:00 PM',
+      status: 'Active',
+    },
+    {
+      id: 1,
+      name: 'Dr. John Doe',
+      department: 'Neurology',
+      availableDays: 'Mon - Fri',
+      availableTime: '10:00 AM - 05:00 PM',
+      status: 'Active',
+    },
+    {
+      id: 1,
+      name: 'Dr. Jane Smith',
+      department: 'Pediatrics',
+      availableDays: 'Mon - Sat',
+      availableTime: '08:00 AM - 04:00 PM',
+      status: 'Inactive',
+    },
+    {
+      id: 1,
+      name: 'Dr. Jane Smith',
+      department: 'Pediatrics',
+      availableDays: 'Mon - Sat',
+      availableTime: '08:00 AM - 04:00 PM',
+      status: 'Inactive',
+    },
+    {
+      id: 1,
+      name: 'Dr. Jane Smith',
+      department: 'Pediatrics',
+      availableDays: 'Mon - Sat',
+      availableTime: '08:00 AM - 04:00 PM',
+      status: 'Inactive',
+    },
+    {
+      id: 1,
+      name: 'Dr. Jane Smith',
+      department: 'Pediatrics',
+      availableDays: 'Mon - Sat',
+      availableTime: '08:00 AM - 04:00 PM',
+      status: 'Inactive',
+    },
+    {
+      id: 1,
+      name: 'Dr. John Doe',
+      department: 'Neurology',
+      availableDays: 'Mon - Fri',
+      availableTime: '10:00 AM - 05:00 PM',
+      status: 'Active',
+    },
+    {
+      id: 1,
+      name: 'Dr. John Doe',
+      department: 'Neurology',
+      availableDays: 'Mon - Fri',
+      availableTime: '10:00 AM - 05:00 PM',
+      status: 'Active',
+    },
+    // Add more doctors as needed
+  ]);
+  const rowsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+  
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -25,7 +101,7 @@ const ScheduleList = () => {
                 <Link to="schedule.html">Doctor Schedule</Link>
               </li>
               <li className="breadcrumb-item">
-                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/>
+                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
               </li>
               <li className="breadcrumb-item active">Schedule List</li>
             </ul>
@@ -49,6 +125,8 @@ const ScheduleList = () => {
                               type="text"
                               className="form-control"
                               placeholder="Search here"
+                              value={searchTerm}
+                              onChange={handleSearchChange}
                             />
                             <a className="btn">
                               <img
@@ -59,41 +137,15 @@ const ScheduleList = () => {
                           </form>
                         </div>
                         <div className="add-group">
-                          <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
-                          <img src={plus} alt="" />
-                          </a>
+                          <Link to="add-doctor.html" className="btn btn-primary add-pluss ms-2">
+                            <img src={plus} alt="" />
+                          </Link>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                          <img src={refresh} alt="" />
+                            <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-auto text-end float-end ms-auto download-grp">
-                    <a href="javascript:;" className="me-2">
-                      <img
-                        src={pdf1}
-                        alt="PDF Icon 1"
-                      />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img
-                        src={pdf2}
-                        alt="PDF Icon 2"
-                      />
-                    </a>
-                    <a href="javascript:;" className="me-2">
-                      <img
-                         src={pdf3}
-                        alt="PDF Icon 3"
-                      />
-                    </a>
-                    <a href="javascript:;">
-                    <img
-                         src={pdf4}
-                        alt="PDF Icon 3"
-                      />
-                    </a>
                   </div>
                 </div>
               </div>
@@ -102,11 +154,6 @@ const ScheduleList = () => {
                 <table className="table border-0 custom-table comman-table datatable mb-0">
                   <thead>
                     <tr>
-                      <th>
-                        <div className="form-check check-tables">
-                          <input className="form-check-input" type="checkbox" value="something" />
-                        </div>
-                      </th>
                       <th>Doctor Name</th>
                       <th>Department</th>
                       <th>Available Days</th>
@@ -116,51 +163,65 @@ const ScheduleList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Repeat this <tr> block for each doctor */}
-                    <tr>
-                      <td>
-                        <div className="form-check check-tables">
-                          <input className="form-check-input" type="checkbox" value="something" />
-                        </div>
-                      </td>
-                      <td className="profile-image">
-                        <Link to="profile.html">
-                          <img
-                            width="28"
-                            height="28"
-                            src="assets/img/profiles/avatar-01.jpg"
-                            className="rounded-circle m-r-5"
+                  {currentRows.map(doctor => (
+                      <tr key={doctor.id}>
+                        <td className="profile-image">
+                          <Link to="profile.html">{doctor.name}</Link>
+                        </td>
+                        <td>{doctor.department}</td>
+                        <td>{doctor.availableDays}</td>
+                        <td>{doctor.availableTime}</td>
+                        <td>
+                          <button className={`custom-badge ${doctor.status === 'Active' ? 'status-green' : 'status-red'}`}>
+                            {doctor.status}
+                          </button>
+                        </td>
+                        
+                        <td className="text-end">
+                          <button 
+                            className="btn btn-sm btn-danger me-2" 
+                            style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
                             
-                          />
-                          Dr.Andrea Lalema
-                        </Link>
-                      </td>
-                      <td>Cardiology</td>
-                      <td>Mon - Sun</td>
-                      <td>09:00 AM - 06:00 PM</td>
-                      <td>
-                        <button className="custom-badge status-green">Active</button>
-                      </td>
-                      <td className="text-end">
-                        <div className="dropdown dropdown-action">
-                          <a href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i className="fa fa-ellipsis-v"></i>
-                          </a>
-                          <div className="dropdown-menu dropdown-menu-end">
-                            <Link className="dropdown-item" to="edit-schedule.html">
-                              <i className="fa-solid fa-pen-to-square m-r-5"></i> Edit
-                            </Link>
-                            <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_patient">
-                              <i className="fa fa-trash-alt m-r-5"></i> Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                          >
+                            <FaPen />
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-danger " 
+                            style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                            
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                     {/* End of repeated <tr> block */}
                   </tbody>
                 </table>
               </div>
+              <nav>
+                <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => paginate(index + 1)}
+                        style={{
+                          border: '1px solid #2e37a4',
+                          color: currentPage === index + 1 ? '#fff' : '#2e37a4',
+                          backgroundColor: currentPage === index + 1 ? '#2e37a4' : '#fff',
+                          borderRadius: '4px',
+                          padding: '6px 12px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 
@@ -181,7 +180,7 @@ const AddBlogPage = () => {
                           accept="image/*"
                           name="avatar"
                           id="file"
-                          // onChange={handleChange}
+                          onChange={handleFileChange}
                           className="hide-input"
                         />
                         <label htmlFor="file" className="upload">Choose File</label>
@@ -191,11 +190,14 @@ const AddBlogPage = () => {
 
                   <div className="col-12">
                     <div className="doctor-submit text-end">
-                      <button type="submit" className="btn btn-primary submit-form me-2">Publish Blog</button>
-                      <button type="button" className="btn btn-primary cancel-form" onClick={() => console.log('Cancel')}>Cancel</button>
+                      <button type="submit" className="btn btn-primary submit-form me-2">
+                        Add Blog
+                      </button>
+                      <button type="button" className="btn btn-primary cancel-form">
+                        Cancel
+                      </button>
                     </div>
                   </div>
-
                 </div>
               </form>
             </div>

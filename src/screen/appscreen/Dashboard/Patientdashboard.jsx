@@ -2,21 +2,78 @@ import React, { useState } from 'react';
 import { ChevronRight } from 'react-feather';
 import morningimg01 from '../../../img/morning-img-01.png'
 import user from '../../../img/user1.jpg'
+import ReactApexChart from 'react-apexcharts';
 import health from '../../../img/icons/health-img.svg'
-import { ChartComponent, SeriesCollectionDirective, 
-    AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,  AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip ,
-    SeriesDirective, Inject, ChartTheme, Legend,LineSeries, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, Highlight } from '@syncfusion/ej2-react-charts';
+
 import { EmitType } from '@syncfusion/ej2-base';
 import { Browser } from '@syncfusion/ej2-base';
 import { FaCheckSquare } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import Slider from 'react-slick';
 const data = [
-  { x: 'Fitness', y: 30, text: '30%' },
-  { x: 'Nutrition', y: 25, text: '25%' },
-  { x: 'Sleep', y: 20, text: '20%' },
-  { x: 'Stress', y: 25, text: '25%' },
+  { x: 'Healthy', y: 55, text: '55%', color: '#00E396' },
+  { x: 'Sick', y: 30, text: '30%', color: '#FF4560' },
+  { x: 'Recovering', y: 15, text: '15%', color: '#FEB019' }
 ];
+
+const chartOptions = {
+  chart: {
+    type: 'donut',
+    height: 350
+  },
+  title: {
+    text: 'Health Status',
+    align: 'center'
+  },
+  labels: data.map(item => item.x),
+  colors: data.map(item => item.color),
+  legend: {
+    show: true,
+    position: 'bottom'
+  },
+  tooltip: {
+    enabled: true,
+    y: {
+      formatter: (val) => `${val}%`
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    style: {
+      fontWeight: '600'
+    },
+    formatter: (val, opts) => `${opts.w.globals.labels[opts.seriesIndex]}: ${val.toFixed(1)}%`,
+    dropShadow: {
+      enabled: false
+    }
+  },
+  plotOptions: {
+    pie: {
+      donut: {
+        size: '40%',
+        labels: {
+          show: true,
+          name: {
+            show: true
+          },
+          value: {
+            show: true,
+            fontWeight: '600'
+          },
+          total: {
+            show: true,
+            showAlways: false,
+            label: 'Total',
+            formatter: (w) => w.globals.seriesTotals.reduce((a, b) => a + b, 0) + '%'
+          }
+        }
+      },
+      expandOnClick: true
+    }
+  }
+};
+
+const chartSeries = data.map(item => item.y);
 
 export const appointments = [
   {
@@ -178,32 +235,14 @@ const [date, setDate] = useState(new Date()); // Initialize with current date
                 </div>
               </div>
               <div id="health-chart">
-              <AccumulationChartComponent
-                id="health-status-pie-chart"
-                title="Health Status"
-                tooltip={{ enable: true }}
-                legendSettings={{ visible: true }}
-            >
-                <Inject services={[PieSeries, AccumulationDataLabel, AccumulationLegend, AccumulationTooltip]} />
-                <AccumulationSeriesCollectionDirective>
-                    <AccumulationSeriesDirective
-                        dataSource={data}
-                        xName="x"
-                        yName="y"
-                        innerRadius="40%"
-                        dataLabel={{
-                            visible: true,
-                            position: 'Outside',
-                            name: 'text',
-                            font: {
-                                fontWeight: '600',
-                            },
-                        }}
-                        radius="70%"
-                    />
-                </AccumulationSeriesCollectionDirective>
-            </AccumulationChartComponent>
-              </div>
+      <ReactApexChart 
+        options={chartOptions}
+        series={chartSeries}
+        type="donut"
+        height={450}
+      />
+    </div>
+
             </div>
           </div>
         </div>

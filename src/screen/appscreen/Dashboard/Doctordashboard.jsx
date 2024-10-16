@@ -7,34 +7,108 @@ import profile from '../../../img/icons/profile-add.svg'
 import timer from '../../../img/icons/timer.svg'
 import sort from '../../../img/icons/sort-icon-01.svg'
 import sort1 from '../../../img/icons/sort-icon-02.svg'
-import { ChartComponent, SeriesCollectionDirective, 
-    AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective,  AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip ,
-    SeriesDirective, Inject, ChartTheme, Legend,LineSeries, Category, Tooltip, ColumnSeries, ILoadedEventArgs, DataLabel, Highlight } from '@syncfusion/ej2-react-charts';
-
 import { FaCheckSquare } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import ReactApexChart from 'react-apexcharts';
 import usericon from "../../../img/icons/user-icon.svg";
 
+const doctorActivityData = [
+  { month: 'Jan', high: 30, low: 10 },
+  { month: 'Feb', high: 40, low: 20 },
+  { month: 'Mar', high: 35, low: 15 },
+  { month: 'Apr', high: 50, low: 25 },
+  { month: 'May', high: 60, low: 30 },
+  { month: 'Jun', high: 70, low: 35 },
+  { month: 'Jul', high: 80, low: 40 },
+  { month: 'Aug', high: 90, low: 45 },
+  { month: 'Sep', high: 100, low: 50 },
+  { month: 'Oct', high: 110, low: 55 },
+  { month: 'Nov', high: 120, low: 60 },
+  { month: 'Dec', high: 130, low: 65 }
+];
 
+const chartOptions1 = {
+  chart: {
+    type: 'line',
+    height: 350,
+    toolbar: {
+      show: false
+    }
+  },
+  title: {
+    text: 'Doctor High and Low Activities per Month',
+    align: 'center'
+  },
+  xaxis: {
+    categories: doctorActivityData.map(data => data.month),
+    title: {
+      text: 'Month'
+    },
+    labels: {
+      rotate: -45
+    }
+  },
+  yaxis: {
+    title: {
+      text: 'Number of Activities'
+    },
+    labels: {
+      formatter: (val) => val.toFixed(0)
+    }
+  },
+  tooltip: {
+    enabled: true
+  },
+  markers: {
+    size: 5
+  },
+  legend: {
+    position: 'top'
+  }
+};
+
+const chartSeries1 = [
+  {
+    name: 'High Activity',
+    data: doctorActivityData.map(data => data.high)
+  },
+  {
+    name: 'Low Activity',
+    data: doctorActivityData.map(data => data.low)
+  }
+];
 const data = [
   { x: 'New Patients', y: 40, color: '#FF6347' }, // Red
   { x: 'Old Patients', y: 60, color: '#4682B4' }  // Blue
 ];
-const doctorActivityData = [
-  { month: 'Jan', high: 75, low: 30 },
-  { month: 'Feb', high: 65, low: 25 },
-  { month: 'Mar', high: 80, low: 35 },
-  { month: 'Apr', high: 95, low: 40 },
-  { month: 'May', high: 85, low: 50 },
-  { month: 'Jun', high: 90, low: 45 },
-  { month: 'Jul', high: 100, low: 55 },
-  { month: 'Aug', high: 95, low: 50 },
-  { month: 'Sep', high: 110, low: 60 },
-  { month: 'Oct', high: 120, low: 65 },
-  { month: 'Nov', high: 115, low: 70 },
-  { month: 'Dec', high: 125, low: 75 },
-];
+
+const chartOptions = {
+  chart: {
+    type: 'pie',
+  },
+  labels: data.map(item => item.x),
+  colors: data.map(item => item.color),
+  legend: {
+    show: true,
+    position: 'bottom'
+  },
+  tooltip: {
+    enabled: true,
+    y: {
+      formatter: (val) => `${val}%`
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    style: {
+      fontWeight: '600'
+    },
+    formatter: (val, opts) => `${opts.w.globals.labels[opts.seriesIndex]}: ${val.toFixed(1)}%`
+  }
+};
+
+const chartSeries = data.map(item => item.y);
+
 export let departmentData = [
     { x: 'Cardiology', y: 35, text: 'Cardiology - 35%' },
     { x: 'Neurology', y: 25, text: 'Neurology - 25%' },
@@ -433,66 +507,26 @@ const DoctorDashboard = () => {
             </div>
           </div>
           <div id="activity-chart">
-          <ChartComponent
-              primaryXAxis={{
-                valueType: 'Category',
-                labelIntersectAction: 'Rotate45',
-                title: 'Month',
-              }}
-              primaryYAxis={{
-                title: 'Number of Activities',
-                labelFormat: '{value}',
-              }}
-              title="Doctor High and Low Activities per Month"
-              tooltip={{ enable: true }}
-            >
-              <Inject services={[LineSeries, Category, Legend, Tooltip]} />
-              <SeriesCollectionDirective>
-                <SeriesDirective
-                  dataSource={doctorActivityData}
-                  xName="month"
-                  yName="high"
-                  name="High Activity"
-                  type="Line"
-                  marker={{ visible: true, width: 10, height: 10 }}
-                />
-                <SeriesDirective
-                  dataSource={doctorActivityData}
-                  xName="month"
-                  yName="low"
-                  name="Low Activity"
-                  type="Line"
-                  marker={{ visible: true, width: 10, height: 10 }}
-                />
-              </SeriesCollectionDirective>
-            </ChartComponent>
-          </div>
+      <ReactApexChart 
+        options={chartOptions1}
+        series={chartSeries1}
+        type="line"
+        height={350}
+      />
+    </div>
         </div>
       </div>
     </div>
     <div className="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
       <div className="card">
-        <div className="card-body">
-          <div id="radial-patients">
-          <AccumulationChartComponent 
-                    id='department-pie-chart1' 
-                    legendSettings={{ visible: true }} 
-                    tooltip={{ enable: true, format: "${point.x} : <b>${point.y}%</b>" }} 
-                    title='New Vs Old Patient'>
-                    <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
-                    <AccumulationSeriesCollectionDirective>
-                        <AccumulationSeriesDirective 
-                            dataSource={data} 
-                            xName='x' 
-                            yName='y' 
-                            dataLabel={{ visible: true, name: 'text', position: 'Outside', font: { fontWeight: '600' } }} 
-                            radius='70%' 
-                            explode={true} 
-                            explodeOffset='10%' 
-                            explodeIndex={0}
-                        />
-                    </AccumulationSeriesCollectionDirective>
-                </AccumulationChartComponent>
+        <div className="card-body d-flex justify-content-center align-items-center">
+          <div id="department-pie-chart1">
+            <ReactApexChart 
+              options={chartOptions}
+              series={chartSeries}
+              type="pie"
+              height={290}
+            />
           </div>
         </div>
       </div>
@@ -507,7 +541,7 @@ const DoctorDashboard = () => {
                 60%</span></h3>
           </div>
         </div>
-        <div className="card patient-structure">
+        <div className="card patient-structure mt-5">
           <div className="card-body">
             <h5>Old Patients</h5>
             <h3>35<span className="status-pink">
@@ -515,16 +549,16 @@ const DoctorDashboard = () => {
                 -20%</span></h3>
           </div>
         </div>
-        <div className="card patient-structure">
+        {/* <div className="card patient-structure">
           <div className="card-body">
             <h5>Total Patients</h5>
             <h3>70<span className="status-pink">
             <img src={sort1} alt="Increase Icon" className="me-1"/>
                 -20%</span></h3>
           </div>
-        </div>
+        </div> */}
       </div>  
-      <div className="col-12 col-md-12 col-xl-12 flex">
+      <div className="col-12 col-md-12 col-xl-12 flex mt-5">
       <div className="card">
                 <div className="circle-bar circle-bar2">
                     <div className="circle-graph2 mt-2 d-flex justify-content-center align-items-center" data-percent="66">

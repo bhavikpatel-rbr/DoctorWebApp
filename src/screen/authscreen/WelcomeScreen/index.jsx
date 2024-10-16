@@ -20,7 +20,7 @@ const WelcomeScreen = () => {
         </div>
         <div className="fixed-bottom ">
           <div className="footer p-3 footer-custom d-flex justify-content-between welcome_btn">
-            <Link to={"/signup"} className="btn btn-primary btn-lg w-100 m-2">
+            <Link to={"/signup"} className="btn btn-outline-primary btn-lg w-100 m-2">
               Sign Up
             </Link>
             <Link

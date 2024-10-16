@@ -188,11 +188,15 @@ ul.Optionitemlist li.selectedOptionsList {
 }
 
 .patient_img-wrap a img.patient_img {
-  width: 100%;
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
 }
-
+.profile-basic-1 {
+background-color: #FFFFFF;
+}
 .Patient_menu_title h3 {
-  color: #044ccc;
+  color: #ffffff;
   font-weight: bold;
   font-size: 15px;
 }
@@ -202,11 +206,12 @@ h2.accordion-header button.accordion-button {
 }
 
 .patient__Menu .doctor-box-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: #ededff;  
 }
 .patient-nav .patient__tab.nav-link {
-  background: rgba(46, 55, 164, 0.05);
+  background: rgb(126 180 228);
   color: #2e37a4;
   padding: 5px;
   margin-bottom: 10px;
@@ -216,10 +221,9 @@ h2.accordion-header button.accordion-button {
 
 .patient__Menu .doctor-list-blk {
   background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 8px 2px #0000002e;
+  border-radius: 10px;
+  padding: 55px 30px;
+  box-shadow: 0 0 2px 1px #0000002e;
 }
 
 /* Trending Style for Navigation */
@@ -236,9 +240,9 @@ h2.accordion-header button.accordion-button {
 }
 
 .patient-nav .nav-link:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
   /* Lift Effect on Hover */
-  box-shadow:0 8px 20px rgb(91 91 91 / 38%);
+  /* box-shadow:0 8px 20px rgb(91 91 91 / 38%); */
   /* Enhanced Shadow on Hover */
 }
 .bg-highlight {
@@ -250,20 +254,20 @@ h2.accordion-header button.accordion-button {
 }
 
 .patient-nav .nav-link.active {
-  background: #0049cb38 !important;
+  background: #2e37a4 !important;
   color: #ffffff !important;
 }
 
 /* Glassmorphism Background */
 .Patient_menu_title {
-  background: rgba(255, 255, 255, 0.2);
+ 
   /* Semi-Transparent Background */
   backdrop-filter: blur(10px);
   /* Blur Effect */
   border-radius: 15px;
   /* Rounded Corners */
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  
   transition: background-color 0.3s;
 }
 

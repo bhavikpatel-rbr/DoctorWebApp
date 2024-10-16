@@ -478,6 +478,15 @@ table.table td h2 span {
     color: #FFF;
 }
 
+.btn-primary-StartRecording {
+    border-color: transparent;
+    background-color: #2e37a4;
+    border-radius:5px !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
@@ -539,6 +548,13 @@ a.btn.btn-outline-primary.btn-sm:hover {
 .btn-primary:hover {
     background: #0049cb;
     font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid #0049cb;
+}
+.btn-primary-StartRecording:hover {
+    background: #0049cb;
+    font-size: 14px;
     font-weight: 500;
     color: #fff;
     border: 1px solid #0049cb;
@@ -750,7 +766,7 @@ a.btn.btn-outline-primary.btn-sm:hover {
 }
 
 .btn.btn-rounded {
-    border-radius: 50px
+   
 }
 
 .nav-tabs .nav-link:focus,
@@ -2301,7 +2317,6 @@ table.dataTable thead .sorting_desc_disabled:after {
     background: #fff;
     border-radius: 16px;
     padding: 20px;
-    margin-bottom: 25px
 }
 
 .doctor-widget {
@@ -2315,9 +2330,9 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .doctor-box-icon {
-    width: 66px;
-    height: 66px;
-    background: #2e37a4;
+    width: 56px;
+    height: 56px;
+    background: #FFFFFF;
     border-radius: 12px;
     margin-right: 10px;
     display: -webkit-box;
@@ -2328,6 +2343,7 @@ table.dataTable thead .sorting_desc_disabled:after {
     align-items: center;
     justify-content: center;
     -webkit-justify-content: center;
+    border: 1px solid ;
     -ms-flex-pack: center
 }
 
@@ -5915,7 +5931,7 @@ a.fc-event:not([href]) {
     float: left;
     font-weight: 500;
     margin-right: 30px;
-    width: 30%;
+    width: 5%;
     font-size: 14px
 }
 
@@ -9196,7 +9212,7 @@ blockquote p {
 }
 
 .tab-content {
-    padding-top: 20px
+    padding-top: 0px
 }
 
 .error-pages {

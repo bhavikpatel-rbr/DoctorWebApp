@@ -267,38 +267,15 @@ const AddPatientDetails = () => {
             </div>
 
             <div className="col-12">
-  <button 
-    type="submit" 
-    className="btn" 
-    style={{
-      padding: '10px 20px',
-      margin: '5px',
-      fontSize: '16px',
-      borderRadius: '5px',
-      backgroundColor: '#007bff',
-      border: 'none',
-      color: 'white'
-    }}
-  >
-    Save
-  </button>
-  <button 
-    type="button" 
-    className="btn" 
-    //onClick={handleCancel} 
-    style={{
-      padding: '10px 20px',
-      margin: '5px',
-      fontSize: '16px',
-      borderRadius: '5px',
-      backgroundColor: '#6c757d',
-      border: 'none',
-      color: 'white'
-    }}
-  >
-    Clear
-  </button>
-</div>
+                    <div className="doctor-submit text-end">
+                      <button type="submit" className="btn btn-primary submit-form me-2">
+                        Submit
+                      </button>
+                      <button type="button" className="btn btn-primary cancel-form">
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
 
           </div>
         </form>

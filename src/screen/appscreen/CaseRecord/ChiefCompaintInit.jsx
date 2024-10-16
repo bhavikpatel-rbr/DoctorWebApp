@@ -8,12 +8,23 @@ import {
   FaVenusMars,
   FaUserCheck,
 } from "react-icons/fa";
-import { BsMicFill, BsMicMute , BsPlus } from "react-icons/bs";
+import { BsFillHeartFill, BsImage, BsGraphUp, BsCheckCircle } from 'react-icons/bs';
+import { BsMicFill, BsMicMute, BsPlus } from "react-icons/bs";
+import { BsClipboardData, BsGear, BsPencilSquare, BsFileText } from 'react-icons/bs';
+import { BsBook, BsQuestionCircle } from 'react-icons/bs';
 import { Link, useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import Avatar from "../../../img/doctor-03.jpg";
 
 import Accordion from "react-bootstrap/Accordion";
+import {
+  BsHeart,
+  BsFileMedical,
+  BsUpload,
+  BsClipboard,
+  BsCalendar,
+  BsSearch,
+} from "react-icons/bs";
 
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
@@ -256,16 +267,19 @@ const ChiefCompaintInit = ({ patient }) => {
 
               <div class="profile-basic">
                 <div class="row">
-                  <div class="col-md-7">
+                  <div class="col-md-12">
                     <div class="row">
-                      <div className="col-md-2">
+                      <div className="col-md-1">
                         <div className="patient_img-wrap">
                           <a>
                             <img class="patient_img" src={Avatar} alt="" />
                           </a>
                         </div>
                       </div>
-                      <div className="col-md-10">
+                      <div
+                        className="col-md-7 pt-2"
+                        style={{ paddingLeft: "30px" }}
+                      >
                         <ul class="personal-info">
                           <li>
                             <span class="title">Name:</span>
@@ -286,43 +300,31 @@ const ChiefCompaintInit = ({ patient }) => {
                           </li>
                         </ul>
                       </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-5 col-6 text-end m-b-30">
-                    <div className="mt=5">
+                      <div className="col-md-4 d-flex flex-column align-items-end pt-2">
+      <div className="mb-2">
+        <a
+          className={`btn btn-${isRecording ? "danger" : "primary-StartRecording"} btn-rounded`}
+          onClick={toggleRecording}
+        >
+          {isRecording ? (
+            <BsMicMute size={25} style={{ paddingRight: "10px" }} />
+          ) : (
+            <BsMicFill size={25} style={{ paddingRight: "10px" }} />
+          )}
+          {isRecording ? "Stop Recording" : "Start Recording"}
+        </a>
+      </div>
 
-                    
-                    <a
-                      className={`btn btn-${
-                        isRecording ? "danger" : "primary"
-                      } btn-rounded`}
-                      onClick={toggleRecording}
-                    >
-                      {isRecording ? (
-                        <BsMicMute size={20} />
-                      ) : (
-                        <BsMicFill size={20} />
-                      )}
-                        {isRecording ? "Stop Recording" : "Start Recording"}
-                      {/* </span> */}
-                    </a>
-                    </div>
-                    <div className="mt-2">
-                    <Link
-                    to="/addPatientDetails"
-                      className={`btn btn-${
-                       "primary"
-                      } btn-rounded`}
-                      
-                    >
-                     
-                        <BsPlus size={25} />
-                     
-                       
-                     
-                        {"Add Patient Details"}
-                      {/* </span> */}
-                    </Link>
+      <div>
+        <Link
+          to="/addPatientDetails"
+          className={`btn btn-primary-StartRecording btn-rounded`}
+        >
+          <BsPlus size={25} />
+          {"Add Patient Details"}
+        </Link>
+      </div>
+    </div>
                     </div>
                   </div>
                 </div>
@@ -332,355 +334,10 @@ const ChiefCompaintInit = ({ patient }) => {
         </div>
       </div>
 
-      <div className="mt-2 d-none">
-        {rows.map((row, index) => (
-          <form key={index} className="form-group mb-3">
-            <div className="row">
-              {/* Location Section */}
-              <div className="col-md-6">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.locationChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "locationChecked")
-                      }
-                      id={`location-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.location}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index ? { ...r, location: e.target.value } : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.location);
-                        setselectedtype("location");
-                      }}
-                      placeholder="Enter Location"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "location")}
-                      aria-label="Dropdown"
-                    >
-                      {row.locationValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "location" && (
-                      <div className="dropdown-menu show position-absolute end-0 mt-2">
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(index, "locationValue", "High")
-                          }
-                        >
-                          High
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "locationValue",
-                              "Medium"
-                            )
-                          }
-                        >
-                          Medium
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(index, "locationValue", "Low")
-                          }
-                        >
-                          Low
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+     
 
-              {/* Sensation Section */}
-              <div className="col-md-6">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.sensationChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "sensationChecked")
-                      }
-                      id={`sensation-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.sensation}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, sensation: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.sensation);
-                        setselectedtype("Sensation & Pathology");
-                      }}
-                      placeholder="Enter Sensation & Pathology"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "sensation")}
-                      aria-label="Dropdown"
-                    >
-                      {row.sensationValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "sensation" && (
-                      <div className="dropdown-menu show position-absolute end-0 mt-2">
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "sensationValue",
-                              "High"
-                            )
-                          }
-                        >
-                          High
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "sensationValue",
-                              "Medium"
-                            )
-                          }
-                        >
-                          Medium
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(index, "sensationValue", "Low")
-                          }
-                        >
-                          Low
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Modalities Section */}
-              <div className="col-md-6">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.modalitiesChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "modalitiesChecked")
-                      }
-                      id={`modalities-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.modalities}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, modalities: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.modalities);
-                        setselectedtype("Modalities AF");
-                      }}
-                      placeholder="Enter Modalities AF"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "modalities")}
-                      aria-label="Dropdown"
-                    >
-                      {row.modalitiesValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "modalities" && (
-                      <div className="dropdown-menu show position-absolute end-0 mt-2">
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "modalitiesValue",
-                              "High"
-                            )
-                          }
-                        >
-                          High
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "modalitiesValue",
-                              "Medium"
-                            )
-                          }
-                        >
-                          Medium
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "modalitiesValue",
-                              "Low"
-                            )
-                          }
-                        >
-                          Low
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {/* Concomitant Section */}
-              <div className="col-md-6">
-                <div className="d-flex align-items-center mb-2">
-                  <div className="form-check me-2">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      checked={row.concomitantChecked}
-                      onChange={() =>
-                        handleCheckboxChange(index, "concomitantChecked")
-                      }
-                      id={`concomitant-check-${index}`}
-                    />
-                  </div>
-                  <div className="flex-grow-1 position-relative">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={row.concomitant}
-                      onChange={(e) =>
-                        setRows(
-                          rows.map((r, i) =>
-                            i === index
-                              ? { ...r, concomitant: e.target.value }
-                              : r
-                          )
-                        )
-                      }
-                      onKeyDown={(e) => {
-                        handleKeyPress(e, index);
-                        setCurrentPage(0);
-                        setselectedoptionvalue(row.concomitant);
-                        setselectedtype("Concomitant");
-                      }}
-                      placeholder="Enter Concomitant"
-                    />
-                    <button
-                      type="button"
-                      className="btn position-absolute top-50 me-3 end-0 translate-middle-y p-0 border-0"
-                      onClick={() => toggleDropdown(index, "concomitant")}
-                      aria-label="Dropdown"
-                    >
-                      {row.concomitantValue || <MdArrowDropDown size={24} />}
-                    </button>
-                    {dropdownOpen[index] === "concomitant" && (
-                      <div className="dropdown-menu show position-absolute end-0 mt-2">
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "concomitantValue",
-                              "High"
-                            )
-                          }
-                        >
-                          High
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "concomitantValue",
-                              "Medium"
-                            )
-                          }
-                        >
-                          Medium
-                        </button>
-                        <button
-                          className="dropdown-item"
-                          onClick={() =>
-                            handleDropdownSelect(
-                              index,
-                              "concomitantValue",
-                              "Low"
-                            )
-                          }
-                        >
-                          Low
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Display Selected Options */}
-          </form>
-        ))}
-      </div>
-
-      <div className="mt-2">
-        <div className="patient__Menu card p-2">
+      <div className="mt-4">
+        <div className="patient__Menu card p-3">
           <Tab.Container id="left-tabs-example" defaultActiveKey="CaseRecord">
             <Row>
               <Col sm={3}>
@@ -693,7 +350,10 @@ const ChiefCompaintInit = ({ patient }) => {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="CaseRecordAnalysis" className="patient__tab">
+                    <Nav.Link
+                      eventKey="CaseRecordAnalysis"
+                      className="patient__tab"
+                    >
                       <div className="Patient_menu_title">
                         <h3>Case Analysis</h3>
                       </div>
@@ -725,582 +385,485 @@ const ChiefCompaintInit = ({ patient }) => {
               <Col sm={9}>
                 <Tab.Content>
                   <Tab.Pane eventKey="CaseRecord">
-                    <div class="doctor-list-blk">
-                      <div class="row">
+                    <div className="doctor-list-blk">
+                      <div className="row">
                         <div className="col-xl-12">
                           <div className="row">
-                            <div class="col-xl-4 col-md-6">
+                            <div className="col-xl-4 col-md-6">
                               <Link
                                 to="/chiefcomplaintstart"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-01.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsHeart size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Chief Complaint</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/associatecomplaintStart"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-02.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsFileMedical size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Assoiate Compaint</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Associate Complaint</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/caserecordadd"
-                                class="doctor-widget  patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-03.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Case Record</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
-                        <div className="col-xl-12 mt-2">
+                        <div className="col-xl-12 mt-4">
                           <div className="row">
-                          <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/uploadcaserecord"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsUpload size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Upload Case Record</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/addSfft"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Add DiaGnosis (SFFT)</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Diagnosis (SFFT)</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/lstTable"
-                                class="doctor-widget patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Add Life Space Table </h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Life Space Table</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
-                         <div className="col-xl-12 mt-2">
+                        <div className="col-xl-12 mt-4">
                           <div className="row">
-                          <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/adddata"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Add Data</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/dateAndDailyroutine"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsCalendar size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Date And Daily routine</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Date And Daily Routine</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/lifeSpaceInvestigation"
-                                class="doctor-widget patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsSearch size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Life - Space Investigation</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Life-Space Investigation</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
                       </div>
                     </div>
                   </Tab.Pane>
                   <Tab.Pane eventKey="CaseRecordAnalysis">
-                    <div class="doctor-list-blk">
-                      <div class="row">
+                  <div className="doctor-list-blk">
+                      <div className="row">
                         <div className="col-xl-12">
                           <div className="row">
-                            <div class="col-xl-4 col-md-6">
+                            <div className="col-xl-4 col-md-6">
                               <Link
-                                to="/chiefcomplaintstartanylisys"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                to="/chiefcomplaintstart"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-01.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsHeart size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Chief Complaint</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/associatecomplaintStart"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-02.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsFileMedical size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Assoiate Compaint</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Associate Complaint</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/caserecordadd"
-                                class="doctor-widget  patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-03.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Case Record</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
-                        <div className="col-xl-12 mt-2">
+                        <div className="col-xl-12 mt-4">
                           <div className="row">
-                          <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/uploadcaserecord"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsUpload size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Upload Case Record</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/addSfft"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Add DiaGnosis (SFFT)</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Diagnosis (SFFT)</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/lstTable"
-                                class="doctor-widget patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Add Life Space Table </h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Add Life Space Table</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
-                         <div className="col-xl-12 mt-2">
+                        <div className="col-xl-12 mt-4">
                           <div className="row">
-                          <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/adddata"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsClipboard size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
+                                <div className="doctor-content dash-count flex-grow-1">
                                   <h5>Add Data</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/dateAndDailyroutine"
-                                class="doctor-widget border-right-bg patient__submenu"
+                                className="doctor-widget border-right-bg patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsCalendar size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Date And Daily routine</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Date And Daily Routine</h5>
                                 </div>
                               </Link>
                             </div>
-                            <div class="col-xl-4 col-md-6">
-                            <Link
+                            <div className="col-xl-4 col-md-6">
+                              <Link
                                 to="/lifeSpaceInvestigation"
-                                class="doctor-widget patient__submenu"
+                                className="doctor-widget patient__submenu"
                               >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
+                                <div className="doctor-box-icon flex-shrink-0">
+                                  <BsSearch size={20} />
                                 </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Life - Space Investigation</h5>
+                                <div className="doctor-content dash-count flex-grow-1">
+                                  <h5>Life-Space Investigation</h5>
                                 </div>
                               </Link>
                             </div>
-                           
                           </div>
                         </div>
                       </div>
                     </div>
                   </Tab.Pane>
                   <Tab.Pane eventKey="DisplayIcon">
-                    <div class="doctor-list-blk">
-                      <div class="row">
-                        <div className="col-xl-12">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-01.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Mental State</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-02.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Conceptual Image (C.l)</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-03.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Essential Evolutionary Totality (EET)</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Evaluation</h5>
-                                </div>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-xl-12 mt-2">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Repertorization</h5>
-                                </div>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="Followup">
-                    <div class="doctor-list-blk">
-                      <div class="row">
-                        <div className="col-xl-12">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-01.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Planning & Programming Of Rx</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-02.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>General Management</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-03.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Therapeutic Problem Definition</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Progress Record</h5>
-                                </div>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-xl-12 mt-2">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Progress Notes</h5>
-                                </div>
-                              </Link>
-                            </div>
+      <div className="doctor-list-blk">
+        <div className="row">
+          <div className="col-xl-12">
+            <div className="row">
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsFillHeartFill size={20}  />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Mental State</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6 ">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsImage size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Conceptual Image (C.l)</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget  patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsGraphUp size={20}  />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Essential Evolutionary Totality (EET)</h5>
+                  </div>
+                </Link>
+              </div>
+             
+            </div>
+          </div>
+          <div className="col-xl-12 mt-4">
+            <div className="row">
+            <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsGraphUp size={20}  />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Essential Evolutionary Totality (EET)</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsCheckCircle size={20}  />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Repertorization</h5>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Tab.Pane>
+    <Tab.Pane eventKey="Followup">
+      <div className="doctor-list-blk">
+        <div className="row">
+          <div className="col-xl-12">
+            <div className="row">
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsClipboardData size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Planning & Programming Of Rx</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsGear size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>General Management</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget  patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsPencilSquare size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Therapeutic Problem Definition</h5>
+                  </div>
+                </Link>
+              </div>
+             
+            </div>
+          </div>
+          <div className="col-xl-12 mt-4">
+            <div className="row">
+            <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsFileText size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Progress Record</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsFileText size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Progress Notes</h5>
+                  </div>
+                </Link>
+              </div>
 
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-04.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Case Summary</h5>
-                                </div>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="Definations">
-                    <div class="doctor-list-blk">
-                      <div class="row">
-                        <div className="col-xl-12">
-                          <div className="row">
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-01.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>Glossary</h5>
-                                </div>
-                              </Link>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                            <Link
-                                to="/appointments"
-                                class="doctor-widget border-right-bg patient__submenu"
-                              >
-                                <div class="doctor-box-icon flex-shrink-0">
-                                  <img
-                                    src="assets/img/icons/doctor-dash-02.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div class="doctor-content dash-count flex-grow-1">
-                                  <h5>How It Works</h5>
-                                </div>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Tab.Pane>
+              <div className="col-xl-4 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget  patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsFileText size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Case Summary</h5>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Tab.Pane>
+    <Tab.Pane eventKey="Definations">
+      <div className="doctor-list-blk">
+        <div className="row">
+          <div className="col-xl-12">
+            <div className="row">
+              <div className="col-xl-3 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget border-right-bg patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsBook size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>Glossary</h5>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-xl-3 col-md-6">
+                <Link
+                  to="/appointments"
+                  className="doctor-widget  patient__submenu"
+                >
+                  <div className="doctor-box-icon flex-shrink-0">
+                    <BsQuestionCircle size={20} />
+                  </div>
+                  <div className="doctor-content dash-count flex-grow-1">
+                    <h5>How It Works</h5>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Tab.Pane>
                 </Tab.Content>
               </Col>
             </Row>

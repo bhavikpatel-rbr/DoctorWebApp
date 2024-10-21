@@ -182,7 +182,7 @@ const Chiefcomplaintstart = ({ patient }) => {
         </div>
         <div className="col-sm-5 col-6 text-end m-b-30">
           <a
-            className={`btn btn-${isRecording ? "danger" : "primary"}`}
+            className={`btn btn-${isRecording ? "danger" : "primary-StartRecording"}`}
             onClick={addRow}
           >
             <BsPlus size={30} style={{ marginHorizontal: 10 }} />
@@ -512,7 +512,7 @@ const Chiefcomplaintstart = ({ patient }) => {
         </div>
       )}
 
-      <div className="text-center mt-3">
+      {/* <div className="text-center mt-3">
         <button
           className="btn btn-secondary"
           onClick={handlePrevious}
@@ -527,7 +527,7 @@ const Chiefcomplaintstart = ({ patient }) => {
         >
           Next
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

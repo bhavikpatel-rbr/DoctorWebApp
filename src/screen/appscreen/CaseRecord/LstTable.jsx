@@ -179,8 +179,9 @@ const LstTable = () => {
               onSubmit={handleSubmit}
               style={{
                 backgroundColor: "white",
-                padding: "20px",
-                borderRadius: "10px",
+                padding: "10px 5px",
+                margin:"0px -10px",
+                borderRadius: "5px",
               }}
             >
               <h3 className="mb-5">Event Details</h3>
@@ -424,11 +425,11 @@ const LstTable = () => {
                 <button
                   type="submit"
                   onClick={handleAddEvent}
-                  className="btn btn-primary submit-form me-2"
+                  className="btn btn-primary-StartRecording submit-form me-2"
                 >
                   Add Event
                 </button>
-                <button type="button" className="btn btn-success cancel-form">
+                <button type="button" className="btn btn-danger cancel-form">
                   Save
                 </button>
               </div>
@@ -458,7 +459,7 @@ const styles = {
   link: {
     textDecoration: "none",
     color: "black",
-    fontSize: "14px",
+    fontSize: "12px",
   },
 };
 export default LstTable;

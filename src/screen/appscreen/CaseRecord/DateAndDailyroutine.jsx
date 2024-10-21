@@ -96,7 +96,7 @@ const DateAndDailyroutine = () => {
         </div>
         <div className="col-sm-5 col-6 text-end m-b-30">
           <button
-            className={`btn btn-${isRecording ? "danger" : "primary"} btn-rounded`}
+            className={`btn btn-${isRecording ? "danger" : "primary-StartRecording"} `}
             onClick={toggleRecording}
             style={{ marginBottom: "10px" }}
           >

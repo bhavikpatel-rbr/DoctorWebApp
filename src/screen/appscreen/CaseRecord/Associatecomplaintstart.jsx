@@ -194,7 +194,7 @@ const AssociatecomplaintStart = ({ patient }) => {
         <div class="col-sm-5 col-6 text-end m-b-30">
           <a
             className={`btn btn-${
-              isRecording ? "danger" : "primary"
+              isRecording ? "danger" : "primary-StartRecording"
             } `}
             onClick={addRow}
           >

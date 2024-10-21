@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MentalSateItem from "../DiagramComponent/MentalSateItem";
+import { Link } from "react-router-dom";
 
 export default function EmotionalState() {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -25,7 +26,7 @@ export default function EmotionalState() {
       }}
     >
       <div className="row">
-        <div className="col-sm-7 col-6">
+        <div className="col-sm-6 col-6">
           <ul className="breadcrumb">
             <li className="breadcrumb-item">
               <a href="chief_complaint.html">Chief Complaint</a>
@@ -36,6 +37,62 @@ export default function EmotionalState() {
             <li className="breadcrumb-item active">EMOTIONAL State</li>
           </ul>
         </div>
+        <div className="col-sm-6 col-6 justify-content-end" >
+        <nav>
+                <ul className="pagination justify-content-end" >
+                 
+                   
+                <Link
+      className="page-link"
+      to="/emotionalstate"
+      style={{
+        border: '1px solid #2e37a4',
+        color: '#2e37a4',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        padding: '6px 12px',
+        cursor: 'pointer',
+      }}
+    >
+      {1}
+    </Link>
+    <Link
+      className="page-link"
+      to="/emotionalstate2"
+      style={{
+        border: '1px solid #2e37a4',
+        color: '#2e37a4',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        padding: '6px 12px',
+        cursor: 'pointer',
+        marginLeft:"10px",
+        marginRight:"10px"
+      }}
+    >
+      {2}
+    </Link>
+    <Link
+      className="page-link"
+      to="/emotionalstate3"
+      style={{
+        border: '1px solid #2e37a4',
+        color: '#2e37a4',
+        backgroundColor: '#fff',
+        borderRadius: '4px',
+        padding: '6px 12px',
+        cursor: 'pointer',
+        
+      }}
+    >
+      {3}
+    </Link>
+                    
+                  
+                </ul>
+              </nav>
+        </div>
+        
       </div>
       <div
         className=""
@@ -52,10 +109,11 @@ export default function EmotionalState() {
           style={{ justifyContent: "space-between" }}
         >
           <h4 style={{ textAlign: "left" }}>CAUSATION</h4>
-          <h2 className="btn btn-primary" style={{ marginLeft: "60px" }}>
+        
+          {/* <h2 className="btn btn-primary" style={{ marginLeft: "60px" }}>
             {" "}
             1. EMOTIONAL STATE
-          </h2>
+          </h2> */}
           <h4>CHARACTERISTICS/INTENSITY</h4>
         </div>
         <div className="row col-md-12" style={{ alignItems: "center" }}>

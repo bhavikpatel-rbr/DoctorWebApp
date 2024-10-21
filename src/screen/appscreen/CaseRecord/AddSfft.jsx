@@ -171,7 +171,7 @@ const DynamicDiagram = () => {
         <div className="action-buttons">
         <div className="">
         <button className="analysis-button">ANALYSIS</button>
-        <button className="save-button"onClick={handleAddLine}>Add Line</button>
+        <button className="save-button"onClick={handleAddLine}>ADD LINE</button>
         </div>
         <div className="flex">
         <button className="remove-button">REMOVE</button>

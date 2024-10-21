@@ -931,7 +931,7 @@ const ChiefCompaintInit = ({ patient }) => {
                   ))}
                 </ul>
               </div>
-              <div className="modal-footer">
+              {/* <div className="modal-footer">
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -972,7 +972,7 @@ const ChiefCompaintInit = ({ patient }) => {
                 >
                   Close
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { setUser } from "../../services/usertoken"
 
 export const loginWithEmailAsync = async (loginRequest) => {
   try {
-    const response = await axiosInstance.post(`/admin/login`, loginRequest)
+    const response = await axiosInstance.post(`/login`, loginRequest)
     setUser(response?.data?.data?.token)
     return response
   } catch (err) {

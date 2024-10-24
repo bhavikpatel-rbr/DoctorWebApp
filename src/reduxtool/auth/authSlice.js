@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { loginAdminByEmailAction, logoutAction } from "./middleware"
+import { loginAdminByEmailAction, logoutAction, registerAdminByEmailAction } from "./middleware"
 
 const INITIAL_STATE = {
   token: "",
@@ -17,6 +17,9 @@ const authSlice = createSlice({
     builder.addCase(loginAdminByEmailAction.fulfilled, (state, { payload }) => ({
       ...state,
       token: payload.data.token,
+    }))
+    builder.addCase(registerAdminByEmailAction.fulfilled, (state, { payload }) => ({
+      ...state,
     }))
   },
 })

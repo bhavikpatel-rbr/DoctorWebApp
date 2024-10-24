@@ -14,11 +14,11 @@ function App() {
     <>
       <Loader />
       <ScrollToTop />
-      {token ? <AppNavigation /> : 
+      {/* {token ? <AppNavigation /> :  */}
       
-       //<AuthNavigation />
-        <AppNavigation />
-      }
+       <AuthNavigation />
+        {/* // <AppNavigation /> */}
+      {/* } */}
     </>
   );
 }

@@ -10,3 +10,12 @@ export const loginWithEmailAsync = async (loginRequest) => {
     return isAxiosError(err)
   }
 }
+
+export const registerWithEmailAsync = async (register) => {
+  try {
+    const response = await axiosInstance.post(`/register`, register)
+    return response
+  } catch (err) {
+    return isAxiosError(err)
+  }
+}

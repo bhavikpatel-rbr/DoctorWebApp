@@ -1,9 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { loginAdminByEmailAction, logoutAction, registerAdminByEmailAction } from "./middleware"
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  loginAdminByEmailAction,
+  logoutAction,
+  registerAdminByEmailAction,
+} from "./middleware";
 
 const INITIAL_STATE = {
   token: "",
-}
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,17 +17,24 @@ const authSlice = createSlice({
     builder.addCase(logoutAction.fulfilled, (state) => ({
       ...state,
       token: undefined,
-    }))
-    builder.addCase(loginAdminByEmailAction.fulfilled, (state, { payload }) => ({
-      ...state,
-      token: payload.data.token,
-    }))
-    builder.addCase(registerAdminByEmailAction.fulfilled, (state, { payload }) => ({
-      ...state,
-    }))
+    }));
+    builder.addCase(
+      loginAdminByEmailAction.fulfilled,
+      (state, { payload }) => ({
+        ...state,
+        token: payload.access_token,
+      })
+    );
+    builder.addCase(
+      registerAdminByEmailAction.fulfilled,
+      (state, { payload }) => ({
+        ...state,
+        token: payload.access_token,
+      })
+    );
   },
-})
+});
 
-export const authSelector = (state) => state?.Auth
+export const authSelector = (state) => state?.Auth;
 
-export default authSlice.reducer
+export default authSlice.reducer;

@@ -4,34 +4,22 @@ import searchnormal from '../../../img/icons/search-normal.svg';
 import plus from '../../../img/icons/plus.svg';
 import refresh from '../../../img/icons/re-fresh.svg';
 import { FaPen, FaTrash } from 'react-icons/fa';
-
-const data = [
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com',experience:"2 year", joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', experience:"2 year",joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-  // Add more data items here
-];
-
+import { useSelector } from 'react-redux';
+import { appSelector } from '../../../reduxtool/app/appslice';
 
 const rowsPerPage = 5;
 const DoctorList = () => {
+  const users = useSelector(appSelector)
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRows = users?.users?.Doctor?.slice(indexOfFirstRow, indexOfLastRow);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(users?.users?.Doctor?.length / rowsPerPage);
+  console.log(users?.users?.Doctor);
 
   return (
     <div className="content">
@@ -132,28 +120,28 @@ const DoctorList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentRows.map(doctor => (
+                    {currentRows?.map(doctor => (
                       <tr key={doctor.id}>
                         <td className="profile-image">
-                          <a href="profile.html">{doctor.name}</a>
+                          <a href="profile.html">{doctor.firstname}&nbsp;{doctor.lastname}</a>
                         </td>
                         <td>{doctor.department}</td>
                         <td>{doctor.experience}</td>
                         <td>{doctor.specialization}</td>
                         <td>{doctor.degree}</td>
-                        <td><a href="javascript:;">{doctor.mobile}</a></td>
+                        <td><a href="javascript:;">{doctor.phone}</a></td>
                         <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
-                        <td>{doctor.joiningDate}</td>
+                        <td>{doctor.created_at}</td>
                         <td className="text-end">
-                          <button 
-                            className="btn btn-sm btn-danger me-2" 
+                          <button
+                            className="btn btn-sm btn-danger me-2"
                             style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
                             onClick={() => console.log('Edit', doctor.id)}
                           >
                             <FaPen />
                           </button>
-                          <button 
-                            className="btn btn-sm btn-danger " 
+                          <button
+                            className="btn btn-sm btn-danger "
                             style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
                             onClick={() => console.log('Delete', doctor.id)}
                           >

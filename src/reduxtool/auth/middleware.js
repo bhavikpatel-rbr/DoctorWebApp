@@ -1,25 +1,46 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-import { loginWithEmailAsync, registerWithEmailAsync } from "./services"
+import { loginWithEmailAsync, logoutAsync, registerWithEmailAsync } from "./services"
 import { hideLoader, showLoader, showMessage } from "../lem/lemSlice"
 import { defaultMessageObj } from "../../utils/hooks"
 
 export const logoutAction = createAsyncThunk(
   "auth/logout",
-  async () => {
-    return true
+  async (_, { rejectWithValue, dispatch }) => {
+    dispatch(showLoader({ loading: true, message: "happening" }))
+    try {
+      const response = await logoutAsync()
+      if (response?.data) {
+        dispatch(
+          showMessage({
+            ...defaultMessageObj,
+            type: "error",
+            messageText: response?.data?.message,
+          }))
+        return true
+      }
+      dispatch(
+        showMessage({
+          ...defaultMessageObj,
+          type: "error",
+          messageText: response?.data?.message,
+        }))
+      return rejectWithValue(response)
+    } catch (error) {
+      dispatch(hideLoader())
+      return rejectWithValue(error)
+    }
   }
 )
+
 
 export const loginAdminByEmailAction = createAsyncThunk(
   "auth/loginByEmail",
   async (loginRequest, { rejectWithValue, dispatch }) => {
     dispatch(showLoader({ loading: true, message: "happening" }))
     try {
-      console.log("----------");
       const response = await loginWithEmailAsync(loginRequest)
-      if (response?.data?.isSuccess) {
-        console.log("-----2-----" ,response?.data);
+      if (response?.data) {
         dispatch(hideLoader())
         return response?.data
       }
@@ -44,7 +65,7 @@ export const registerAdminByEmailAction = createAsyncThunk(
     try {
       console.log("----------");
       const response = await registerWithEmailAsync(registerRequest)
-      if (response?.data?.isSuccess) {
+      if (response?.data) {
         dispatch(hideLoader())
         return response?.data
       }

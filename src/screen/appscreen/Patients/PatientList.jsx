@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Dropdown, Form } from 'react-bootstrap'; 
+import { Dropdown, Form } from 'react-bootstrap';
 import pdf1 from '../../../img/icons/pdf-icon-01.svg'
 import pdf2 from '../../../img/icons/pdf-icon-02.svg'
 import pdf3 from '../../../img/icons/pdf-icon-03.svg'
@@ -10,32 +10,21 @@ import refresh from '../../../img/icons/re-fresh.svg'
 import searchnormal from '../../../img/icons/search-normal.svg'
 import { ChevronRight } from 'react-feather';
 import { FaPen, FaTrash } from 'react-icons/fa';
-const data = [
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    { id: 1, name: 'Tushar Joshi', department: 'Otolaryngology', specialization: 'Infertility', degree: 'MBBS, MS', mobile: '9758698568', email: 'tushar@example.com', joiningDate: '01.10.2022', imgSrc: 'avatar-01.jpg' },
-    // Add more data items here
-  ];
-  
-  const rowsPerPage = 5;
-const PatientList = () => {
-    const [currentPage, setCurrentPage] = useState(1);
+import { useSelector } from 'react-redux';
+import { appSelector } from '../../../reduxtool/app/appslice';
 
-    const indexOfLastRow = currentPage * rowsPerPage;
-    const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-    const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
-  
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
-    const totalPages = Math.ceil(data.length / rowsPerPage);
+const rowsPerPage = 5;
+const PatientList = () => {
+  const users = useSelector(appSelector)
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = users?.users?.Patient?.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(users?.users?.Patient?.length / rowsPerPage);
   return (
     <div className="content">
       <div className="page-header">
@@ -45,7 +34,7 @@ const PatientList = () => {
               <li className="breadcrumb-item">
                 <Link to="/patients">Patients</Link>
               </li>
-              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/></li>
+              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} /></li>
               <li className="breadcrumb-item active">Patient List</li>
             </ul>
           </div>
@@ -79,69 +68,69 @@ const PatientList = () => {
                         </div>
                         <div className="add-group">
                           <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
-                          <img src={plus} alt="" />
+                            <img src={plus} alt="" />
                           </a>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                          <img src={refresh} alt="" />
+                            <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
 
               <div className="table-responsive">
-        <table className="table border-0 custom-table comman-table datatable mb-0">
-          <thead>
-            <tr>
-              
-              <th>Name</th>
-              <th>Department</th>
-              <th>Specialization</th>
-              <th>Degree</th>
-              <th>Mobile</th>
-              <th>Email</th>
-              <th>Joining Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentRows.map(doctor => (
-              <tr key={doctor.id}>
-               
-                <td className="profile-image">
-                  <a href="profile.html">{doctor.name}</a>
-                </td>
-                <td>{doctor.department}</td>
-                <td>{doctor.specialization}</td>
-                <td>{doctor.degree}</td>
-                <td><a href="javascript:;">{doctor.mobile}</a></td>
-                <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
-                <td>{doctor.joiningDate}</td>
-                <td className="text-end">
-                          <button 
-                            className="btn btn-sm btn-danger me-2" 
+                <table className="table border-0 custom-table comman-table datatable mb-0">
+                  <thead>
+                    <tr>
+
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Specialization</th>
+                      <th>Degree</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+                      <th>Joining Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentRows.map(doctor => (
+                      <tr key={doctor.id}>
+
+                        <td className="profile-image">
+                          <a href="profile.html">{doctor.firstname}&nbsp;{doctor.lastname}</a>
+                        </td>
+                        <td>{doctor.department}</td>
+                        <td>{doctor.specialization}</td>
+                        <td>{doctor.degree}</td>
+                        <td><a href="javascript:;">{doctor.phone}</a></td>
+                        <td><a href={`mailto:${doctor.email}`}>{doctor.email}</a></td>
+                        <td>{doctor.created_at}</td>
+                        <td className="text-end">
+                          <button
+                            className="btn btn-sm btn-danger me-2"
                             style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
                             onClick={() => console.log('Edit', doctor.id)}
                           >
                             <FaPen />
                           </button>
-                          <button 
-                            className="btn btn-sm btn-danger " 
+                          <button
+                            className="btn btn-sm btn-danger "
                             style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
                             onClick={() => console.log('Delete', doctor.id)}
                           >
                             <FaTrash />
                           </button>
                         </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <nav>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <nav>
                 <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
                   {Array.from({ length: totalPages }, (_, index) => (
                     <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>

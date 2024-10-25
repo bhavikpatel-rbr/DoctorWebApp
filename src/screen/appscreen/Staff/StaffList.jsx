@@ -8,10 +8,12 @@ import pdf4 from '../../../img/icons/pdf-icon-04.svg'
 import plus from '../../../img/icons/plus.svg'
 import { FaPen, FaTrash } from 'react-icons/fa';
 import refresh from '../../../img/icons/re-fresh.svg'
+import { useSelector } from 'react-redux';
+import { appSelector } from '../../../reduxtool/app/appslice';
 
 const StaffList = () => {
-  
-const rowsPerPage = 5;
+
+  const rowsPerPage = 5;
   const data = [
     {
       id: 1,
@@ -167,19 +169,19 @@ const rowsPerPage = 5;
       email: 'andrea.lalema@example.com',
       joiningDate: '01.10.2022'
     },
-    
+
     // Add more data items here
   ];
-  
+  const users = useSelector(appSelector)
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRows = users?.users?.Staff?.slice(indexOfFirstRow, indexOfLastRow);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(users?.users?.Staff?.length / rowsPerPage);
   return (
     <div className="content">
       <div className="page-header">
@@ -190,7 +192,7 @@ const rowsPerPage = 5;
                 <a href="staff-list.html">Staffs </a>
               </li>
               <li className="breadcrumb-item">
-                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/>
+                <ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} />
               </li>
               <li className="breadcrumb-item active">Staff List</li>
             </ul>
@@ -225,10 +227,10 @@ const rowsPerPage = 5;
                         </div>
                         <div className="add-group">
                           <a href="add-doctor.html" className="btn btn-primary add-pluss ms-2">
-                          <img src={plus} alt="" />
+                            <img src={plus} alt="" />
                           </a>
                           <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                          <img src={refresh} alt="" />
+                            <img src={refresh} alt="" />
                           </a>
                         </div>
                       </div>
@@ -267,7 +269,7 @@ const rowsPerPage = 5;
                 <table className="table border-0 custom-table comman-table datatable mb-0">
                   <thead>
                     <tr>
-                      
+
                       <th>Name</th>
                       <th>Department</th>
                       <th>Specialization</th>
@@ -280,9 +282,8 @@ const rowsPerPage = 5;
                   </thead>
                   <tbody>
                     {/* Map through staff data here */}
-                    {staffData.map((staff, index) => (
+                    {users?.users?.Staff?.map((staff, index) => (
                       <tr key={index}>
-                        
                         <td className="profile-image">
                           <a href="profile.html">
                             {/* <img
@@ -292,33 +293,33 @@ const rowsPerPage = 5;
                               className="rounded-circle m-r-5"
                               alt=""
                             /> */}
-                            {staff.name}
+                            {staff.firstname}&nbsp;{staff.lastname}
                           </a>
                         </td>
                         <td>{staff.department}</td>
                         <td>{staff.specialization}</td>
                         <td>{staff.degree}</td>
                         <td>
-                          <a href="javascript:;">{staff.mobile}</a>
+                          <a href="javascript:;">{staff.phone}</a>
                         </td>
                         <td>
                           <a href={`mailto:${staff.email}`} className="__cf_email__">
                             {staff.email}
                           </a>
                         </td>
-                        <td>{staff.joiningDate}</td>
+                        <td>{staff.created_at}</td>
                         <td className="text-end">
-                          <button 
-                            className="btn btn-sm btn-danger me-2" 
+                          <button
+                            className="btn btn-sm btn-danger me-2"
                             style={{ backgroundColor: '#2e37a4', borderColor: '#2e37a4' }}
-                            // onClick={() => console.log('Edit', doctor.id)}
+                          // onClick={() => console.log('Edit', doctor.id)}
                           >
                             <FaPen />
                           </button>
-                          <button 
-                            className="btn btn-sm btn-danger " 
+                          <button
+                            className="btn btn-sm btn-danger "
                             style={{ backgroundColor: '#dc3545', borderColor: '#dc3545' }}
-                            // onClick={() => console.log('Delete', doctor.id)}
+                          // onClick={() => console.log('Delete', doctor.id)}
                           >
                             <FaTrash />
                           </button>
@@ -328,7 +329,7 @@ const rowsPerPage = 5;
                   </tbody>
                 </table>
               </div>
-               <nav>
+              <nav>
                 <ul className="pagination justify-content-center" style={{ marginTop: '20px' }}>
                   {Array.from({ length: totalPages }, (_, index) => (
                     <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} style={{ margin: '0 5px' }}>

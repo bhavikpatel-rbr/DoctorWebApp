@@ -15,7 +15,7 @@ const AddPatient = () => {
     education: '',
     designation: '',
     department: '',
-    address: '',
+    address: '', 
     city: '',
     country: '',
     state: '',

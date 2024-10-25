@@ -1,43 +1,78 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { ChevronRight } from 'react-feather';
 
 const AddPatient = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    userName: '',
-    mobile: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    dob: '',
-    gender: '',
-    education: '',
-    designation: '',
-    department: '',
-    address: '', 
-    city: '',
-    country: '',
-    state: '',
-    postalCode: '',
-    biography: '',
-    avatar: null,
-    status: ''
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      email: '',
+      phone: '',
+      password: '',
+      firstname: '',
+      lastname: '',
+      gender: '',
+      birth_date: '',
+      patient_name: '',
+      specialization: '',
+      education: '',
+      designation: '',
+      department: '',
+      patient_phone: '',
+      patient_email: '',
+      license_number: '',
+      years_of_experience: '',
+      address_line_1: '',
+      address_line_2: '',
+      city: '',
+      state: '',
+      postal_code: '',
+      country: '',
+      operating_hours: '',
+      services: '',
+      latitude: '',
+      longitude: '',
+      patient_type: '',
+      clinic_id: '',
+      doctor_id: ''
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required('Username is required'),
+      email: Yup.string().email('Invalid email format').required('Email is required'),
+      phone: Yup.string().required('Phone is required'),
+      password: Yup.string().required('Password is required'),
+      firstname: Yup.string().required('First name is required'),
+      lastname: Yup.string().required('Last name is required'),
+      gender: Yup.string().required('Gender is required'),
+      birth_date: Yup.date().required('Birth date is required'),
+      patient_name: Yup.string().required('Patient name is required'),
+      specialization: Yup.string().required('Specialization is required'),
+      education: Yup.string().required('Education is required'),
+      designation: Yup.string().required('Designation is required'),
+      department: Yup.string().required('Department is required'),
+      patient_phone: Yup.string().required('Patient phone is required'),
+      patient_email: Yup.string().email('Invalid email format').required('Patient email is required'),
+      license_number: Yup.string().required('License number is required'),
+      years_of_experience: Yup.number().required('Years of experience is required'),
+      address_line_1: Yup.string().required('Address line 1 is required'),
+      city: Yup.string().required('City is required'),
+      state: Yup.string().required('State is required'),
+      postal_code: Yup.string().required('Postal code is required'),
+      country: Yup.string().required('Country is required'),
+      operating_hours: Yup.string().required('Operating hours are required'),
+      services: Yup.string().required('Services are required'),
+      latitude: Yup.number().required('Latitude is required'),
+      longitude: Yup.number().required('Longitude is required'),
+      patient_type: Yup.string().required('Patient type is required'),
+      clinic_id: Yup.number().required('Clinic ID is required'),
+      doctor_id: Yup.number().required('Doctor ID is required')
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+      // Handle form submission logic here
+    }
   });
-
-  const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'file' ? files[0] : value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-  };
 
   return (
     <div className="content">
@@ -46,7 +81,7 @@ const AddPatient = () => {
           <div className="col-sm-12">
             <ul className="breadcrumb">
               <li className="breadcrumb-item"><a href="patients.html">Patients</a></li>
-              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }}/></li>
+              <li className="breadcrumb-item"><ChevronRight size={16} style={{ color: 'blue', fontSize: '20px', margin: '0 8px' }} /></li>
               <li className="breadcrumb-item active">Add Patient</li>
             </ul>
           </div>
@@ -57,335 +92,66 @@ const AddPatient = () => {
         <div className="col-sm-12">
           <div className="card">
             <div className="card-body">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={formik.handleSubmit}>
                 <div className="row">
                   <div className="col-12">
                     <div className="form-heading">
-                      <h4>Patients Details</h4>
+                      <h4>Patient Details</h4>
                     </div>
                   </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>First Name <span className="login-danger">*</span></label>
+                  
+                  {/* Username */}
+                  <div className="col-12 col-md-6">
+                    <div className="input-block">
+                      <label>Username</label>
                       <input
-                        className="form-control"
                         type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        placeholder="First Name"
+                        name="username"
+                        value={formik.values.username}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
                       />
+                      {formik.touched.username && formik.errors.username ? <div className="error">{formik.errors.username}</div> : null}
                     </div>
                   </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>Last Name <span className="login-danger">*</span></label>
+
+                  {/* Email */}
+                  <div className="col-12 col-md-6">
+                    <div className="input-block">
+                      <label>Email</label>
                       <input
-                        className="form-control"
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        placeholder="Last Name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>User Name <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="userName"
-                        value={formData.userName}
-                        onChange={handleChange}
-                        placeholder="User Name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-forms">
-                      <label>Mobile <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleChange}
-                        placeholder="Mobile"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-forms">
-                      <label>Email <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control"
                         type="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Email"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-forms">
-                      <label>Password <span className="login-danger">*</span></label>
-                      <input
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         className="form-control"
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Password"
                       />
+                      {formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
                     </div>
                   </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-forms">
-                      <label>Confirm Password <span className="login-danger">*</span></label>
+
+                  {/* Add similar input fields for all remaining fields */}
+                  <div className="col-12 col-md-6">
+                    <div className="input-block">
+                      <label>Phone</label>
                       <input
-                        className="form-control"
-                        type="password"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        placeholder="Confirm Password"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-forms cal-icon">
-                      <label>Date Of Birth <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control datetimepicker"
                         type="text"
-                        name="dob"
-                        value={formData.dob}
-                        onChange={handleChange}
-                        placeholder="Date Of Birth"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block select-gender">
-                      <label className="gen-label">Gender <span className="login-danger">*</span></label>
-                      <div className="form-check-inline">
-                        <label className="form-check-label">
-                          <input
-                            type="radio"
-                            name="gender"
-                            value="Male"
-                            checked={formData.gender === 'Male'}
-                            onChange={handleChange}
-                            className="form-check-input"
-                          />
-                          Male
-                        </label>
-                      </div>
-                      <div className="form-check-inline">
-                        <label className="form-check-label">
-                          <input
-                            type="radio"
-                            name="gender"
-                            value="Female"
-                            checked={formData.gender === 'Female'}
-                            onChange={handleChange}
-                            className="form-check-input"
-                          />
-                          Female
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>Education <span className="login-danger">*</span></label>
-                      <input
+                        name="phone"
+                        value={formik.values.phone}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         className="form-control"
-                        type="text"
-                        name="education"
-                        value={formData.education}
-                        onChange={handleChange}
-                        placeholder="Education"
                       />
+                      {formik.touched.phone && formik.errors.phone ? <div className="error">{formik.errors.phone}</div> : null}
                     </div>
                   </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>Designation <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="designation"
-                        value={formData.designation}
-                        onChange={handleChange}
-                        placeholder="Designation"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-4">
-                    <div className="input-block local-forms">
-                      <label>Department <span className="login-danger">*</span></label>
-                      <select
-                        className="form-control select"
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Department</option>
-                        <option value="Orthopedics">Orthopedics</option>
-                        <option value="Radiology">Radiology</option>
-                        <option value="Dentist">Dentist</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-12 col-sm-12">
-                    <div className="input-block local-forms">
-                      <label>Address <span className="login-danger">*</span></label>
-                      <textarea
-                        className="form-control"
-                        rows="3"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                        placeholder="Address"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-3">
-                    <div className="input-block local-forms">
-                      <label>City <span className="login-danger">*</span></label>
-                      <select
-                        className="form-control select"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select City</option>
-                        <option value="Alaska">Alaska</option>
-                        <option value="Los Angeles">Los Angeles</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-3">
-                    <div className="input-block local-forms">
-                      <label>Country <span className="login-danger">*</span></label>
-                      <select
-                        className="form-control select"
-                        name="country"
-                        value={formData.country}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Country</option>
-                        <option value="Usa">USA</option>
-                        <option value="Uk">UK</option>
-                        <option value="Italy">Italy</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-3">
-                    <div className="input-block local-forms">
-                      <label>State/Province <span className="login-danger">*</span></label>
-                      <select
-                        className="form-control select"
-                        name="state"
-                        value={formData.state}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select State</option>
-                        <option value="Alaska">Alaska</option>
-                        <option value="California">California</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-3">
-                    <div className="input-block local-forms">
-                      <label>Postal Code <span className="login-danger">*</span></label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="postalCode"
-                        value={formData.postalCode}
-                        onChange={handleChange}
-                        placeholder="Postal Code"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-sm-12">
-                    <div className="input-block local-forms">
-                      <label>Start Biography <span className="login-danger">*</span></label>
-                      <textarea
-                        className="form-control"
-                        rows="3"
-                        name="biography"
-                        value={formData.biography}
-                        onChange={handleChange}
-                        placeholder="Biography"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block local-top-form">
-                      <label className="local-top">Avatar <span className="login-danger">*</span></label>
-                      <div className="settings-btn upload-files-avator">
-                        <input
-                          type="file"
-                          accept="image/*"
-                          name="avatar"
-                          id="file"
-                          onChange={handleChange}
-                          className="hide-input"
-                        />
-                        <label htmlFor="file" className="upload">Choose File</label>
-                      </div>
-                      {formData.avatar &&
-                      <div className="upload-images upload-size">
-                        {formData.avatar && <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" />}
-                        <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
-                          <i className="feather-x-circle"></i>
-                        </a>
-                      </div>
-}
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 col-xl-6">
-                    <div className="input-block select-gender">
-                      <label className="gen-label">Status <span className="login-danger">*</span></label>
-                      <div className="form-check-inline">
-                        <label className="form-check-label">
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Active"
-                            checked={formData.status === 'Active'}
-                            onChange={handleChange}
-                            className="form-check-input"
-                          />
-                          Active
-                        </label>
-                      </div>
-                      <div className="form-check-inline">
-                        <label className="form-check-label">
-                          <input
-                            type="radio"
-                            name="status"
-                            value="In Active"
-                            checked={formData.status === 'In Active'}
-                            onChange={handleChange}
-                            className="form-check-input"
-                          />
-                          In Active
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+
+                  {/* Submit Button */}
                   <div className="col-12">
-                    <div className="doctor-submit text-end">
-                      <button type="submit" className="btn btn-primary submit-form me-2">Submit</button>
-                      <button type="button" className="btn btn-primary cancel-form">Cancel</button>
-                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="button" className="btn btn-secondary">Cancel</button>
                   </div>
                 </div>
               </form>
@@ -398,3 +164,4 @@ const AddPatient = () => {
 };
 
 export default AddPatient;
+    

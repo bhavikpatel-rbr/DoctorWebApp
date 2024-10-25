@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUserAction, registerDoctorAction } from "./middleware";
+import { getAllUserAction, registerClinicAction, registerDoctorAction, registerPatientAction, registerStaffAction } from "./middleware";
 
 const INITIAL_STATE = {
   users: null,
@@ -15,6 +15,15 @@ const appSlice = createSlice({
       users: payload?.users,
     }));
     builder.addCase(registerDoctorAction.fulfilled, (state, { payload }) => ({
+      ...state,
+    }));
+    builder.addCase(registerClinicAction.fulfilled, (state, { payload }) => ({
+      ...state,
+    }));
+    builder.addCase(registerStaffAction.fulfilled, (state, { payload }) => ({
+      ...state,
+    }));
+    builder.addCase(registerPatientAction.fulfilled, (state, { payload }) => ({
       ...state,
     }));
   },

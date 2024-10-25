@@ -17,3 +17,30 @@ export const registerDoctorAsync = async (payload) => {
     return isAxiosError(err);
   }
 };
+
+export const registerClinicAsync = async (payload) => {
+  try {
+    const response = await axiosInstance.post(`/registerclinic`, payload);
+    return response;
+  } catch (err) {
+    return isAxiosError(err);
+  }
+};
+
+export const registerStaffAsync = async (payload) => {
+  try {
+    const response = await axiosInstance.post(`/registerstaff`, payload);
+    return response;
+  } catch (err) {
+    return isAxiosError(err);
+  }
+};
+
+export const registerPatientAsync = async (payload) => {
+  try {
+    const response = await axiosInstance.post(`/registerpatient`, payload);
+    return response;
+  } catch (err) {
+    return isAxiosError(err);
+  }
+};

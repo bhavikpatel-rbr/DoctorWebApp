@@ -2,7 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { hideLoader, showLoader, showMessage } from "../lem/lemSlice";
 import { defaultMessageObj } from "../../utils/hooks";
-import { getAllUserAsync, registerDoctorAsync } from "./service";
+import {
+  getAllUserAsync,
+  registerClinicAsync,
+  registerDoctorAsync,
+  registerPatientAsync,
+  registerStaffAsync,
+} from "./service";
 
 export const getAllUserAction = createAsyncThunk(
   "auth/getAllUser",
@@ -35,6 +41,99 @@ export const registerDoctorAction = createAsyncThunk(
     dispatch(showLoader({ loading: true, message: "happening" }));
     try {
       const response = await registerDoctorAsync(payload);
+      if (response?.data) {
+        dispatch(
+          showMessage({
+            ...defaultMessageObj,
+            type: "success",
+            messageText: response?.data?.message,
+          })
+        );
+        return response?.data;
+      }
+      dispatch(
+        showMessage({
+          ...defaultMessageObj,
+          type: "error",
+          messageText: response?.data?.message,
+        })
+      );
+      return rejectWithValue(response);
+    } catch (error) {
+      dispatch(hideLoader());
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const registerClinicAction = createAsyncThunk(
+  "auth/registerClinic",
+  async (payload, { rejectWithValue, dispatch }) => {
+    dispatch(showLoader({ loading: true, message: "happening" }));
+    try {
+      const response = await registerClinicAsync(payload);
+      if (response?.data) {
+        dispatch(
+          showMessage({
+            ...defaultMessageObj,
+            type: "success",
+            messageText: response?.data?.message,
+          })
+        );
+        return response?.data;
+      }
+      dispatch(
+        showMessage({
+          ...defaultMessageObj,
+          type: "error",
+          messageText: response?.data?.message,
+        })
+      );
+      return rejectWithValue(response);
+    } catch (error) {
+      dispatch(hideLoader());
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const registerStaffAction = createAsyncThunk(
+  "auth/registerStaff",
+  async (payload, { rejectWithValue, dispatch }) => {
+    dispatch(showLoader({ loading: true, message: "happening" }));
+    try {
+      const response = await registerStaffAsync(payload);
+      if (response?.data) {
+        dispatch(
+          showMessage({
+            ...defaultMessageObj,
+            type: "success",
+            messageText: response?.data?.message,
+          })
+        );
+        return response?.data;
+      }
+      dispatch(
+        showMessage({
+          ...defaultMessageObj,
+          type: "error",
+          messageText: response?.data?.message,
+        })
+      );
+      return rejectWithValue(response);
+    } catch (error) {
+      dispatch(hideLoader());
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const registerPatientAction = createAsyncThunk(
+  "auth/registerPatient",
+  async (payload, { rejectWithValue, dispatch }) => {
+    dispatch(showLoader({ loading: true, message: "happening" }));
+    try {
+      const response = await registerPatientAsync(payload);
       if (response?.data) {
         dispatch(
           showMessage({

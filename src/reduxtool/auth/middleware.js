@@ -19,6 +19,7 @@ export const loginAdminByEmailAction = createAsyncThunk(
       console.log("----------");
       const response = await loginWithEmailAsync(loginRequest)
       if (response?.data?.isSuccess) {
+        console.log("-----2-----" ,response?.data);
         dispatch(hideLoader())
         return response?.data
       }

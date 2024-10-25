@@ -7,7 +7,7 @@ import { authSelector } from './reduxtool/auth/authSlice';
 import Loader from './component/AppLoader';
 import ScrollToTop from './utils/scrollToTop';
 import { useDispatch } from 'react-redux';
-import { getAllUserAction } from './reduxtool/app/middleware';
+import { allPatientsUsersAction, getAllUserAction } from './reduxtool/app/middleware';
 import { appSelector } from './reduxtool/app/appslice';
 
 function App() {
@@ -17,9 +17,9 @@ function App() {
   useEffect(() => {
     if (token) {
       dispatch(getAllUserAction())
+      dispatch(allPatientsUsersAction())
     }
   }, [token])
-  console.log(users);
 
   return (
     <>

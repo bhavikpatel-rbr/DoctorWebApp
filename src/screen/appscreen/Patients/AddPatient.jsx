@@ -2,8 +2,11 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ChevronRight } from 'react-feather';
+import { useDispatch } from 'react-redux';
+import { registerPatientAction } from '../../../reduxtool/app/middleware'
 
 const AddPatient = () => {
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -66,9 +69,8 @@ const AddPatient = () => {
       latitude: Yup.number().required('Latitude is required'),
       longitude: Yup.number().required('Longitude is required'),
       patient_type: Yup.string().required('Patient type is required'),
-      clinic_id: Yup.number().required('Clinic ID is required'),
-      doctor_id: Yup.number().required('Doctor ID is required')
     }),
+
     onSubmit: (values) => {
       const payload = {
         username: values?.username,
@@ -79,7 +81,7 @@ const AddPatient = () => {
         lastname: values?.lastname,
         gender: values?.gender,
         birth_date: values?.birth_date,
-        patient_name:values?.patient_name,
+        patient_name: values?.patient_name,
         specialization: values?.specialization,
         education: values?.education,
         designation: values?.designation,
@@ -101,11 +103,13 @@ const AddPatient = () => {
         patient_type: values?.patient_type,
         clinic_id: 1,
         doctor_id: 2,
+
       };
-      console.log("payload",values);
-      // Handle form submission logic here
+      dispatch(registerPatientAction(payload));
     }
   });
+
+  console.log(formik.errors);
 
   return (
     <div className="content">
@@ -144,10 +148,10 @@ const AddPatient = () => {
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
                       />
-                       {formik.touched.firstname && formik.errors.firstname ? <div className="text-danger">{formik.errors.username}</div> : null}
+                      {formik.touched.firstname && formik.errors.firstname ? <div className="text-danger">{formik.errors.username}</div> : null}
                     </div>
                   </div>
-                 {/* Last name  */}
+                  {/* Last name  */}
                   <div className="col-12 col-md-6 col-xl-4">
                     <div className="input-block local-forms">
                       <label>Last Name <span className="login-danger">*</span></label>
@@ -162,13 +166,11 @@ const AddPatient = () => {
                       {formik.touched.lastname && formik.errors.lastname ? <div className="text-danger">{formik.errors.lastname}</div> : null}
                     </div>
                   </div>
-                 
-                  
 
                   {/* Username */}
                   <div className="col-12 col-md-6 col-xl-4">
                     <div className="input-block local-forms">
-                    <label>User Name <span className="login-danger">*</span></label>
+                      <label>User Name <span className="login-danger">*</span></label>
                       <input
                         type="text"
                         name="username"
@@ -180,8 +182,8 @@ const AddPatient = () => {
                       {formik.touched.username && formik.errors.username ? <div className="text-danger">{formik.errors.username}</div> : null}
                     </div>
                   </div>
-{/* Email */}
-<div className="col-12 col-md-6 col-xl-4">
+                  {/* Email */}
+                  <div className="col-12 col-md-6 col-xl-4">
                     <div className="input-block local-forms">
                       <label>Email</label>
                       <input
@@ -198,7 +200,7 @@ const AddPatient = () => {
                   {/* Mobile */}
                   <div className="col-12 col-md-6 col-xl-4">
                     <div className="input-block local-forms">
-                    <label>Mobile <span className="login-danger">*</span></label>
+                      <label>Mobile <span className="login-danger">*</span></label>
                       <input
                         type="text"
                         name="phone"
@@ -207,11 +209,11 @@ const AddPatient = () => {
                         onBlur={formik.handleBlur}
                         className="form-control"
                       />
-                       {formik.touched.phone && formik.errors.phone ? <div className="text-danger">{formik.errors.phone}</div> : null}
+                      {formik.touched.phone && formik.errors.phone ? <div className="text-danger">{formik.errors.phone}</div> : null}
                     </div>
                   </div>
-{/* Date Of Birth */}
-<div className="col-12 col-md-6 col-xl-4">
+                  {/* Date Of Birth */}
+                  <div className="col-12 col-md-6 col-xl-4">
                     <div className="input-block local-forms">
                       <label>Date Of Birth</label>
                       <input
@@ -222,10 +224,10 @@ const AddPatient = () => {
                         onBlur={formik.handleBlur}
                         className="form-control"
                       />
-                       {formik.touched.birth_date && formik.errors.birth_date ? <div className="text-danger">{formik.errors.birth_date}</div> : null}
+                      {formik.touched.birth_date && formik.errors.birth_date ? <div className="text-danger">{formik.errors.birth_date}</div> : null}
                     </div>
                   </div>
-                  
+
 
                   {/* Password */}
                   <div className="col-12 col-md-6 col-xl-6">
@@ -259,7 +261,6 @@ const AddPatient = () => {
                     </div>
                   </div>
 
-                  
 
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block select-gender">
@@ -440,7 +441,151 @@ const AddPatient = () => {
                     </div>
                   </div>
 
-                  <div className="col-12 col-md-6 col-xl-6">
+                  {/* Patient Email */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Patient Email <span className="login-danger">*</span></label>
+                      <input
+                        type="email"
+                        name="patient_email"
+                        value={formik.values.patient_email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.patient_email && formik.errors.patient_email ? (
+                        <div className="text-danger">{formik.errors.patient_email}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Patient Phone */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Patient Phone <span className="login-danger">*</span></label>
+                      <input
+                        type="tel"
+                        name="patient_phone"
+                        value={formik.values.patient_phone}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.patient_phone && formik.errors.patient_phone ? (
+                        <div className="text-danger">{formik.errors.patient_phone}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Patient Name */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Patient Name <span className="login-danger">*</span></label>
+                      <input
+                        type="text"
+                        name="patient_name"
+                        value={formik.values.patient_name}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.patient_name && formik.errors.patient_name ? (
+                        <div className="text-danger">{formik.errors.patient_name}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Specialization */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Specialization <span className="login-danger">*</span></label>
+                      <input
+                        type="text"
+                        name="specialization"
+                        value={formik.values.specialization}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.specialization && formik.errors.specialization ? (
+                        <div className="text-danger">{formik.errors.specialization}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* License Number */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>License Number <span className="login-danger">*</span></label>
+                      <input
+                        type="text"
+                        name="license_number"
+                        value={formik.values.license_number}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.license_number && formik.errors.license_number ? (
+                        <div className="text-danger">{formik.errors.license_number}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Years of Experience */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Years of Experience <span className="login-danger">*</span></label>
+                      <input
+                        type="number"
+                        name="years_of_experience"
+                        value={formik.values.years_of_experience}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.years_of_experience && formik.errors.years_of_experience ? (
+                        <div className="text-danger">{formik.errors.years_of_experience}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Operating Hours */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Operating Hours <span className="login-danger">*</span></label>
+                      <input
+                        type="text"
+                        name="operating_hours"
+                        value={formik.values.operating_hours}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.operating_hours && formik.errors.operating_hours ? (
+                        <div className="text-danger">{formik.errors.operating_hours}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Services */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Services <span className="login-danger">*</span></label>
+                      <input
+                        type="text"
+                        name="services"
+                        value={formik.values.services}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.services && formik.errors.services ? (
+                        <div className="text-danger">{formik.errors.services}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block local-top-form">
                       <label className="local-top">Avatar <span className="login-danger">*</span></label>
                       <div className="settings-btn upload-files-avator">
@@ -455,15 +600,91 @@ const AddPatient = () => {
                         <label htmlFor="file" className="upload">Choose File</label>
                       </div>
                       {formik.values.avatar &&
-                      <div className="upload-images upload-size">
-                        {formik.values.avatar && <img src={URL.createObjectURL(formik.values.avatar)} alt="Avatar" />}
-                        <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
-                          <i className="feather-x-circle"></i>
-                        </a>
-                      </div>
-}
+                        <div className="upload-images upload-size">
+                          {formik.values.avatar && <img src={URL.createObjectURL(formik.values.avatar)} alt="Avatar" />}
+                          <a href="javascript:void(0);" className="btn-icon logo-hide-btn">
+                            <i className="feather-x-circle"></i>
+                          </a>
+                        </div>
+                      }
+                    </div>
+                  </div> */}
+
+                  {/* Confirm Password */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Confirm Password <span className="login-danger">*</span></label>
+                      <input
+                        type="password"
+                        name="confirmpassword"
+                        value={formik.values.confirmpassword}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.confirmpassword && formik.errors.confirmpassword ? (
+                        <div className="text-danger">{formik.errors.confirmpassword}</div>
+                      ) : null}
                     </div>
                   </div>
+
+                  {/* Latitude */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Latitude <span className="login-danger">*</span></label>
+                      <input
+                        type="number"
+                        name="latitude"
+                        value={formik.values.latitude}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.latitude && formik.errors.latitude ? (
+                        <div className="text-danger">{formik.errors.latitude}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Longitude */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Longitude <span className="login-danger">*</span></label>
+                      <input
+                        type="number"
+                        name="longitude"
+                        value={formik.values.longitude}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      />
+                      {formik.touched.longitude && formik.errors.longitude ? (
+                        <div className="text-danger">{formik.errors.longitude}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  {/* Patient Type */}
+                  <div className="col-12 col-md-6 col-xl-4">
+                    <div className="input-block local-forms">
+                      <label>Patient Type <span className="login-danger">*</span></label>
+                      <select
+                        name="patient_type"
+                        value={formik.values.patient_type}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className="form-control"
+                      >
+                        <option value="">Select Patient Type</option>
+                        <option value="Inpatient">Inpatient</option>
+                        <option value="Outpatient">Outpatient</option>
+                      </select>
+                      {formik.touched.patient_type && formik.errors.patient_type ? (
+                        <div className="text-danger">{formik.errors.patient_type}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
                   <div className="col-12 col-md-6 col-xl-6">
                     <div className="input-block select-gender">
                       <label className="gen-label">Status <span className="login-danger">*</span></label>
@@ -515,4 +736,3 @@ const AddPatient = () => {
 };
 
 export default AddPatient;
-    
